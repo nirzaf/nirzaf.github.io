@@ -302,3 +302,78 @@ a:focus, a:hover {
 footer {
   padding: 5rem 0;
 }
+
+/*------------------------------------------------------*/
+
+#about-us {
+  background-color: white;
+  padding: 60px 0;
+  }
+  
+  #about-us h2 {
+  margin-top: 0;
+  color: #333;
+  }
+  
+  #about-us .lead {
+  font-size: 16px;
+  margin-bottom: 10px;
+  }
+  
+  #about-us h1 {
+  margin-bottom: 30px;
+  }
+  
+  .progress-title{
+      font-size: 16px;
+      font-weight: 700;
+      color: #000;
+      margin: 0 0 10px 0;
+  }
+  
+  .progress{
+      height: 20px;
+      line-height: 15px;
+      border-radius: 5px;
+      background: #f0f0f0;
+      margin-bottom: 30px;
+      box-shadow: none;
+      overflow: visible;
+  }
+  
+  .progress-bar{
+      position: relative;
+      border-radius: 0;
+      opacity: 0;
+  }
+  
+  .progress .progress-value{
+      display: block;
+      font-size: 13px;
+      color: #fff;
+      position: absolute;
+      top: 0;
+      right: 8px;
+  }
+  
+  @-webkit-keyframes animate-positive{
+      0% { width: 0%; }
+  }
+  @keyframes animate-positive{
+      0% { width: 0%; }
+  }
+  
+  #features {
+    text-align: center;
+  }
+  
+  #features i {
+    font-size: 48px;
+  }
+  
+  #features h3 {
+    margin-top: 15px;
+    font-size: 30px;
+    margin-bottom: 7px;
+    color: #fff;
+  }
