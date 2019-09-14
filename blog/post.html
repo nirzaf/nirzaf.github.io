@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -6,7 +6,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="icon" href="assets/img/favicon.ico">
-<title>Mediumish - A Medium style template by WowThemes.net</title>
+<title>Log forwarding from S3 to ES on AWS using Lambda & Serverless Framework</title>
 <!-- Bootstrap core CSS -->
 <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 <!-- Fonts -->
@@ -102,17 +102,17 @@
 				<!-- Begin Top Meta -->
 				<div class="row post-top-meta">
 					<div class="col-md-2">
-						<a href="author.html"><img class="author-thumb" src="https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&amp;d=mm&amp;r=x" alt="Sal"></a>
+						<a href="author.html"><img class="author-thumb" src="https://s.gravatar.com/avatar/e93e1f5161df7159c083ca60722cff1b?s=80" alt="Sal"></a>
 					</div>
 					<div class="col-md-10">
-						<a class="link-dark" href="author.html">Sal</a><a href="#" class="btn follow">Follow</a>
+						<a class="link-dark" href="author.html">F.M Fazrin</a><a href="#" class="btn follow">Follow</a>
 						<span class="author-description">Founder of WowThemes.net and creator of <b>"Mediumish"</b> theme that you're currently previewing. Developing professional premium themes, templates, plugins, scripts since 2012.</span>
 						<span class="post-date">22 July 2017</span><span class="dot"></span><span class="post-read">6 min read</span>
 					</div>
 				</div>
 				<!-- End Top Menta -->
 
-				<h1 class="posttitle">18 Things You Should Learn Before Moving Into a New Home</h1>
+				<h1 class="posttitle">Log forwarding from S3 to ES on AWS using Lambda & Serverless Framework</h1>
 
 			</div>
 
@@ -121,23 +121,75 @@
 			<!-- End Featured Image -->
 
 			<!-- Begin Post Content -->
-			<div class="article-post">
+            <div class="article-post">
+                <p>
+                    In the past couple of years, I was fortunate enough to get the opportunity to work on a few amazing projects. However, I have never really written/shared my learnings from those projects. I recently worked on event-based log forwarding from S3 buckets to Elastic Search on AWS using Lambda. I worked on this project as part of my internship at Finger tips solution
+                </p>
+                <p>
+                    I was able to accomplish the goal of log forwarding by following the instructions from miztiik/serverless-s3-to-elasticsearch-ingester GitHub repo.
+                </p>
+                <p>
+                    While I thank the author for the detailed instructions, I have identified a few improvements to the development workflow used in that GitHub repo. Below is the list of such improvements.
+                </p>
+
+                <ol>
+                    <li>
+                        Leverage Infrastructure-as-Code to enable version controlling changes to the infrastructure.
+                    </li>
+                    <li>
+                        Automate AWS resources lifecycle management.
+                    </li>
+                    <li>
+                        Automate the deployment of Lambda functions to help quickly iterate on the changes required to the function definition.
+                    </li>
+                    <li>
+                        Simplify the process of testing the Lambda function, which requires simulating s3 events.
+                    </li>
+                    <li>
+                        Simplify the process of debugging issues identified as part of the test cycle.
+                    </li>
+                </ol>
+
+                <blockquote>
+                    The rest of this post is going to describe the same steps outlined in the GitHub repo but also offers a solution to the improvements mentioned above..
+                </blockquote>
+
+                <h3>Serverless Framework to the rescue</h3>
+                <p>
+                    Inspired by the work of Zane Williamson on <a href="https://github.com/silvermullet/hyper-kube-config">silvermullet/hyper-kube-config</a>, I decided to try out serverless.com to address those improvements. I soon realized that this amazing framework has addressed all those improvements.
+                </p>
+                <h4>Log Forwarding Mechanism using Serverless</h4>
+                <h4>IAM user creation</h4>
+                <ul>
+                    <li>
+                        Create an IAM user in the AWS IAM service. Serverless uses this user for its deployment to AWS
+                    </li>
+                </ul>
+                <img class="featured-image img-fluid" src="assets/img/demopic/img1.png" alt="F M Fazrin">
+                <ul>
+                    <li>
+                        Add below permissions to the user
+                    </li>
+                </ul>
+                <img class="featured-image img-fluid" src="assets/img/demopic/img2.png" alt="F M Fazrin">
+                <h4>Initial setup</h4>
+                <ul>
+                    <li>
+                        Install serverless
+                    </li>
+                </ul>
+                <p>
+					<script src="https://gist.github.com/nirzaf/ef4448d647533759c242b27d31a02eb3.js"></script>
+                </p>
+				    <ul>
+                    <li>
+                        Verify that Serverless is installed by checking its version
+                    </li>
+				</ul>
 				<p>
-					Holy grail funding non-disclosure agreement advisor ramen bootstrapping ecosystem. Beta crowdfunding iteration assets business plan paradigm shift stealth mass market seed money rockstar niche market marketing buzz market.
-				</p>
-				<p>
-					Burn rate release facebook termsheet equity technology. Interaction design rockstar network effects handshake creative startup direct mailing. Technology influencer direct mailing deployment return on investment seed round.
-				</p>
-				<p>
-					 Termsheet business model canvas user experience churn rate low hanging fruit backing iteration buyer seed money. Virality release launch party channels validation learning curve paradigm shift hypotheses conversion. Stealth leverage freemium venture startup business-to-business accelerator market.
-				</p>
-				<blockquote>
-					Gen-z strategy long tail churn rate seed money channels user experience incubator startup partner network low hanging fruit direct mailing. Client backing success startup assets responsive web design burn rate A/B testing metrics first mover advantage conversion.
-				</blockquote>
-				<p>
-					Freemium non-disclosure agreement lean startup bootstrapping holy grail ramen MVP iteration accelerator. Strategy market ramen leverage paradigm shift seed round entrepreneur crowdfunding social proof angel investor partner network virality.
-				</p>
-			</div>
+                    <script src="https://gist.github.com/nirzaf/787380d2fd67359a3bd5e55cea124ab2.js"></script>
+				</P>
+            </div>
 			<!-- End Post Content -->
 
 			<!-- Begin Tags -->
@@ -231,7 +283,7 @@
 								<a href="author.html"><img class="author-thumb" src="https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&amp;d=mm&amp;r=x" alt="Sal"></a>
 								</span>
 								<span class="author-meta">
-								<span class="post-name"><a href="author.html">Sal</a></span><br/>
+								<span class="post-name"><a href="author.html">F.M. Fazrin</a></span><br/>
 								<span class="post-date">22 July 2017</span><span class="dot"></span><span class="post-read">6 min read</span>
 								</span>
 								<span class="post-read-more"><a href="post.html" title="Read Story"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25"><path d="M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z" fill-rule="evenodd"></path></svg></a></span>
@@ -256,16 +308,6 @@
 <!-- End Twitter Timeline
 ================================================== -->
 
-<!-- Begin AlertBar
-================================================== -->
-<div class="alertbar">
-	<div class="container text-center">
-		<img src="assets/img/logo.png" alt=""> &nbsp; Never miss a <b>story</b> from us, get weekly updates in your inbox. <a href="#" class="btn subscribe">Get Updates</a>
-	</div>
-</div>
-<!-- End AlertBar
-================================================== -->
-
 <!-- Begin Footer
 ================================================== -->
 <div class="container">
@@ -274,7 +316,7 @@
 			 Copyright &copy; 2017 Your Website Name
 		</p>
 		<p class="pull-right">
-			 Mediumish Theme by <a target="_blank" href="https://www.wowthemes.net">WowThemes.net</a>
+			 Powered By <a target="_blank" href="https://nirzaf.bitbucket.io">WowThemes.net</a>
 		</p>
 		<div class="clearfix">
 		</div>
