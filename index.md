@@ -2,14 +2,20 @@
 
 ---
 
-### Category Name 1 
+###  
 
-[INVOICE AND CERTIFICATE PRINTING SOFTWARE](/sample_page)
+[INVOICE AND CERTIFICATE PRINTING SOFTWARE](/POS)
 <img src="https://fazrin.cf/img/portfolio/01-full.jpg?raw=true"/>
 
----
-[Project 2 Title](/pdf/sample_presentation.pdf)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
+<p>
+This is a complete solution for Premadasa jewellers including Invetory system, point of sale, certificate printing with various types of reports
+<.p>
+<br>
+<p text-align=center>
+Date: January 2019
+Client: Premadasa Á Co..(Jewellers) Private Limited
+Category: Inventroy Á Point of Sale
+</p>
 
 ---
 [Project 3 Title](http://example.com/)
