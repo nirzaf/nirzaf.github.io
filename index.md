@@ -4,8 +4,8 @@
 
 ### Category Name 1 
 
-[Project 1 Title](/sample_page)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
+[INVOICE AND CERTIFICATE PRINTING SOFTWARE](/sample_page)
+<img src="https://fazrin.cf/img/portfolio/01-full.jpg?raw=true"/>
 
 ---
 [Project 2 Title](/pdf/sample_presentation.pdf)
