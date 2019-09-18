@@ -2,8 +2,6 @@
 
 ---
 
-###  
-
 [INVOICE AND CERTIFICATE PRINTING SOFTWARE](/POS)
 <img src="https://fazrin.cf/img/portfolio/01-full.jpg?raw=true"/>
 
