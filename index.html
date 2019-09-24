@@ -1,7 +1,9 @@
-﻿﻿<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="Mohamed Farook Mohamed Fazrin" content="Web/App Development
@@ -23,9 +25,32 @@
     <!-- Custom styles for this template -->
     <link href="css\agency.min.css" rel="stylesheet">
 
-</head>
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/6.6.1/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/6.6.1/firebase-auth.js"></script>
+    <script defer src="/__/firebase/6.6.1/firebase-database.js"></script>
+    <script defer src="/__/firebase/6.6.1/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/6.6.1/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
 
-<body id="page-top">
+    <style media="screen">
+      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
+      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
+      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
+      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
+      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
+      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
+      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
+      @media (max-width: 600px) {
+        body, #message { margin-top: 0; background: white; box-shadow: none; }
+        body { border-top: 16px solid #ffa100; }
+      }
+    </style>
+  </head>
+  <body id="page-top">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
@@ -117,7 +142,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading text-uppercase">Portfolio</h2>
-                    <h5 class="section-subheading">What's in the movie compared to what was shoot is the tip of the iceberg.</h5>
+                                        <h5 class="section-subheading">What's in the movie compared to what was shoot is the tip of the iceberg.</h5>
                     <h5>Please visit my git profiles to view my all public projects</h5>
                     <h5>Projects on <a href="https://github.com/nirzaf/">github</a></h5>
                     <h5>Projects on <a href="https://gitlab.com/nirzaf/">gitlab</a></h5>
@@ -209,6 +234,52 @@
                         <p class="text-muted">Complete Point Of Sale Solution</p>
                     </div>
                 </div>
+                <!--Newly Added Items to Portfolio begin-->
+
+                                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fas fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img class="img-fluid" src="img\portfolio\04-thumbnail.jpg" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Aichi Union (Pvt) Ltd</h4>
+                        <p class="text-muted">Website and Ecommerce</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fas fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img class="img-fluid" src="img\portfolio\05-thumbnail.jpg" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Heaven Lanka Tours</h4>
+                        <p class="text-muted">Website with Live Chatting Features</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fas fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img class="img-fluid" src="img\portfolio\06-thumbnail.jpg" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Unicenta POS</h4>
+                        <p class="text-muted">Complete Point Of Sale Solution</p>
+                    </div>
+                </div>
+
+                <!--Newly Added Items to Portfolio end-->
             </div>
         </div>
     </section>
@@ -235,7 +306,7 @@
                                     <h4 class="subheading">Humble Beginnings</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Began my Career as a free lance developer with unltimate passion!</p>
+                                    <p class="text-muted">Began my Career as a freelance developer with unltimate passion!</p>
                                 </div>
                             </div>
                         </li>
@@ -575,6 +646,113 @@
             </div>
         </div>
     </div>
+
+    <!--Modal 7-->
+          <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl"></div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <!-- Project Details Go Here -->
+                                <h3 class="text-uppercase">Point Of Sales</h3>
+                                <p class="item-intro text-muted">Complete Business Solution.</p>
+                                <img class="img-fluid d-block mx-auto" src="img\portfolio\06-full.jpg" alt="">
+                                <p>This is an open source project which we provide configuration with customization with data maintenance and professional IT support!</p>
+                                <ul class="list-inline">
+                                    <li>Date: January 2018</li>
+                                    <li>Client: Janaka Hardwares, Pilawoos Bakers and Some More..</li>
+                                    <li>Category: POS & Inventory</li>
+                                </ul>
+                                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                    <i class="fas fa-times"></i>
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <!--Modal 8-->
+          <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl"></div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <!-- Project Details Go Here -->
+                                <h3 class="text-uppercase">Point Of Sales</h3>
+                                <p class="item-intro text-muted">Complete Business Solution.</p>
+                                <img class="img-fluid d-block mx-auto" src="img\portfolio\06-full.jpg" alt="">
+                                <p>This is an open source project which we provide configuration with customization with data maintenance and professional IT support!</p>
+                                <ul class="list-inline">
+                                    <li>Date: January 2018</li>
+                                    <li>Client: Janaka Hardwares, Pilawoos Bakers and Some More..</li>
+                                    <li>Category: POS & Inventory</li>
+                                </ul>
+                                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                    <i class="fas fa-times"></i>
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <!--Modal 9-->
+          <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl"></div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <!-- Project Details Go Here -->
+                                <h3 class="text-uppercase">Point Of Sales</h3>
+                                <p class="item-intro text-muted">Complete Business Solution.</p>
+                                <img class="img-fluid d-block mx-auto" src="img\portfolio\06-full.jpg" alt="">
+                                <p>This is an open source project which we provide configuration with customization with data maintenance and professional IT support!</p>
+                                <ul class="list-inline">
+                                    <li>Date: January 2018</li>
+                                    <li>Client: Janaka Hardwares, Pilawoos Bakers and Some More..</li>
+                                    <li>Category: POS & Inventory</li>
+                                </ul>
+                                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                    <i class="fas fa-times"></i>
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
     <!-- Bootstrap core JavaScript -->
     <script src="vendor\jquery\jquery.min.js"></script>
     <script src="vendor\bootstrap\js\bootstrap.bundle.min.js"></script>
@@ -585,5 +763,28 @@
     <script src="js\contact_me.js"></script>
     <!-- Custom scripts for this template -->
     <script src="js\agency.min.js"></script>
-</body>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+        try {
+          let app = firebase.app();
+          let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+          document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
+        } catch (e) {
+          console.error(e);
+          document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+        }
+      });
+    </script>
+  </body>
 </html>
