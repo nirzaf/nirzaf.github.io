@@ -202,8 +202,8 @@
                         <img class="img-fluid" src="img\portfolio\04-thumbnail.jpg" alt="">
                     </a>
                     <div class="portfolio-caption">
-                        <h4>Aichi Union (Pvt) Ltd</h4>
-                        <p class="text-muted">Website and Ecommerce</p>
+                        <h4>Pharmacy Management System</h4>
+                        <p class="text-muted">Complete Web Solution for Pharmacy Management</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6 portfolio-item">
@@ -417,7 +417,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <!--  <span class="copyright">Copyright &copy; Your Website 2019</span> -->
+                    <span class="copyright">Copyright &copy; Published under MIT License</span> 
                 </div>
                 
             </div>
@@ -544,14 +544,43 @@
                         <div class="col-lg-8 mx-auto">
                             <div class="modal-body">
                                 <!-- Project Details Go Here -->
-                                <h3 class="text-uppercase">Aichi Union (Pvt) Limited</h3>
-                                <p class="item-intro text-muted">E-Commerce Website.</p>
+                                <h3 class="text-uppercase">Pharmacy Management System</h3>
+                                <p class="item-intro text-muted">Web Application</p>
                                 <img class="img-fluid d-block mx-auto" src="img\portfolio\04-full.jpg" alt="">
-                                <p>Aichi Union is Japan Based Company who is willing to establish their international market through an E-Commerce Website!</p>
+                                <p>Pharmacy Management System has following features!</p>
+                                <ul style="text-align:left">
+                                    <li>Admin and Pharmacist</li>
+                                    <li>Admin Module 
+                                        <ol>
+                                            <li> Dashboard: In this section, admin can see all details in brief like a total pharmacist, total Medical Company, total Medicine, total today’s sale, total yesterday’s sale, total seven day’s sale, and total</li>
+                                            <li> Invoice Search: In this section, admin can search invoice through invoice number and mobile number.  </li>
+                                            <li> Medicine Inventory: In this section, admin can check remaining medicine. </li>
+                                            <li> Pharmacy Company: In this section, admin can manage pharmacy company (Add/Update). </li>
+                                            <li> Medicine: In this section, admin can manage medicine (Add/Update). </li>
+                                            <li> Pharmacist: In this section, admin can manage pharmacist (Add/Update). </li>
+                                            <li> Reports: In this section, admin can view total sale according to date, according to the pharmacist and total year-wise sale. </li>
+                                            <li> Admin can also update his profile, change the password and recover the password.</li>
+                                        </ol>
+                                    </li>
+                                </ul>
+                                
+                                <ul style="text-align:left">
+                                    <li>
+                                        Pharmacist Module
+                                        <ol>
+                                            <li> Dashboard: In this section, pharmacist can view their own sale details in brief like total today’s sale, total yesterdays sale, total seven days sale,  total  </li>
+                                            <li> Inventory: In this section, pharmacist can check remaining medicine.   </li>
+                                            <li> Search: In this section, pharmacist can search medicine by name and add search medicine to cart. </li>
+                                            <li> Invoice Search: In this section, pharmacist can search invoice through invoice number and mobile number. </li>
+                                            <li> Sales Report: In this section, pharmacist views their own sold medicine according to date. </li>
+                                            <li> Pharmacist can also update his profile, change the password and recover the password.  </li>
+                                        </ol>
+                                    </li>
+                                </ul>
                                 <ul class="list-inline">
-                                    <li>Date: January 2017</li>
-                                    <li>Client: Aichi Union (Pvt) Limited</li>
-                                    <li>Category: E-Commerce Site</li>
+                                    <li>Date: March 2017</li>
+                                    <li>Client: Akurana Medicals (Pvt) Limited and Some other Pharmacies</li>
+                                    <li>Category: Pharmacy Management</li>
                                 </ul>
                                 <button class="btn btn-primary" data-dismiss="modal" type="button">
                                     <i class="fas fa-times"></i>
@@ -741,16 +770,6 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
         try {
           let app = firebase.app();
           let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
