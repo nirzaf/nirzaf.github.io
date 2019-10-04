@@ -1,0 +1,15 @@
+-------------------- Auto-Git Log --------------------
+		Fri Oct 04 2019 21:10:57 GMT+0530 (India Standard Time)
+------------------------------------------------------
+
+Modified files:
+* index.html
+
+
+Created files:
+
+
+Deleted files:
+
+
+Renamed files:
