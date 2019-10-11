@@ -1,0 +1,17 @@
+-------------------- Auto-Git Log --------------------
+		Fri Oct 11 2019 15:15:44 GMT+0530 (India Standard Time)
+------------------------------------------------------
+
+Modified files:
+* img/portfolio/10-full.jpg
+* index.html
+
+
+Created files:
+* .autogit/logs/log-11-9-2019-15-10-38.txt
+
+
+Deleted files:
+
+
+Renamed files:
