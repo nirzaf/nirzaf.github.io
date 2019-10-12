@@ -1,28 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
-
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-
 	<title>M.F.M Fazrin's Portfolio</title>
-
 	<meta name="description" content="Portfolio for front-end developer Mohamed Fazrin">
 	<meta name="keywords" content="Portfolio, Fazrin, Farook, Senior, fullstack, developer, javascript, css, html">
 	<meta name="author" content="Farook Fazrin">
-
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/interactiveHeader.css">
 	<link rel="stylesheet" type="text/css" href="css/ionicons.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-
 	<link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,700|Roboto:300,400,700" rel="stylesheet">
-
 	<link rel="icon" type="image/png" href="favicon/circular-arrows-2-16-245186.png">
-
 </head>
 <body>
 
@@ -36,9 +29,6 @@
 		</div>
 	</div>
 </section>   <!-- end of interactive header -->
-
-
-
 
 <nav class="navbar navbar-inverse navbar-fixed-bottom" id="navigationBarSection" style="display: none;">   <!-- Navigation Bar -->
 	<div class="container-fluid">
@@ -54,9 +44,6 @@
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->
 </nav>   <!-- end of navigation bar -->
-
-
-
 
 <section id="aboutMeSection">   <!-- About Me -->
 	<div class="container-fluid">
@@ -308,7 +295,7 @@
 </section>   <!-- end of projects -->
 
 <section id="highlightsSection">
-	<h1>Highlights</h1>
+	<h1>Career History</h1>
 	<hr id="highlightsHeaderUnderline">
 	<div class="container">
 		<ul class="timeline" style="overflow-x: hidden">
@@ -414,5 +401,17 @@
 	<script type="text/javascript" src="js/jquery.waypoints.js"></script>   <!-- waypoints -->
 	<script type="text/javascript" src="js/sticky.js"></script>   <!-- waypoints -->
 	<script type="text/javascript" src="js/main.js"></script>
+	<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				try {
+					let app = firebase.app();
+					let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+					document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
+				} catch (e) {
+					console.error(e);
+					document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+				}
+			});
+		</script>
 </body>
 </html>
