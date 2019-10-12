@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Sun Oct 13 2019 02:06:24 GMT+0530 (India Standard Time)
+------------------------------------------------------
+
+Modified files:
+* index.html
+
+
+Created files:
+* .autogit/logs/log-13-9-2019-2-1-20.txt
+
+
+Deleted files:
+
+
+Renamed files:
