@@ -1,959 +1,418 @@
-﻿<!DOCTYPE html>
-<html>
-
+<!DOCTYPE html>
+<html lang="en" class="no-js">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="Mohamed Farook Mohamed Fazrin"
-        content="Web/App Development
-    Website and Web Application development for business and personal requirements. please visit my GitHub page to view my completed projects, I have been entertaining in this field for more than 10 years with 4 years of Industrial Experience ,I have developed various websites using HTML, CSS, JavaScript, JQuery and Some Web Developing Frameworks. Apart from that I have handful Experience in Dot(.)NET Technologies in Creating Desktop & Web applications and some other programming languages listed in this section">
-    <meta name="M.F.M Fazrin"
-        content="Technology began to invade in my life from my childhood, but Software Development is fulfilling to achieve my creative solutions & Innovate My Own Solutions. I use my passion to provide excellent solutions to accelerate the business outcomes.">
-    <title>Fazrin's Portfolio & Profile</title>
-    <!-- Bootstrap core CSS -->
-    <link href="vendor\bootstrap\css\bootstrap.min.css" rel="stylesheet">
-    <!-- Custom fonts for this template -->
-    <link href="vendor\fontawesome-free\css\all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
-        type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-    <!-- Custom styles for this template -->
-    <link href="css\agency.min.css" rel="stylesheet">
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/6.6.1/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/6.6.1/firebase-auth.js"></script>
-    <script defer src="/__/firebase/6.6.1/firebase-database.js"></script>
-    <script defer src="/__/firebase/6.6.1/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/6.6.1/firebase-storage.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
-    <style media="screen">
-        body {
-            background: #ECEFF1;
-            color: rgba(0, 0, 0, 0.87);
-            font-family: Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
 
-        #message {
-            background: white;
-            max-width: 360px;
-            margin: 100px auto 16px;
-            padding: 32px 24px;
-            border-radius: 3px;
-        }
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 
-        #message h2 {
-            color: #ffa100;
-            font-weight: bold;
-            font-size: 16px;
-            margin: 0 0 8px;
-        }
+	<title>M.F.M Fazrin's Portfolio</title>
 
-        #message h1 {
-            font-size: 22px;
-            font-weight: 300;
-            color: rgba(0, 0, 0, 0.6);
-            margin: 0 0 16px;
-        }
+	<meta name="description" content="Portfolio for front-end developer Mohamed Fazrin">
+	<meta name="keywords" content="Portfolio, Fazrin, Farook, Senior, fullstack, developer, javascript, css, html">
+	<meta name="author" content="Farook Fazrin">
 
-        #message p {
-            line-height: 140%;
-            margin: 16px 0 24px;
-            font-size: 14px;
-        }
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/interactiveHeader.css">
+	<link rel="stylesheet" type="text/css" href="css/ionicons.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 
-        #message a {
-            display: block;
-            text-align: center;
-            background: #039be5;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: white;
-            padding: 16px;
-            border-radius: 4px;
-        }
+	<link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,700|Roboto:300,400,700" rel="stylesheet">
 
-        #message,
-        #message a {
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-        }
+	<link rel="icon" type="image/png" href="favicon/circular-arrows-2-16-245186.png">
 
-        #load {
-            color: rgba(0, 0, 0, 0.4);
-            text-align: center;
-            font-size: 13px;
-        }
-
-        @media (max-width: 600px) {
-
-            body,
-            #message {
-                margin-top: 0;
-                background: white;
-                box-shadow: none;
-            }
-
-            body {
-                border-top: 16px solid #ffa100;
-            }
-        }
-    </style>
 </head>
+<body>
 
-<body id="page-top">
+<section id="interactiveHeader">   <!-- Interactive Header -->
+	<div id="demo-1">
+		<div class="content">
+			<div id="large-header" class="large-header">
+				<canvas id="demo-canvas"></canvas>
+				<h1 id="main-title"><span class="thin">Mohamed<br>Fazrin</span><br><br><span class="subtitle">Software<br>Engineer</span></h1>
+			</div>
+		</div>
+	</div>
+</section>   <!-- end of interactive header -->
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">In the middle of difficulty lies opportunity.</a>
 
 
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav text-uppercase ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#skills">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Header -->
-    <header class="masthead">
-        <div class="container">
-            <div class="intro-text">
-                <div class="intro-lead-in">Welcome To My Profile!</div>
-                <div class="intro-heading text-uppercase">It's Nice To Meet You</div>
-                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#portfolio">Explore Me</a>
-            </div>
-        </div>
-    </header>
+<nav class="navbar navbar-inverse navbar-fixed-bottom" id="navigationBarSection" style="display: none;">   <!-- Navigation Bar -->
+	<div class="container-fluid">
+		<div class="collapse navbar-collapse" id="navBar">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#interactiveHeader"><i class="ion-home"></i></a></li>
+				<li><a href="#aboutMeSection">Introduction</a></li>
+				<li><a href="#profileSection">Overview</a></li>
+				<li><a href="#projectsSection">Portfolio</a></li>
+				<li><a href="#highlightsSection">Background</a></li>
+				<li><a href="#contactSection">Contact</a></li>
+			</ul>
+		</div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
+</nav>   <!-- end of navigation bar -->
 
-    <!-- Portfolio Grid -->
-    <section class="bg-light" id="portfolio">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading text-uppercase">Portfolio</h2>
-                    <h5 class="section-subheading">What's in the movie compared to what was shoot is the tip of the
-                        iceberg.</h5>
-                    <h5>Please visit my git profiles to view my all public projects</h5>
-                    <h5>Projects on <a href="https://github.com/nirzaf/">github</a></h5>
-                    <h5>Projects on <a href="https://gitlab.com/nirzaf/">gitlab</a></h5>
-                    <h5>Projects on <a href="https://bitbucket.org/nirzaf/">bitbucket</a></h5>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fas fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="img\portfolio\01-thumbnail.jpg" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Premadasa &Aacute; Co Jewellers (Pvt) Ltd</h4>
-                        <p class="text-muted">Invoice and Certificate</p>
-                    </div>
-                </div>
 
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fas fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="img\portfolio\04-thumbnail.jpg" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Pharmacy Management System</h4>
-                        <p class="text-muted">Web Solution for Pharmacy Management</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fas fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="img\portfolio\05-thumbnail.jpg" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Heaven Lanka Tours</h4>
-                        <p class="text-muted">Website with Live Chatting Features</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fas fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="img\portfolio\06-thumbnail.png" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Unicenta POS</h4>
-                        <p class="text-muted">Complete Point Of Sale Solution</p>
-                    </div>
-                </div>
-                <!--Newly Added Items to Portfolio begin-->
-                <!-- project 07 -->
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal7">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fas fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="img\portfolio\07-thumbnail.jpg" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Smart Accounting System</h4>
-                        <p class="text-muted">Web based Accounting Software</p>
-                    </div>
-                </div>
 
-                <!-- project 08 -->
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal8">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fas fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="img\portfolio\08-thumbnail.jpg" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Multi Purpose POS</h4>
-                        <p class="text-muted">Point of Sale with Inventory Management</p>
-                    </div>
-                </div>
 
-                <!--Project 09-->
+<section id="aboutMeSection">   <!-- About Me -->
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3" id="helloDiv">
+				<h1>HELLO</h1>
+			</div>
+			<div class="col-sm-9" id="helloPara">
+				<p>You probably landed here while looking for a good fullstack developer, someone who understands the importance of the end-user experience. Well, you've found one! Explore my sample work, and contact me when you're done. I would love to speak with you.</p>
+			</div>
+		</div>
+	</div>
+</section>   <!-- end of about me -->
 
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal9">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fas fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="img\portfolio\09-thumbnail.jpg" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Online Food Ordering</h4>
-                        <p class="text-muted">Web Application to manage restaurant's online orders </p>
-                    </div>
-                </div>
+<section id="ideologySection">
+	<div class="container-fluid">
+		<div class="row" id="ideology">
+			<p>IDEOLOGY</p>
+		</div>
+	</div>
+	<div class="row" id="threeIdeologies">
+		<div class="col-sm-4" id="dedicationDiv">
+			<i class="ion-ios-loop-strong"></i>
+			<h2>Dedication</h2>
+			<p>We all have dreams - but in order to make dreams become reality, it takes an awful lot of dedication, self-discipline, and effort.</p>
+		</div>
+		<div class="col-sm-4" id="communicationDiv">
+			<i class="ion-chatbubble-working"></i>
+			<h2>Communication</h2>
+			<p>Effective communication leads to better productivity, mutual validation, and a higher valuation of one another.</p>
+		</div>
+		<div class="col-sm-4" id="professionalismDiv">
+			<i class="ion-clipboard"></i>
+			<h2>Professionalism</h2>
+			<p>It is important to realize that professionalism is not just how you behave, but showing a quality product that you take pride in.</p>
+		</div>
+		
+	</div>
+</section>
 
-                                <!--Project 10-->
+<section id="testimonialSection">
+	<div class="row" id="testimonial">
+		<p>TOP QUOTES</p>  <!-- original plan was testimonials -->
+	</div>
+	<div class="row">
+		<div id="testimonialCarousel" class="carousel slide" data-ride="carousel" data-interval="10000">
+			<!-- Wrapper for slides -->
+			<div class="row">
+				<div class="col-xs-offset-3 col-xs-6">
+					<div class="carousel-inner">
+						<div class="item active">
+							<div class="carousel-content">
+								<div>
+									<p>"IN THE END… We only regret the chances we didn’t take, the relationships we were afraid to have, and the decisions we waited too long to make."</p>
+									<p><em>- Lewis Carroll</em></p>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="carousel-content">
+								<div>
+									<p>"Don't worry about failures, worry about the chances you miss when you don't even try."</p>
+									<p><em>- Jack Canfield</em></p>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="carousel-content">
+								<div>	
+									<p>"You know, sometimes all you need is twenty seconds of insane courage. Just literally twenty seconds of embarrassing bravery and I promise you, something great will come of it."</p>
+									<p><em>- Benjamin Mee</em></p>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="carousel-content">
+								<div>	
+									<p>"Never doubt that a small group of thoughtful, committed citizens can change the world; indeed, it's the only thing that ever has."</p>
+									<p><em>- Margaret Mead</em></p>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="carousel-content">
+								<div>	
+									<p>"If we're gonna walk into walls, I want us running into 'em full speed."</p>
+									<p><em>- Leo McGarry, The West Wing</em></p>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="carousel-content">
+								<div>	
+									<p>"A word in defense of making an ass of yourself – it’s underrated."</p>
+									<p><em>- Ted Mosby, How I Met Your Mother</em></p>
+								</div>
+							</div>
+						</div>
+					</div>  <!-- end of carousel-inner -->
+					<!-- Controls --> 
+					<ol class="carousel-indicators">
+						<li data-target="#testimonialCarousel" data-slide-to="0" class="active"></li>
+						<li data-target="#testimonialCarousel" data-slide-to="1"></li>
+						<li data-target="#testimonialCarousel" data-slide-to="2"></li>
+						<li data-target="#testimonialCarousel" data-slide-to="3"></li>
+						<li data-target="#testimonialCarousel" data-slide-to="4"></li>
+						<li data-target="#testimonialCarousel" data-slide-to="5"></li>
+					</ol>
+				</div>
+			</div>
+		</div>   <!-- end of carousel -->
+	</div>      <!-- end of row -->
+</section>
 
-                                <div class="col-md-4 col-sm-6 portfolio-item">
-                                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal10">
-                                        <div class="portfolio-hover">
-                                            <div class="portfolio-hover-content">
-                                                <i class="fas fa-plus fa-3x"></i>
-                                            </div>
-                                        </div>
-                                        <img class="img-fluid" src="img\portfolio\10-thumbnail.jpg" alt="">
-                                    </a>
-                                    <div class="portfolio-caption">
-                                        <h4>Blogging Website</h4>
-                                        <p class="text-muted">Technical blog site for content sharing regarding latest outstanding technologies by experts</p>
-                                    </div>
-                                </div>
+<section id="profileSection">   <!-- Profile & Skills -->
+	<div class="container-fluid">
+		<div class="row">
+			<h1>Profile</h1>
+			<hr id="profileHeaderUnderline">
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<div id="profilePhotoContainer">
+					<img src="img/profilePhoto.png" alt="Photo of Jeremy">
+					<div id="profileNamePositionDiv">
+						<div>
+							<p><span>Name: </span>M.F.M Fazrin</p>
+						</div>						
+						<hr>
+						<div>
+							<p><span>Passion: </span>Fullstack Developer</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<h2>INTRO</h2>
+				<hr id="profileIntroUnderline">
+				<br>
+				<p><span>Hi, My Name is Mohamed Fazrin. (B.E in Software Engineering). </span><br><br>In my current position is an Associate Engineer @ <a href="https://virtusa.com">Virtusa</a> Private Limited & I use Angular 6 and .NET Core to construct well-built web applications, and I am passionate about making the end-user experience as seamless as possible.</p>
+				<hr id="profileDivider">
+				<p id="profileDescription">Previously, I have worked as a Software Developer @ Nemico for 2 Years and as a Freelance Developer for 7 Years, I have experience installing, configuring, and troubleshooting computer hardware and software. Technologies and tools that I have used include: Angular 6, Firebase, NodeJS &amp; Express, MongoDB, PostgreSQL &amp; SQLite, Heroku, HTML &amp; CSS, JavaScript, JQuery, Material Design, Bootstrap, Git &amp; GitHub, Sublime Text &amp; VS Code, AutoHotKey, Microsoft Office 365, and Microsoft operating systems.<br><br>Examine my <a href="./Resume.pdf" target="_blank">resume</a></p>
+				<h2>SKILLS</h2>
+				<hr id="profileSkillsUnderline">
+				<br>
+				<div id="skillsRow" class="row">
+					<img src="img/Net_Core.png">
+					<img src="img/PHP_logo.png">
+					<img src="img/angularLogo.png">
+					<img src="img/firebaseLogo.png">
+					<img src="img/postgresLogo.png">
+					<img src="img/mongodbLogo.png">
+					<img src="img/nodejsLogo.png">
+					<img src="img/jQueryLogo.png">
+					<img src="img/bootstrapLogo.png">
+					<img src="img/javascriptLogo.png">
+					<img src="img/html5Logo.png">
+					<img src="img/css3Logo.png">
+					<img src="img/ahkLogo.png">
+					<img src="img/githubLogo.png">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>   <!-- end of profile & skills -->
 
-                                <!--Project 11-->
+<section id="projectsSection">   <!-- Projects -->
+	<div class="container-fluid">
+		<div class="row">
+			<h1>Portfolio</h1>
+			<hr id="projectsHeaderUnderline">
+			<h3>Live samples of my work</h3>
+		</div>
+		<div class="row" id="projectsDisplayRow">
+			<figure class="col-md-3 col-sm-4 col-xs-6">
+				<a href="http://purrrfect-match.herokuapp.com/" target="_blank">
+					<img src="img/purrrfectMatchDeployed.png" alt="Photo of purrrfect Match website deployed">
+					<p>A cat adoption website created with NodeJS, Express, Passport, and MongoDB</p>
+				</a>
+			</figure>
+			<figure class="col-md-3 col-sm-4 col-xs-6">
+				<a href="https://patatap-clone.firebaseapp.com/" target="_blank">
+					<img src="img/patatapCloneDeployed.png" alt="Photo of Patatap Clone website deployed">
+					<p>A website similar to Patatap, using HowlerJS</p>
+				</a>
+			</figure>
+			<figure class="col-md-3 col-sm-4 col-xs-6">
+				<a href="https://rgb-guessing-game.firebaseapp.com/" target="_blank">
+					<img src="img/rgbGuessingGameDeployed.png" alt="Photo of RGB Guessing Game website deployed">
+					<p>A simple DOM manipulation puzzle game where users try to match RGB colors</p>
+				</a>
+			</figure>
+			<figure class="col-md-3 col-sm-4 col-xs-6">
+				<a href="http://show-local-weather-jw.herokuapp.com/" target="_blank">
+					<img src="img/showLocalWeatherDeployed.png" alt="Photo of Show Local Weather website deployed">
+					<p>Using jQuery and AJAX GET requests, weather data is shown to the user</p>
+				</a>
+			</figure>
+			<figure class="col-md-3 col-sm-4 col-xs-6">
+				<a href="http://todo-list-jw.herokuapp.com/" target="_blank">
+					<img src="img/todoListDeployed.png" alt="Photo of Todo List website deployed">
+					<p>A simple To-Do list using jQuery and AJAX requests</p>
+				</a>
+			</figure>
+			<figure class="col-md-3 col-sm-4 col-xs-6">
+				<a href="https://omnifood-e8df5.firebaseapp.com/" target="_blank">
+					<img src="img/omnifoodDeployed.png" alt="Photo of Omnifood website deployed">
+					<p>A responsive HTML &amp; CSS website</p>
+				</a>
+			</figure>
+			<figure class="col-md-3 col-sm-4 col-xs-6">
+				<a href="https://codepen.io/jwuestef/full/PjqPgy/" target="_blank">
+					<img src="img/cssMonsterDeployed.png" alt="Photo of a CSS snake in the grass">
+					<p>A simple movable CSS monster</p>
+				</a>
+			</figure>
+			<figure class="col-md-3 col-sm-4 col-xs-6">
+				<a href="https://ninja-directory-41b5d.firebaseapp.com/" target="_blank">
+					<img src="img/ninjaDirectoryDeployed.png" alt="Photo of Ninja Directory website deployed">
+					<p>A simple Angular website to browse ninjas-for-hire</p>
+				</a>
+			</figure>
+			<figure class="col-md-3 col-sm-4 col-xs-6">
+				<a href="https://turtle-quiz.firebaseapp.com/" target="_blank">
+					<img src="img/turtleQuizDeployed.png" alt="Photo of Turtle Quiz website deployed">
+					<p>An Angular quiz website to learn about turtles</p>
+				</a>
+			</figure>
+			<figure class="col-md-3 col-sm-4 col-xs-6">
+				<a href="https://workoutlog-angular-client.herokuapp.com" target="_blank">
+					<img src="img/workoutLogDeployed.png" alt="Photo of Workout Log website deployed">
+					<p>An Angular website with a PostgreSQL database to log your physical training regimen</p>
+				</a>
+			</figure>
+			<figure class="col-md-3 col-sm-4 col-xs-6">
+				<a href="https://bucketlist-client-jw.herokuapp.com/" target="_blank">
+					<img src="img/bucketListDeployed.png" alt="Photo of MERN Bucket List website deployed">
+					<p>A MERN stack website to create a bucket list by referencing YouTube videos</p>
+				</a>
+			</figure>
+			<figure class="col-md-3 col-sm-4 col-xs-6">
+				<a href="https://simple-text.herokuapp.com/" target="_blank">
+					<img src="img/simpleTextDeployed.png" alt="Photo of Simple Text website deployed">
+					<p>A MEAN stack website for computer-phone text messaging</p>
+				</a>
+			</figure>
+		</div>
+	</div>
+</section>   <!-- end of projects -->
 
-                                <div class="col-md-4 col-sm-6 portfolio-item">
-                                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal11">
-                                        <div class="portfolio-hover">
-                                            <div class="portfolio-hover-content">
-                                                <i class="fas fa-plus fa-3x"></i>
-                                            </div>
-                                        </div>
-                                        <img class="img-fluid" src="img\portfolio\11-thumbnail.jpg" alt="">
-                                    </a>
-                                    <div class="portfolio-caption">
-                                        <h4>Vehicle Importers Showcase</h4>
-                                        <p class="text-muted">Website for Aichi Union Vehicle Importers</p>
-                                    </div>
-                                </div>
-                <!--Newly Added Items to Portfolio end-->
-            </div>
-        </div>
-    </section>
+<section id="highlightsSection">
+	<h1>Highlights</h1>
+	<hr id="highlightsHeaderUnderline">
+	<div class="container">
+		<ul class="timeline" style="overflow-x: hidden">
+			<li id="highlight1" style="display: none;">
+				<div class="timeline-badge"><i class="ion-briefcase"></i></div>
+				<div class="timeline-panel">
+					<div class="timeline-heading">
+						<h4 class="timeline-title">Virtusa</h4>
+						<p><em>Jan 2019 - present</em></p>
+						<p>Associate Engineer</p>
+					</div>
+					<div class="timeline-body">
+						<img src="img/1150Logo.png" alt="Virtusa Private Limited">
+					</div>
+				</div>
+			</li>
+			<li id="highlight2" class="timeline-inverted" style="display: none;">
+				<div class="timeline-badge"><i class="ion-medkit"></i></div>
+				<div class="timeline-panel">
+					<div class="timeline-heading">
+						<h4 class="timeline-title">Nemico Holdings</h4>
+						<p><em>Jan 2016 - Dec 2018</em></p>
+						<p>Software Developer</p>
+					</div>
+					<div class="timeline-body">
+						<img src="img/cpdLogo.png" alt="Crawfordsville Police Department Patch">
+					</div>
+				</div>
+			</li>
+			<li id="highlight3" style="display: none;">
+				<div class="timeline-badge"><i class="ion-university"></i></div>
+				<div class="timeline-panel">
+					<div class="timeline-heading">
+						<h4 class="timeline-title">Freelancer</h4>
+						<p><em>May 2009 - Present</em></p>
+						<p>Freelance Developer</p>
+					</div>
+					<div class="timeline-body">
+						<img src="img/iupuiLogo.png" alt="IUPUI Logo">
+					</div>
+				</div>
+			</li>
+			<li id="highlight4" class="timeline-inverted" style="display: none;">
+				<div class="timeline-badge"><i class="glyphicon glyphicon-tent"></i></div>
+				<div class="timeline-panel">
+					<div class="timeline-heading">
+						<h4 class="timeline-title">Millennium Institute</h4>
+						<p><em>August, 2005  -  May, 2009</em></p>
+						<p>IT Executive  (<em>& Networking Assistant</em>)</p>
+					</div>
+					<div class="timeline-body">
+						<img src="img/atLogo.png" alt="Appalachian Trail Logo">
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</section>
 
-    <!-- About -->
-    <section id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading text-uppercase">About</h2>
-                    <h3 class="section-subheading text-muted">Progress Time Line.</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <ul class="timeline">
-                        <li>
-                            <div class="timeline-image">
-                                <img class="rounded-circle img-fluid" src="img\about\1.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>2009-2016</h4>
-                                    <h4 class="subheading">Humble Beginnings</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Began my Career as a freelance developer with ultimate
-                                        passion!</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image">
-                                <img class="rounded-circle img-fluid" src="img\about\2.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>January 2016</h4>
-                                    <h4 class="subheading">Joined Nemico</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Joined <a
-                                            href="https://www.linkedin.com/in/nemico-fashion-paradise-571583158/">Nemico</a>
-                                        Holdings group of company as a Software developer to explore my industrial
-                                        exposure!</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="timeline-image">
-                                <img class="rounded-circle img-fluid" src="img\about\3.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>January 2019</h4>
-                                    <h4 class="subheading">Joined to work with tech experts</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">I took my next step as an Associate Engineer at <a
-                                            href="https://www.virtusa.com/">Virtusa Private Limited!</a></p>
-                                </div>
-                            </div>
-                        </li>
+<section id="contactSection">   <!-- Contact -->
+	<div class="container-fluid">
+		<div class="row">
+			<h1>Contact</h1>
+			<hr id="contactHeaderUnderline">
+		</div>
+		<form action="https://formspree.io/mfmfazrin1986@gmail.com" method="POST">
+			<div class="row">
+				<div class="col-sm-6">
+					<input class="form-control" type="text" name="name" placeholder="Your Name*" required>
+					<input class="form-control" type="text" name="phone" placeholder="Phone">
+				</div>
+				<div class="col-sm-6">
+					<input class="form-control" type="text" name="subject" placeholder="Subject*" required>
+					<input class="form-control" type="email" name="email" placeholder="Email*" required>
+				</div>
+			</div>
+			<div class="row">
+				<textarea class="form-control" name="message" placeholder="Message*" required></textarea>
+			</div>
+			<div class="row">
+				<button class="btn btn-lg">Submit</button>
+			</div>
+		</form>
+	</div>
+	<div class="row">
+		<a target="_blank" href="https://github.com/nirzaf"><i class="ion-social-github"></i></a>
+		<a target="_blank" href="https://www.linkedin.com/in/mfmfazrin/"><i class="ion-social-linkedin"></i></a>
+	</div>
+</section>   <!-- end of contact -->
 
-                        <li class="timeline-inverted">
-                            <div class="timeline-image">
-                                <h4>
-                                    Keep
-                                    <br>exploring...
-                                </h4>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="bg-light" id="skills">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Skills and Specialized in</h2>
-                    <h3 class="section-subheading text-muted">Languages and Frameworks</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="about-info">
-                        <p style="color: black">I have been entertaining in this field for more than 10 years of
-                            Experience</p>
-                        <p style="color: black">I have developed various websites using PHP, HTML, CSS, JavaScript,
-                            JQuery and Some Web Developing Frameworks.</p>
-                        <p style="color: black">Apart from that I have handful Experience in Dot NET & Java Technologies
-                            in Creating Desktop & Web applications and some other programming languages listed in this
-                            section</p>
-
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <h5 class="progress-title">.NET Core Technologies & C#</h5>
-                    <div class="progress">
-                        <div class="progress-bar" style="background-color: #0f4f01; width: 85%;">
-                            <div class="progress-value">80%</div>
-                        </div>
-                    </div>
-                    <h5 class="progress-title">Java EE, JSP & Spring Boot </h5>
-                    <div class="progress">
-                        <div class="progress-bar" style="background-color: #0f4f01; width:  80%;">
-                            <div class="progress-value">75%</div>
-                        </div>
-                    </div>
-                    <h5 class="progress-title">PHP, HTML, CSS, JS & Angular</h5>
-                    <div class="progress">
-                        <div class="progress-bar" style="background-color: #0f4f01; width: 75%;">
-                            <div class="progress-value">75%</div>
-                        </div>
-                    </div>
-                    <h5 class="progress-title">MS SQL, MySQL & NoSQL Databases</h5>
-                    <div class="progress">
-                        <div class="progress-bar" style="background-color: #0f4f01; width: 70%;">
-                            <div class="progress-value">70%</div>
-                        </div>
-                    </div>
-                    <h5 class="progress-title">Firebase & Google Cloud Deployments</h5>
-                    <div class="progress">
-                        <div class="progress-bar" style="background-color: #0f4f01; width: 70%;">
-                            <div class="progress-value">70%</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading text-uppercase">Contact Me</h2>
-                    <h4 class="section-heading" style="font-display:block">I am always reachable through WhatsApp </h4>
-                    <img src="img\logos\whatsapp.png"> <a
-                        href="https://api.whatsapp.com/send?phone=+94772049123&text=Hi, I contacted you Through your website."
-                        class="social-icon whatsapp">+94772049123</a>
-                    <h4 class="section-heading" style="font-display:block">Or Drop me an e-mail to</h4>
-                    <h4 class="section-heading" style="font-display:block"><a
-                            href="mailto:mfmfazrin1986@gmail.com">Email : mfmfazrin1986@gmail.com</a></h4>
-                    <h4 class="section-heading" style="font-display:block"><a
-                            href="https://www.linkedin.com/in/mfmfazrin/"><i class="fab fa-linkedin"></i></a></h4>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-
-    <!-- Portfolio Modals -->
-    <!-- Modal 1 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="modal-body">
-                                <!-- Project Details Go Here -->
-                                <h3 class="text-uppercase">Invoice and Certificate Printing Software</h3>
-                                <p class="item-intro text-muted">For Premadasa & Co (Jewellers) Private Limited </p>
-                                <img class="img-fluid d-block mx-auto" src="img\portfolio\01-full.jpg" alt="">
-                                <p>This is a complete solution for Premadasa jewellers including Inventory system, point
-                                    of sale, certificate printing with various types of reports</p>
-                                <ul class="list-inline">
-                                    <li>Date: January 2019</li>
-                                    <li>Client: Premadasa &Aacute; Co..(Jewellers) Private Limited</li>
-                                    <li>Category: Inventory &Aacute; Point of Sale</li>
-                                </ul>
-                                <button class="btn btn-primary" data-dismiss="modal" type="button">
-                                    <i class="fas fa-times"></i>
-                                    Close
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal 2 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="modal-body">
-                                <!-- Project Details Go Here -->
-                                <h3 class="text-uppercase">Web Designing for Razi Enterprises</h3>
-                                <p class="item-intro text-muted">Complete web solution for Razi Enterprises.</p>
-                                <img class="img-fluid d-block mx-auto" src="img\portfolio\02-full.jpg" alt="">
-                                <p>This project includes client will be able to maintain there own website without any
-                                    help of Tech or IT Professional! There can publish images or articles in just few
-                                    minutes of time just by sending an email</p>
-                                <ul class="list-inline">
-                                    <li>Date: January 2018</li>
-                                    <li>Client: Razi Enterprises</li>
-                                    <li>Category: Web Design</li>
-                                </ul>
-                                <button class="btn btn-primary" data-dismiss="modal" type="button">
-                                    <i class="fas fa-times"></i>
-                                    Close
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal 3 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="modal-body">
-                                <!-- Project Details Go Here -->
-                                <h3 class="text-uppercase">KZ Corporation (Pvt) Limited</h3>
-                                <p class="item-intro text-muted">Web Showroom Project.</p>
-                                <img class="img-fluid d-block mx-auto" src="img\portfolio\03-full.jpg" alt="">
-                                <p>Interactive Web Showroom Project with Live and Interactive Features to Boost
-                                    Opportunity for Selling Imported Vehicles!</p>
-                                <ul class="list-inline">
-                                    <li>Date: January 2018</li>
-                                    <li>Client: KZ Corporation (Pvt) Limited</li>
-                                    <li>Category: Web Showroom</li>
-                                </ul>
-                                <button class="btn btn-primary" data-dismiss="modal" type="button">
-                                    <i class="fas fa-times"></i>
-                                    Close
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal 4 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="modal-body">
-                                <!-- Project Details Go Here -->
-                                <h3 class="text-uppercase">Pharmacy Management System</h3>
-                                <p class="item-intro text-muted">Web Application</p>
-                                <img class="img-fluid d-block mx-auto" src="img\portfolio\04-full.jpg" alt="">
-                                <p>Pharmacy Management System has following features!</p>
-                                <ul style="text-align:left">
-                                    <li>Admin and Pharmacist</li>
-                                    <li>Admin Module
-                                        <ol>
-                                            <li> Dashboard: In this section, admin can see all details in brief like a
-                                                total pharmacist, total Medical Company, total Medicine, total today’s
-                                                sale, total yesterday’s sale, total seven day’s sale, and total</li>
-                                            <li> Invoice Search: In this section, admin can search invoice through
-                                                invoice number and mobile number. </li>
-                                            <li> Medicine Inventory: In this section, admin can check remaining
-                                                medicine. </li>
-                                            <li> Pharmacy Company: In this section, admin can manage pharmacy company
-                                                (Add/Update). </li>
-                                            <li> Medicine: In this section, admin can manage medicine (Add/Update).
-                                            </li>
-                                            <li> Pharmacist: In this section, admin can manage pharmacist (Add/Update).
-                                            </li>
-                                            <li> Reports: In this section, admin can view total sale according to date,
-                                                according to the pharmacist and total year-wise sale. </li>
-                                            <li> Admin can also update his profile, change the password and recover the
-                                                password.</li>
-                                        </ol>
-                                    </li>
-                                </ul>
-
-                                <ul style="text-align:left">
-                                    <li>
-                                        Pharmacist Module
-                                        <ol>
-                                            <li> Dashboard: In this section, pharmacist can view their own sale details
-                                                in brief like total today’s sale, total yesterdays sale, total seven
-                                                days sale, total </li>
-                                            <li> Inventory: In this section, pharmacist can check remaining medicine.
-                                            </li>
-                                            <li> Search: In this section, pharmacist can search medicine by name and add
-                                                search medicine to cart. </li>
-                                            <li> Invoice Search: In this section, pharmacist can search invoice through
-                                                invoice number and mobile number. </li>
-                                            <li> Sales Report: In this section, pharmacist views their own sold medicine
-                                                according to date. </li>
-                                            <li> Pharmacist can also update his profile, change the password and recover
-                                                the password. </li>
-                                        </ol>
-                                    </li>
-                                </ul>
-                                <ul class="list-inline">
-                                    <li>Date: March 2017</li>
-                                    <li>Client: Akurana Medicals (Pvt) Limited and Some other Pharmacies</li>
-                                    <li>Category: Pharmacy Management</li>
-                                </ul>
-                                <button class="btn btn-primary" data-dismiss="modal" type="button">
-                                    <i class="fas fa-times"></i>
-                                    Close
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal 5 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="modal-body">
-                                <!-- Project Details Go Here -->
-                                <h3 class="text-uppercase">Heaven Lanka Tours</h3>
-                                <p class="item-intro text-muted">Travel Agency Information Showcase.</p>
-                                <img class="img-fluid d-block mx-auto" src="img\portfolio\05-full.jpg" alt="">
-                                <p>This website will enable their clients to latest updates and promotional offers of
-                                    heaven lanka tours travelling agency!</p>
-                                <ul class="list-inline">
-                                    <li>Date: January 2019</li>
-                                    <li>Client: Heaven Lanka Travels</li>
-                                    <li>Category: Web Application</li>
-                                </ul>
-                                <button class="btn btn-primary" data-dismiss="modal" type="button">
-                                    <i class="fas fa-times"></i>
-                                    Close
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal 6 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="modal-body">
-                                <!-- Project Details Go Here -->
-                                <h3 class="text-uppercase">Point Of Sales</h3>
-                                <p class="item-intro text-muted">Complete Business Solution.</p>
-                                <img class="img-fluid d-block mx-auto" src="img\portfolio\06-full.jpg" alt="">
-                                <p>This is an open source project which we provide configuration with customization with
-                                    data maintenance and professional IT support!</p>
-                                <ul class="list-inline">
-                                    <li>Date: January 2018</li>
-                                    <li>Client: Janaka Hardwares, Pilawoos Bakers and Some More..</li>
-                                    <li>Category: POS & Inventory</li>
-                                </ul>
-                                <button class="btn btn-primary" data-dismiss="modal" type="button">
-                                    <i class="fas fa-times"></i>
-                                    Close
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--Modal 7-->
-    <div class="portfolio-modal modal fade" id="portfolioModal7" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="modal-body">
-                                <!-- Project Details Go Here -->
-                                <h3 class="text-uppercase">Web Based Accounting System</h3>
-                                <p class="item-intro text-muted">Complete Account Solution.</p>
-                                <img class="img-fluid d-block mx-auto" src="img\portfolio\07-full.jpg" alt="">
-                                <p>This is a web based accounting system which can be useful to track income and
-                                    expenses of single or multiple companies, it can be used as a local hosted (offline)
-                                    system or can be hosted on a cloud!</p>
-                                <ul class="list-inline">
-                                    <li>Date: January 2019</li>
-                                    <li>Client: Jisniya Electrical and many more...</li>
-                                    <li>Category: Accounting & Finance</li>
-                                </ul>
-                                <button class="btn btn-primary" data-dismiss="modal" type="button">
-                                    <i class="fas fa-times"></i>
-                                    Close
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--Modal 8-->
-    <div class="portfolio-modal modal fade" id="portfolioModal8" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="modal-body">
-                                <!-- Project Details Go Here -->
-                                <h3 class="text-uppercase">Point Of Sale</h3>
-                                <p class="item-intro text-muted">Complete Multi Purpose POS.</p>
-                                <img class="img-fluid d-block mx-auto" src="img\portfolio\08-full.jpg" alt="">
-                                <p>This is a complete POS solution for any kind of business purpose, we are providing
-                                    100% live support with customization & data maintenance!</p>
-                                <p style="text-align:left">Main Features</p>
-                                <ul style="text-align:left">
-                                    <li>Add User, Manage users</li>
-                                    <li>Add Customer and Biller info</li>
-                                    <li>Stock Items, Items List ,Purchase history</li>
-                                    <li>Sales Register with bar-code scanner</li>
-                                    <li>Quick Sale</li>
-                                    <li>Restaurant kitchen display</li>
-                                    <li>Return panel</li>
-                                    <li>Inventory with bar-code scanner</li>
-                                    <li>Direct Receipt Print</li>
-                                    <li>Invoice Print</li>
-                                    <li>Sales Reports</li>
-                                    <li>Payment Report</li>
-                                    <li>Expenses</li>
-                                    <li>Graph chart</li>
-                                    <li>Profit/loss chart</li>
-                                    <li>Pie chart</li>
-                                    <li>Bar-code creator | EAN-13 and UPC-A</li>
-                                    <li>System Configuration</li>
-                                    <li>Data Backup</li>
-                                    <li>Due Management</li>
-                                </ul>
-                                <ul class="list-inline">
-                                    <li>Date: January 2019</li>
-                                    <li>Client: Avon Bakers & Restaurant and Some More..</li>
-                                    <li>Category: POS & Inventory</li>
-                                </ul>
-                                <button class="btn btn-primary" data-dismiss="modal" type="button">
-                                    <i class="fas fa-times"></i>
-                                    Close
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--Modal 9 Begin -->
-
-    <div class="portfolio-modal modal fade" id="portfolioModal9" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="modal-body">
-                                <!-- Project Details Go Here -->
-                                <h3 class="text-uppercase">Online Food Ordering System</h3>
-                                <p class="item-intro text-muted">Restaurant Menu Showcase and Food Ordering Web Application.</p>
-                                <img class="img-fluid d-block mx-auto" src="img\portfolio\09-full.jpg" alt="">
-                                <p>Web Application developed using woo commerce to display menu items customers and get orders through Online</p>
-                                <ul class="list-inline">
-                                    <li>Date: January 2019</li>
-                                    <li>Client: <a href="https://avonbakersandrestaurant.com">Avon Bakers & Restaurants</a></li>
-                                    <li>Category: B2C E-Commerce</li>
-                                </ul>
-                                <button class="btn btn-primary" data-dismiss="modal" type="button">
-                                    <i class="fas fa-times"></i>
-                                    Close
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Modal 9 End-->
-
-    <!--Modal 10 Begin-->
-    <div class="portfolio-modal modal fade" id="portfolioModal10" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="modal-body">
-                                <!-- Project Details Go Here -->
-                                <h3 class="text-uppercase">Technical blog website </h3>
-                                <p class="item-intro text-muted">Posting content about various technology from experts authors</p>
-                                <img class="img-fluid d-block mx-auto" src="img\portfolio\10-full.jpg" alt="">
-                                <p>This blog site creating a platform for knowledge sharing for everyone, Initially created for tech blogs but there are no limitations now </p>
-                                <ul class="list-inline">
-                                    <li>Date: September 2019</li>
-                                    <li>Client: This <a href="http://quadrate.unaux.com/">blog </a> is created for myself</li>
-                                    <li>Category: Blogging</li>
-                                </ul>
-                                <button class="btn btn-primary" data-dismiss="modal" type="button">
-                                    <i class="fas fa-times"></i>
-                                    Close
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Modal 10 End -->
-
-    <!--Modal 11 Begin-->
-    <div class="portfolio-modal modal fade" id="portfolioModal11" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="modal-body">
-                                <!-- Project Details Go Here -->
-                                <h3 class="text-uppercase">Vehicle Importers Showcase website </h3>
-                                <p class="item-intro text-muted">A website to publish all the services provided by Aichi Union Private Limited </p>
-                                <img class="img-fluid d-block mx-auto" src="img\portfolio\11-full.jpg" alt="">
-                                <p>This site will be updating new imported vehicles to display and provide the information about new services provided by the company to maintain the vehicles in mint condition </p>
-                                <ul class="list-inline">
-                                    <li>Date: July 2018</li>
-                                    <li>Client: <a href="http://aichiunion.net">Aichi </a> Union</li>
-                                    <li>Category: Web Showcase</li>
-                                </ul>
-                                <button class="btn btn-primary" data-dismiss="modal" type="button">
-                                    <i class="fas fa-times"></i>
-                                    Close
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Modal 11 End -->
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor\jquery\jquery.min.js"></script>
-    <script src="vendor\bootstrap\js\bootstrap.bundle.min.js"></script>
-    <!-- Plugin JavaScript -->
-    <script src="vendor\jquery-easing\jquery.easing.min.js"></script>
-    <!-- Contact form JavaScript -->
-    <script src="js\jqBootstrapValidation.js"></script>
-    <script src="js\contact_me.js"></script>
-    <!-- Custom scripts for this template -->
-    <script src="js\agency.min.js"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            try {
-                let app = firebase.app();
-                let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-                document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
-            } catch (e) {
-                console.error(e);
-                document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
-            }
-        });
-    </script>
+<footer id="footerSection">
+	<p>Copyright &copy; 2019 - M.F.M Fazrin</p>
+	<p>All trademarks and registered trademarks are the property of their respective owners.</p>
+</footer>
+	<script type="text/javascript" src="js/TweenLite.min.js"></script>   <!-- Interactive header -->
+	<script type="text/javascript" src="js/EasePack.min.js"></script>   <!-- Interactive header -->
+	<script type="text/javascript" src="js/rAF.js"></script>   <!-- Interactive header -->
+	<script type="text/javascript" src="js/interactiveHeader.js"></script>   <!-- Interactive header -->
+	<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/noframework.waypoints.js"></script>   <!-- waypoints -->
+	<script type="text/javascript" src="js/jquery.waypoints.js"></script>   <!-- waypoints -->
+	<script type="text/javascript" src="js/sticky.js"></script>   <!-- waypoints -->
+	<script type="text/javascript" src="js/main.js"></script>
 </body>
-
-</html>=
+</html>
