@@ -10,9 +10,6 @@ COLORS:
 
 */
 
-
-
-
 /*===========================
        NAV BAR
 ===========================*/
@@ -78,7 +75,7 @@ COLORS:
 }
 
 #aboutMeSection p {
-	color: #888;
+	color: rgb(255, 255, 255);
 	font-size: 2rem;
 	font-family: 'Raleway', sans-serif;
 	letter-spacing: 0.08rem;
@@ -162,7 +159,7 @@ COLORS:
 	padding-bottom:2rem;
 	font-family: 'Raleway', sans-serif;
 	letter-spacing: 0.08rem;
-	color: #888;
+	color: white;
 }
 
 #ideologyDividerLeft {
@@ -196,7 +193,7 @@ COLORS:
 }
 
 .carousel-content {
-    color: #888;
+    color: white;
     font-family: 'Raleway', sans-serif;
     letter-spacing: 0.08rem;
     display:flex;
@@ -274,7 +271,7 @@ COLORS:
 }
 
 #profileNamePositionDiv p {
-	color: #888;
+	color: white;
 	padding-left: 3rem;
 	padding-right: 3rem;
 	font-family: 'Raleway', sans-serif;
@@ -356,7 +353,7 @@ COLORS:
 }
 
 #profileDescription {
-	color: #888;
+	color: white;
 	font-family: 'Raleway', sans-serif;
 	letter-spacing: 0.08rem;
 	text-align: left;
@@ -440,7 +437,7 @@ COLORS:
 	padding-bottom: 5rem;
 	position: relative;
 	text-align: center;
-	color: #888;
+	color: white;
 }
 
 #projectsDisplayRow a {
@@ -451,9 +448,9 @@ COLORS:
 	width: 100%;
 	height: auto;
 	overflow: hidden;
-	opacity: 0.7;
+	opacity: 0.8;
     height: auto;
-	transition: transform 0.5s, opacity 0.5s;
+	transition: transform 0.5s, opacity 1s;
 	-webkit-transform: scale(1);
 	-ms-transform: scale(1);
 	transform: scale(1);
@@ -465,13 +462,10 @@ COLORS:
 	margin-right: auto;
 	color: white;
 	margin-top: 1rem;
-	opacity: 0.5;
+	opacity: 1;
 	font-family: 'Raleway', sans-serif;
 	letter-spacing: 0.08rem;
 }
-
-
-
 
 /*===========================
        HIGHLIGHTS
@@ -514,7 +508,7 @@ COLORS:
 }
 
 .timeline-heading p {
-	color: #888;
+	color: white;
 	text-align: right;
 	font-family: 'Raleway', sans-serif;
 	letter-spacing: 0.08rem;
@@ -543,7 +537,7 @@ COLORS:
 	position: absolute;
 	content: " ";
 	width: 3px;
-	background-color: #888;
+	background-color: white;
 	left: 50%;
 	margin-left: -1.5px;
 }
@@ -753,7 +747,7 @@ COLORS:
 
 #footerSection {
 	background-color: #222;
-	color: #888;
+	color: white;
 	text-align: center;
 	padding-top: 3rem;
 	padding-bottom: 1rem;
