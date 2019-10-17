@@ -228,6 +228,20 @@ COLORS:
 	padding-bottom: 2rem;
 }
 
+#skills{
+	background-color: #222;
+	text-align: center;
+	padding-bottom: 2rem;
+	padding-left: 10%;
+	padding-right:10%;
+}
+
+#skills h2 {
+	color: white;
+	font-family: 'Roboto Mono', monospace;
+	padding-top: 2rem;
+}
+
 #profileSection h1 {
 	color: white;
 	font-family: 'Roboto Mono', monospace;
