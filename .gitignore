@@ -1,6 +1,4 @@
 node_modules
 .sass-cache
 bower_components
-/public
-/.firebaserc
-/firebase.json
+.autogit

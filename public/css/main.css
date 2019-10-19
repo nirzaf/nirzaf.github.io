@@ -1,0 +1,788 @@
+/*
+
+COLORS:
+	#222      for dark gray backgrounds
+	#2a2a2a   for medium gray backgrounds
+	#444	  for medium gray border outlines
+	#888      for light gray text
+	#2b7ab7   for blue text
+
+
+*/
+
+/*===========================
+       NAV BAR
+===========================*/
+
+#navigationBarSection {
+	border-radius: 0;
+	border: none;
+	background-color: transparent;
+	font-family: 'Raleway', sans-serif;
+	letter-spacing: 0.08rem;
+}
+
+#navigationBarSection a:link,
+#navigationBarSection a:visited {
+	opacity: 1;
+	color: #2b7ab7;
+	background-color: #111;
+	font-weight: 700;
+	padding: 1rem;
+	height: 100%;
+}
+
+#navigationBarSection a:hover,
+#navigationBarSection a:active {
+	opacity: 0.8;
+	color: #2b7ab7;
+	height: 100%;
+}
+
+#navigationBarSection span {
+	background-color: #2b7ab7;
+}
+
+.ion-home:before {
+	padding-left: 1rem;
+	padding-right: 1rem;
+	font-size: 2rem;
+}
+
+#navigationBarSection li {
+	height: 4.5rem;
+}
+
+
+/*===========================
+       ABOUT ME
+===========================*/
+
+#aboutMeSection {
+	background-color: #222;
+	padding-top: 5.5rem;
+	padding-bottom: 5rem;
+}
+
+#aboutMeSection h1 {
+	color: white;
+	text-align: center;
+	font-family: 'Roboto Mono', monospace;
+	letter-spacing: 0.3rem;
+	font-size: 4rem;
+	padding-left: 1.5rem;
+	padding-top: 2rem;
+}
+
+#aboutMeSection p {
+	color: rgb(255, 255, 255);
+	font-size: 2rem;
+	font-family: 'Raleway', sans-serif;
+	letter-spacing: 0.08rem;
+	padding: 1.5rem;
+	padding-right: 5rem;
+}
+
+#aboutMeSection a:link,
+#aboutMeSection a:visited {
+	opacity: 1;
+	color: #2b7ab7;
+}
+
+#aboutMeSection a:hover,
+#aboutMeSection a:active {
+	opacity: 0.8;
+	color: #2b7ab7;
+}
+
+
+
+
+/*===========================
+       IDEOLOGY
+===========================*/
+
+#ideologySection > div:first-of-type {
+	background-color: #2a2a2a;
+}
+
+.row {
+	margin: 0;    /*NEEDED TO AVOID HORIZONTAL SCROLL BAR*/
+}
+
+#ideology {
+	background-color: #2a2a2a;
+	width: 100%;
+}
+
+#ideology p {
+	color: white;
+	font-family: 'Roboto Mono', monospace;
+	font-weight: 700;
+	font-size: 2rem;
+	letter-spacing: 0.3rem;
+	text-align: center;
+	padding: 2.5rem;
+	padding-top: 3rem;
+}
+
+#threeIdeologies {
+	background-color: #222;
+	color: white;
+	text-align: center;
+	position: relative;
+	min-height: 30rem;
+}
+
+#threeIdeologies div {
+	height: 100%;
+	position: relative;
+}
+
+#threeIdeologies i {
+	display: inline-block;
+	font-size: 8rem;
+	color: #2b7ab7;
+	padding-top: 3rem;
+	transition: all 0.5s;
+}
+
+#threeIdeologies h2 {
+	padding-bottom: 2rem;
+}
+
+#threeIdeologies p {
+	display: none;
+	font-size: 2rem;
+	padding-left:2rem;
+	padding-right:2rem;
+	padding-bottom:2rem;
+	font-family: 'Raleway', sans-serif;
+	letter-spacing: 0.08rem;
+	color: white;
+}
+
+#ideologyDividerLeft {
+	width: 5px;
+	height: 30rem;
+	color: red;
+	background-color: red;
+}
+
+
+
+
+/*===========================
+       TESTIMONIAL   /   TOP QUOTES
+===========================*/
+
+#testimonialSection {
+	background-color: #2a2a2a;
+	width: 100%;
+}
+
+#testimonial p {
+	color: white;
+	font-family: 'Roboto Mono', monospace;
+	font-weight: 700;
+	font-size: 2rem;
+	letter-spacing: 0.3rem;
+	text-align: center;
+	padding: 1rem;
+	padding-top: 2rem;
+}
+
+.carousel-content {
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 0.08rem;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.carousel-content div {
+	margin: auto;
+}
+
+.carousel-indicators {
+	top:-0.5rem;
+}
+
+.carousel-indicators li {
+	background-color: #2b7ab7;
+	border-color: #2b7ab7;
+}
+
+
+
+
+/*===========================
+       PROFILE & SKILLS
+===========================*/
+
+#profileSection {
+	background-color: #222;
+	text-align: center;
+	padding-bottom: 2rem;
+}
+
+#skills{
+	background-color: #222;
+	text-align: center;
+	padding-bottom: 2rem;
+	padding-left: 10%;
+	padding-right:10%;
+}
+
+#skills h2 {
+	color: white;
+	font-family: 'Roboto Mono', monospace;
+	padding-top: 2rem;
+}
+
+#profileSection h1 {
+	color: white;
+	font-family: 'Roboto Mono', monospace;
+	padding-top: 2rem;
+}
+
+#profileHeaderUnderline {
+	width: 15rem;
+    display: block;
+    height: 2px;
+    border: 0;
+    border-top: 2px solid #2b7ab7;
+    margin: 2em auto;
+    padding: 0;
+}
+
+#profilePhotoContainer {
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+}
+
+#profilePhotoContainer img {
+	width: 100%;
+	outline: 1px solid #2a2a2a;
+	outline-offset: -1.5rem;
+}
+
+#profileNamePositionDiv {
+	background-color: #2a2a2a;
+	outline: 1px solid #444;
+	outline-offset: -1.5rem;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	margin-bottom: 5rem;
+}
+
+#profileNamePositionDiv p span {
+	color: white;
+	font-weight: bold;
+	letter-spacing: 0.1rem;
+}
+
+#profileNamePositionDiv p {
+	color: white;
+	padding-left: 3rem;
+	padding-right: 3rem;
+	font-family: 'Raleway', sans-serif;
+	letter-spacing: 0.08rem;
+}
+
+#profileNamePositionDiv div:first-of-type p {
+	padding-top: 1rem;
+}
+
+#profileNamePositionDiv hr {
+	width: 75%;
+    display: block;
+    height: 2px;
+    border: 0;
+    border-top: 1px solid #444;
+    margin: 1em auto;
+    padding: 0;
+	padding-left: -1rem;
+	padding-right: -1rem;
+}
+
+#profileSection h2 {
+	color: white;
+	font-family: 'Roboto Mono', monospace;
+	font-weight: 700;
+	font-size: 2rem;
+	text-align: left;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+#profileIntroUnderline {
+	margin-top: 0.5rem;
+	width: 5.5rem;
+	float: left;
+    display: block;
+    border: 0;
+    border-bottom: 1px solid #444;
+    margin-bottom: 0;
+}
+
+#profileIntroUnderline + br + p {
+	text-align: left;
+	color: white;
+	padding-right: 5rem;
+	font-family: 'Raleway', sans-serif;
+	letter-spacing: 0.08rem;
+	font-size: 1.75rem;
+	font-weight: 200; 
+}
+
+#profileIntroUnderline + br + p span {
+	font-size: 2rem;
+	font-weight: 400;
+}
+
+#profileSection a:link,
+#profileSection a:visited {
+	opacity: 1;
+	color: #2b7ab7;
+}
+
+#profileSection a:hover,
+#profileSection a:active {
+	opacity: 0.8;
+	color: #2b7ab7;
+}
+
+#profileDivider {
+	width: 10rem;
+    display: block;
+    height: 2px;
+    border: 0;
+    border-top: 2px solid #2b7ab7;
+    margin: 2em;
+    margin-left: 0;
+    padding: 0;
+}
+
+#profileDescription {
+	color: white;
+	font-family: 'Raleway', sans-serif;
+	letter-spacing: 0.08rem;
+	text-align: left;
+	padding-right: 5rem;
+	padding-bottom: 5rem;
+}
+
+#profileSkillsUnderline {
+	margin-top: 0.5rem;
+	width: 7rem;
+	float: left;
+    display: block;
+    border: 0;
+    border-bottom: 1px solid #444;
+    margin-bottom: 0;
+}
+
+#skillsRow {
+	padding-bottom: 5rem;
+}
+
+#skillsRow img {
+	height: 5rem;
+	width: auto;
+	margin: 1.5rem;
+}
+
+
+
+
+/*===========================
+       PROJECTS
+===========================*/
+
+#projectsSection {
+	text-align: center;
+	background-color: #2a2a2a;
+	padding-bottom: 2rem;
+}
+
+#projectsSection h1 {
+	color: white;
+	text-align: center;
+	font-family: 'Roboto Mono', monospace;
+	padding-top: 2rem;
+}
+
+#projectsHeaderUnderline {
+	width: 15rem;
+    display: block;
+    height: 2px;
+    border: 0;
+    border-top: 2px solid #2b7ab7;
+    margin: 2em auto;
+    padding: 0;
+}
+
+#projectsSection h3 {
+	color: white;
+	text-align: center;
+	font-family: 'Roboto Mono', monospace;
+	padding: 0;
+	padding-bottom: 5rem;
+}
+
+#projectsDisplayRow {
+	display:  -webkit-box;
+	display: -webkit-flex;
+	display:  -ms-flexbox;
+	display:         flex;
+	flex-wrap: wrap;
+}
+
+#projectsDisplayRow > [class*='col-'] {
+	display: flex;
+	flex-direction: column;
+}
+
+#projectsDisplayRow figure {
+	padding: 1rem;
+	padding-bottom: 5rem;
+	position: relative;
+	text-align: center;
+	color: white;
+}
+
+#projectsDisplayRow a {
+	text-decoration: none;
+}
+
+#projectsDisplayRow img {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	opacity: 0.8;
+    height: auto;
+	transition: transform 0.5s, opacity 1s;
+	-webkit-transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1);
+}
+
+#projectsDisplayRow p {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	color: white;
+	margin-top: 1rem;
+	opacity: 1;
+	font-family: 'Raleway', sans-serif;
+	letter-spacing: 0.08rem;
+}
+
+/*===========================
+       HIGHLIGHTS
+===========================*/
+
+#highlightsSection {
+	background-color: #222;
+	padding-bottom: 7.5rem;
+	height: auto;
+}
+
+#highlightsSection > h1:first-of-type {
+	margin-top: 0;
+	color: white;
+	text-align: center;
+	font-family: 'Roboto Mono', monospace;
+	padding-top: 5rem;
+}
+
+#highlightsHeaderUnderline {
+	width: 15rem;
+    display: block;
+    height: 2px;
+    border: 0;
+    border-top: 2px solid #2b7ab7;
+    margin: 2em auto;
+    padding: 0;
+    padding-bottom: 2rem;
+}
+
+.timeline {
+	list-style: none;
+	padding: 20px 0 20px;
+	position: relative;
+}
+
+.timeline h4 {
+	margin: 0;
+	text-align: right;
+}
+
+.timeline-heading p {
+	color: white;
+	text-align: right;
+	font-family: 'Raleway', sans-serif;
+	letter-spacing: 0.08rem;
+}
+
+.timeline-body img {
+	height: 75px;
+	float: right;
+}
+
+.timeline-inverted h4 {
+	text-align: left;
+}
+
+.timeline-inverted p {
+	text-align: left;
+}
+
+.timeline-inverted img {
+	float: left;
+}
+
+.timeline:before {
+	top: 0;
+	bottom: 0;
+	position: absolute;
+	content: " ";
+	width: 3px;
+	background-color: white;
+	left: 50%;
+	margin-left: -1.5px;
+}
+
+.timeline > li {
+	margin-bottom: 20px;
+	position: relative;
+}
+
+.timeline > li:before,
+.timeline > li:after {
+	content: " ";
+	display: table;
+}
+
+.timeline > li:after {
+	clear: both;
+}
+
+.timeline > li:before,
+.timeline > li:after {
+	content: " ";
+	display: table;
+}
+
+.timeline > li:after {
+	clear: both;
+}
+
+.timeline > li > .timeline-panel {
+	width: 46%;
+	float: left;
+	border: 1px solid transparent;
+	border-radius: 2px;
+	padding: 20px;
+	position: relative;
+}
+
+.timeline > li > .timeline-panel:before {
+	position: absolute;
+	top: 26px;
+	right: -15px;
+	display: inline-block;
+	border-top: 15px solid transparent;
+	border-left: 15px solid #888;
+	border-right: 0 solid #888;
+	border-bottom: 15px solid transparent;
+	content: " ";
+}
+
+.timeline > li > .timeline-panel:after {
+	position: absolute;
+	top: 27px;
+	right: -14px;
+	display: inline-block;
+	border-top: 14px solid transparent;
+	border-left: 14px solid #888;
+	border-right: 0 solid #888;
+	border-bottom: 14px solid transparent;
+	content: " ";
+}
+
+.timeline > li > .timeline-badge {
+	color: white;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	font-size: 1.4em;
+	text-align: center;
+	position: absolute;
+	top: 16px;
+	left: 50%;
+	margin-left: -25px;
+	background-color: #888;
+	z-index: 100;
+	border-top-right-radius: 50%;
+	border-top-left-radius: 50%;
+	border-bottom-right-radius: 50%;
+	border-bottom-left-radius: 50%;
+}
+
+.timeline > li.timeline-inverted > .timeline-panel {
+	float: right;
+}
+
+.timeline > li.timeline-inverted > .timeline-panel:before {
+	border-left-width: 0;
+	border-right-width: 15px;
+	left: -15px;
+	right: auto;
+}
+
+.timeline > li.timeline-inverted > .timeline-panel:after {
+	border-left-width: 0;
+	border-right-width: 14px;
+	left: -14px;
+	right: auto;
+}
+
+.timeline-badge {
+	background-color: #2b7ab7 !important;
+}
+
+.timeline-title {
+	margin-top: 0;
+	color: #2b7ab7 !important;
+}
+
+.timeline-body > p,
+.timeline-body > ul {
+	margin-bottom: 0;
+}
+
+.timeline-body > p + p {
+	margin-top: 5px;
+}
+
+
+
+
+/*===========================
+       CONTACT
+===========================*/
+
+#contactSection {
+	text-align: center;
+	background-color: #2a2a2a;
+	padding-bottom: 5rem;
+}
+
+#contactSection h1 {
+	color: white;
+	text-align: center;
+	font-family: 'Roboto Mono', monospace;
+	padding-top: 2rem;
+}
+
+#contactHeaderUnderline {
+	width: 15rem;
+	display: block;
+	height: 2px;
+	border: 0;
+	border-top: 2px solid #2b7ab7;
+	margin: 2em auto;
+	padding-bottom: 2rem;
+}
+
+#contactSection form .row {
+	max-width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#contactSection .form-control {
+	margin: 2rem;
+	background-color: #222;
+	border: 1px solid #222;
+}
+
+#contactSection .form-control {
+	margin: 2rem;
+	background-color: #222;
+	border: 1px solid #222;
+	box-shadow: 1px solid #444;
+}
+
+#contactSection button {
+	background-color: #2b7ab7;
+	color: white;
+	opacity: 1;
+	transition: opacity 0.5s;
+}
+
+#contactSection button:hover {
+	background-color: #2b7ab7;
+	opacity: 0.8;
+	color: white;
+}
+
+#contactSection button:active,
+#contactSection button:focus {
+	background-color: #2b7ab7;
+	opacity: 0.6;
+	color: white;
+	box-shadow: 1px solid #444;
+}
+
+#contactSection i {
+	font-size: 5rem;
+	color:white;
+	padding: 2rem;
+	margin-top: 3rem;
+	transition: color 0.5s;
+	display: inline-block;
+}
+
+#contactSection i:hover {
+	color: #2b7ab7;
+}
+
+
+
+
+/*===========================
+       FOOTER
+===========================*/
+
+#footerSection {
+	background-color: #222;
+	color: white;
+	text-align: center;
+	padding-top: 3rem;
+	padding-bottom: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
