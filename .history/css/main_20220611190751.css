@@ -514,7 +514,8 @@ COLORS:
 	width: 100%;
 	max-width: 600px;
 	height: auto;
-	align-self: center;
+	margin: 0 auto;
+	
   }
 
 .timeline {
