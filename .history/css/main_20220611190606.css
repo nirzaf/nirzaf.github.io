@@ -510,12 +510,7 @@ COLORS:
     padding-bottom: 2rem;
 }
 
-.responsive {
-	width: 100%;
-	max-width: 600px;
-	height: auto;
-	align-self: center;
-  }
+
 
 .timeline {
 	list-style: none;
