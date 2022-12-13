@@ -775,6 +775,19 @@ COLORS:
 }
 
 
+/*===========================
+	   Marquee Effect
+===========================*/
+
+.marquee {
+	width: 100%;
+	overflow: hidden;
+	background-color: #2b7ab7;
+	color: cornsilk;
+}
+
+
+
 
 
 
