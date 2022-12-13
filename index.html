@@ -1,6 +1,8 @@
 ﻿<!DOCTYPE html>
 <html lang="en" class="no-js">
 
+
+
 <head>
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -122,9 +124,11 @@
 		</div>
 	    
 		<br>
-        <!--scroll familiar tools and technology names as marquee tag -->
+        <!--scroll familiar tools and technology names as marquee tag add smiley emoji  -->
+
+		<div class='marquee'>I am working hard to expand this scroller with more tools and technologies</div>
 		<div id="skillsSet" class="row" style="color: aliceblue; font-weight: bold;">
-			<marquee behavior="scroll" direction="left" scrollamount="10" onmouseover="this.stop();" onmouseout="this.start();">
+			<marquee behavior="scroll" direction="left" scrollamount="10" scrolldelay="10" onmouseover="this.stop();" onmouseout="this.start();" loop="infinite" width="100%">
 				<span>.Net  <img src="img/Net_Core.png" alt=".NET" style="height: 40px"> &nbsp;&nbsp;&nbsp;</span>
 				<span>C# <img src="img/csharp.png" alt="C#" style="height: 35px"> &nbsp;&nbsp;&nbsp;</span>
 				<span>Angular <img src="img/angularLogo.png" alt="angular logo" style="height: 40px"> &nbsp;&nbsp;&nbsp;</span>
@@ -139,7 +143,11 @@
 				<span>Azure <img src="img/Azure.png" alt="python-logo" style="height: 35px"> &nbsp;&nbsp;&nbsp;</span>
 				<span>Big Query <img src="img/big-query-logo.png" alt="big-query-logo" style="height: 40px"> &nbsp;&nbsp;&nbsp;</span>
 				<span>Jira <img src="img/jira.png" alt="jira-logo" style="height: 40px"> &nbsp;&nbsp;&nbsp;</span>
-
+				<span>JetBrains Rider <img src="img/JetBrains_Rider_Icon.png" alt="jetbrains-rider-logo" style="height: 36px"> &nbsp;&nbsp;&nbsp;</span>
+				<span>Visual Studio <img src="img/Visual_studio_logo.png" alt="visual-studio-logo" style="height: 35px"> &nbsp;&nbsp;&nbsp;</span>
+				<span>Redis <img src="img/redis.png" alt="redis-logo" style="height: 35px"> &nbsp;&nbsp;&nbsp;</span>
+				<span>SQL Server <img src="img/sql-server.png" alt="sql-server-logo" style="height: 35px"> &nbsp;&nbsp;&nbsp;</span>
+						
 			</marquee>
 		</div>
 	</div>
@@ -198,6 +206,7 @@
 	<p>Copyright &copy; 2022 - <a href="https://nirzaf.github.io"> M.F.M Fazrin</a></p>
 	<p>All trademarks and registered trademarks are the property of their respective owners.</p>
 </footer>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery.marquee@1.6.0/jquery.marquee.min.js" ></script>
 <script type="text/javascript" src="js/TweenLite.min.js"></script>
 <script type="text/javascript" src="js/EasePack.min.js"></script>
 <script type="text/javascript" src="js/rAF.js"></script>
@@ -221,6 +230,28 @@
 			document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
 		}
 	});
+
+var $ = require("jquery");
+require("jquery.marquee");
+
+/**
+ * Example of starting a plugin with options.
+ * I am just passing some of the options in the following example.
+ * you can also start the plugin using $('.marquee').marquee(); with defaults
+*/
+$('.marquee').marquee({
+	//duration in milliseconds of the marquee
+	duration: 15000,
+	//gap in pixels between the tickers
+	gap: 50,
+	//time in milliseconds before the marquee will start animating
+	delayBeforeStart: 0,
+	//'left' or 'right'
+	direction: 'left',
+	//true or false - should the marquee be duplicated to show an effect of continues flow
+	duplicated: true
+});
+
 </script>
 </body>
 </html>
