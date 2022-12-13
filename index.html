@@ -109,6 +109,10 @@
 		<h2>My Familiar Tools & Languages</h2>
 		<hr id="profileDescription">
 		<br>
+		<!--INJECT a git file -->
+	    <div> 
+			<img src="img/dotnet_csharp_angular.gif" alt="dotnet csharp angular" class="responsive">
+		</div>
 		<div id="skillsRow" class="row">
 			<img src="img/Net_Core.png" alt="Net Core Programming">
 			<img src="img/angularLogo.png" alt="angular logo">
@@ -148,8 +152,7 @@
 				<span>Redis <img src="img/redis.png" alt="redis-logo" style="height: 35px"> &nbsp;&nbsp;&nbsp;</span>
 				<span>SQL Server <img src="img/sql-server.png" alt="sql-server-logo" style="height: 35px"> &nbsp;&nbsp;&nbsp;</span>
 				<span>My SQL <img src="img/mysql.png" alt="mysql-logo" style="height: 35px"> &nbsp;&nbsp;&nbsp;</span>
-				<span>ClickUps <img src="img/clickups.png" alt="clickups-logo" style="height: 35px"> &nbsp;&nbsp;&nbsp;</span>
-						
+				<span>ClickUps <img src="img/clickups.png" alt="clickups-logo" style="height: 35px"> &nbsp;&nbsp;&nbsp;</span>			
 			</marquee>
 		</div>
 	</div>
@@ -205,7 +208,7 @@
 </section> <!-- end of contact -->
 
 <footer id="footerSection">
-	<p>Copyright &copy; 2022 - <a href="https://nirzaf.github.io"> M.F.M Fazrin</a></p>
+	<p>Copyright &copy; 2023 - <a href="https://nirzaf.github.io"> M.F.M Fazrin</a></p>
 	<p>All trademarks and registered trademarks are the property of their respective owners.</p>
 </footer>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery.marquee@1.6.0/jquery.marquee.min.js" ></script>
@@ -232,27 +235,6 @@
 			document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
 		}
 	});
-
-var $ = require("jquery");
-require("jquery.marquee");
-
-/**
- * Example of starting a plugin with options.
- * I am just passing some of the options in the following example.
- * you can also start the plugin using $('.marquee').marquee(); with defaults
-*/
-$('.marquee').marquee({
-	//duration in milliseconds of the marquee
-	duration: 15000,
-	//gap in pixels between the tickers
-	gap: 50,
-	//time in milliseconds before the marquee will start animating
-	delayBeforeStart: 0,
-	//'left' or 'right'
-	direction: 'left',
-	//true or false - should the marquee be duplicated to show an effect of continues flow
-	duplicated: true
-});
 
 </script>
 </body>
