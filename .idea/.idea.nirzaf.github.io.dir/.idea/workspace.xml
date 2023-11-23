@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95dc1786-70e0-4fbb-98a6-ae0f8e769326" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.nirzaf.github.io.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nirzaf.github.io.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/VSWorkspaceState.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/VSWorkspaceState.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/nirzaf.github.io/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/nirzaf.github.io/v17/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/slnx.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/slnx.sqlite" afterDir="false" />
+    <list default="true" id="95dc1786-70e0-4fbb-98a6-ae0f8e769326" name="Changes" comment="Remove action.yml and Bootstrap CSS&#10;&#10;The action.yml file and the Bootstrap CSS have been deleted from the code. This removal includes the Git Auto Commit action referenced within the action.yml file. Additionally, all references and dependencies linked to the Bootstrap CSS have also been eradicated. This commit cleans up these two files in order to simplify the codebase.">
+      <change beforePath="$PROJECT_DIR$/src/env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/env.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,9 +15,16 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 6
+}]]></component>
   <component name="ProjectId" id="21d940gU940IZc120h7i9L5yR5w" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -35,17 +39,41 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Users\\nirza\\JetBrains\\nirzaf.github.io\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\nirza\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\nirza\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\nirza\\AppData\\Local\\Symbols\\src"
+    ]
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/nirzaf.github.io/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
+    <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="JavaScript Debug.index.html" />
+      <item itemvalue="npm.dev" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JavaScript Debug.index.html" />
@@ -62,6 +90,7 @@
       <updated>1638259906075</updated>
       <workItem from="1638259913446" duration="509000" />
       <workItem from="1657646463039" duration="1893000" />
+      <workItem from="1700767416764" duration="279000" />
     </task>
     <task id="LOCAL-00001" summary="override changes">
       <created>1657647700606</created>
@@ -84,12 +113,21 @@
       <option name="project" value="LOCAL" />
       <updated>1657648134539</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Remove action.yml and Bootstrap CSS&#10;&#10;The action.yml file and the Bootstrap CSS have been deleted from the code. This removal includes the Git Auto Commit action referenced within the action.yml file. Additionally, all references and dependencies linked to the Bootstrap CSS have also been eradicated. This commit cleans up these two files in order to simplify the codebase.">
+      <option name="closed" value="true" />
+      <created>1700767649758</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1700767649758</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -107,6 +145,7 @@
     <MESSAGE value="override changes" />
     <MESSAGE value="hghgh" />
     <MESSAGE value="&#9;&#9;&#9;&#9;listed all here&lt;br&gt; so please check out my complete list of projects in" />
-    <option name="LAST_COMMIT_MESSAGE" value="&#9;&#9;&#9;&#9;listed all here&lt;br&gt; so please check out my complete list of projects in" />
+    <MESSAGE value="Remove action.yml and Bootstrap CSS&#10;&#10;The action.yml file and the Bootstrap CSS have been deleted from the code. This removal includes the Git Auto Commit action referenced within the action.yml file. Additionally, all references and dependencies linked to the Bootstrap CSS have also been eradicated. This commit cleans up these two files in order to simplify the codebase." />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove action.yml and Bootstrap CSS&#10;&#10;The action.yml file and the Bootstrap CSS have been deleted from the code. This removal includes the Git Auto Commit action referenced within the action.yml file. Additionally, all references and dependencies linked to the Bootstrap CSS have also been eradicated. This commit cleans up these two files in order to simplify the codebase." />
   </component>
 </project>
