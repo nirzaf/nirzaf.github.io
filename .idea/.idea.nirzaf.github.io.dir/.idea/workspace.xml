@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95dc1786-70e0-4fbb-98a6-ae0f8e769326" name="Changes" comment="Remove action.yml and Bootstrap CSS&#10;&#10;The action.yml file and the Bootstrap CSS have been deleted from the code. This removal includes the Git Auto Commit action referenced within the action.yml file. Additionally, all references and dependencies linked to the Bootstrap CSS have also been eradicated. This commit cleans up these two files in order to simplify the codebase.">
-      <change beforePath="$PROJECT_DIR$/src/env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/env.d.ts" afterDir="false" />
+    <list default="true" id="95dc1786-70e0-4fbb-98a6-ae0f8e769326" name="Changes" comment="Add favicon.svg to dist directory&#10;&#10;This commit introduces a favicon svg file to the dist directory. With this change, we now have the ability to deliver a favicon to the client upon request, which can significantly improve the UX and make our app easily recognizable.">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.nirzaf.github.io.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nirzaf.github.io.dir/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +45,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "npm.dev.executor": "Run",
     "ts.external.directory.path": "C:\\Users\\nirza\\JetBrains\\nirzaf.github.io\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   },
@@ -90,7 +91,7 @@
       <updated>1638259906075</updated>
       <workItem from="1638259913446" duration="509000" />
       <workItem from="1657646463039" duration="1893000" />
-      <workItem from="1700767416764" duration="279000" />
+      <workItem from="1700767416764" duration="980000" />
     </task>
     <task id="LOCAL-00001" summary="override changes">
       <created>1657647700606</created>
@@ -121,7 +122,23 @@
       <option name="project" value="LOCAL" />
       <updated>1700767649758</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Updated workspace settings and removed unnecessary files&#10;&#10;The workspace.xml file in the .idea directory was updated to reflect configuration changes. Unnecessary files, specifically action.yml and Bootstrap CSS were removed from the code. This simplifies the codebase by eradicating all references and dependencies to these two files.">
+      <option name="closed" value="true" />
+      <created>1700767867869</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1700767867869</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add favicon.svg to dist directory&#10;&#10;This commit introduces a favicon svg file to the dist directory. With this change, we now have the ability to deliver a favicon to the client upon request, which can significantly improve the UX and make our app easily recognizable.">
+      <option name="closed" value="true" />
+      <created>1700767968376</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1700767968376</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,6 +163,8 @@
     <MESSAGE value="hghgh" />
     <MESSAGE value="&#9;&#9;&#9;&#9;listed all here&lt;br&gt; so please check out my complete list of projects in" />
     <MESSAGE value="Remove action.yml and Bootstrap CSS&#10;&#10;The action.yml file and the Bootstrap CSS have been deleted from the code. This removal includes the Git Auto Commit action referenced within the action.yml file. Additionally, all references and dependencies linked to the Bootstrap CSS have also been eradicated. This commit cleans up these two files in order to simplify the codebase." />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove action.yml and Bootstrap CSS&#10;&#10;The action.yml file and the Bootstrap CSS have been deleted from the code. This removal includes the Git Auto Commit action referenced within the action.yml file. Additionally, all references and dependencies linked to the Bootstrap CSS have also been eradicated. This commit cleans up these two files in order to simplify the codebase." />
+    <MESSAGE value="Updated workspace settings and removed unnecessary files&#10;&#10;The workspace.xml file in the .idea directory was updated to reflect configuration changes. Unnecessary files, specifically action.yml and Bootstrap CSS were removed from the code. This simplifies the codebase by eradicating all references and dependencies to these two files." />
+    <MESSAGE value="Add favicon.svg to dist directory&#10;&#10;This commit introduces a favicon svg file to the dist directory. With this change, we now have the ability to deliver a favicon to the client upon request, which can significantly improve the UX and make our app easily recognizable." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add favicon.svg to dist directory&#10;&#10;This commit introduces a favicon svg file to the dist directory. With this change, we now have the ability to deliver a favicon to the client upon request, which can significantly improve the UX and make our app easily recognizable." />
   </component>
 </project>
