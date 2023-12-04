@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87a1a336-0307-473e-a158-bafa34f34523" name="Changes" comment="comments removed">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3f23310f-578c-4139-b480-1a571f74afcb" name="Changes" comment="Delete several blog posts and add unpublished state&#10;&#10;Multiple blog posts 'first-post.md' and 'third-post.md' were deleted as they were no longer relevant. Added a 'published' state to the blog post metadata within 'config.ts', 'second-post.md', 'markdown-style-guide.md', and 'using-mdx.mdx'. This state allows for posts to remain on the back-end while not being published on the actual site. This is useful for working on drafts.&#10;&#10;Additionally, 'index.astro' was altered to only display blog posts where published is not set to false. Also included changes to 'Header.astro' and '.idea/civil-cloud.iml', and the creation of a new 'env.d.ts' file." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,92 +13,176 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2S7Yvw8XMwAs1kVzmwzdv5jh4X3" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2Y2afPiXx3w27Wy3zCXLtfPGvHn" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/nirza/Astro-Blog/civil-cloud",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "terminal",
+    "ts.external.directory.path": "C:\\Users\\nirza\\Astro-Blog\\civil-cloud\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "stardust.markdown.MarkdownSplitEditorSuppressor:keyList": [
+    ]
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/nirzaf.github.io/index.html" useBuiltInWebServerPort="true">
+  <component name="RunManager" selected="Unknown.dev152739841">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JavaScript Debug.index.html" />
-      </list>
-    </recent_temporary>
+    <configuration name="preview" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="preview" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="87a1a336-0307-473e-a158-bafa34f34523" name="Changes" comment="" />
-      <created>1688499320273</created>
+      <changelist id="3f23310f-578c-4139-b480-1a571f74afcb" name="Changes" comment="" />
+      <created>1699726230777</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1688499320273</updated>
-      <workItem from="1688499323313" duration="1929000" />
-      <workItem from="1688819417318" duration="2446000" />
+      <updated>1699726230777</updated>
+      <workItem from="1699726232356" duration="64000" />
+      <workItem from="1699726316647" duration="3414000" />
+      <workItem from="1699810661948" duration="3224000" />
+      <workItem from="1699980195543" duration="2811000" />
+      <workItem from="1700068216640" duration="4811000" />
+      <workItem from="1700214070505" duration="5206000" />
+      <workItem from="1700252066117" duration="50000" />
     </task>
-    <task id="LOCAL-00001" summary="commit changes">
+    <task id="LOCAL-00001" summary="Add &quot;remark-smartypants&quot; dependency and remove optional &quot;esbuild&quot; and &quot;fsevents&quot;&#10;&#10;This commit adds the &quot;remark-smartypants&quot; package, used for typography enhancements. Additionally, this commit removes optional &quot;esbuild&quot; dependencies specific to various platforms. These dependencies are not required for most platforms, reducing the overall package size. The &quot;fsevents&quot; package, specific to macOS and unnecessary for other platforms, is also removed.">
       <option name="closed" value="true" />
-      <created>1688500048868</created>
+      <created>1699728020619</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1688500048869</updated>
+      <updated>1699728020619</updated>
     </task>
-    <task id="LOCAL-00002" summary="Embedded changes updated">
+    <task id="LOCAL-00002" summary="Add hero images to several blog posts and make minor updates&#10;&#10;Added a hero image field to several markdown files for blog posts to improve visual appeal and provide a better idea of the topic at a glance. Also, reversed the sorting order of blog posts on the index page to show the most recent ones first. A &quot;published&quot; field was added to control the visibility of a specific post. Markdown files were also cleaned by removing unused image markdown and correcting some minor syntax and spacing issues. Updated title information for increased accuracy and clarity.">
       <option name="closed" value="true" />
-      <created>1688500594184</created>
+      <created>1699813039194</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1688500594184</updated>
+      <updated>1699813039194</updated>
     </task>
-    <task id="LOCAL-00003" summary="Embedded changes updated">
+    <task id="LOCAL-00003" summary="Remove commented code and update footer links&#10;&#10;Removed commented code from 'config.ts' regarding frontmatter schema for clarity and cleanliness. Project Default inspectionProfile has been updated, enabling HtmlUnknownAttribute inspection tool to validate custom attribute &quot;astro-icon&quot;. Furthermore, accompanying values and settings have been updated appropriately; this ensures better code quality and conformity to best practices. The footer component has undergone changes which include updating the owner name in the copyright section and adjusting the social media links and icons including a LinkedIn icon. Removal and addition of certain social media icons and links keeps the portfolio current and linked to the most relevant platforms. Updated these fields to maintain consistency and clarity across the website.">
       <option name="closed" value="true" />
-      <created>1688501204546</created>
+      <created>1699813897306</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1688501204546</updated>
+      <updated>1699813897306</updated>
     </task>
-    <task id="LOCAL-00004" summary="comments removed">
+    <task id="LOCAL-00004" summary="Correct commit messages for given diff:&#10;&#10;&quot;Add condition for year in FormattedDate component&quot;&#10;&#10;The FormattedDate component has been updated to only display the date when the year is not equal to 1900. This change was made to prevent displaying incorrect or irrelevant dates. The date in 'FormattedDate.astro' will now only be displayed when the 'getFullYear()' method returns a value different from 1900. This ensures that only meaningful and accurate dates are presented to the user.">
       <option name="closed" value="true" />
-      <created>1688501257081</created>
+      <created>1700070366451</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1688501257081</updated>
+      <updated>1700070366451</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Remove third-party CSS attribution in global.css&#10;&#10;The CSS attribution that made reference to the source code from Bear Blog's default CSS is removed from global.css file. This is done to declutter the file and avoid any confusion as our project does not rely on the external CSS. The removal of attribution allows for cleaner and more maintainable code.">
+      <option name="closed" value="true" />
+      <created>1700070572428</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1700070572428</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Remove redundant references from env.d.ts&#10;&#10;The referenced paths in the env.d.ts file have been removed. They were pointing to non-existing or unnecessary type definitions and were not used in our codebase. This clean-up helps to prevent confusion and potential bugs in the future.">
+      <option name="closed" value="true" />
+      <created>1700070588425</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1700070588425</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Update about.astro content with detailed personal information and contact links&#10;&#10;The about.astro file content was replaced with specific personal and contact details. The replacement was necessary to provide more comprehensive and accessible information. Simple text with lorem ipsum replaced with proper formatted contact details including phone number, email, LinkedIn, Github, and personal website links.">
+      <option name="closed" value="true" />
+      <created>1700070602173</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1700070602173</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Update site URL in astro.config &#10;&#10;Changed the site URL in the astro.config.mjs from 'https://example.com' to 'https://dotnetevangelist.net'. The change was made to accurately represent the correct website within the configuration file. The correct URL ensures that any generated sitemaps or other data based on this config file will point to the right location.">
+      <option name="closed" value="true" />
+      <created>1700070617129</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1700070617129</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Delete several blog posts and add unpublished state&#10;&#10;Multiple blog posts 'first-post.md' and 'third-post.md' were deleted as they were no longer relevant. Added a 'published' state to the blog post metadata within 'config.ts', 'second-post.md', 'markdown-style-guide.md', and 'using-mdx.mdx'. This state allows for posts to remain on the back-end while not being published on the actual site. This is useful for working on drafts.&#10;&#10;Additionally, 'index.astro' was altered to only display blog posts where published is not set to false. Also included changes to 'Header.astro' and '.idea/civil-cloud.iml', and the creation of a new 'env.d.ts' file.">
+      <option name="closed" value="true" />
+      <created>1700072765434</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1700072765434</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="commit changes" />
-    <MESSAGE value="Embedded changes updated" />
-    <MESSAGE value="comments removed" />
-    <option name="LAST_COMMIT_MESSAGE" value="comments removed" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Add &quot;remark-smartypants&quot; dependency and remove optional &quot;esbuild&quot; and &quot;fsevents&quot;&#10;&#10;This commit adds the &quot;remark-smartypants&quot; package, used for typography enhancements. Additionally, this commit removes optional &quot;esbuild&quot; dependencies specific to various platforms. These dependencies are not required for most platforms, reducing the overall package size. The &quot;fsevents&quot; package, specific to macOS and unnecessary for other platforms, is also removed." />
+    <MESSAGE value="Add hero images to several blog posts and make minor updates&#10;&#10;Added a hero image field to several markdown files for blog posts to improve visual appeal and provide a better idea of the topic at a glance. Also, reversed the sorting order of blog posts on the index page to show the most recent ones first. A &quot;published&quot; field was added to control the visibility of a specific post. Markdown files were also cleaned by removing unused image markdown and correcting some minor syntax and spacing issues. Updated title information for increased accuracy and clarity." />
+    <MESSAGE value="Remove commented code and update footer links&#10;&#10;Removed commented code from 'config.ts' regarding frontmatter schema for clarity and cleanliness. Project Default inspectionProfile has been updated, enabling HtmlUnknownAttribute inspection tool to validate custom attribute &quot;astro-icon&quot;. Furthermore, accompanying values and settings have been updated appropriately; this ensures better code quality and conformity to best practices. The footer component has undergone changes which include updating the owner name in the copyright section and adjusting the social media links and icons including a LinkedIn icon. Removal and addition of certain social media icons and links keeps the portfolio current and linked to the most relevant platforms. Updated these fields to maintain consistency and clarity across the website." />
+    <MESSAGE value="Correct commit messages for given diff:&#10;&#10;&quot;Add condition for year in FormattedDate component&quot;&#10;&#10;The FormattedDate component has been updated to only display the date when the year is not equal to 1900. This change was made to prevent displaying incorrect or irrelevant dates. The date in 'FormattedDate.astro' will now only be displayed when the 'getFullYear()' method returns a value different from 1900. This ensures that only meaningful and accurate dates are presented to the user." />
+    <MESSAGE value="Remove third-party CSS attribution in global.css&#10;&#10;The CSS attribution that made reference to the source code from Bear Blog's default CSS is removed from global.css file. This is done to declutter the file and avoid any confusion as our project does not rely on the external CSS. The removal of attribution allows for cleaner and" />
+    <MESSAGE value="Remove third-party CSS attribution in global.css&#10;&#10;The CSS attribution that made reference to the source code from Bear Blog's default CSS is removed from global.css file. This is done to declutter the file and avoid any confusion as our project does not rely on the external CSS. The removal of attribution allows for cleaner and more maintainable code." />
+    <MESSAGE value="Remove redundant references from env.d.ts&#10;&#10;The referenced paths in the env.d.ts file have been removed. They were pointing to non-existing or unnecessary type definitions and were not used in our codebase. This clean-up helps to prevent confusion and potential bugs in the future." />
+    <MESSAGE value="Update about.astro content with detailed personal information and contact links&#10;&#10;The about.astro file content was replaced with specific personal and contact details. The replacement was necessary to provide more comprehensive and accessible information. Simple text with lorem ipsum replaced with proper formatted contact details including phone number, email, LinkedIn, Github, and personal website links." />
+    <MESSAGE value="Update site URL in astro.config &#10;&#10;Changed the site URL in the astro.config.mjs from 'https://example.com' to 'https://dotnetevangelist.net'. The change was made to accurately represent the correct website within the configuration file. The correct URL ensures that any generated sitemaps or other data based on this config file will point to the right location." />
+    <MESSAGE value="Delete several blog posts and add unpublished state&#10;&#10;Multiple blog posts 'first-post.md' and 'third-post.md' were deleted as they were no longer relevant. Added a 'published' state to the blog post metadata within 'config.ts', 'second-post.md', 'markdown-style-guide.md', and 'using-mdx.mdx'. This state allows for posts to remain on the back-end while not being published on the actual site. This is useful for working on drafts.&#10;&#10;Additionally, 'index.astro' was altered to only display blog posts where published is not set to false. Also included changes to 'Header.astro' and '.idea/civil-cloud.iml', and the creation of a new 'env.d.ts' file." />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete several blog posts and add unpublished state&#10;&#10;Multiple blog posts 'first-post.md' and 'third-post.md' were deleted as they were no longer relevant. Added a 'published' state to the blog post metadata within 'config.ts', 'second-post.md', 'markdown-style-guide.md', and 'using-mdx.mdx'. This state allows for posts to remain on the back-end while not being published on the actual site. This is useful for working on drafts.&#10;&#10;Additionally, 'index.astro' was altered to only display blog posts where published is not set to false. Also included changes to 'Header.astro' and '.idea/civil-cloud.iml', and the creation of a new 'env.d.ts' file." />
   </component>
 </project>

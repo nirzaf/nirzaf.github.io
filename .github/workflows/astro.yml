@@ -1,0 +1,80 @@
+name: Deploy Astro site to Pages
+
+on:
+  push:
+    branches: ["master"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+env:
+  BUILD_PATH: "."
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Detect package manager
+        id: detect-package-manager
+        run: |
+          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
+            echo "manager=yarn" >> $GITHUB_ENV
+            echo "command=install" >> $GITHUB_ENV
+            echo "runner=yarn" >> $GITHUB_ENV
+            exit 0
+          elif [ -f "${{ github.workspace }}/package.json" ]; then
+            echo "manager=npm" >> $GITHUB_ENV
+            echo "command=ci" >> $GITHUB_ENV
+            echo "runner=npx --no-install" >> $GITHUB_ENV
+            exit 0
+          else
+            echo "Unable to determine package manager"
+            exit 1
+          fi
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18.14.1"
+          cache: ${{ env.manager }}
+          cache-dependency-path: ${{ env.BUILD_PATH }}/package-lock.json
+      - name: Install dependencies
+        run: ${{ env.manager }} ${{ env.command }}
+        working-directory: ${{ env.BUILD_PATH }}
+      - name: Build with Astro
+        run: |
+          ${{ env.runner }} astro build
+        working-directory: ${{ env.BUILD_PATH }}
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: website
+          path: ${{ env.BUILD_PATH }}/dist
+
+  deploy:
+    environment:
+      name: github-pages
+    needs: build
+    runs-on: ubuntu-latest
+    name: Deploy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: website
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
