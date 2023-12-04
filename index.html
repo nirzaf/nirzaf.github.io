@@ -14,27 +14,10 @@
 	<link rel="stylesheet" type="text/css" href="css/interactiveHeader.css">
 	<link rel="stylesheet" type="text/css" href="css/ionicons.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,700|Roboto:300,400,700" rel="stylesheet">
 	<link rel="icon" type="image/png" href="favicon/circular-arrows-2-16-245186.png">
 </head>
-
-<style>
-	.center-div {
-		text-align: center;
-	}
-
-	.row a {
-		font-size: 30px; /* Increase the size */
-		margin: 0 10px;
-	}
-
-	@media (max-width: 600px) {
-		.row a {
-			font-size: 24px;
-		}
-	}
-
-</style>
 
 <body>
 <section id="interactiveHeader">
@@ -43,8 +26,8 @@
 		<div class="content">
 			<div id="large-header" class="large-header">
 				<canvas id="demo-canvas"></canvas>
-				<h1 id="main-title"><span class="thick" style="font-family:'Courier New', Courier, monospace; color=#ffffff">M.F.M<br>Fazrin</span><br><span
-						class="subtitle" style="font-family:Verdana, Geneva, Tahoma, sans-serif">Senior
+				<h1 id="main-title"><span class="thick">M.F.M<br>Fazrin</span><br><span
+						class="subtitle" >Senior
 							<br>Software<br>Engineer</span></h1>
 			</div>
 		</div>
@@ -67,7 +50,7 @@
 			<div class="col-sm-3">
 				<div id="profilePhotoContainer">
 					<img src="img/Profile Pic - touched.jpg" alt="Photo of M.F.M Fazrin">
-					<div id="profileNamePositionDiv" style="ccolor=#ffffff">
+					<div id="profileNamePositionDiv">
 						<div>
 							<p><span>Name: </span>M.F.M Fazrin</p>
 						</div>
@@ -127,7 +110,7 @@
         <!--scroll familiar tools and technology names as marquee tag add smiley emoji  -->
 
 		<div class='marquee'>I am very excited to expand this scroller with new tools and technologies</div>
-		<div id="skillsSet" class="row" style="color: aliceblue; font-weight: bold;">
+		<div id="skillsSet" class="row">
 			<marquee behavior="scroll" direction="left" scrollamount="10" scrolldelay="10" onmouseover="this.stop();" onmouseout="this.start();" loop="infinite" width="100%">
 				<span>.Net  <img src="img/Net_Core.png" alt=".NET" style="height: 40px"> &nbsp;&nbsp;&nbsp;</span>
 				<span>C# <img src="img/csharp.png" alt="C#" style="height: 35px"> &nbsp;&nbsp;&nbsp;</span>
@@ -155,7 +138,6 @@
 </section>
 
 <section id="projectsSection">
-	<!-- Projects -->
 	<div class="container-fluid">
 		<div class="row"><span>
 				</span></div>
@@ -166,7 +148,7 @@
 			</p>
 		</div>
 	</div>
-</section> <!-- end of projects -->
+</section> 
 
 <section id="contactSection123">
 	<h3 style="text-align: center; color: black;">Career History Profile</h3>
@@ -206,19 +188,5 @@
 <script type="text/javascript" src="js/jquery.waypoints.js"></script>
 <script type="text/javascript" src="js/sticky.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
-<script>
-	document.addEventListener('DOMContentLoaded', function () {
-		try {
-			let app = firebase.app();
-			let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] ===
-					'function');
-			document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
-		} catch (e) {
-			console.error(e);
-			document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
-		}
-	});
-
-</script>
 </body>
 </html>
