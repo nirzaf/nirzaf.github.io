@@ -1,0 +1,33 @@
+.center-div {
+    text-align: center;
+}
+
+.row a {
+    font-size: 30px; /* Increase the size */
+    margin: 0 10px;
+}
+
+@media (max-width: 600px) {
+    .row a {
+        font-size: 24px;
+    }
+}
+
+#skillsSet {
+    color: aliceblue;
+    font-weight: bold;
+}
+
+p {
+    color: white;
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+    color: black;
+}
+
+.center-div {
+    text-align: center;
+}
