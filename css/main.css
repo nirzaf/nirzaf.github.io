@@ -1,14 +1,6 @@
-/*
-
-COLORS:
-	#222      for dark gray backgrounds
-	#2a2a2a   for medium gray backgrounds
-	#444	  for medium gray border outlines
-	#888      for light gray text
-	#2b7ab7   for blue text
-
-
-*/
+body {
+	/* Your CSS properties here */
+}
 
 /*===========================
        NAV BAR
@@ -786,6 +778,41 @@ COLORS:
 	color: cornsilk;
 }
 
+body {
+	overflow: initial;
+}
+.cu-editor-wrapper .ql-editor {
+max-height: initial;
+overflow: initial;
+}
+.cu-pdf-export__header {
+	margin: 0 !important;
+}
+.ql-editor {
+	line-height: 1;
+}
+
+.cu-editor-wrapper .cu-editor {
+padding: 0 40px;
+background: none;
+}
+
+.clickup-table {
+border-collapse: collapse !important;
+}
+
+.clickup-table td {
+word-break: break-word;
+overflow-wrap: break-word;
+word-wrap: break-word;
+hyphens: auto;
+border: 1px solid #7c828d;
+vertical-align: top;
+}
+
+.clickup-table td img {
+max-width: 100%;
+}
 
 
 
