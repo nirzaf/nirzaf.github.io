@@ -102,12 +102,13 @@ COLORS:
        IDEOLOGY
 ===========================*/
 
-#ideologySection > div:first-of-type {
+#ideologySection>div:first-of-type {
 	background-color: #2a2a2a;
 }
 
 .row {
-	margin: 0;    /*NEEDED TO AVOID HORIZONTAL SCROLL BAR*/
+	margin: 0;
+	/*NEEDED TO AVOID HORIZONTAL SCROLL BAR*/
 }
 
 #ideology {
@@ -154,9 +155,9 @@ COLORS:
 #threeIdeologies p {
 	display: none;
 	font-size: 2rem;
-	padding-left:2rem;
-	padding-right:2rem;
-	padding-bottom:2rem;
+	padding-left: 2rem;
+	padding-right: 2rem;
+	padding-bottom: 2rem;
 	font-family: 'Raleway', sans-serif;
 	letter-spacing: 0.08rem;
 	color: white;
@@ -193,13 +194,13 @@ COLORS:
 }
 
 .carousel-content {
-    color: white;
-    font-family: 'Raleway', sans-serif;
-    letter-spacing: 0.08rem;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+	color: white;
+	font-family: 'Raleway', sans-serif;
+	letter-spacing: 0.08rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
 }
 
 .carousel-content div {
@@ -207,7 +208,7 @@ COLORS:
 }
 
 .carousel-indicators {
-	top:-0.5rem;
+	top: -0.5rem;
 }
 
 .carousel-indicators li {
@@ -228,12 +229,12 @@ COLORS:
 	padding-bottom: 2rem;
 }
 
-#skills{
+#skills {
 	background-color: #222;
 	text-align: center;
 	padding-bottom: 2rem;
 	padding-left: 10%;
-	padding-right:10%;
+	padding-right: 10%;
 }
 
 #skills h2 {
@@ -250,12 +251,12 @@ COLORS:
 
 #profileHeaderUnderline {
 	width: 15rem;
-    display: block;
-    height: 2px;
-    border: 0;
-    border-top: 2px solid #0018f1;
-    margin: 2em auto;
-    padding: 0;
+	display: block;
+	height: 2px;
+	border: 0;
+	border-top: 2px solid #0018f1;
+	margin: 2em auto;
+	padding: 0;
 }
 
 #profilePhotoContainer {
@@ -267,6 +268,8 @@ COLORS:
 	width: 100%;
 	outline: 1px solid #2a2a2a;
 	outline-offset: -1.5rem;
+	border: 2px solid #0212f8;
+	/* Add this line to create a border */
 }
 
 #profileNamePositionDiv {
@@ -298,12 +301,12 @@ COLORS:
 
 #profileNamePositionDiv hr {
 	width: 75%;
-    display: block;
-    height: 2px;
-    border: 0;
-    border-top: 1px solid #444;
-    margin: 1em auto;
-    padding: 0;
+	display: block;
+	height: 2px;
+	border: 0;
+	border-top: 1px solid #444;
+	margin: 1em auto;
+	padding: 0;
 	padding-left: -1rem;
 	padding-right: -1rem;
 }
@@ -322,23 +325,23 @@ COLORS:
 	margin-top: 0.5rem;
 	width: 5.5rem;
 	float: left;
-    display: block;
-    border: 0;
-    border-bottom: 1px solid #444;
-    margin-bottom: 0;
+	display: block;
+	border: 0;
+	border-bottom: 1px solid #444;
+	margin-bottom: 0;
 }
 
-#profileIntroUnderline + br + p {
+#profileIntroUnderline+br+p {
 	text-align: left;
 	color: white;
 	padding-right: 5rem;
 	font-family: 'Raleway', sans-serif;
 	letter-spacing: 0.08rem;
 	font-size: 1.75rem;
-	font-weight: 200; 
+	font-weight: 200;
 }
 
-#profileIntroUnderline + br + p span {
+#profileIntroUnderline+br+p span {
 	font-size: 2rem;
 	font-weight: 400;
 }
@@ -357,13 +360,13 @@ COLORS:
 
 #profileDivider {
 	width: 10rem;
-    display: block;
-    height: 2px;
-    border: 0;
-    border-top: 2px solid #0018f1;
-    margin: 2em;
-    margin-left: 0;
-    padding: 0;
+	display: block;
+	height: 2px;
+	border: 0;
+	border-top: 2px solid #0018f1;
+	margin: 2em;
+	margin-left: 0;
+	padding: 0;
 }
 
 #profileDescription {
@@ -379,10 +382,10 @@ COLORS:
 	margin-top: 0.5rem;
 	width: 7rem;
 	float: left;
-    display: block;
-    border: 0;
-    border-bottom: 1px solid #444;
-    margin-bottom: 0;
+	display: block;
+	border: 0;
+	border-bottom: 1px solid #444;
+	margin-bottom: 0;
 }
 
 #skillsRow {
@@ -417,12 +420,12 @@ COLORS:
 
 #projectsHeaderUnderline {
 	width: 15rem;
-    display: block;
-    height: 2px;
-    border: 0;
-    border-top: 2px solid #0018f1;
-    margin: 2em auto;
-    padding: 0;
+	display: block;
+	height: 2px;
+	border: 0;
+	border-top: 2px solid #0018f1;
+	margin: 2em auto;
+	padding: 0;
 }
 
 #projectsSection h3 {
@@ -434,14 +437,14 @@ COLORS:
 }
 
 #projectsDisplayRow {
-	display:  -webkit-box;
+	display: -webkit-box;
 	display: -webkit-flex;
-	display:  -ms-flexbox;
-	display:         flex;
+	display: -ms-flexbox;
+	display: flex;
 	flex-wrap: wrap;
 }
 
-#projectsDisplayRow > [class*='col-'] {
+#projectsDisplayRow>[class*='col-'] {
 	display: flex;
 	flex-direction: column;
 }
@@ -463,7 +466,7 @@ COLORS:
 	height: auto;
 	overflow: hidden;
 	opacity: 0.8;
-    height: auto;
+	height: auto;
 	transition: transform 0.5s, opacity 1s;
 	-webkit-transform: scale(1);
 	-ms-transform: scale(1);
@@ -491,7 +494,7 @@ COLORS:
 	height: auto;
 }
 
-#highlightsSection > h1:first-of-type {
+#highlightsSection>h1:first-of-type {
 	margin-top: 0;
 	color: white;
 	text-align: center;
@@ -501,13 +504,13 @@ COLORS:
 
 #highlightsHeaderUnderline {
 	width: 15rem;
-    display: block;
-    height: 2px;
-    border: 0;
-    border-top: 2px solid #0018f1;
-    margin: 2em auto;
-    padding: 0;
-    padding-bottom: 2rem;
+	display: block;
+	height: 2px;
+	border: 0;
+	border-top: 2px solid #0018f1;
+	margin: 2em auto;
+	padding: 0;
+	padding-bottom: 2rem;
 }
 
 .responsive {
@@ -515,7 +518,7 @@ COLORS:
 	max-width: 600px;
 	height: auto;
 	align-self: center;
-  }
+}
 
 .timeline {
 	list-style: none;
@@ -563,32 +566,32 @@ COLORS:
 	margin-left: -1.5px;
 }
 
-.timeline > li {
+.timeline>li {
 	margin-bottom: 20px;
 	position: relative;
 }
 
-.timeline > li:before,
-.timeline > li:after {
+.timeline>li:before,
+.timeline>li:after {
 	content: " ";
 	display: table;
 }
 
-.timeline > li:after {
+.timeline>li:after {
 	clear: both;
 }
 
-.timeline > li:before,
-.timeline > li:after {
+.timeline>li:before,
+.timeline>li:after {
 	content: " ";
 	display: table;
 }
 
-.timeline > li:after {
+.timeline>li:after {
 	clear: both;
 }
 
-.timeline > li > .timeline-panel {
+.timeline>li>.timeline-panel {
 	width: 46%;
 	float: left;
 	border: 1px solid transparent;
@@ -597,7 +600,7 @@ COLORS:
 	position: relative;
 }
 
-.timeline > li > .timeline-panel:before {
+.timeline>li>.timeline-panel:before {
 	position: absolute;
 	top: 26px;
 	right: -15px;
@@ -609,7 +612,7 @@ COLORS:
 	content: " ";
 }
 
-.timeline > li > .timeline-panel:after {
+.timeline>li>.timeline-panel:after {
 	position: absolute;
 	top: 27px;
 	right: -14px;
@@ -621,7 +624,7 @@ COLORS:
 	content: " ";
 }
 
-.timeline > li > .timeline-badge {
+.timeline>li>.timeline-badge {
 	color: white;
 	width: 50px;
 	height: 50px;
@@ -640,18 +643,18 @@ COLORS:
 	border-bottom-left-radius: 50%;
 }
 
-.timeline > li.timeline-inverted > .timeline-panel {
+.timeline>li.timeline-inverted>.timeline-panel {
 	float: right;
 }
 
-.timeline > li.timeline-inverted > .timeline-panel:before {
+.timeline>li.timeline-inverted>.timeline-panel:before {
 	border-left-width: 0;
 	border-right-width: 15px;
 	left: -15px;
 	right: auto;
 }
 
-.timeline > li.timeline-inverted > .timeline-panel:after {
+.timeline>li.timeline-inverted>.timeline-panel:after {
 	border-left-width: 0;
 	border-right-width: 14px;
 	left: -14px;
@@ -667,12 +670,12 @@ COLORS:
 	color: #0018f1 !important;
 }
 
-.timeline-body > p,
-.timeline-body > ul {
+.timeline-body>p,
+.timeline-body>ul {
 	margin-bottom: 0;
 }
 
-.timeline-body > p + p {
+.timeline-body>p+p {
 	margin-top: 5px;
 }
 
@@ -748,7 +751,7 @@ COLORS:
 
 #contactSection i {
 	font-size: 5rem;
-	color:white;
+	color: white;
 	padding: 2rem;
 	margin-top: 3rem;
 	transition: color 0.5s;
@@ -785,23 +788,3 @@ COLORS:
 	background-color: #0018f1;
 	color: cornsilk;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
