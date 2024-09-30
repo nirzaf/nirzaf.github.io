@@ -12,5 +12,6 @@ export const CATEGORIES = [
 	'extensions',
 	'Programming',
 	'Code Organization',
-	'Azure'
+	'Azure',
+	'Architecture'
 ] as const
