@@ -1,2 +1,0 @@
-- name: Git Auto Commit
-  uses: stefanzweifel/git-auto-commit-action@v4.11.0
