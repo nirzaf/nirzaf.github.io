@@ -11,5 +11,6 @@ export const CATEGORIES = [
 	'C# 13',
 	'extensions',
 	'Programming',
-	'Code Organization'
+	'Code Organization',
+	'Azure'
 ] as const
