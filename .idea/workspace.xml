@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="feat(blog): update hero image for Blazor WebAssembly JWT post">
+    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="feat(blog): update Angular, Bootstrap and Firebase versions (master)&#10;&#10;This commit updates the blog post about building an Angular project with Bootstrap and Firebase to reflect the latest versions of each technology:&#10;&#10;- Angular 17&#10;- Bootstrap 5&#10;- Firebase 9&#10;&#10;It also includes updates to the code examples, explanations, and screenshots to ensure accuracy and relevance.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/blog/building-an-angular-project-with-bootstrap-4-and-firebase.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/building-an-angular-project-with-bootstrap-4-and-firebase.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/blog/building-windows-app-with-wpf.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/building-windows-app-with-wpf.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/blog/create-astro-component.mdx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/blog/csharp-dictionaries.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/csharp-dictionaries.mdx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +150,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727801792008</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feat(blog): update Angular, Bootstrap and Firebase versions (master)&#10;&#10;This commit updates the blog post about building an Angular project with Bootstrap and Firebase to reflect the latest versions of each technology:&#10;&#10;- Angular 17&#10;- Bootstrap 5&#10;- Firebase 9&#10;&#10;It also includes updates to the code examples, explanations, and screenshots to ensure accuracy and relevance.">
+      <option name="closed" value="true" />
+      <created>1727802579379</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1727802579379</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,6 +173,7 @@
     <MESSAGE value="feat(blog): removes old blog articles and updates footer copyright" />
     <MESSAGE value="feat(TokenController): implement registration and login methods for JWT authentication" />
     <MESSAGE value="feat(blog): update hero image for Blazor WebAssembly JWT post" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(blog): update hero image for Blazor WebAssembly JWT post" />
+    <MESSAGE value="feat(blog): update Angular, Bootstrap and Firebase versions (master)&#10;&#10;This commit updates the blog post about building an Angular project with Bootstrap and Firebase to reflect the latest versions of each technology:&#10;&#10;- Angular 17&#10;- Bootstrap 5&#10;- Firebase 9&#10;&#10;It also includes updates to the code examples, explanations, and screenshots to ensure accuracy and relevance." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(blog): update Angular, Bootstrap and Firebase versions (master)&#10;&#10;This commit updates the blog post about building an Angular project with Bootstrap and Firebase to reflect the latest versions of each technology:&#10;&#10;- Angular 17&#10;- Bootstrap 5&#10;- Firebase 9&#10;&#10;It also includes updates to the code examples, explanations, and screenshots to ensure accuracy and relevance." />
   </component>
 </project>
