@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="Please provide the diff so I can write an appropriate commit message." />
+    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="feat: Remove unused blog post about WPF" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -114,7 +114,7 @@
       <option name="presentableId" value="Default" />
       <updated>1727796251534</updated>
       <workItem from="1727796255657" duration="3209000" />
-      <workItem from="1727810399326" duration="2082000" />
+      <workItem from="1727810399326" duration="2393000" />
     </task>
     <task id="LOCAL-00001" summary="feat(blog): adds 5 new blog articles to the website">
       <option name="closed" value="true" />
@@ -228,7 +228,31 @@
       <option name="project" value="LOCAL" />
       <updated>1727812487807</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="fix(blog): Update heroImage path in building-windows-app-with-wpf.mdx">
+      <option name="closed" value="true" />
+      <created>1727812633819</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1727812633819</updated>
+    </task>
+    <task id="LOCAL-00016" summary="refactor(blog): correct grammar in factory design pattern description">
+      <option name="closed" value="true" />
+      <created>1727812705095</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1727812705095</updated>
+    </task>
+    <task id="LOCAL-00017" summary="feat: Remove unused blog post about WPF">
+      <option name="closed" value="true" />
+      <created>1727812754578</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1727812754578</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,6 +277,9 @@
     <MESSAGE value="feat: Update pagination size to 9 posts per page" />
     <MESSAGE value="fix(blog): update heroImage path in building-windows-app-with-wpf.mdx" />
     <MESSAGE value="Please provide the diff so I can write an appropriate commit message." />
-    <option name="LAST_COMMIT_MESSAGE" value="Please provide the diff so I can write an appropriate commit message." />
+    <MESSAGE value="fix(blog): Update heroImage path in building-windows-app-with-wpf.mdx" />
+    <MESSAGE value="refactor(blog): correct grammar in factory design pattern description" />
+    <MESSAGE value="feat: Remove unused blog post about WPF" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Remove unused blog post about WPF" />
   </component>
 </project>
