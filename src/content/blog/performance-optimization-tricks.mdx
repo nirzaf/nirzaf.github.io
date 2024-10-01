@@ -1,15 +1,15 @@
 ---
-title: "Performance Optimization Tricks and Tips With Entity Framework Core With Net 7 With Real Time Examples"
+title: "Performance Optimization Tricks and Tips With EF Core & .NET 8"
 description: "Learn performance optimization techniques for Entity Framework Core with .NET 7 using real-time examples."
 pubDate: "May 23 2023"
-heroImage: "../../assets/images/your-image.jpg"
-category: "Entity Framework Core"
+heroImage: "../../assets/images/Asynchronous_Programming_With_Async_Await_Task_In_CSharp.jpg"
+category: "Entity Framework"
 tags: ["Entity Framework Core", "Performance Optimization"]
 ---
 
-# Performance Optimization Tricks and Tips With Entity Framework Core With Net 7 With Real Time Examples
+# Performance Optimization Tricks and Tips With EF Core & .NET 8
 
-**Performance optimization is a critical aspect of developing robust and efficient applications, especially when working with a data access framework like Entity Framework Core (EF Core) in conjunction with the powerful .NET 7 platform.**
+**Performance optimization is a critical aspect of developing robust and efficient applications, especially when working with a data access framework like Entity Framework Core (EF Core) in conjunction with the powerful .NET 8 platform.**
 
 In this article, we will explore some performance optimization tricks and tips with EF Core and demonstrate their application in a real-time example using an accounting application scenario.
 
@@ -21,9 +21,9 @@ Now, let's consider an accounting application scenario where we have entities su
 
 One of the simplest yet effective techniques to improve performance is using the `AsNoTracking()` method. By default, EF Core tracks changes to entities in memory for change tracking purposes. However, if you only need to read data without modifying it, calling `AsNoTracking()` eliminates the overhead of change tracking. For example, when fetching a list of accounts, you can use:
 
-```csharp
+
 var accounts = context.Accounts.AsNoTracking().ToList();
-```
+
 
 ## 2. Select Required Columns
 
@@ -37,7 +37,7 @@ var accounts = context.Accounts.Select(a => new { a.Name, a.Balance }).ToList();
 
 When dealing with large datasets, fetching all records at once can lead to performance issues and increased memory consumption. Instead, use paging techniques with `Skip` and `Take` to fetch data in smaller chunks. This approach is particularly useful for scenarios where you need to display data in paginated views. For example:
 
-```csharp
+
 var pageSize = 10;
 var pageNumber = 1;
 var transactions = dbContext.Transactions
@@ -45,27 +45,27 @@ var transactions = dbContext.Transactions
     .Skip((pageNumber - 1) * pageSize)
     .Take(pageSize)
     .ToList();
-```
+
 
 ## 4. Eager Loading with Include
 
 By default, EF Core uses lazy loading, which means related entities are loaded on-demand when accessed. However, lazy loading can result in the N+1 query problem, where a separate query is executed for each entity, leading to performance degradation. To mitigate this, use eager loading with the `Include` method to fetch related entities upfront. For example:
 
-```csharp
+
 var accounts = dbContext.Accounts
     .Include(a => a.Transactions)
     .ToList();
-```
+
 
 ## 5. Raw SQL Queries
 
 In certain scenarios, when complex queries or performance optimization is crucial, EF Core allows executing raw SQL queries. Raw SQL queries provide full control over the query structure and can be highly efficient. However, be cautious about SQL injection vulnerabilities and ensure proper parameterization. Here's an example:
 
-```csharp
+
 var accountId = 1;
 var query = @"SELECT * FROM Transactions WHERE AccountId = {0}";
 var transactions = dbContext.Transactions.FromSqlRaw(query, accountId).ToList();
-```
+
 
 These performance optimization techniques can significantly enhance the speed and efficiency of your accounting application. However, it's essential to measure and profile the performance improvements to ensure they are effective. Now, let's explore additional tips and best practices to optimize EF Core performance in the context of our accounting application scenario.
 
@@ -77,23 +77,24 @@ Indexing plays a crucial role in enhancing query performance. Analyze the querie
 
 When dealing with bulk updates or inserts, EF Core can incur significant performance overhead due to individual database round-trips for each entity. To optimize this, EF Core provides the `AddRange` and `UpdateRange` methods to perform batch operations, reducing the number of round-trips. For example:
 
+
 ```csharp
 var transactions = new List<Transaction> { /* list of transactions */ };
-
 dbContext.Transactions.AddRange(transactions);
 dbContext.SaveChanges();
 ```
+
 
 ## 8. Use Stored Procedures
 
 EF Core supports executing stored procedures using the `FromSqlRaw` method. Stored procedures can be highly efficient and can be used for complex queries or scenarios where performance is critical. For example:
 
-```csharp
+
 var accountId = 1;
 var transactions = dbContext.Transactions
     .FromSqlRaw("EXECUTE dbo.GetTransactionsByAccount {0}", accountId)
     .ToList();
-```
+
 
 ## 9. Use Compiled Queries
 
@@ -115,6 +116,6 @@ In conclusion, optimizing performance in an accounting application scenario requ
 
 ## References
 
-- [Performance Optimization Tricks and Tips With Entity Framework Core With Net 7 With Real Time Examples](https://www.youtube.com/watch?v=TqC7USVOoxQ)
+- [Performance Optimization Tricks and Tips With EF Core & .NET 8](https://www.youtube.com/watch?v=TqC7USVOoxQ)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TqC7USVOoxQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

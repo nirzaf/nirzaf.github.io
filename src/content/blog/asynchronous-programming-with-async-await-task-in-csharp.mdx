@@ -2,8 +2,8 @@
 title: "Asynchronous Programming With Async Await Task in C#"
 description: "Learn about asynchronous programming in C# using async, await, and Task."
 pubDate: "May 03 2023"
-heroImage: "../../assets/images/your-image.jpg"
-category: "C#"
+heroImage: "../../assets/images/Asynchronous_Programming_With_Async_Await_Task_In_CSharp.jpg"
+category: "Csharp"
 tags: ["csharp", "async", "await", "task"]
 ---
 
@@ -115,7 +115,7 @@ Use async along with await and Task if the async method returns a value back to 
 
 The await keyword waits for the async method until it returns a value. So the main application thread stops there until it receives a return value.
 
-The Task class represents an asynchronous operation and Task<TResult> generic class represents an operation that can return a value. In the above example, we used await Task.Delay(4000) that started async operation that sleeps for 4 seconds and await holds a thread until 4 seconds.
+The Task class represents an asynchronous operation and ```Task<TResult>``` generic class represents an operation that can return a value. In the above example, we used await Task.Delay(4000) that started async operation that sleeps for 4 seconds and await holds a thread until 4 seconds.
 
 The following demonstrates the async method that returns a value.
     
@@ -164,11 +164,11 @@ LongProcess Completed
 Result: 10
 ```
 
-In the above example, in the static async Task<int> LongProcess() method, Task<int> is used to indicate the return value type int. int val = await result; will stop the main thread there until it gets the return value populated in the result. Once get the value in the result variable, it then automatically assigns an integer to val.
+In the above example, in the static async ```Task<int>``` LongProcess() method, ```Task<int>``` is used to indicate the return value type int. int val = await result; will stop the main thread there until it gets the return value populated in the result. Once get the value in the result variable, it then automatically assigns an integer to val.
 
-An async method should return void, Task, or Task<TResult>, where TResult is the return type of the async method. Returning void is normally used for event handlers. The async keyword allows us to use the await keyword within the method so that we can wait for the asynchronous method to complete for other methods which are dependent on the return value.
+An async method should return void, ```Task```, or ```Task<TResult>```, where TResult is the return type of the async method. Returning void is normally used for event handlers. The async keyword allows us to use the await keyword within the method so that we can wait for the asynchronous method to complete for other methods which are dependent on the return value.
 
-If you have multiple async methods that return the values then you can use await for all methods just before you want to use the return value in further steps.
+If you have multiple async methods that return the values, then you can use await for all methods just before you want to use the return value in further steps.
 
 ## Multiple async Methods Example
 
