@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/indexLayout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/projectSettingsUpdater.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog-template.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/Python with .NET project.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/asynchronous-programming-with-async-await-task-in-csharp.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/blazor-web-api-with-jwt-auth.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/building-an-angular-project-with-bootstrap-4-and-firebase.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/building-windows-app-with-wpf.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/csharp-dictionaries.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/entity-framework-with-compiled-query.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/factory-design-pattern-with-csharp.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/how-to-use-redis-caching-with-aspnet-core-and-net-7.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/performance-optimization-tricks-and-tips-with-entity-framework-core-with-net-7-with-real-time-examples.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/profile.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/queryable-vs-list-in-entity-framework-core.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/spa-application-with-net-core-and-blazor.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/string_builder_vs_string_writer.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/testing-net-applications-with-xunit.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/understanding-dependency-injection-in-dotnet-core.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "nirzaf"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/nirzaf/nirzaf.github.io.git",
+    "accountId": "5ed92374-9d5c-4123-b852-5f0a5c3534cf"
+  }
+}]]></component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2mqFYlFBUR6YdtMhJRH0MJfzyOE" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.CodyAccountHistoryMigration": "true",
+    "RunOnceActivity.CodyAccountsIdsRefresh": "true",
+    "RunOnceActivity.CodyAssignOrphanedChatsToActiveAccount": "true",
+    "RunOnceActivity.CodyConvertUrlToCodebaseName": "true",
+    "RunOnceActivity.CodyHistoryLlmMigration": "true",
+    "RunOnceActivity.CodyMigrateChatHistory-v2": "true",
+    "RunOnceActivity.CodyProjectSettingsMigration": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.ToggleCodyToolWindowAfterMigration": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "nodejs_package_manager_path": "npm",
+    "npm.build.executor": "Run",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="npm.build">
+    <configuration name="build" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="preview" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="preview" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="npm.start" />
+      <item itemvalue="npm.build" />
+      <item itemvalue="npm.preview" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="" />
+      <created>1727796251534</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1727796251534</updated>
+      <workItem from="1727796255657" duration="252000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="VcsManagerConfiguration">
+    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>
