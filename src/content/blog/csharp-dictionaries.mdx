@@ -1,9 +1,9 @@
 ---
-title: "Dictionaries in C#"
+title: "Dictionaries in CSharp"
 description: "Learn about dictionaries in C# and how to use them effectively."
 pubDate: "May 01 2023"
-heroImage: "../../assets/images/your-image.jpg"
-category: "C#"
+heroImage: "../../assets/images/Asynchronous_Programming_With_Async_Await_Task_In_CSharp.jpg"
+category: "Csharp"
 tags: ["csharp", "dictionaries", "hashmaps"]
 ---
 
@@ -13,21 +13,21 @@ tags: ["csharp", "dictionaries", "hashmaps"]
 
 ## Introduction
 
-A dictionary is a collection of key-value pairs. It is a data structure that is used to store data in the form of key-value pairs. The key-value pair is also referred to as an entry. The key is used to retrieve the data associated with it. The key must be unique and immutable. The value can be changed. The value can be of any type. The key and value can be of the same type or of different types.
+A dictionary is a collection of key-value pairs. It is a data structure used to store data in the form of key-value pairs. The key-value pair is also referred to as an entry. The key is used to retrieve the data associated with it. The key must be unique and immutable. The value can be changed. The value can be of any type. The key and value can be of the same type or of different types.
 
 ## Dictionary Characteristics
 
-- Dictionary<TKey, TValue> stores key-value pairs.
-- Comes under System.Collections.Generic namespace.
-- Implements IDictionary<TKey, TValue> interface.
+- ```Dictionary<TKey, TValue>``` stores key-value pairs.
+- Comes under ```System.Collections.Generic``` namespace.
+- Implements ```IDictionary<TKey, TValue>``` interface.
 - Keys must be unique and cannot be null.
 - Values can be null or duplicate.
-- Values can be accessed by passing associated key in the indexer e.g. `myDictionary[key]`.
+- Values can be accessed bypassing associated key in the indexer e.g. `myDictionary[key]`.
 - Elements are stored as `KeyValuePair<TKey, TValue>` objects.
 
 ## Creating a Dictionary
 
-You can create the Dictionary<TKey, TValue> object by passing the type of keys and values it can store. The following example shows how to create a dictionary and add key-value pairs.
+You can create the ```Dictionary<TKey, TValue>``` object bypassing the type of keys and values it can store. The following example shows how to create a dictionary and add key-value pairs.
 
 ```csharp
 using System;
@@ -71,7 +71,7 @@ namespace Dictionary
 
 ## Dictionary Methods
 
-The Dictionary<TKey, TValue> class provides various methods to perform different operations on the dictionary. The following table lists some of the commonly used methods of the Dictionary<TKey, TValue> class.
+The ```Dictionary<TKey, TValue>``` class provides various methods to perform different operations on the dictionary. The following table lists some of the commonly used methods of the ```Dictionary<TKey, TValue>``` class.
 
 | Method | Description |
 | --- | --- |
@@ -85,17 +85,17 @@ The Dictionary<TKey, TValue> class provides various methods to perform different
 
 ## Dictionary Properties
 
-The Dictionary<TKey, TValue> class provides various properties to get information about the dictionary. The following table lists some of the commonly used properties of the Dictionary<TKey, TValue> class.
+The ```Dictionary<TKey, TValue>``` class provides various properties to get information about the dictionary. The following table lists some of the commonly used properties of the ```Dictionary<TKey, TValue>``` class.
 
 | Property | Description |
 | --- | --- |
-| Comparer | Gets the IEqualityComparer<T> that is used to determine equality of keys for the dictionary. |
+| Comparer | Gets the ```IEqualityComparer<T>``` that is used to determine equality of keys for the dictionary. |
 | Keys | Gets a collection containing the keys in the dictionary. |
 | Values | Gets a collection containing the values in the dictionary. |
 
 ## Conclusion
 
-In this article, we learned about dictionaries in C# and how to use them effectively. We also explored the various methods and properties provided by the Dictionary<TKey, TValue> class.
+In this article, we learned about dictionaries in C# and how to use them effectively. We also explored the various methods and properties provided by the ```Dictionary<TKey, TValue>``` class.
 
 ## References
 

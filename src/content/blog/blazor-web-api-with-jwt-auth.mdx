@@ -1,8 +1,8 @@
 ---
 title: "Microsoft Blazor Web API with JWT Authentication"
-description: "A guide on how to implement a JWT Authentication system into a Dotnet Core 2 Web API project that uses Microsofts new Blazor."
+description: "A guide on how to implement a JWT Authentication system into a Dotnet Core 2 Web API project that uses Microsoft's new Blazor."
 pubDate: "Oct 23 2022"
-heroImage: "../../assets/images/your-image.jpg"
+heroImage: "../../assets/images/Asynchronous_Programming_With_Async_Await_Task_In_CSharp.jpg"
 category: "Blazor"
 tags: ["blazor", "jwt", "dotnetcore"]
 ---
@@ -38,11 +38,11 @@ Your .Server .csproj file should look similar to this:
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
   </ItemGroup>
 
 </Project>
@@ -383,7 +383,7 @@ Next we async Task the SubmitForm method as we will be using the HTTP async meth
 }
 ```
 
-I don’t know about you guys but this is sooooo much easier in Blazor than using JavaScript library's.
+I don’t know about you guys, but this is so much easier in Blazor than using JavaScript libraries.
 
 At this point we can save the token to local storage for use around a more built app, this is a bit our of the scope of this tutorial as the Blazor team are still working on having a simple library to do so, but feel free to try out the JavaScript interop which can get the job done.
 
@@ -393,7 +393,7 @@ we will be creating a basic localDb with Entity Framework core and creating the 
 
 First step, let’s create an IdentityDbContext which is part of Entity Framework to allow us to connect to the database. We create a Data folder and then insert a new class called ApplicationDbContext, the name is up to you but generally this is what I use as it’s quite generic.
 
-Once we have created the ApplicationDbContext we can inherit the IdentityDbContext which means we can use the ASPNet identity users. Then we add in the DbContextOptions<ApplicationDbContext>, this injects the options which we will include in the startup.cs shortly.
+Once we have created the ```ApplicationDbContext``` we can inherit the ```IdentityDbContext``` which means we can use the ASPNet identity users. Then we add in the ```DbContextOptions<ApplicationDbContext>```, this injects the options which we will include in the startup.cs shortly.
 
 ```csharp
 public class ApplicationDbContext : IdentityDbContext
@@ -413,7 +413,7 @@ Now we need to hook up the Sql connection string in the appsettings.json which i
 }
 ```
 
-Next we setup the Startup.cs file to utilise the appsettings.json and point to the connection string. Add in the EF namespace Microsoft.EntityFrameworkCore then add in the service AddDbContext as shown below.
+Next we set up the ```Startup.cs``` file to utilise the ```appsettings.json``` and point to the connection string. Add in the EF namespace Microsoft.EntityFrameworkCore then add in the service AddDbContext as shown below.
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -450,7 +450,7 @@ Boom! we have a database, this is why I love Entity framework! :) You can use SS
 
 ## Step Two : Registration/Login controller methods
 
-We can now modify the token controller to have a registration and a login method. First we create a private method to inject the UserManager <IdentityUser> _userManager; and add it into the controller.
+We can now modify the token controller to have a registration and a login method. First we create a private method to inject the UserManager ```<IdentityUser>``` _userManager; and add it into the controller.
 
 ```csharp
 private readonly UserManager<IdentityUser> _userManager;
