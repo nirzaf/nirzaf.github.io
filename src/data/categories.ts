@@ -3,14 +3,12 @@ export const CATEGORIES = [
 	'Entity Framework',
 	'Design Patterns',
 	'ASP.NET Core',
-	'Profile',
 	'.NET',
 	'Blazor',
 	'Csharp',
-	'Angular',
-	'extensions',
+	'UI Frameworks',
 	'Programming',
-	'Code Organization',
 	'Azure',
-	'Architecture'
+	'Architecture',
+	'About'
 ] as const
