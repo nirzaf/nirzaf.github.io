@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="feat: Update pagination size to 9 posts per page" />
+    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="Please provide the diff so I can write an appropriate commit message." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -114,7 +114,7 @@
       <option name="presentableId" value="Default" />
       <updated>1727796251534</updated>
       <workItem from="1727796255657" duration="3209000" />
-      <workItem from="1727810399326" duration="1586000" />
+      <workItem from="1727810399326" duration="2082000" />
     </task>
     <task id="LOCAL-00001" summary="feat(blog): adds 5 new blog articles to the website">
       <option name="closed" value="true" />
@@ -212,7 +212,23 @@
       <option name="project" value="LOCAL" />
       <updated>1727811433767</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="fix(blog): update heroImage path in building-windows-app-with-wpf.mdx">
+      <option name="closed" value="true" />
+      <created>1727812007342</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1727812007342</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Please provide the diff so I can write an appropriate commit message.">
+      <option name="closed" value="true" />
+      <created>1727812487807</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1727812487807</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,6 +251,8 @@
     <MESSAGE value="feat(blog): Update Redis Caching article for .NET 8" />
     <MESSAGE value="feat: Update site metadata and author information (#)&#10;&#10;This commit updates the site metadata, including the author name,&#10;site title, and description. The changes provide accurate and&#10;informative details about the site and its content." />
     <MESSAGE value="feat: Update pagination size to 9 posts per page" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Update pagination size to 9 posts per page" />
+    <MESSAGE value="fix(blog): update heroImage path in building-windows-app-with-wpf.mdx" />
+    <MESSAGE value="Please provide the diff so I can write an appropriate commit message." />
+    <option name="LAST_COMMIT_MESSAGE" value="Please provide the diff so I can write an appropriate commit message." />
   </component>
 </project>
