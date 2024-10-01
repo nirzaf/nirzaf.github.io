@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="feat(blog): update blog posts and hero images (master)&#10;&#10;This commit updates the following blog posts:&#10;&#10;- Building Windows App With Wpf: Updated the hero image.&#10;- Csharp Dictionaries: Updated the hero image and added a &#10;  section about Immutable Dictionaries.&#10;&#10;The updates aim to enhance the visual appeal and provide &#10;more comprehensive information to the readers.">
-      <change beforePath="$PROJECT_DIR$/src/content/blog/astro copy 3.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/blog/astro copy 4.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/blog/astro.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/blog/building-windows-app-with-wpf.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/building-windows-app-with-wpf.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/blog/how-to-use-redis-caching-with-aspnet-core-and-net-7.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/how-to-use-redis-caching-with-aspnet-core-and-net-7.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/blog/profile.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/profile.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/categories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/categories.ts" afterDir="false" />
-    </list>
+    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="feat(blog): update blog categories and post metadata (master)&#10;&#10;This commit introduces several updates to blog posts and categories:&#10;&#10;- Updates hero images for blog posts: &quot;Building Windows App With&#10;  Wpf&quot; and &quot;Csharp Dictionaries&quot;.&#10;- Adds a new section about Immutable Dictionaries to the &quot;Csharp&#10;  Dictionaries&quot; blog post.&#10;- Updates the blog categories to better reflect the content.&#10;- Updates the &quot;How to Use Redis Caching With ASP.NET Core and .NET&#10;  7&quot; blog post to improve readability.&#10;&#10;These updates aim to enhance the blog's organization, visual&#10;appeal, and provide more comprehensive information to readers." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -169,7 +161,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727809101507</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="feat(blog): update blog categories and post metadata (master)&#10;&#10;This commit introduces several updates to blog posts and categories:&#10;&#10;- Updates hero images for blog posts: &quot;Building Windows App With&#10;  Wpf&quot; and &quot;Csharp Dictionaries&quot;.&#10;- Adds a new section about Immutable Dictionaries to the &quot;Csharp&#10;  Dictionaries&quot; blog post.&#10;- Updates the blog categories to better reflect the content.&#10;- Updates the &quot;How to Use Redis Caching With ASP.NET Core and .NET&#10;  7&quot; blog post to improve readability.&#10;&#10;These updates aim to enhance the blog's organization, visual&#10;appeal, and provide more comprehensive information to readers.">
+      <option name="closed" value="true" />
+      <created>1727809623393</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1727809623393</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,6 +186,7 @@
     <MESSAGE value="feat(blog): update hero image for Blazor WebAssembly JWT post" />
     <MESSAGE value="feat(blog): update Angular, Bootstrap and Firebase versions (master)&#10;&#10;This commit updates the blog post about building an Angular project with Bootstrap and Firebase to reflect the latest versions of each technology:&#10;&#10;- Angular 17&#10;- Bootstrap 5&#10;- Firebase 9&#10;&#10;It also includes updates to the code examples, explanations, and screenshots to ensure accuracy and relevance." />
     <MESSAGE value="feat(blog): update blog posts and hero images (master)&#10;&#10;This commit updates the following blog posts:&#10;&#10;- Building Windows App With Wpf: Updated the hero image.&#10;- Csharp Dictionaries: Updated the hero image and added a &#10;  section about Immutable Dictionaries.&#10;&#10;The updates aim to enhance the visual appeal and provide &#10;more comprehensive information to the readers." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(blog): update blog posts and hero images (master)&#10;&#10;This commit updates the following blog posts:&#10;&#10;- Building Windows App With Wpf: Updated the hero image.&#10;- Csharp Dictionaries: Updated the hero image and added a &#10;  section about Immutable Dictionaries.&#10;&#10;The updates aim to enhance the visual appeal and provide &#10;more comprehensive information to the readers." />
+    <MESSAGE value="feat(blog): update blog categories and post metadata (master)&#10;&#10;This commit introduces several updates to blog posts and categories:&#10;&#10;- Updates hero images for blog posts: &quot;Building Windows App With&#10;  Wpf&quot; and &quot;Csharp Dictionaries&quot;.&#10;- Adds a new section about Immutable Dictionaries to the &quot;Csharp&#10;  Dictionaries&quot; blog post.&#10;- Updates the blog categories to better reflect the content.&#10;- Updates the &quot;How to Use Redis Caching With ASP.NET Core and .NET&#10;  7&quot; blog post to improve readability.&#10;&#10;These updates aim to enhance the blog's organization, visual&#10;appeal, and provide more comprehensive information to readers." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(blog): update blog categories and post metadata (master)&#10;&#10;This commit introduces several updates to blog posts and categories:&#10;&#10;- Updates hero images for blog posts: &quot;Building Windows App With&#10;  Wpf&quot; and &quot;Csharp Dictionaries&quot;.&#10;- Adds a new section about Immutable Dictionaries to the &quot;Csharp&#10;  Dictionaries&quot; blog post.&#10;- Updates the blog categories to better reflect the content.&#10;- Updates the &quot;How to Use Redis Caching With ASP.NET Core and .NET&#10;  7&quot; blog post to improve readability.&#10;&#10;These updates aim to enhance the blog's organization, visual&#10;appeal, and provide more comprehensive information to readers." />
   </component>
 </project>
