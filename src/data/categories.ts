@@ -9,6 +9,5 @@ export const CATEGORIES = [
 	'UI Frameworks',
 	'Programming',
 	'Azure',
-	'Architecture',
 	'About'
 ] as const
