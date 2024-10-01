@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="feat(blog): adds 5 new blog articles to the website">
-      <change beforePath="$PROJECT_DIR$/src/components/Footer.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer.astro" afterDir="false" />
+    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="feat(blog): removes old blog articles and updates footer copyright">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/blog/blazor-web-api-with-jwt-auth.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/blazor-web-api-with-jwt-auth.mdx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +124,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727796601714</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat(blog): removes old blog articles and updates footer copyright">
+      <option name="closed" value="true" />
+      <created>1727800658083</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1727800658083</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,6 +144,7 @@
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="feat(blog): adds 5 new blog articles to the website" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(blog): adds 5 new blog articles to the website" />
+    <MESSAGE value="feat(blog): removes old blog articles and updates footer copyright" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(blog): removes old blog articles and updates footer copyright" />
   </component>
 </project>
