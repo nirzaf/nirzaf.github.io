@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="feat: Remove unused blog post about WPF" />
+    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="fix(blog): Update publication date in profile">
+      <change beforePath="$PROJECT_DIR$/src/assets/images/4jhau2076uhb1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/SCR-20230915-pf4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/banner.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/book.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/placeholder-about.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/placeholder-hero.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/placeholder-social.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/te.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/ventura.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/blog/graph-in-csharp.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/graph-in-csharp.mdx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,7 +79,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="npm.build">
     <configuration name="build" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -114,7 +125,7 @@
       <option name="presentableId" value="Default" />
       <updated>1727796251534</updated>
       <workItem from="1727796255657" duration="3209000" />
-      <workItem from="1727810399326" duration="2393000" />
+      <workItem from="1727810399326" duration="2803000" />
     </task>
     <task id="LOCAL-00001" summary="feat(blog): adds 5 new blog articles to the website">
       <option name="closed" value="true" />
@@ -252,7 +263,23 @@
       <option name="project" value="LOCAL" />
       <updated>1727812754578</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="feat: Remove unused blog post about WPF">
+      <option name="closed" value="true" />
+      <created>1727812983510</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1727812983510</updated>
+    </task>
+    <task id="LOCAL-00019" summary="fix(blog): Update publication date in profile">
+      <option name="closed" value="true" />
+      <created>1727813030487</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1727813030487</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -280,6 +307,7 @@
     <MESSAGE value="fix(blog): Update heroImage path in building-windows-app-with-wpf.mdx" />
     <MESSAGE value="refactor(blog): correct grammar in factory design pattern description" />
     <MESSAGE value="feat: Remove unused blog post about WPF" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Remove unused blog post about WPF" />
+    <MESSAGE value="fix(blog): Update publication date in profile" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix(blog): Update publication date in profile" />
   </component>
 </project>
