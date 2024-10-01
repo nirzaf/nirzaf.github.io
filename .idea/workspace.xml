@@ -5,24 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="feat(blog): adds 5 new blog articles to the website">
-      <change afterPath="$PROJECT_DIR$/src/assets/images/Asynchronous_Programming_With_Async_Await_Task_In_CSharp.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/blog/astro copy 2.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/blog/astro copy 3.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/astro copy 3.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/blog/astro copy 4.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/astro copy 4.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/blog/astro.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/astro.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/blog/asynchronous-programming-with-async-await-task-in-csharp.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/asynchronous-programming-with-async-await-task-in-csharp.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/blog/blazor-web-api-with-jwt-auth.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/blazor-web-api-with-jwt-auth.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/blog/building-an-angular-project-with-bootstrap-4-and-firebase.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/building-an-angular-project-with-bootstrap-4-and-firebase.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/blog/building-windows-app-with-wpf.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/building-windows-app-with-wpf.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/blog/create-astro-component.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/create-astro-component.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/blog/csharp-dictionaries.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/csharp-dictionaries.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/blog/entity-framework-with-compiled-query.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/entity-framework-with-compiled-query.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/blog/factory-design-pattern-with-csharp.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/factory-design-pattern-with-csharp.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/blog/how-to-use-redis-caching-with-aspnet-core-and-net-7.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/how-to-use-redis-caching-with-aspnet-core-and-net-7.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/blog/performance-optimization-tricks-and-tips-with-entity-framework-core-with-net-7-with-real-time-examples.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/performance-optimization-tricks.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/blog/profile.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/profile.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/categories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/categories.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Footer.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer.astro" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,25 +20,25 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "nirzaf"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;nirzaf&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/nirzaf/nirzaf.github.io.git",
-    "accountId": "5ed92374-9d5c-4123-b852-5f0a5c3534cf"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/nirzaf/nirzaf.github.io.git&quot;,
+    &quot;accountId&quot;: &quot;5ed92374-9d5c-4123-b852-5f0a5c3534cf&quot;
   }
-}]]></component>
+}</component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="SWEA" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2mqFYlFBUR6YdtMhJRH0MJfzyOE" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -72,7 +55,7 @@
     "RunOnceActivity.CodyProjectSettingsMigration": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.ToggleCodyToolWindowAfterMigration": "true",
-    "git-widget-placeholder": "#4 on convert-md-to-mdx",
+    "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
