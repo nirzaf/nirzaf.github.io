@@ -2,7 +2,7 @@
 title: "Dictionaries in CSharp"
 description: "Learn about dictionaries in C# and how to use them effectively."
 pubDate: "May 01 2023"
-heroImage: "../../assets/images/Asynchronous_Programming_With_Async_Await_Task_In_CSharp.jpg"
+heroImage: "../../assets/images/dotnet_teach_csharp_immutable_dictionary.jpg"
 category: "Csharp"
 tags: ["csharp", "dictionaries", "hashmaps"]
 ---
@@ -17,9 +17,9 @@ A dictionary is a collection of key-value pairs. It is a data structure used to 
 
 ## Dictionary Characteristics
 
-- ```Dictionary<TKey, TValue>``` stores key-value pairs.
-- Comes under ```System.Collections.Generic``` namespace.
-- Implements ```IDictionary<TKey, TValue>``` interface.
+- ```<TKey, TValue>``` stores key-value pairs.
+- Comes under .Collections.Generic namespace.
+- Implements ```<TKey, TValue>``` interface.
 - Keys must be unique and cannot be null.
 - Values can be null or duplicate.
 - Values can be accessed bypassing associated key in the indexer e.g. `myDictionary[key]`.
@@ -27,7 +27,7 @@ A dictionary is a collection of key-value pairs. It is a data structure used to 
 
 ## Creating a Dictionary
 
-You can create the ```Dictionary<TKey, TValue>``` object bypassing the type of keys and values it can store. The following example shows how to create a dictionary and add key-value pairs.
+You can create the ```<TKey, TValue>```  object bypassing the type of keys and values it can store. The following example shows how to create a dictionary and add key-value pairs.
 
 ```csharp
 using System;
@@ -71,32 +71,67 @@ namespace Dictionary
 
 ## Dictionary Methods
 
-The ```Dictionary<TKey, TValue>``` class provides various methods to perform different operations on the dictionary. The following table lists some of the commonly used methods of the ```Dictionary<TKey, TValue>``` class.
+The ```<TKey, TValue>``` class provides various methods to perform different operations on the dictionary. The following table lists some of the commonly used methods of the ```<TKey, TValue>``` class.
 
-| Method | Description |
-| --- | --- |
-| Add(TKey, TValue) | Adds an element with the specified key and value into the dictionary. |
-| Clear() | Removes all the elements from the dictionary. |
-| ContainsKey(TKey) | Checks whether the specified key exists in the dictionary. |
-| ContainsValue(TValue) | Checks whether the specified value exists in the dictionary. |
-| Remove(TKey) | Removes the element with the specified key from the dictionary. |
-| TryGetValue(TKey, out TValue) | Gets the value associated with the specified key. |
-| Count | Gets the number of elements in the dictionary. |
+| Method                        | Description                                                           |
+|-------------------------------|-----------------------------------------------------------------------|
+| Add(TKey, TValue)             | Adds an element with the specified key and value into the dictionary. |
+| Clear()                       | Removes all the elements from the dictionary.                         |
+| ContainsKey(TKey)             | Checks whether the specified key exists in the dictionary.            |
+| ContainsValue(TValue)         | Checks whether the specified value exists in the dictionary.          |
+| Remove(TKey)                  | Removes the element with the specified key from the dictionary.       |
+| TryGetValue(TKey, out TValue) | Gets the value associated with the specified key.                     |
+| Count                         | Gets the number of elements in the dictionary.                        |
 
 ## Dictionary Properties
 
-The ```Dictionary<TKey, TValue>``` class provides various properties to get information about the dictionary. The following table lists some of the commonly used properties of the ```Dictionary<TKey, TValue>``` class.
+The ```<TKey, TValue>``` class provides various properties to get information about the dictionary. The following table lists some of the commonly used properties of the ```<TKey, TValue>``` class.
 
-| Property | Description |
-| --- | --- |
-| Comparer | Gets the ```IEqualityComparer<T>``` that is used to determine equality of keys for the dictionary. |
-| Keys | Gets a collection containing the keys in the dictionary. |
-| Values | Gets a collection containing the values in the dictionary. |
+| Property | Description                                                                 |
+|----------|-----------------------------------------------------------------------------|
+| Comparer | Gets the ```<T>``` that is used to determine equality of keys for the dictionary. |
+| Keys     | Gets a collection containing the keys in the dictionary.                    |
+| Values   | Gets a collection containing the values in the dictionary.                  |
 
-## Conclusion
+## Immutable Dictionaries
 
-In this article, we learned about dictionaries in C# and how to use them effectively. We also explored the various methods and properties provided by the ```Dictionary<TKey, TValue>``` class.
+In addition to the standard Dictionary, C# also provides Immutable Dictionaries. These are dictionaries that cannot be modified after they are created, ensuring thread-safety and preventing unintended modifications.
+
+### Creating an Immutable Dictionary
+
+To use Immutable Dictionaries, you need to include the `System.Collections.Immutable` namespace. Here's an example of how to create an Immutable Dictionary:
+
+```csharp
+using System.Collections.Immutable;
+
+var immutableDictionary = ImmutableDictionary<string, int>.Empty
+    .Add("One", 1)
+    .Add("Two", 2)
+    .Add("Three", 3);
+```
+
+### Characteristics of Immutable Dictionaries
+
+- Once created, the dictionary cannot be modified.
+- Any operation that would modify the dictionary (like Add or Remove) returns a new ImmutableDictionary instance.
+- Provides thread-safe read operations without the need for locking.
+- Ideal for scenarios where the dictionary content should not change after initialization.
+
+### Methods for Immutable Dictionaries
+
+Immutable Dictionaries provide methods similar to regular Dictionaries, but with a key difference: methods that would normally modify the dictionary instead return a new instance.
+
+| Method                | Description                                                               |
+|-----------------------|---------------------------------------------------------------------------|
+| Add(TKey, TValue)     | Returns a new ImmutableDictionary with the specified key and value added. |
+| Remove(TKey)          | Returns a new ImmutableDictionary with the specified key removed.         |
+| SetItem(TKey, TValue) | Returns a new ImmutableDictionary with the specified key-value pair set.  |
+
+### Performance Considerations
+
+While Immutable Dictionaries provide benefits in terms of safety and predictability, they may have performance implications for large collections or frequent modifications. Each modification operation creates a new instance, which can be memory-intensive for large dictionaries.
 
 ## References
 
 - [C# Dictionary](https://www.tutorialsteacher.com/csharp/csharp-dictionary)
+- [Immutable Collections](https://docs.microsoft.com/en-us/dotnet/api/system.collections.immutable)
