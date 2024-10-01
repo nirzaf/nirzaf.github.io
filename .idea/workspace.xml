@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-template.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/Python with .NET project.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/asynchronous-programming-with-async-await-task-in-csharp.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/blazor-web-api-with-jwt-auth.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/building-an-angular-project-with-bootstrap-4-and-firebase.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/building-windows-app-with-wpf.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/csharp-dictionaries.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/entity-framework-with-compiled-query.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/factory-design-pattern-with-csharp.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/how-to-use-redis-caching-with-aspnet-core-and-net-7.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/performance-optimization-tricks-and-tips-with-entity-framework-core-with-net-7-with-real-time-examples.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/profile.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/queryable-vs-list-in-entity-framework-core.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/spa-application-with-net-core-and-blazor.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/string_builder_vs_string_writer.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/testing-net-applications-with-xunit.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/existing-blogs-md/understanding-dependency-injection-in-dotnet-core.md" afterDir="false" />
+    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="feat(blog): adds 5 new blog articles to the website">
+      <change afterPath="$PROJECT_DIR$/src/assets/images/Asynchronous_Programming_With_Async_Await_Task_In_CSharp.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/blog/astro copy 2.mdx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/blog/astro copy 3.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/astro copy 3.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/blog/astro copy 4.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/astro copy 4.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/blog/astro.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/astro.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/blog/asynchronous-programming-with-async-await-task-in-csharp.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/asynchronous-programming-with-async-await-task-in-csharp.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/blog/blazor-web-api-with-jwt-auth.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/blazor-web-api-with-jwt-auth.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/blog/building-an-angular-project-with-bootstrap-4-and-firebase.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/building-an-angular-project-with-bootstrap-4-and-firebase.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/blog/building-windows-app-with-wpf.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/building-windows-app-with-wpf.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/blog/create-astro-component.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/create-astro-component.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/blog/csharp-dictionaries.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/csharp-dictionaries.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/blog/entity-framework-with-compiled-query.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/entity-framework-with-compiled-query.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/blog/factory-design-pattern-with-csharp.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/factory-design-pattern-with-csharp.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/blog/how-to-use-redis-caching-with-aspnet-core-and-net-7.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/how-to-use-redis-caching-with-aspnet-core-and-net-7.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/blog/performance-optimization-tricks-and-tips-with-entity-framework-core-with-net-7-with-real-time-examples.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/performance-optimization-tricks.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/blog/profile.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/profile.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/categories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/categories.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +30,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory"><![CDATA[{
@@ -45,6 +50,9 @@
   }
 }]]></component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="SWEA" />
+  </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 1
 }]]></component>
@@ -64,11 +72,16 @@
     "RunOnceActivity.CodyProjectSettingsMigration": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.ToggleCodyToolWindowAfterMigration": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "#4 on convert-md-to-mdx",
     "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "npm.build.executor": "Run",
     "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "C:\\Users\\THIS PC\\RiderProjects\\dotnetblogs\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -117,8 +130,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1727796251534</updated>
-      <workItem from="1727796255657" duration="252000" />
+      <workItem from="1727796255657" duration="3209000" />
     </task>
+    <task id="LOCAL-00001" summary="feat(blog): adds 5 new blog articles to the website">
+      <option name="closed" value="true" />
+      <created>1727796601714</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1727796601714</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -129,5 +151,7 @@
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="feat(blog): adds 5 new blog articles to the website" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(blog): adds 5 new blog articles to the website" />
   </component>
 </project>
