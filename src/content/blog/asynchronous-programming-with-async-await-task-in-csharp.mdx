@@ -1,14 +1,19 @@
 ---
 title: "Asynchronous Programming With Async Await Task in C#"
-date: 2023-05-03T19:14:52+03:00
-pin : true
-draft: false
+description: "Learn about asynchronous programming in C# using async, await, and Task."
+pubDate: "May 03 2023"
+heroImage: "../../assets/images/Asynchronous_Programming_With_Async_Await_Task_In_CSharp.jpg"
+category: "Csharp"
 tags: ["csharp", "async", "await", "task"]
 ---
 
-C# and .NET Framework (4.5 & Core) supports asynchronous programming using some native functions, classes, and reserved keywords.
+# Asynchronous Programming With Async Await Task in C#
+
+**C# and .NET Framework (4.5 & Core) supports asynchronous programming using some native functions, classes, and reserved keywords.**
 
 Before we see what is asynchronous programming, let's understand what is synchronous programming using the following console example.
+
+## Synchronous Programming Example
 
 ```csharp
 static void Main(string[] args)
@@ -52,13 +57,15 @@ In synchronous programming, the program execution waits for the current task to 
 
 The above program executes synchronously. It means execution starts from the Main() method wherein it first executes the LongProcess() method and then ShortProcess() method. During the execution, an application gets blocked and becomes unresponsive (You can see this in Windows-based applications mainly). This is called synchronous programming where execution does not go to next line until the current line executed completely.
 
-### What is Asynchronous Programming?
+## What is Asynchronous Programming?
 
 In asynchronous programming, the code gets executed in a thread without having to wait for an I/O-bound or long-running task to finish. For example, in the asynchronous programming model, the LongProcess() method will be executed in a separate thread from the thread pool, and the main application thread will continue to execute the next statement.
 
 Microsoft recommends [Task-based Asynchronous Pattern](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/task-asynchronous-programming-model) to implement asynchronous programming in the [.NET Framework](https://dotnet.microsoft.com/en-us/download/dotnet-framework) or [.NET Core](https://dotnet.microsoft.com/en-us/download/dotnet-framework) applications using ```async``` , await keywords and ```Task``` or ```Task<TResult>``` class.
 
 Now let's rewrite the above example in asynchronous pattern using ```async``` keyword.
+
+## Asynchronous Programming Example
 
 ```csharp
 static async Task Main(string[] args)
@@ -108,7 +115,7 @@ Use async along with await and Task if the async method returns a value back to 
 
 The await keyword waits for the async method until it returns a value. So the main application thread stops there until it receives a return value.
 
-The Task class represents an asynchronous operation and Task<TResult> generic class represents an operation that can return a value. In the above example, we used await Task.Delay(4000) that started async operation that sleeps for 4 seconds and await holds a thread until 4 seconds.
+The Task class represents an asynchronous operation and ```Task<TResult>``` generic class represents an operation that can return a value. In the above example, we used await Task.Delay(4000) that started async operation that sleeps for 4 seconds and await holds a thread until 4 seconds.
 
 The following demonstrates the async method that returns a value.
     
@@ -157,11 +164,13 @@ LongProcess Completed
 Result: 10
 ```
 
-In the above example, in the static async Task<int> LongProcess() method, Task<int> is used to indicate the return value type int. int val = await result; will stop the main thread there until it gets the return value populated in the result. Once get the value in the result variable, it then automatically assigns an integer to val.
+In the above example, in the static async ```Task<int>``` LongProcess() method, ```Task<int>``` is used to indicate the return value type int. int val = await result; will stop the main thread there until it gets the return value populated in the result. Once get the value in the result variable, it then automatically assigns an integer to val.
 
-An async method should return void, Task, or Task<TResult>, where TResult is the return type of the async method. Returning void is normally used for event handlers. The async keyword allows us to use the await keyword within the method so that we can wait for the asynchronous method to complete for other methods which are dependent on the return value.
+An async method should return void, ```Task```, or ```Task<TResult>```, where TResult is the return type of the async method. Returning void is normally used for event handlers. The async keyword allows us to use the await keyword within the method so that we can wait for the asynchronous method to complete for other methods which are dependent on the return value.
 
-If you have multiple async methods that return the values then you can use await for all methods just before you want to use the return value in further steps.
+If you have multiple async methods that return the values, then you can use await for all methods just before you want to use the return value in further steps.
+
+## Multiple async Methods Example
 
 ```csharp
 static async Task Main(string[] args)
@@ -235,12 +244,3 @@ In this article, we learned about asynchronous programming in C# using async, aw
 * [Task-based Asynchronous Pattern](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/task-based-asynchronous-programming)
 * [Asynchronous programming](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/index)
 * [Asynchronous programming with async, await, Task in C#](https://www.tutorialsteacher.com/articles/asynchronous-programming-with-async-await-task-csharp)
-
-
-
-
-
-
-
-
-
