@@ -1,3 +1,5 @@
+[![CI and Deploy](https://github.com/nirzaf/nirzaf.github.io/actions/workflows/action.yml/badge.svg)](https://github.com/nirzaf/nirzaf.github.io/actions/workflows/action.yml)
+
 <div align="center">
 
 <img src="public/project.png" alt="Screenshot" />
