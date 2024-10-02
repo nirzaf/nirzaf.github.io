@@ -166,7 +166,7 @@ using StackExchange.Redis;
 public async Task<List<Product>> GetProductsAsync()
 {
     var cacheKey = "ProductList";
-    var lockKey = $"{cacheKey}_lock";
+    var lockKey = `${cacheKey}_lock`;
 
     using (var redisLock = await _distributedLockFactory.CreateLockAsync(lockKey, TimeSpan.FromSeconds(10)))
     {
@@ -233,3 +233,4 @@ As you implement caching in your application, remember to carefully consider you
 * [StackExchange.Redis documentation](https://stackexchange.github.io/StackExchange.Redis/)
 * [Distributed caching in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/performance/caching/distributed)
 * [MessagePack for C#](https://github.com/neuecc/MessagePack-CSharp)
+---
