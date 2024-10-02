@@ -36,3 +36,13 @@ const posts = await getPosts(MAX_POSTS)
 		)
 	}
 </script>
+
+<style>
+	@media (max-width: 768px) {
+		.image-container img {
+			width: 100%;
+			height: auto;
+			object-contain: contain;
+		}
+	}
+</style>
