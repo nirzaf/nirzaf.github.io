@@ -23,47 +23,50 @@ const SOCIALNETWORKS = [
 ]
 ---
 
-<header class='relative flex items-center h-12 font-semibold'>
-	<a class='text-lg mr-auto' href='/'>Home</a>
-
-	<div
-		id='astro-header-drawer'
-		class='shadow rounded-l-lg md:bg-transparent dark:md:bg-transparent bg-white dark:bg-[#0a0910] md:shadow-none md:rounded-none md:border-none md:h-auto md:static absolute transition-transform duration-300 ease-in translate-x-96 md:translate-x-0 top-12 -right-5 pl-4 pt-6 pb-4 md:p-0 h-[200px] w-[200px] z-50'
-	>
-		<nav
-			class='flex h-full flex-col justify-between gap-12 text-left md:flex-row md:w-full md:gap-5'
-		>
-			<div
-				class='flex flex-col gap-4 md:flex-row md:border-r-2 border-black pr-4 dark:border-white'
-			>
-				<HeaderLink href='/tags' class='flex items-center gap-1 text-2xl md:text-base'>
-					<TagIcon /> Tags
-				</HeaderLink>
-			</div>
-
-			<div class='flex justify-center items-center md:justify-end gap-3 md:p-0'>
-				{
-					SOCIALNETWORKS.map((network) => (
-						<HeaderLink class='' href={network.url} target='_blank' aria-label={network.name}>
-							<span>{<network.icon />} </span>
-						</HeaderLink>
-					))
-				}
-			</div>
-		</nav>
+<header class='relative flex items-center h-12 font-semibold justify-between'>
+	<div class='flex items-center gap-2'>
+		<a class='text-lg hidden md:inline' href='/'>Home</a>
+		<a class='text-lg hidden md:inline' href='/about'>About</a>
 	</div>
 
-	<div class='flex items-center gap-3 md:pl-3' transition:persist='navbar'>
-		<div>
-			<Search />
+	<div class='flex items-center gap-3'>
+		<HeaderLink href='/tags' class='flex items-center gap-1'>
+			<TagIcon /> <span class="hidden md:inline">Tags</span>
+		</HeaderLink>
+
+		<div class="hidden md:flex items-center gap-3">
+			{SOCIALNETWORKS.map((network) => (
+				<HeaderLink href={network.url} target='_blank' aria-label={network.name}>
+					<span>{<network.icon />}</span>
+				</HeaderLink>
+			))}
 		</div>
+
+		<Search />
 		<ToggleTheme />
-		<button id='astro-header-drawer-button' type='button' class='md:ml-6 md:hidden'>
+		
+		<button id='astro-header-drawer-button' type='button' class='md:hidden'>
 			<MenuIcon />
 			<span class='sr-only'>Show Menu</span>
 		</button>
 	</div>
+
+	<div
+		id='astro-header-drawer'
+		class='shadow rounded-l-lg md:hidden bg-white dark:bg-[#0a0910] absolute transition-transform duration-300 ease-in translate-x-96 top-12 -right-5 pl-4 pt-6 pb-4 h-[300px] w-[200px] z-50'
+	>
+		<nav class='flex flex-col gap-4'>
+			<a href='/' class='text-2xl'>Home</a>
+			<a href='/about' class='text-2xl'>About</a>
+			{SOCIALNETWORKS.map((network) => (
+				<HeaderLink href={network.url} target='_blank' aria-label={network.name}>
+					<span>{<network.icon />} {network.name}</span>
+				</HeaderLink>
+			))}
+		</nav>
+	</div>
 </header>
+
 <script>
 	document.addEventListener('click', (event) => {
 		const menu = document.getElementById('astro-header-drawer')
