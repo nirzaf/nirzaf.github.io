@@ -1,9 +1,439 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
----
 
-<BaseLayout title="About Me">
-    <h1>About Me</h1>
-    <p>Here you can add information about yourself, your background, and your expertise in .NET development.</p>
-    <!-- Add more content as needed -->
+---
+<style>
+    /* Basic Styling */
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f3f3;
+        color: #333;
+        line-height: 1.6;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    h1,
+    h2,
+    h3 {
+        color: #031cff;
+        transition: color 0.3s ease;
+    }
+
+    a {
+        color: #031cff;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    /* Container for Resume Content */
+    .resume-container {
+        max-width: 800px;
+        margin: 30px auto;
+        background: inherit;
+        padding: 30px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Header Section */
+    .header {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .header img {
+        width: 150px;
+        height: 150px;
+        border-radius: 40%;
+        object-fit: cover;
+        margin-bottom: 5px;
+    }
+
+    .header h3 {
+        font-weight: normal;
+        margin-bottom: 5px;
+        margin-top: 0;
+    }
+
+    /* Section Titles */
+    .section-title {
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        transition: border-bottom-color 0.3s ease;
+    }
+
+    .section-title:hover {
+        border-bottom-color: #337ab7;
+    }
+
+    /* Experience & Education Entries */
+    .experience .entry,
+    .education .entry,
+    .others .entry {
+        margin-bottom: 20px;
+    }
+
+    .others .title {
+        font-weight: bold;
+    }
+
+    .entry .title {
+        font-weight: bold;
+    }
+
+    .entry .date {
+        font-style: italic;
+        color: #777;
+    }
+
+    .entry-divider {
+        border: 0;
+        height: 2px;
+        background-image: linear-gradient(to right, transparent, #ffd700, transparent);
+        opacity: 0.3;
+        margin: 20px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .dark-mode .entry-divider {
+        background-image: linear-gradient(to right, transparent, #ffd700, transparent);
+        opacity: 0.5;
+    }
+
+    .entry-divider::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.8), transparent);
+        animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+        0% {
+            left: -100%;
+        }
+
+        100% {
+            left: 100%;
+        }
+    }
+
+    /* Skills Section */
+    .skills ul {
+        display: flex;
+        flex-wrap: wrap;
+        margin: -5px;
+    }
+
+    .skills li {
+        padding: 5px;
+        margin: 5px;
+        background-color: #eee;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    /* Contact Icons */
+    .contact-icons li {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .contact-icons i {
+        font-size: 1.2em;
+        margin-right: 5px;
+    }
+
+    /* Update these selectors to use data attributes instead of classes */
+    [data-theme="dark"] .section-title {
+        border-bottom-color: #555;
+    }
+
+    [data-theme="dark"] .skills li {
+        background-color: #333;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 600px) {
+        .resume-container {
+            padding: 20px;
+        }
+
+        .skills ul {
+            flex-direction: column;
+        }
+
+        .skills li {
+            margin: 5px 0;
+        }
+
+        .contact-icons li {
+            display: block;
+        }
+    }
+
+    /* Animation for Expanding/Collapsing Content */
+    .collapsible-content {
+        overflow: hidden;
+    }
+
+    .section-title[aria-expanded="false"]::after {
+        float: right;
+    }
+
+    .section-title[aria-expanded="true"]::after {
+        float: right;
+    }
+</style>
+
+<BaseLayout title="My Profile">
+
+    <div class="resume-container">
+        <div class="header">
+            <img src="https://ik.imagekit.io/fazrinphcc/myprofilepic%20-%20crpped.jpg?updatedAt=1725949317901" alt="Profile Picture">
+            <h1>M.F.M Fazrin</h1>
+            <h2>MSc in Software Engineering</h2>
+            <ul class="contact-icons">
+                <li><i class="fas fa-map-marker-alt"></i> Al Sadd, Doha, Qatar</li>
+                <li><i class="fas fa-mobile-alt"></i> +97433253203 </li>
+                <li><i class="fas fa-phone"></i>+94772049123 </li>
+                <li><i class="fas fa-envelope"></i> mfmfazrin1986@gmail.com</li>
+            </ul>
+            <ul class="contact-icons">
+                <li><i class="fab fa-github"></i> <a href="https://github.com/nirzaf" target="_blank">github.com/nirzaf</a></li>
+                <li><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/mfmfazrin" target="_blank">linkedin.com/in/mfmfazrin</a></li>
+                <li><a href="https://nirzaf.github.io" target="_blank">Portfolio</a></li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title" aria-expanded="false">Summary</h2>
+            <div class="collapsible-content">
+                <p>As a Senior Software Development Specialist at the Primary Health Care Corporation in Qatar, I develop robust, high-concurrency web applications with a strong focus on delivering a seamless and positive end-user experience.</p>
+                <p>With over a decade of experience in software engineering, I have a proven track record of delivering high-quality solutions across diverse industries. My technical proficiency spans a wide range of technologies, and I am adept at quickly learning and adapting to new challenges.</p>
+                <p>I am seeking a challenging role where I can leverage my expertise and passion for innovation to contribute to the development of impactful software.</p>
+            </div>
+        </div>
+
+        <div class="section skills">
+            <h2 class="section-title" aria-expanded="false">Top Skills</h2>
+            <div class="collapsible-content">
+                <ul>
+                    <li>C#/.NET Core</li>
+                    <li>ASP.NET Core</li>
+                    <li>Angular</li>
+                    <li>Azure Cloud Services</li>
+                    <li>SQL Server</li>
+                    <li>Microservices</li>
+                    <li>REST API</li>
+                    <li>Agile Methodologies</li>
+                    <li>Leadership & Mentoring</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section experience expandable">
+            <h2 class="section-title" aria-expanded="false">Work Experience</h2>
+            <div class="collapsible-content">
+                <div class="entry">
+                    <div class="title">Software Development Specialist</div>
+                    <div class="info">
+                        <span class="company">Primary Health Care Corporation (Qatar)</span> |
+                        <span class="date">July 2022 - Present</span>
+                    </div>
+                    <ul>
+                        <li><strong>Project: Nar'aakom Mobile Application (Backend Services)</strong></li>
+                        <li>Migrated REST APIs to GraphQL, integrated Azure Active Directory for authentication, and optimized query performance with Azure Redis caching.</li>
+                        <li>Migrated data from SQL Server to a FHIR (Fast Healthcare Interoperability Resources) database.</li>
+                        <li>Developed an Open API system to allow third-party service integrations.</li>
+                    </ul>
+                </div>
+
+                <hr class="entry-divider">
+
+                <div class="entry">
+                    <div class="title">Senior Full-stack Engineer</div>
+                    <div class="info">
+                        <span class="company">Quadrate Tech Solutions Private Limited</span> |
+                        <span class="date">July 2020 - June 2022</span>
+                    </div>
+                    <ul>
+                        <li><strong>Project: Hotel ERP (SaaS-based ERP Solution for hotels)</strong></li>
+                        <li>Developed and maintained the administration module, handling user authentication, authorization, and configuration of modules.</li>
+                        <li>Deployed a mail service and SMS gateway using Azure Functions and Logic Apps for user communication and third-party integrations.</li>
+                        <li>Increased system scalability by synchronizing legacy data from SQL Server to Cosmos Database using SQL API.</li>
+                        <li>Developed user interfaces using Angular and integrated microservices using Azure Service Bus and RabbitMQ.</li>
+                        <li>Implemented CI/CD pipelines using Azure DevOps.</li>
+                        <li>Worked with technologies including Service Bus, RabbitMQ, SQL Server 2022, and CI/CD pipeline in Azure DevOps.</li>
+                    </ul>
+                </div>
+
+                <hr class="entry-divider">
+
+                <div class="entry">
+                    <div class="title">Dot NET Engineer</div>
+                    <div class="info">
+                        <span class="company">Voigue Private Limited</span> |
+                        <span class="date">Nov 2019 - June 2020</span>
+                    </div>
+                    <ul>
+                        <li><strong>Project: SmartPABX - Cloud-Based Phone System</strong></li>
+                        <li>Developed Backend API with .NET Core and Updated the existing PABX legacy system to the latest version.</li>
+                        <li>User interface optimized completely by converting WinForms to WPF and enabled Dynamic User interface functions such as call forward, group calls, call parking and many other features.</li>
+                        <li>Tools & Technologies Used: .NET Core 2.1, AsterNET, WPF, C# (7), REST API, XAML, PABX Asterisk, MariaDB, Apache Server, JSON, Visual Studio 2019.</li>
+                    </ul>
+                </div>
+
+                <hr class="entry-divider">
+
+                <div class="entry">
+                    <div class="title">Associate Full Stack-Engineer</div>
+                    <div class="info">
+                        <span class="company">Virtusa Private Limited</span> |
+                        <span class="date">Jan 2019 - October 2019 (Contract)</span>
+                    </div>
+                    <ul>
+                        <li><strong>Project: McDonald's - Workforce Operations Labor Forecasting System</strong></li>
+                        <li>Developed a web application to forecast labour requirements for various restaurant configurations based on frequently migrated sales data to improve labour allocations.</li>
+                        <li>Implementation of new features, optimizations, bug prioritizing and fixing, and producing detailed technical documentation.</li>
+                        <li>Maintained 10/10 client scorecards from the project's inception till production.</li>
+                        <li>Technologies Used: Angular 6, Bootstrap 4.2, .NET Core 2.0, Web API, EF Core 2.0, AutoMapper, SQL Server 2017, Azure Web Jobs, Azure Blob and File Storage, Azure Insights, Azure Redis Cache, Visual Studio 2017, Azure CI/CD and OpenXml.</li>
+                    </ul>
+                </div>
+
+                <hr class="entry-divider">
+
+                <div class="entry">
+                    <div class="title">Software Developer</div>
+                    <div class="info">
+                        <span class="company">Nemico Holdings</span> |
+                        <span class="date">Jan 2016 - Dec 2018</span>
+                    </div>
+                    <ul>
+                        <li><strong>Project: Inventory Management System for large fashion retailers</strong></li>
+                        <li>POS integration to keep updating of inventory database with day-to-day transaction.</li>
+                        <li>Successfully fixed bugs as per the Agile methodology, implemented new user privileges, retrofitted the legacy product management tool, and implemented a cloud-based enterprise inventory management developed in ASP.NET (4.8).</li>
+                        <li>Successfully migrated the complete reporting system from Crystal Reports to iTextSharp to improve the performance and save cost from the enterprise reporting tool.</li>
+                        <li>Tools & Technologies Used: C#.NET, Microsoft Visual Studio 2015, Microsoft SQL Server 2012, ASP.NET, iTextSharp, Crystal Report for Web.</li>
+                    </ul>
+                </div>
+
+                <hr class="entry-divider">
+
+                <div class="entry">
+                    <div class="title">Backend Developer</div>
+                    <div class="info">
+                        <span class="company">Olayan (Saudi Arabia)</span> |
+                        <span class="date">June 2012 - July 2015</span>
+                    </div>
+                    <ul>
+                        <li>Centralized the online order-taking process and increased the field sales force productivity and business insights with real-time visibility of all operations such as delivery, sales, marketing, and management.</li>
+                        <li>Improved the UX by developing a real-time notification feature using SignalR.</li>
+                        <li>Introduced PDF.js instead of Box View and enhanced the document viewing functionality, reducing the response time by a minute average per document and eliminating license costs.</li>
+                        <li>Tools & Technologies Used: .NET Framework 4.0, SignalR, ASP.NET Web API, IIS, PDF.js, Microsoft .NET, ASP Web API, Microsoft Visual Studio 2012, Microsoft SQL Server 2008 R2.</li>
+                    </ul>
+                </div>
+
+                <hr class="entry-divider">
+
+                <div class="entry">
+                    <div class="title">Junior Developer</div>
+                    <div class="info">
+                        <span class="company">QTS Private Limited</span> |
+                        <span class="date">Aug 2009 - April 2012</span>
+                    </div>
+                    <ul>
+                        <li><strong>Project: LECO Energy - Field Report Writer/Total Maintenance Service</strong></li>
+                        <li>Began as an Intern Developer and Participated in the application development, which allowed field service engineers to capture and record information on site regarding power turbines and generators during their maintenance visits and synchronized all data to a centralized server for reporting purposes when connecting to the network.</li>
+                        <li>Successfully reverse-engineered the underlying implementation of Office Info Path 2003, which was heavily versed in XML.</li>
+                        <li>Developed add-ons while ensuring performance was not compromised and license constraints were achieved.</li>
+                        <li>Optimized the team's efficiency while working on feature implementations and bug fixes.</li>
+                    </ul>
+                </div>
+
+                <hr class="entry-divider">
+            </div>
+        </div>
+
+        <div class="section education">
+            <h2 class="section-title" aria-expanded="false">Education</h2>
+            <div class="collapsible-content">
+                <div class="entry">
+                    <div class="title">MSc in Software Engineering</div>
+                    <div class="info">
+                        <span class="company">Kingston University</span>
+                    </div>
+                </div>
+
+                <div class="entry">
+                    <div class="title">BE in Software Engineering</div>
+                    <div class="info">
+                        <span class="company">London Metropolitan University</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section others">
+            <h2 class="section-title" aria-expanded="false">Other Qualifications</h2>
+            <div class="collapsible-content">
+                <div class="title">International English Language Testing System (IELTS) (Academic)</div>
+                <div class="info">
+                    <span class="company">7.5 Average</span>
+                </div>
+
+                <div class="title">Microsoft Azure Developer Associate (AZ-204)</div>
+                <div class="info">
+                    <span class="company">Completed an instructor-led training program on developing solutions using Microsoft Azure cloud platform.</span>
+                </div>
+
+                <div class="title">Udemy - Power Automate</div>
+                <div class="info">
+                    <span class="company">Completed a course on using Power Automate, a workflow automation tool.</span>
+                </div>
+
+                <div class="title">Udemy - Power Apps</div>
+                <div class="info">
+                    <span class="company">Completed a course on using Power Apps, a low-code application development platform.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script>
+        function updateTheme() {
+            const theme = document.documentElement.dataset.theme;
+            document.body.setAttribute('data-theme', theme);
+            const resumeContainer = document.querySelector('.resume-container');
+            if (resumeContainer) {
+                resumeContainer.classList.toggle('dark', theme === 'dark');
+            }
+        }
+
+        // Initial theme setup
+        updateTheme();
+
+        // Listen for theme changes
+        document.addEventListener('astro:after-swap', updateTheme);
+    </script>
+
 </BaseLayout>
