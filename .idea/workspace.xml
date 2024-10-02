@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="fix(blog): Update publication date in profile">
-      <change beforePath="$PROJECT_DIR$/src/assets/images/4jhau2076uhb1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/SCR-20230915-pf4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/banner.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/book.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/placeholder-about.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/placeholder-hero.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/placeholder-social.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/te.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/ventura.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/blog/graph-in-csharp.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/graph-in-csharp.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +55,7 @@
     "RunOnceActivity.CodyProjectSettingsMigration": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.ToggleCodyToolWindowAfterMigration": "true",
+    "com.codeium.enabled": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
@@ -126,6 +118,7 @@
       <updated>1727796251534</updated>
       <workItem from="1727796255657" duration="3209000" />
       <workItem from="1727810399326" duration="2803000" />
+      <workItem from="1727853801941" duration="226000" />
     </task>
     <task id="LOCAL-00001" summary="feat(blog): adds 5 new blog articles to the website">
       <option name="closed" value="true" />
