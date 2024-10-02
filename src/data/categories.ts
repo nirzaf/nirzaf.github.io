@@ -1,6 +1,5 @@
-// List of categories for blog posts tags: ['C#', 'C# 13', 'Extensions', 'Programming', 'Code Organization']
 export const CATEGORIES = [
-	'Entity Framework',
+	'EFCore',
 	'Design Patterns',
 	'ASP.NET Core',
 	'.NET',
