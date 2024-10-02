@@ -13,6 +13,14 @@ const { title, description, image, articleDate } = Astro.props
 		<BaseHead title={title} description={description} ogImage={image} articleDate={articleDate} />
 		<ProviderTheme />
 		<ProviderAnimations />
+		<style>
+			@media (max-width: 768px) {
+				.image-container img {
+					width: 100%;
+					height: auto;
+				}
+			}
+		</style>
 	</head>
 
 	<body class='bg-white text-stone-950 dark:bg-[#0a0910] dark:text-white'>
