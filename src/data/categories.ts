@@ -5,8 +5,7 @@ export const CATEGORIES = [
 	'.NET',
 	'Blazor',
 	'Csharp',
-	'UI Frameworks',
+	'UI',
 	'Programming',
-	'Azure',
-	'About'
+	'Azure'
 ] as const
