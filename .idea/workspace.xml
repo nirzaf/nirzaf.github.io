@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/soft_delete_with_entity_framework_core.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/content/blog/how-to-implement-soft-delete-with-entity-framwork-core.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/blog/entity-framework-with-compiled-query.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/entity-framework-with-compiled-query.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/blog/performance-optimization-tricks.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/performance-optimization-tricks.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/categories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/categories.ts" afterDir="false" />
-    </list>
+    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,6 +17,8 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="KEEP" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -58,7 +52,7 @@
     </option>
   </component>
   <component name="GithubDefaultAccount">
-    <option name="defaultAccountId" value="c16cdd18-dc12-4962-a926-8db688ce8344" />
+    <option name="defaultAccountId" value="5ed92374-9d5c-4123-b852-5f0a5c3534cf" />
   </component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
@@ -66,9 +60,12 @@
     &quot;accountId&quot;: &quot;5ed92374-9d5c-4123-b852-5f0a5c3534cf&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/THIS PC/RiderProjects/dotnetblogs/package.json" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="SWEA" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -81,34 +78,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.CodyAccountHistoryMigration&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.CodyAccountsIdsRefresh&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.CodyAssignOrphanedChatsToActiveAccount&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.CodyConvertUrlToCodebaseName&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.CodyHistoryLlmMigration&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.CodyMigrateChatHistory-v2&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.CodyProjectSettingsMigration&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ToggleCodyToolWindowAfterMigration&quot;: &quot;true&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;fix-yaml-frontmatter&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.build.executor&quot;: &quot;Run&quot;,
-    &quot;npm.preview.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\THIS PC\\RiderProjects\\dotnetblogs\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.CodyAccountHistoryMigration": "true",
+    "RunOnceActivity.CodyAccountsIdsRefresh": "true",
+    "RunOnceActivity.CodyAssignOrphanedChatsToActiveAccount": "true",
+    "RunOnceActivity.CodyConvertUrlToCodebaseName": "true",
+    "RunOnceActivity.CodyHistoryLlmMigration": "true",
+    "RunOnceActivity.CodyMigrateChatHistory-v2": "true",
+    "RunOnceActivity.CodyProjectSettingsMigration": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.ToggleCodyToolWindowAfterMigration": "true",
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.build.executor": "Run",
+    "npm.preview.executor": "Run",
+    "npm.start.executor": "Run",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "ts.external.directory.path": "C:\\Users\\THIS PC\\RiderProjects\\dotnetblogs\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="npm.build">
+}]]></component>
+  <component name="RunManager" selected="npm.start">
     <configuration name="build" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -319,7 +316,111 @@
       <option name="project" value="LOCAL" />
       <updated>1727856257642</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="feat(pages/PostCard): refactor post card component layout and media queries">
+      <option name="closed" value="true" />
+      <created>1727875053026</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1727875053026</updated>
+    </task>
+    <task id="LOCAL-00022" summary="feat(components): update social media icons and links">
+      <option name="closed" value="true" />
+      <created>1727875503003</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1727875503003</updated>
+    </task>
+    <task id="LOCAL-00023" summary="feat: Update title of Dotnet Blogs to DotNet Blogs in TitlePage component">
+      <option name="closed" value="true" />
+      <created>1727876681229</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1727876681229</updated>
+    </task>
+    <task id="LOCAL-00024" summary="feat: Update TwitterIcon SVG with new design">
+      <option name="closed" value="true" />
+      <created>1727885959216</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1727885959216</updated>
+    </task>
+    <task id="LOCAL-00025" summary="feat: add about link to header">
+      <option name="closed" value="true" />
+      <created>1727886655050</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1727886655050</updated>
+    </task>
+    <task id="LOCAL-00026" summary="refactor(icons): Remove unused xmlns:xlink from TwitterColorIcon">
+      <option name="closed" value="true" />
+      <created>1727886699745</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1727886699745</updated>
+    </task>
+    <task id="LOCAL-00027" summary="feat: implement responsive resume page with detailed information">
+      <option name="closed" value="true" />
+      <created>1727889067140</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1727889067140</updated>
+    </task>
+    <task id="LOCAL-00028" summary="feat: Update resume with formatted project details">
+      <option name="closed" value="true" />
+      <created>1727889659538</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1727889659538</updated>
+    </task>
+    <task id="LOCAL-00029" summary="refactor(pages): remove unnecessary line breaks in HTML">
+      <option name="closed" value="true" />
+      <created>1727889807833</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1727889807833</updated>
+    </task>
+    <task id="LOCAL-00030" summary="refactor(pages): update CSS inheritance">
+      <option name="closed" value="true" />
+      <created>1727891324032</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1727891324032</updated>
+    </task>
+    <task id="LOCAL-00031" summary="feat(Footer): Refactor footer content layout">
+      <option name="closed" value="true" />
+      <created>1727891724897</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1727891724897</updated>
+    </task>
+    <task id="LOCAL-00032" summary="fix: correct TitlePage title case">
+      <option name="closed" value="true" />
+      <created>1727891802854</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1727891802854</updated>
+    </task>
+    <task id="LOCAL-00033" summary="fix(Title.astro): Adjusted font size of title">
+      <option name="closed" value="true" />
+      <created>1727891869482</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1727891869482</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -327,16 +428,20 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(blog): adds 5 new blog articles to the website" />
-    <MESSAGE value="feat(blog): removes old blog articles and updates footer copyright" />
-    <MESSAGE value="feat(TokenController): implement registration and login methods for JWT authentication" />
-    <MESSAGE value="feat(blog): update hero image for Blazor WebAssembly JWT post" />
-    <MESSAGE value="feat(blog): update Angular, Bootstrap and Firebase versions (master)&#10;&#10;This commit updates the blog post about building an Angular project with Bootstrap and Firebase to reflect the latest versions of each technology:&#10;&#10;- Angular 17&#10;- Bootstrap 5&#10;- Firebase 9&#10;&#10;It also includes updates to the code examples, explanations, and screenshots to ensure accuracy and relevance." />
-    <MESSAGE value="feat(blog): update blog posts and hero images (master)&#10;&#10;This commit updates the following blog posts:&#10;&#10;- Building Windows App With Wpf: Updated the hero image.&#10;- Csharp Dictionaries: Updated the hero image and added a &#10;  section about Immutable Dictionaries.&#10;&#10;The updates aim to enhance the visual appeal and provide &#10;more comprehensive information to the readers." />
-    <MESSAGE value="feat(blog): update blog categories and post metadata (master)&#10;&#10;This commit introduces several updates to blog posts and categories:&#10;&#10;- Updates hero images for blog posts: &quot;Building Windows App With&#10;  Wpf&quot; and &quot;Csharp Dictionaries&quot;.&#10;- Adds a new section about Immutable Dictionaries to the &quot;Csharp&#10;  Dictionaries&quot; blog post.&#10;- Updates the blog categories to better reflect the content.&#10;- Updates the &quot;How to Use Redis Caching With ASP.NET Core and .NET&#10;  7&quot; blog post to improve readability.&#10;&#10;These updates aim to enhance the blog's organization, visual&#10;appeal, and provide more comprehensive information to readers." />
     <MESSAGE value="Updates blog post category for the Sidecar pattern." />
     <MESSAGE value="feat(blog): Update Redis Caching article for .NET 8 (master)&#10;&#10;This commit updates the &quot;How to Use Redis Caching With ASP.NET&#10;Core and .NET 7&quot; blog post to reflect the latest changes in .NET 8.&#10;&#10;The updated article now:&#10;&#10;- Targets .NET 8 and updates code examples accordingly.&#10;- Uses the `Microsoft.Extensions.Caching.StackExchangeRedis`&#10;  package.&#10;- Configures Redis in `Program.cs` instead of `Startup.cs`.&#10;- Includes a new section on advanced Redis caching techniques&#10;  such as serialization, distributed locking, and cache&#10;  invalidation strategies.&#10;- Updates the screenshots and references.&#10;&#10;These updates provide a comprehensive guide for using Redis&#10;caching with ASP.NET Core and .NET 8." />
     <MESSAGE value="feat(blog): Update Redis Caching article for .NET 8" />
@@ -349,6 +454,19 @@
     <MESSAGE value="feat: Remove unused blog post about WPF" />
     <MESSAGE value="fix(blog): Update publication date in profile" />
     <MESSAGE value="```&#10;feat(blog): Update publication date in profile&#10;&#10;Update publication date in profile.&#10;```" />
-    <option name="LAST_COMMIT_MESSAGE" value="```&#10;feat(blog): Update publication date in profile&#10;&#10;Update publication date in profile.&#10;```" />
+    <MESSAGE value="feat(pages/PostCard): refactor post card component layout and media queries" />
+    <MESSAGE value="feat(components): update social media icons and links" />
+    <MESSAGE value="feat: Update title of Dotnet Blogs to DotNet Blogs in TitlePage component" />
+    <MESSAGE value="feat: Update TwitterIcon SVG with new design" />
+    <MESSAGE value="feat: add about link to header" />
+    <MESSAGE value="refactor(icons): Remove unused xmlns:xlink from TwitterColorIcon" />
+    <MESSAGE value="feat: implement responsive resume page with detailed information" />
+    <MESSAGE value="feat: Update resume with formatted project details" />
+    <MESSAGE value="refactor(pages): remove unnecessary line breaks in HTML" />
+    <MESSAGE value="refactor(pages): update CSS inheritance" />
+    <MESSAGE value="feat(Footer): Refactor footer content layout" />
+    <MESSAGE value="fix: correct TitlePage title case" />
+    <MESSAGE value="fix(Title.astro): Adjusted font size of title" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix(Title.astro): Adjusted font size of title" />
   </component>
 </project>
