@@ -78,33 +78,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.CodyAccountHistoryMigration": "true",
-    "RunOnceActivity.CodyAccountsIdsRefresh": "true",
-    "RunOnceActivity.CodyAssignOrphanedChatsToActiveAccount": "true",
-    "RunOnceActivity.CodyConvertUrlToCodebaseName": "true",
-    "RunOnceActivity.CodyHistoryLlmMigration": "true",
-    "RunOnceActivity.CodyMigrateChatHistory-v2": "true",
-    "RunOnceActivity.CodyProjectSettingsMigration": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.ToggleCodyToolWindowAfterMigration": "true",
-    "com.codeium.enabled": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.build.executor": "Run",
-    "npm.preview.executor": "Run",
-    "npm.start.executor": "Run",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "ts.external.directory.path": "C:\\Users\\THIS PC\\RiderProjects\\dotnetblogs\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.CodyAccountHistoryMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyAccountsIdsRefresh&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyAssignOrphanedChatsToActiveAccount&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyConvertUrlToCodebaseName&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyHistoryLlmMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyMigrateChatHistory-v2&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyProjectSettingsMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ToggleCodyToolWindowAfterMigration&quot;: &quot;true&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.preview.executor&quot;: &quot;Run&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\THIS PC\\RiderProjects\\dotnetblogs\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="npm.start">
     <configuration name="build" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -155,6 +155,7 @@
       <workItem from="1727853801941" duration="226000" />
       <workItem from="1727854213385" duration="2506000" />
       <workItem from="1727860356589" duration="590000" />
+      <workItem from="1727958533772" duration="6449000" />
     </task>
     <task id="LOCAL-00001" summary="feat(blog): adds 5 new blog articles to the website">
       <option name="closed" value="true" />
@@ -420,7 +421,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727891869482</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Fix: Correct TitlePage title case and adjust title font size (master)&#10;&#10;This commit includes the following changes:&#10;&#10;- Corrects the title case in the TitlePage component.&#10;- Adjusts the font size of the title in Title.astro.&#10;- Adds a new  `jsLibraryMappings.xml` file to configure &#10;  Javascript libraries.&#10;- Updates the `Project_Default.xml` file to include &#10;  `object-contain` as a known CSS property.&#10;- Refactors the workspace settings in `.idea/workspace.xml`,&#10;  updating the default account ID and other settings.">
+      <option name="closed" value="true" />
+      <created>1727960024033</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1727960024033</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -442,7 +451,6 @@
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Updates blog post category for the Sidecar pattern." />
     <MESSAGE value="feat(blog): Update Redis Caching article for .NET 8 (master)&#10;&#10;This commit updates the &quot;How to Use Redis Caching With ASP.NET&#10;Core and .NET 7&quot; blog post to reflect the latest changes in .NET 8.&#10;&#10;The updated article now:&#10;&#10;- Targets .NET 8 and updates code examples accordingly.&#10;- Uses the `Microsoft.Extensions.Caching.StackExchangeRedis`&#10;  package.&#10;- Configures Redis in `Program.cs` instead of `Startup.cs`.&#10;- Includes a new section on advanced Redis caching techniques&#10;  such as serialization, distributed locking, and cache&#10;  invalidation strategies.&#10;- Updates the screenshots and references.&#10;&#10;These updates provide a comprehensive guide for using Redis&#10;caching with ASP.NET Core and .NET 8." />
     <MESSAGE value="feat(blog): Update Redis Caching article for .NET 8" />
     <MESSAGE value="feat: Update site metadata and author information (#)&#10;&#10;This commit updates the site metadata, including the author name,&#10;site title, and description. The changes provide accurate and&#10;informative details about the site and its content." />
@@ -467,6 +475,7 @@
     <MESSAGE value="feat(Footer): Refactor footer content layout" />
     <MESSAGE value="fix: correct TitlePage title case" />
     <MESSAGE value="fix(Title.astro): Adjusted font size of title" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix(Title.astro): Adjusted font size of title" />
+    <MESSAGE value="Fix: Correct TitlePage title case and adjust title font size (master)&#10;&#10;This commit includes the following changes:&#10;&#10;- Corrects the title case in the TitlePage component.&#10;- Adjusts the font size of the title in Title.astro.&#10;- Adds a new  `jsLibraryMappings.xml` file to configure &#10;  Javascript libraries.&#10;- Updates the `Project_Default.xml` file to include &#10;  `object-contain` as a known CSS property.&#10;- Refactors the workspace settings in `.idea/workspace.xml`,&#10;  updating the default account ID and other settings." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix: Correct TitlePage title case and adjust title font size (master)&#10;&#10;This commit includes the following changes:&#10;&#10;- Corrects the title case in the TitlePage component.&#10;- Adjusts the font size of the title in Title.astro.&#10;- Adds a new  `jsLibraryMappings.xml` file to configure &#10;  Javascript libraries.&#10;- Updates the `Project_Default.xml` file to include &#10;  `object-contain` as a known CSS property.&#10;- Refactors the workspace settings in `.idea/workspace.xml`,&#10;  updating the default account ID and other settings." />
   </component>
 </project>
