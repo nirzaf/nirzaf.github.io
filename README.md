@@ -1,5 +1,3 @@
-# My Profile
-
 [![](https://stardev.io/developers/nirzaf/badge/languages/global.svg)](https://stardev.io/developers/nirzaf)
 
 **M.F.M Fazrin (MSc – SE) - 📌 Doha, Qatar.**
