@@ -535,7 +535,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
 	<script>
 		function updateTheme() {
-			const theme = document.documentElement.dataset.theme
+			const theme = document.documentElement.dataset.theme || 'light'
 			document.body.setAttribute('data-theme', theme)
 			const resumeContainer = document.querySelector('.resume-container')
 			if (resumeContainer) {
