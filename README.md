@@ -1,19 +1,5 @@
 [![CI and Deploy](https://github.com/nirzaf/nirzaf.github.io/actions/workflows/action.yml/badge.svg)](https://github.com/nirzaf/nirzaf.github.io/actions/workflows/action.yml)
 
-<div align="center">
-
-<img src="public/project.png" alt="Screenshot" />
-
-<hr/>
-
-<h3 align="center">
- ⭐ Leave a star if you like this project! ⭐️
-</h3>
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdanielcgilibert%2Fblog-template)
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/danielcgilibert/blog-template)
-
-</div>
 
 ## � Table Of Contents
 
@@ -29,13 +15,6 @@
 10. [FrontMatter](#-Frontmatter)
 11. [CLI](#-Commands)
 12. [Contributors](#-Contributors)
-
-## � Demo
-
-Check out the [Demo](https://blog-template-gray.vercel.app/), hosted on Vercel
-<br/>
-
-https://github.com/danielcgilibert/blog-template/assets/44746462/56b8399e-cc5b-45a8-b9d2-d69833ecadb1
 
 ## � Features:
 
