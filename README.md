@@ -44,14 +44,6 @@
 - ✅ ViewTransition (new)
 - ✅ Disqus comments (new)
 
-## � Roadmap
-
-- ❌ Add post author
-- ❌ Add customization with colors
-- ❌ Add filters for reading time, date...
-- ❌ More sharing options
-- ❌ Internationalization (i18n)
-
 ## � Stack
 
 - [**ASTRO** + **Typescript**](https://astro.build/) - Astro is the all-in-one web framework designed for speed.
