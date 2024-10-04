@@ -1,163 +1,87 @@
-[![CI and Deploy](https://github.com/nirzaf/nirzaf.github.io/actions/workflows/action.yml/badge.svg)](https://github.com/nirzaf/nirzaf.github.io/actions/workflows/action.yml)
+# My Profile
 
+[![](https://stardev.io/developers/nirzaf/badge/languages/global.svg)](https://stardev.io/developers/nirzaf)
 
-## � Table Of Contents
+**M.F.M Fazrin (MSc – SE) - 📌 Doha, Qatar.**
 
-2. [Features](#-Features)
-3. [Roadmap](#-Roadmap)
-4. [Stack](#-Stack)
-5. [Running locally](#-Running-Locally)
-6. [Configure](#-Configure)
-7. [Categories](#-Adding-a-category)
-8. [Posts](#-Adding-a-post)
-9. [Draft](#-Activating-draft-mode)
-10. [FrontMatter](#-Frontmatter)
-11. [CLI](#-Commands)
-12. [Contributors](#-Contributors)
+📞[+97433253203](tel:+97433253203)
 
-## � Features:
+📱 [+94772049123](https://wa.me/94772049123)
 
-<p align="center">
-  <a href="https://pagespeed.web.dev/analysis/https-blog-template-gray-vercel-app/7ovjfewos9?form_factor=mobile">
-    <img width="510" alt="openblog Lighthouse Score" src="public/openblog-lighthouse-score.svg">
-  <a>
-</p>
-    
-- ✅ Minimal styling
-- ✅ Mobile responsive
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-- ✅ Syntax highlighting
-- ✅ Image optimization
-- ✅ Table of contents
-- ✅ Dark mode
-- ✅ Reading Time
-- ✅ [Pagefind](https://pagefind.app/) static search library integration
-- ✅ Related posts
-- ✅ Share posts (Linkedin, twitter)
-- ✅ Draft mode
-- ✅ Copy code block
-- ✅ Pagination
-- ✅ ViewTransition (new)
-- ✅ Disqus comments (new)
+✉️ [info@dotnetevangelist.net](mailto:info@dotnetevangelist.net)
 
-## � Stack
+🤵🏻 [https://nirzaf.github.io](https://nirzaf.github.io/)
 
-- [**ASTRO** + **Typescript**](https://astro.build/) - Astro is the all-in-one web framework designed for speed.
-- [**Tailwind CSS** + **Tailwind-Merge** + **clsx**](https://tailwindcss.com/) - Tailwind CSS is a utility-first CSS framework.
-- [**Tabler Icons**](https://tabler-icons.io/i/) - A open source SVG icons.
-- [**Eslint**](https://eslint.org/) - ESLint is an open source project that helps you find and fix problems.
-- [**Prettier**](https://prettier.io/) - Code formatter.
-- [**Search Library**](https://pagefind.app/) - Static search library integration.
-- [**Motion**](https://motion.dev/) - Motion One is the smallest fully-featured animation library for the web.
+🐱‍👤[https://github.com/nirzaf](https://github.com/nirzaf)
 
-## 👨🏻‍💻 Running Locally
+💼[https://linkedin.com/in/mfmfazrin](https://linkedin.com/in/mfmfazrin)
 
-**Recommended extensions for VSCode:**
+📝[https://dotnetevangelist.net](https://dotnetevangelist.net/)
 
-- [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss).
-- [Astro](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode).
+⭐[Highest-ranked developer in Qatar](https://stardev.io/top/developers/all/in/qatar)
 
-1. Clone or [fork](https://github.com/danielcgilibert/blog-template/fork) the repository:
+---
 
-```bash
-git@github.com:danielcgilibert/blog-template.git
-```
+## Professional Experience
 
-2. Install dependencies:
+### Software Development Specialist (July-2022) @ Primary Health Care Corporation (Qatar)
+- Project: Nar'aakom Mobile Application (Backend with Azure Functions with C#)
+- Working on backend .NET services to migrate REST API to GraphQL with Azure Active Directory.
+- Optimizing the query performance using Azure Redis distributed caching.
+- Migrating data from SQL server to FHIR (NoSql type) database
+- Developing an Open API interface to allow third-party services to integrate with the Nar'aakom application
+- Unit testing and Integration testing with [xUnit.net](http://xunit.net/) and Moq framework.
+- Tools & Technologies Using - .NET 6 & above, C# 10 & above, Azure Functions, Visual Studio 2022, Jet brains Rider, [xUnit.net](http://xunit.net/), ReSharper, SQL Server 2022, CI CD pipeline in Azure DevOps.
 
-```bash
-pnpm install
-```
+### Senior Full-stack Engineer (July-2020 – June-2022) @ Quadrate Tech Solutions Private Limited
+- Project: Hotel ERP (SaaS-based ERP Solution for hotels)
+- Working in the administration module, which handles authentication & authorization along with primary configurations of each property's subscribed modules
+- Successfully deployed a mail service and SMS gateway using Azure Functions and Logic Apps to communicate with users and third parties.
+- Synchronize legacy data from SQL Server to Cosmos Database via SQL API to increase the scalability of the system
+- Contributing to user interface development using Angular
+- Microservices integration using Azure Service Bus & RabbitMQ (Pub-Sub pattern)
+- Configure CI-CD using Azure DevOps pipelines
+- Unit Testing with [xUnit.net](http://xunit.net/) (Mock, [Faker.Net](http://faker.net/), Stubs)
+- Tools & Technologies Using - .NET Core 3.1 & above, C# 9 & above, Angular 12, Azure Functions, Azure Logic Apps, Cosmos Db, VS 2022, VS Code, Jet brains Rider, [xUnit.net](http://xunit.net/), ReSharper, Azure Service Bus, RabbitMQ, SQL Server 2022, CI CD pipeline in Azure DevOps.
 
-3. Run the development server:
+### Dot NET Engineer (Nov 2019 - June 2020) @ Voigue Private Limited
+- Project: SmartPABX - Cloud-Based Phone System
+- .NET Engineer in WPF-based Project for an Australian Telecommunication Company.
+- Developed Backend API with .NET Core and Updated the existing PABX legacy system to the latest version.
+- User interface optimized completely by converting WinForms to WPF and enabled Dynamic User interface functions such as call forward, group calls, call parking and many other features.
+- Tools & Technologies Used - .NET Core 2.1, AsterNET, WPF, C# (7), REST API, XAML, PABX Asterisk, MariaDB, Apache Server, JSON, Visual Studio 2019.
 
-```bash
-pnpm dev
-```
+### Associate Full Stack-Engineer (01/2019 - 10/2019) @ Virtusa Private Limited
+- McDonald's - Workforce Operations Labor Forecasting System
+- Developed a web application to forecast labour requirements for various restaurant configurations based on frequently migrated sales data to improve labour allocations. The Decision-making process improved by five minutes versus the previous six months and zeroed the manager person-hours needed to input and cleanse the sales data.
+- Implementation of new features. Optimizations. Bug prioritizing and bug fixing and producing detailed technical documentation.
+- 10/10 client scorecards from the project's inception till production were maintained.
+- Technologies Used - Angular 6, Bootstrap 4.2, .NET Core 2.0, Web API, EF Core 2.0, AutoMapper, SQL Server 2017, Azure Web Jobs, Azure Blob and File Storage, Azure Insights, Azure Redis Cache, Visual Studio 2017, Azure CI/CD and OpenXml.
 
-## 📐 Configure
+### Software Developer (Jan 2016 - Dec 2018) @ Nemico Holdings
+- Inventory Management System for large fashion retailers
+- POS integration to keep updating of inventory database with day-to-day transaction
+- Successfully fixed bugs as per the Agile methodology implemented new user privileges, retrofitted the legacy product management tool, and implemented a cloud-based enterprise inventory management developed in [ASP.NET](http://asp.net/) (4.8)
+- Successfully migrated the complete reporting system from Crystal Reports to iTextSharp to improve the performance and save cost from the enterprise reporting tool
+- Tools & Technologies Used - C#.NET, Microsoft Visual Studio 2015, Microsoft SQL Server, 2012, [ASP.NET](http://asp.net/), iTextSharp, Crystal Report for Web.
 
-- Edit the configuration file **src/data/site.config.ts** for the basic blog metadata.
-- Update the **astro.config.mjs** file at the root of the project with your own domain.
-- Modify the files in the **/public** folder:
-  - favicon
-  - robots.txt -> update the Sitemap url to your own domain
-  - open-graph -> the open-graph is the image that will be displayed when sharing the blog link. For posts, the preview image is the post cover.
-- Edit the social networks in the Header component - **src/components/Header.astro**, change the URL to your social network.
+### Backend Developer (06/2012 - 07/2015) @ Olayan (Saudi Arabia)
+- Centralize the online order-taking process and increase the field sales force productivity and business insights with real-time visibility of all operations such as delivery, sales, marketing, and management.
+- Improved the UX by developing a real-time notification feature using SignalR
+- Introduced PDF.js instead of Box View and enhanced the document viewing functionality, reducing the response time by a minute average per document and eliminating license costs.
+- Tools & Technologies Used - .NET Framework 4.0, SignalR, [ASP.NET](http://asp.net/) Web API, IIS, PDF.js, Microsoft .NET, ASP Web API, Microsoft Visual Studio 2012, Microsoft SQL Server 2008 R2
 
-## 🗂️ Adding a category
+### Junior Developer (08/2009 - 04/2012) @ QTS Private Limited
+- LECO Energy - Field Report Writer/Total Maintenance Service
+- Participated in the application development, which allowed field service engineers to capture and record information on site regarding power turbines and generators during their maintenance visits and synchronized all data to a centralized server for reporting purposes when connecting to the network.
+- Successfully reverse-engineered the underlying implementation of Office Info Path 2003, which was heavily versed in XML
+- Developed add-ons while ensuring performance was not compromised and license constraints were achieved.
+- Optimized the team's efficiency while working on feature implementations and bug fixes.
 
-To add a new category to your blog, simply go to the src/data/categories.ts file and add it to the array.
+---
 
-Example:
-
-```ts
-export  const  CATEGORIES  =  [
-'JavaScript',
-'React',
-'new category here'  <---
-]  as  const
-```
-
-> 🚨 Zod checks whether the category is not correctly written or does not exist in the properties of the markdown document. **It will throw an error when building the application.** 🚨
-
-## 📄 Adding a post
-
-Adding a post is as simple as adding a .md or .mdx file to the blog folder at the path **src/content/blog**. The filename will be used to create the slug/URL of the page.
-
-For example, if you have a file named **jsx-and-react.md**, it will be transformed into: **http://yourdomain.com/post/jsx-and-react/**
-
-## 📝 Activating draft mode
-
-To activate draft mode, add the property **draft: true** to the file, and it will no longer be displayed on the blog.
-
-Example :
-
-```ts
-title: MacBook Pro 2022
-description: 'The new MacBook Pro 2022 is here. With the Apple M2 chip, a new design, and more, the new MacBook Pro is the best laptop Apple has ever made.'
-pubDate: 'Jul 02 2022'
-heroImage: '../../assets/bg.jpg'
-category: 'Category 1'
-tags: ['JavaScript', 'css', 'HTML5', 'GitHub']
-draft: true <---
-```
-
-## ⚡️ Frontmatter
-
-## Required properties:
-
-- Title
-- Description
-- pubDate
-- heroImage (post cover)
-- category (Choose a category from src/data/categories.ts)
-
-## Optional properties:
-
-- draft (no need to include it, by default it's false)
-- tags
-
-> The schema for posts is located at src/content/config.ts. You can modify any parameter, for example, by adding a maximum of 80 characters for titles: title: z.string().max(80).
-> For more information, refer to the zod documentation.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                 | Action                                                                                                                           |
-| :---------------------- | :------------------------------------------------------------------------------------------------------------------------------- |
-| `pnpm install`          | Installs dependencies                                                                                                            |
-| `pnpm run dev`          | Starts local dev server at `localhost:3000`                                                                                      |
-| `pnpm run build`        | Build your production site to `./dist/`                                                                                          |
-| `pnpm run preview`      | Preview your build locally, before deploying                                                                                     |
-| `pnpm run format:check` | Check code format with Prettier                                                                                                  |
-| `pnpm run format`       | Format codes with Prettier                                                                                                       |
-| `pnpm run sync`         | Generates TypeScript types for all Astro modules. [Learn more](https://docs.astro.build/en/reference/cli-reference/#astro-sync). |
-| `pnpm run lint`         | Lint with ESLint                                                                                                                 |
-
-
+## Education & Other Qualifications
+- MSc in Software Engineering @ Kingston University
+- BE in Software Engineering @ London Metropolitan University
+- IELTS (Academic) 7.5 Average (May – 2021)
+---
