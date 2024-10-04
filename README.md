@@ -3,7 +3,6 @@
 
 ## � Table Of Contents
 
-1. [Demo](#-Demo)
 2. [Features](#-Features)
 3. [Roadmap](#-Roadmap)
 4. [Stack](#-Stack)
@@ -169,8 +168,4 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm run sync`         | Generates TypeScript types for all Astro modules. [Learn more](https://docs.astro.build/en/reference/cli-reference/#astro-sync). |
 | `pnpm run lint`         | Lint with ESLint                                                                                                                 |
 
-## 👋 Contributors
 
-<a href="https://github.com/danielcgilibert/blog-template/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=danielcgilibert/blog-template" />
-</a>
