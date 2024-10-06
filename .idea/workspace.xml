@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="" />
+    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/tailwind.config.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.cjs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -156,6 +158,7 @@
       <workItem from="1727854213385" duration="2506000" />
       <workItem from="1727860356589" duration="590000" />
       <workItem from="1727958533772" duration="6449000" />
+      <workItem from="1728032477938" duration="2437000" />
     </task>
     <task id="LOCAL-00001" summary="feat(blog): adds 5 new blog articles to the website">
       <option name="closed" value="true" />
@@ -429,7 +432,71 @@
       <option name="project" value="LOCAL" />
       <updated>1727960024033</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="feat(README): Update Spanish README with project details and remove Vercel and Netlify badges">
+      <option name="closed" value="true" />
+      <created>1728032558477</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1728032558477</updated>
+    </task>
+    <task id="LOCAL-00036" summary="feat: Remove Demo section and contributor list from README">
+      <option name="closed" value="true" />
+      <created>1728032623752</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1728032623752</updated>
+    </task>
+    <task id="LOCAL-00037" summary="feat: Remove obsolete roadmap items from README">
+      <option name="closed" value="true" />
+      <created>1728032740780</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1728032740780</updated>
+    </task>
+    <task id="LOCAL-00038" summary="feat: Update README with new project details and remove unused content">
+      <option name="closed" value="true" />
+      <created>1728032906973</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1728032906973</updated>
+    </task>
+    <task id="LOCAL-00039" summary="docs: Remove profile header in README">
+      <option name="closed" value="true" />
+      <created>1728032957894</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1728032957894</updated>
+    </task>
+    <task id="LOCAL-00040" summary="feat(README.md): Add 'Buy Me A Coffee' link">
+      <option name="closed" value="true" />
+      <created>1728033795886</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1728033795886</updated>
+    </task>
+    <task id="LOCAL-00041" summary="feat: Add Buy Me A Coffee button to about page (#)&#10;&#10;Added a &quot;Buy Me A Coffee&quot; button to the about page to &#10;support the creation of more content and improve the blog.">
+      <option name="closed" value="true" />
+      <created>1728034178889</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1728034178889</updated>
+    </task>
+    <task id="LOCAL-00042" summary="feat: Add default theme in updateTheme function">
+      <option name="closed" value="true" />
+      <created>1728034366075</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1728034366075</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -451,14 +518,6 @@
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(blog): Update Redis Caching article for .NET 8 (master)&#10;&#10;This commit updates the &quot;How to Use Redis Caching With ASP.NET&#10;Core and .NET 7&quot; blog post to reflect the latest changes in .NET 8.&#10;&#10;The updated article now:&#10;&#10;- Targets .NET 8 and updates code examples accordingly.&#10;- Uses the `Microsoft.Extensions.Caching.StackExchangeRedis`&#10;  package.&#10;- Configures Redis in `Program.cs` instead of `Startup.cs`.&#10;- Includes a new section on advanced Redis caching techniques&#10;  such as serialization, distributed locking, and cache&#10;  invalidation strategies.&#10;- Updates the screenshots and references.&#10;&#10;These updates provide a comprehensive guide for using Redis&#10;caching with ASP.NET Core and .NET 8." />
-    <MESSAGE value="feat(blog): Update Redis Caching article for .NET 8" />
-    <MESSAGE value="feat: Update site metadata and author information (#)&#10;&#10;This commit updates the site metadata, including the author name,&#10;site title, and description. The changes provide accurate and&#10;informative details about the site and its content." />
-    <MESSAGE value="feat: Update pagination size to 9 posts per page" />
-    <MESSAGE value="fix(blog): update heroImage path in building-windows-app-with-wpf.mdx" />
-    <MESSAGE value="Please provide the diff so I can write an appropriate commit message." />
-    <MESSAGE value="fix(blog): Update heroImage path in building-windows-app-with-wpf.mdx" />
-    <MESSAGE value="refactor(blog): correct grammar in factory design pattern description" />
     <MESSAGE value="feat: Remove unused blog post about WPF" />
     <MESSAGE value="fix(blog): Update publication date in profile" />
     <MESSAGE value="```&#10;feat(blog): Update publication date in profile&#10;&#10;Update publication date in profile.&#10;```" />
@@ -476,6 +535,14 @@
     <MESSAGE value="fix: correct TitlePage title case" />
     <MESSAGE value="fix(Title.astro): Adjusted font size of title" />
     <MESSAGE value="Fix: Correct TitlePage title case and adjust title font size (master)&#10;&#10;This commit includes the following changes:&#10;&#10;- Corrects the title case in the TitlePage component.&#10;- Adjusts the font size of the title in Title.astro.&#10;- Adds a new  `jsLibraryMappings.xml` file to configure &#10;  Javascript libraries.&#10;- Updates the `Project_Default.xml` file to include &#10;  `object-contain` as a known CSS property.&#10;- Refactors the workspace settings in `.idea/workspace.xml`,&#10;  updating the default account ID and other settings." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix: Correct TitlePage title case and adjust title font size (master)&#10;&#10;This commit includes the following changes:&#10;&#10;- Corrects the title case in the TitlePage component.&#10;- Adjusts the font size of the title in Title.astro.&#10;- Adds a new  `jsLibraryMappings.xml` file to configure &#10;  Javascript libraries.&#10;- Updates the `Project_Default.xml` file to include &#10;  `object-contain` as a known CSS property.&#10;- Refactors the workspace settings in `.idea/workspace.xml`,&#10;  updating the default account ID and other settings." />
+    <MESSAGE value="feat(README): Update Spanish README with project details and remove Vercel and Netlify badges" />
+    <MESSAGE value="feat: Remove Demo section and contributor list from README" />
+    <MESSAGE value="feat: Remove obsolete roadmap items from README" />
+    <MESSAGE value="feat: Update README with new project details and remove unused content" />
+    <MESSAGE value="docs: Remove profile header in README" />
+    <MESSAGE value="feat(README.md): Add 'Buy Me A Coffee' link" />
+    <MESSAGE value="feat: Add Buy Me A Coffee button to about page (#)&#10;&#10;Added a &quot;Buy Me A Coffee&quot; button to the about page to &#10;support the creation of more content and improve the blog." />
+    <MESSAGE value="feat: Add default theme in updateTheme function" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Add default theme in updateTheme function" />
   </component>
 </project>
