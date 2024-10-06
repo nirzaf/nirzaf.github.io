@@ -7,5 +7,6 @@ export const CATEGORIES = [
 	'Csharp',
 	'UI',
 	'Programming',
-	'Azure'
+	'Azure',
+	'O365'
 ] as const
