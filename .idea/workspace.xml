@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/images/categories/dotnet.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/categories/my_profile_pic.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CategoryList.astro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/categories.astro" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.astro" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/categories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/categories.ts" afterDir="false" />
-    </list>
+    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="feat: Add 'Categories' feature to the website" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -168,7 +159,7 @@
       <workItem from="1728032477938" duration="2437000" />
       <workItem from="1728247158468" duration="451000" />
       <workItem from="1728308912712" duration="284000" />
-      <workItem from="1728324549706" duration="4013000" />
+      <workItem from="1728324549706" duration="4462000" />
     </task>
     <task id="LOCAL-00001" summary="feat(blog): adds 5 new blog articles to the website">
       <option name="closed" value="true" />
@@ -514,7 +505,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728247544183</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="feat: Add 'Categories' feature to the website">
+      <option name="closed" value="true" />
+      <created>1728329740945</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1728329740945</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -536,7 +535,6 @@
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="fix(blog): Update publication date in profile" />
     <MESSAGE value="```&#10;feat(blog): Update publication date in profile&#10;&#10;Update publication date in profile.&#10;```" />
     <MESSAGE value="feat(pages/PostCard): refactor post card component layout and media queries" />
     <MESSAGE value="feat(components): update social media icons and links" />
@@ -561,7 +559,8 @@
     <MESSAGE value="feat: Add Buy Me A Coffee button to about page (#)&#10;&#10;Added a &quot;Buy Me A Coffee&quot; button to the about page to &#10;support the creation of more content and improve the blog." />
     <MESSAGE value="feat: Add default theme in updateTheme function" />
     <MESSAGE value="feat: Add blog post about MFA with Microsoft Authenticator (master)&#10;&#10;Added a new blog post explaining how to enable multi-factor &#10;authentication using the Microsoft Authenticator app for &#10;Office 365 accounts.  Also updated the categories data to &#10;include &quot;O365&quot; and added bootstrap and react-bootstrap &#10;packages." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Add blog post about MFA with Microsoft Authenticator (master)&#10;&#10;Added a new blog post explaining how to enable multi-factor &#10;authentication using the Microsoft Authenticator app for &#10;Office 365 accounts.  Also updated the categories data to &#10;include &quot;O365&quot; and added bootstrap and react-bootstrap &#10;packages." />
+    <MESSAGE value="feat: Add 'Categories' feature to the website" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Add 'Categories' feature to the website" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
