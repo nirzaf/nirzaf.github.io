@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/tailwind.config.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/categories/dotnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/categories/my_profile_pic.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CategoryList.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/categories.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/categories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/categories.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +61,7 @@
     </option>
   </component>
   <component name="GithubDefaultAccount">
-    <option name="defaultAccountId" value="5ed92374-9d5c-4123-b852-5f0a5c3534cf" />
+    <option name="defaultAccountId" value="46c7450c-fb8f-46b6-a86a-1710c0420240" />
   </component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
@@ -63,7 +70,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/THIS PC/RiderProjects/dotnetblogs/package.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/THIS PC/RiderProjects/dotnetblogs/tsconfig.json" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -80,33 +87,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.CodyAccountHistoryMigration&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.CodyAccountsIdsRefresh&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.CodyAssignOrphanedChatsToActiveAccount&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.CodyConvertUrlToCodebaseName&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.CodyHistoryLlmMigration&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.CodyMigrateChatHistory-v2&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.CodyProjectSettingsMigration&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ToggleCodyToolWindowAfterMigration&quot;: &quot;true&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.build.executor&quot;: &quot;Run&quot;,
-    &quot;npm.preview.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\THIS PC\\RiderProjects\\dotnetblogs\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.CodyAccountHistoryMigration": "true",
+    "RunOnceActivity.CodyAccountsIdsRefresh": "true",
+    "RunOnceActivity.CodyAssignOrphanedChatsToActiveAccount": "true",
+    "RunOnceActivity.CodyConvertUrlToCodebaseName": "true",
+    "RunOnceActivity.CodyHistoryLlmMigration": "true",
+    "RunOnceActivity.CodyMigrateChatHistory-v2": "true",
+    "RunOnceActivity.CodyProjectSettingsMigration": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.ToggleCodyToolWindowAfterMigration": "true",
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.build.executor": "Run",
+    "npm.preview.executor": "Run",
+    "npm.start.executor": "Run",
+    "settings.editor.selected.configurable": "com.github.copilot.settings.ApplicationConfigurable",
+    "ts.external.directory.path": "C:\\Users\\THIS PC\\RiderProjects\\dotnetblogs\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="npm.start">
     <configuration name="build" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -159,6 +166,9 @@
       <workItem from="1727860356589" duration="590000" />
       <workItem from="1727958533772" duration="6449000" />
       <workItem from="1728032477938" duration="2437000" />
+      <workItem from="1728247158468" duration="451000" />
+      <workItem from="1728308912712" duration="284000" />
+      <workItem from="1728324549706" duration="4013000" />
     </task>
     <task id="LOCAL-00001" summary="feat(blog): adds 5 new blog articles to the website">
       <option name="closed" value="true" />
@@ -496,7 +506,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728034366075</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="feat: Add blog post about MFA with Microsoft Authenticator (master)&#10;&#10;Added a new blog post explaining how to enable multi-factor &#10;authentication using the Microsoft Authenticator app for &#10;Office 365 accounts.  Also updated the categories data to &#10;include &quot;O365&quot; and added bootstrap and react-bootstrap &#10;packages.">
+      <option name="closed" value="true" />
+      <created>1728247544182</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1728247544183</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -518,7 +536,6 @@
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat: Remove unused blog post about WPF" />
     <MESSAGE value="fix(blog): Update publication date in profile" />
     <MESSAGE value="```&#10;feat(blog): Update publication date in profile&#10;&#10;Update publication date in profile.&#10;```" />
     <MESSAGE value="feat(pages/PostCard): refactor post card component layout and media queries" />
@@ -543,6 +560,11 @@
     <MESSAGE value="feat(README.md): Add 'Buy Me A Coffee' link" />
     <MESSAGE value="feat: Add Buy Me A Coffee button to about page (#)&#10;&#10;Added a &quot;Buy Me A Coffee&quot; button to the about page to &#10;support the creation of more content and improve the blog." />
     <MESSAGE value="feat: Add default theme in updateTheme function" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Add default theme in updateTheme function" />
+    <MESSAGE value="feat: Add blog post about MFA with Microsoft Authenticator (master)&#10;&#10;Added a new blog post explaining how to enable multi-factor &#10;authentication using the Microsoft Authenticator app for &#10;Office 365 accounts.  Also updated the categories data to &#10;include &quot;O365&quot; and added bootstrap and react-bootstrap &#10;packages." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Add blog post about MFA with Microsoft Authenticator (master)&#10;&#10;Added a new blog post explaining how to enable multi-factor &#10;authentication using the Microsoft Authenticator app for &#10;Office 365 accounts.  Also updated the categories data to &#10;include &quot;O365&quot; and added bootstrap and react-bootstrap &#10;packages." />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

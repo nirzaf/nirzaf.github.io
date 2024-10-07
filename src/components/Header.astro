@@ -26,6 +26,7 @@ const SOCIALNETWORKS = [
 <header class='relative flex items-center h-12 font-semibold justify-between'>
 	<div class='flex items-center gap-2'>
 		<a class='text-lg hidden md:inline' href='/'>Home</a>
+		<a class='text-lg hidden md:inline' href='/categories'>Categories</a>
 		<a class='text-lg hidden md:inline' href='/about'>About</a>
 	</div>
 
@@ -56,11 +57,12 @@ const SOCIALNETWORKS = [
 		class='shadow rounded-l-lg md:hidden bg-white dark:bg-[#0a0910] absolute transition-transform duration-300 ease-in translate-x-96 top-12 -right-5 pl-4 pt-6 pb-4 h-[300px] w-[200px] z-50'
 	>
 		<nav class='flex flex-col gap-4'>
-			<a href='/' class='text-2xl'>Home</a>
-			<a href='/about' class='text-2xl'>About</a>
+			<a href='/' class='text-xl'>Home</a>
+			<a href='/categories' class='text-xl'>Categories</a>
+			<a href='/about' class='text-xl'>About</a>
 			{SOCIALNETWORKS.map((network) => (
 				<HeaderLink href={network.url} target='_blank' aria-label={network.name}>
-					<span>{<network.icon />} {network.name}</span>
+					<span class="text-xl">{<network.icon />} {network.name}</span>
 				</HeaderLink>
 			))}
 		</nav>
