@@ -5,10 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="feat: Add freelancer profile section (master)&#10;&#10;Adds a freelancer profile section to the about page,&#10;including contact information and a link to hire the author&#10;on Freelancer.com.&#10;&#10;The section is styled to fit with the rest of the page&#10;and is responsive to different screen sizes.">
-      <change afterPath="$PROJECT_DIR$/src/assets/js/jquery.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/font-awesome.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/about.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/about.astro" afterDir="false" />
     </list>
@@ -183,7 +179,7 @@
       <workItem from="1728308912712" duration="284000" />
       <workItem from="1728324549706" duration="5065000" />
       <workItem from="1728407638847" duration="199000" />
-      <workItem from="1728407889552" duration="3371000" />
+      <workItem from="1728407889552" duration="4239000" />
     </task>
     <task id="LOCAL-00001" summary="feat(blog): adds 5 new blog articles to the website">
       <option name="closed" value="true" />
@@ -561,7 +557,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728413991494</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="feat: Add freelancer profile section (master)&#10;&#10;Adds a freelancer profile section to the about page,&#10;including contact information and a link to hire the author&#10;on Freelancer.com.&#10;&#10;The section is styled to fit with the rest of the page&#10;and is responsive to different screen sizes.">
+      <option name="closed" value="true" />
+      <created>1728414513849</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1728414513849</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
