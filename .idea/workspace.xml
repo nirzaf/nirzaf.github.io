@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="feat: Add freelancer profile section (master)&#10;&#10;Adds a freelancer profile section to the about page,&#10;including contact information and a link to hire the author&#10;on Freelancer.com.&#10;&#10;The section is styled to fit with the rest of the page&#10;and is responsive to different screen sizes.">
+    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/about.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/about.astro" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,15 +178,7 @@
       <workItem from="1728308912712" duration="284000" />
       <workItem from="1728324549706" duration="5065000" />
       <workItem from="1728407638847" duration="199000" />
-      <workItem from="1728407889552" duration="4239000" />
-    </task>
-    <task id="LOCAL-00001" summary="feat(blog): adds 5 new blog articles to the website">
-      <option name="closed" value="true" />
-      <created>1727796601714</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1727796601714</updated>
+      <workItem from="1728407889552" duration="5177000" />
     </task>
     <task id="LOCAL-00002" summary="feat(blog): removes old blog articles and updates footer copyright">
       <option name="closed" value="true" />
@@ -565,7 +556,23 @@
       <option name="project" value="LOCAL" />
       <updated>1728414513849</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="feat(about): add freelancer profile section">
+      <option name="closed" value="true" />
+      <created>1728415227043</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1728415227043</updated>
+    </task>
+    <task id="LOCAL-00050" summary="fix(about.astro): Remove unnecessary closing tag">
+      <option name="closed" value="true" />
+      <created>1728415251259</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1728415251260</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -587,8 +594,6 @@
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(components): update social media icons and links" />
-    <MESSAGE value="feat: Update title of Dotnet Blogs to DotNet Blogs in TitlePage component" />
     <MESSAGE value="feat: Update TwitterIcon SVG with new design" />
     <MESSAGE value="feat: add about link to header" />
     <MESSAGE value="refactor(icons): Remove unused xmlns:xlink from TwitterColorIcon" />
@@ -612,7 +617,9 @@
     <MESSAGE value="feat: Add 'Categories' feature to the website" />
     <MESSAGE value="feat: Add 'Categories' feature to the website (master)&#10;&#10;This commit adds the" />
     <MESSAGE value="feat: Add freelancer profile section (master)&#10;&#10;Adds a freelancer profile section to the about page,&#10;including contact information and a link to hire the author&#10;on Freelancer.com.&#10;&#10;The section is styled to fit with the rest of the page&#10;and is responsive to different screen sizes." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Add freelancer profile section (master)&#10;&#10;Adds a freelancer profile section to the about page,&#10;including contact information and a link to hire the author&#10;on Freelancer.com.&#10;&#10;The section is styled to fit with the rest of the page&#10;and is responsive to different screen sizes." />
+    <MESSAGE value="feat(about): add freelancer profile section" />
+    <MESSAGE value="fix(about.astro): Remove unnecessary closing tag" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix(about.astro): Remove unnecessary closing tag" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
