@@ -2,6 +2,7 @@
 import { siteConfig } from '@/site-config'
 import '../styles/global.css'
 import { ViewTransitions } from 'astro:transitions'
+import ConsentBanner from './ConsentBanner.astro'
 
 export interface Props {
 	title: string
@@ -115,5 +116,6 @@ import { AstroFont } from 'astro-font'
 		}
 	]}
 >
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5415404685631285" crossorigin="anonymous"></script>
 </AstroFont>
+
+<ConsentBanner />

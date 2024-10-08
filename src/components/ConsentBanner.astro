@@ -1,0 +1,96 @@
+---
+---
+<div id="consent-banner" class="fixed bottom-0 left-0 right-0 p-4 shadow-md hidden z-50 consent-banner">
+  <div class="container mx-auto max-w-4xl">
+    <p class="text-sm mb-2">
+      We value your privacy. This site uses cookies and similar technologies to personalize content, analyze traffic, and provide a better experience.
+    </p>
+    <p class="text-sm mb-2">
+      By clicking "Accept All", you consent to our use of cookies and the processing of your data as described in our <a href="/privacy-policy" class="text-blue-600 dark:text-blue-400 hover:underline">Privacy Policy</a>. 
+      You can manage your preferences or withdraw consent at any time by clicking "Cookie Settings".
+    </p>
+  </div>
+  <div class="flex justify-center space-x-4 mt-4">
+    <button id="cookie-settings" class="bg-gray-300 dark:bg-gray-600 text-gray-800 dark:text-gray-200 px-4 py-2 rounded hover:bg-gray-400 dark:hover:bg-gray-500">
+      Cookie Settings
+    </button>
+    <button id="accept-cookies" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700">
+      Accept All
+    </button>
+  </div>
+</div>
+
+<script>
+  const consentBanner = document.getElementById('consent-banner') as HTMLDivElement;
+  const acceptButton = document.getElementById('accept-cookies') as HTMLButtonElement;
+  const settingsButton = document.getElementById('cookie-settings') as HTMLButtonElement;
+
+  function showBanner() {
+    consentBanner.classList.remove('hidden');
+    document.body.classList.add('has-consent-banner');
+  }
+
+  function hideBanner() {
+    consentBanner.classList.add('hidden');
+    document.body.classList.remove('has-consent-banner');
+  }
+
+  function loadAdSense() {
+    const script = document.createElement('script');
+    script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5415404685631285";
+    script.async = true;
+    script.crossOrigin = "anonymous";
+    document.head.appendChild(script);
+  }
+
+  function updateTheme() {
+    const isDarkMode = document.documentElement.classList.contains('dark');
+    consentBanner.classList.toggle('dark', isDarkMode);
+  }
+
+  if (!localStorage.getItem('cookiesAccepted')) {
+    showBanner();
+  }
+
+  acceptButton.addEventListener('click', () => {
+    localStorage.setItem('cookiesAccepted', 'true');
+    hideBanner();
+    loadAdSense();
+  });
+
+  settingsButton.addEventListener('click', () => {
+    // Implement cookie settings functionality here
+    console.log('Cookie settings clicked');
+    // For now, we'll just redirect to the privacy policy page
+    window.location.href = '/privacy-policy';
+  });
+
+  // Check if consent was previously given
+  if (localStorage.getItem('cookiesAccepted') === 'true') {
+    loadAdSense();
+  }
+
+  // Initial theme setup
+  updateTheme();
+
+  // Watch for theme changes
+  const observer = new MutationObserver(updateTheme);
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+</script>
+
+<style>
+  .consent-banner {
+    background-color: rgba(var(--theme-surface-1-rgb), 0.95);
+    color: var(--theme-on-surface-1);
+    backdrop-filter: blur(5px);
+  }
+
+  .consent-banner.dark {
+    background-color: rgba(var(--theme-surface-2-rgb), 0.95);
+    color: var(--theme-on-surface-2);
+  }
+
+  body.has-consent-banner {
+    padding-bottom: 200px; /* Adjust this value based on your banner's height */
+  }
+</style>
