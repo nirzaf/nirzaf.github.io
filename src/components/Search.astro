@@ -1,10 +1,12 @@
 ---
 // Inspired by -> https://github.com/chrismwilliams/astro-theme-cactus/blob/main/src/components/Search.astro
+
 import '@pagefind/default-ui/css/ui.css'
 import SearchIcon from '@/components/icons/SearchIcon'
 ---
+
 <site-search id='search' class='ms-auto'>
-<button data-open-modal disabled class='flex items-center justify-center rounded-md gap-1'>
+<button data-open-modal class='flex items-center justify-center rounded-md gap-1'>
 <SearchIcon />
 <!-- <span class='md:hidden text-2xl'> Search</span> -->
 </button>
@@ -35,6 +37,7 @@ Try building and previewing the site to test it out locally.
 </div>
 </dialog>
 </site-search>
+
 <script>
 import { animate } from 'motion'
 class SiteSearch extends HTMLElement {
@@ -44,6 +47,7 @@ const openBtn = this.querySelector<HTMLButtonElement>('button[data-open-modal]')
 const closeBtn = this.querySelector<HTMLButtonElement>('button[data-close-modal]')!
 const dialog = this.querySelector('dialog')!
 const dialogFrame = this.querySelector('.dialog-frame')!
+
 const onWindowClick = (event: MouseEvent) => {
 // make sure the click is outside the of the dialog
 if (
@@ -60,6 +64,7 @@ window.removeEventListener('keydown', handleEscKey)
 }
 const openModal = (event?: MouseEvent) => {
 dialog.showModal()
+
 animate(
 'dialog',
 {
@@ -77,16 +82,19 @@ event?.stopPropagation()
 window.addEventListener('click', onWindowClick)
 window.addEventListener('keydown', handleEscKey)
 }
+
 const closeModal = () => {
 dialog.close()
 document.body.classList.remove('overflow-hidden')
 window.removeEventListener('click', onWindowClick)
 window.addEventListener('keydown', handleEscKey)
 }
+
 openBtn.addEventListener('click', openModal)
 openBtn.disabled = false
 closeBtn.addEventListener('click', closeModal)
 document.addEventListener('astro:after-swap', closeModal)
+
 // Listen for `/` keyboard shortcut
 window.addEventListener('keydown', (e) => {
 if (e.key === '/' && !dialog.open) {
@@ -94,6 +102,7 @@ openModal()
 e.preventDefault()
 }
 })
+
 window.addEventListener('DOMContentLoaded', () => {
 if (import.meta.env.DEV) return
 const onIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 1))
@@ -107,26 +116,13 @@ bundlePath: import.meta.env.BASE_URL.replace(/\/$/, '') + '/pagefind/',
 showImages: false
 })
 })
-
-// Automatically open the search modal after page reload
-openModal()
 })
-
-// Add a function to reload the page
-const reloadPage = () => {
-window.location.reload()
+}
 }
 
-// Add a button to reload the page
-const reloadBtn = document.createElement('button')
-reloadBtn.textContent = 'Reload Page'
-reloadBtn.addEventListener('click', reloadPage)
-reloadBtn.className = 'cursor-pointer rounded-full bg-black text-white px-4 py-2 dark:bg-white dark:text-black mt-4'
-dialogFrame.appendChild(reloadBtn)
-}
-}
 customElements.define('site-search', SiteSearch)
 </script>
+
 <style is:global>
 .dark {
 --pagefind-ui-primary: #eeeeee;
