@@ -37,17 +37,5 @@ const { title, description, image, articleDate } = Astro.props
 				margin-left: calc(100vw - 100%); /* prevent layout shift */
 			}
 		</style>
-		<script>
-			window.addEventListener('beforeunload', function () {
-				sessionStorage.setItem('refreshPage', 'true');
-			});
-
-			window.addEventListener('load', function () {
-				if (sessionStorage.getItem('refreshPage') === 'true') {
-					sessionStorage.removeItem('refreshPage');
-					location.reload();
-				}
-			});
-		</script>
 	</body>
 </html>
