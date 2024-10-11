@@ -6,7 +6,7 @@ import { remarkReadingTime } from './src/utils/readTime.ts'
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://nirzaf.gitlab.io/nirzaf',
+	site: 'https://dotnetevangelist.com',
 	trailingSlash: 'never',
 	markdown: {
 		remarkPlugins: [remarkReadingTime],
