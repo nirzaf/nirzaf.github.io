@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="" />
+    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="fix: fix tag formatting in blog post (master)&#10;&#10;Improved formatting of tags in the blog post.  Removed &#10;unnecessary commas.">
+      <change beforePath="$PROJECT_DIR$/src/content/blog/mastering-sql-the-power-of-sum-with-case-when.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/mastering-sql-the-power-of-sum-with-case-when.mdx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -176,14 +178,6 @@
       <workItem from="1728324549706" duration="5065000" />
       <workItem from="1728407638847" duration="199000" />
       <workItem from="1728407889552" duration="5177000" />
-    </task>
-    <task id="LOCAL-00002" summary="feat(blog): removes old blog articles and updates footer copyright">
-      <option name="closed" value="true" />
-      <created>1727800658083</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1727800658083</updated>
     </task>
     <task id="LOCAL-00003" summary="feat(TokenController): implement registration and login methods for JWT authentication">
       <option name="closed" value="true" />
@@ -569,7 +563,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728415251260</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="fix: fix tag formatting in blog post (master)&#10;&#10;Improved formatting of tags in the blog post.  Removed &#10;unnecessary commas.">
+      <option name="closed" value="true" />
+      <created>1728660324519</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1728660324519</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -591,7 +593,6 @@
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat: Update TwitterIcon SVG with new design" />
     <MESSAGE value="feat: add about link to header" />
     <MESSAGE value="refactor(icons): Remove unused xmlns:xlink from TwitterColorIcon" />
     <MESSAGE value="feat: implement responsive resume page with detailed information" />
@@ -616,7 +617,8 @@
     <MESSAGE value="feat: Add freelancer profile section (master)&#10;&#10;Adds a freelancer profile section to the about page,&#10;including contact information and a link to hire the author&#10;on Freelancer.com.&#10;&#10;The section is styled to fit with the rest of the page&#10;and is responsive to different screen sizes." />
     <MESSAGE value="feat(about): add freelancer profile section" />
     <MESSAGE value="fix(about.astro): Remove unnecessary closing tag" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix(about.astro): Remove unnecessary closing tag" />
+    <MESSAGE value="fix: fix tag formatting in blog post (master)&#10;&#10;Improved formatting of tags in the blog post.  Removed &#10;unnecessary commas." />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: fix tag formatting in blog post (master)&#10;&#10;Improved formatting of tags in the blog post.  Removed &#10;unnecessary commas." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
