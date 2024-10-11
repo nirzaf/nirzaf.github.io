@@ -1,6 +1,4 @@
 ---
-// Inspired by -> https://github.com/chrismwilliams/astro-theme-cactus/blob/main/src/components/Search.astro
-
 import '@pagefind/default-ui/css/ui.css'
 import SearchIcon from '@/components/icons/SearchIcon'
 ---
@@ -18,7 +16,7 @@ import SearchIcon from '@/components/icons/SearchIcon'
 			<button
 				data-close-modal
 				class='ms-auto cursor-pointer rounded-full bg-black text-white px-4 py-2 dark:bg-white dark:text-black'
-				>Close
+			>Close
 			</button>
 			{
 				import.meta.env.DEV ? (
@@ -40,99 +38,98 @@ import SearchIcon from '@/components/icons/SearchIcon'
 
 <script>
 	import { animate } from 'motion'
-		class SiteSearch extends HTMLElement {
-			constructor() {
-				super()
-				const openBtn = this.querySelector<HTMLButtonElement>('button[data-open-modal]')!
-				const closeBtn = this.querySelector<HTMLButtonElement>('button[data-close-modal]')!
-				const dialog = this.querySelector('dialog')!
-				const dialogFrame = this.querySelector('.dialog-frame')!
+	class SiteSearch extends HTMLElement {
+		constructor() {
+			super()
+			const openBtn = this.querySelector<HTMLButtonElement>('button[data-open-modal]')!
+			const closeBtn = this.querySelector<HTMLButtonElement>('button[data-close-modal]')!
+			const dialog = this.querySelector('dialog')!
+			const dialogFrame = this.querySelector('.dialog-frame')!
 
-				const onWindowClick = (event: MouseEvent) => {
-					// make sure the click is outside the of the dialog
-					if (
-						document.body.contains(event.target as Node) &&
-						!dialogFrame.contains(event.target as Node)
-					)
-						closeModal()
-				}
-				const handleEscKey = (e: KeyboardEvent) => {
-					if (e.key === 'Escape' && dialog.open) {
-						closeModal()
-						window.removeEventListener('keydown', handleEscKey)
-					} else return
-				}
-				const openModal = (event?: MouseEvent) => {
-					dialog.showModal()
+			const onWindowClick = (event: MouseEvent) => {
+				// make sure the click is outside the of the dialog
+				if (
+					document.body.contains(event.target as Node) &&
+					!dialogFrame.contains(event.target as Node)
+				)
+					closeModal()
+			}
+			const handleEscKey = (e: KeyboardEvent) => {
+				if (e.key === 'Escape' && dialog.open) {
+					closeModal()
+					window.removeEventListener('keydown', handleEscKey)
+				} else return
+			}
+			const openModal = (event?: MouseEvent) => {
+				dialog.showModal()
 
-					animate(
-						'dialog',
-						{
-							clipPath: [
-								'polygon(0 0, 100% 0, 100% -200%, -200% -200%)',
-								'polygon(0 0, 100% 0, 100% 100%, 0% 100%)'
-							],
-							opacity: [0, 1]
-						},
-						{ duration: 0.2 }
-					)
-					document.body.classList.add('overflow-hidden')
-					this.querySelector('input')?.focus()
-					event?.stopPropagation()
-					window.addEventListener('click', onWindowClick)
-					window.addEventListener('keydown', handleEscKey)
-				}
-
-				const closeModal = () => {
-					dialog.close()
-					document.body.classList.remove('overflow-hidden')
-					window.removeEventListener('click', onWindowClick)
-					window.addEventListener('keydown', handleEscKey)
-				}
-
-				openBtn.addEventListener('click', openModal)
-				openBtn.disabled = false
-				closeBtn.addEventListener('click', closeModal)
-				document.addEventListener('astro:after-swap', closeModal)
-
-				// Listen for `/` keyboard shortcut
-				window.addEventListener('keydown', (e) => {
-					if (e.key === '/' && !dialog.open) {
-						openModal()
-						e.preventDefault()
-					}
-				})
-
-				this.initSearch()
-
-				// Add this line to reinitialize search after navigation
-				document.addEventListener('astro:page-load', () => this.initSearch())
+				animate(
+					'dialog',
+					{
+						clipPath: [
+							'polygon(0 0, 100% 0, 100% -200%, -200% -200%)',
+							'polygon(0 0, 100% 0, 100% 100%, 0% 100%)'
+						],
+						opacity: [0, 1]
+					},
+					{ duration: 0.2 }
+				)
+				document.body.classList.add('overflow-hidden')
+				this.querySelector('input')?.focus()
+				event?.stopPropagation()
+				window.addEventListener('click', onWindowClick)
+				window.addEventListener('keydown', handleEscKey)
 			}
 
-			initSearch() {
-				if (import.meta.env.DEV) return
-				const onIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 1))
-				onIdle(async () => {
-					const { PagefindUI } = await import('@pagefind/default-ui')
-					new PagefindUI({
-						element: '#pagefind__search',
-						baseUrl: import.meta.env.BASE_URL,
-						bundlePath: import.meta.env.BASE_URL.replace(/\/$/, '') + '/pagefind/',
-						showImages: false
-					})
-				})
+			const closeModal = () => {
+				dialog.close()
+				document.body.classList.remove('overflow-hidden')
+				window.removeEventListener('click', onWindowClick)
+				window.addEventListener('keydown', handleEscKey)
 			}
+
+			openBtn.addEventListener('click', openModal)
+			openBtn.disabled = false
+			closeBtn.addEventListener('click', closeModal)
+			document.addEventListener('astro:after-swap', closeModal)
+
+			// Listen for `/` keyboard shortcut
+			window.addEventListener('keydown', (e) => {
+				if (e.key === '/' && !dialog.open) {
+					openModal()
+					e.preventDefault()
+				}
+			})
+
+			this.initSearch()
+
+			// Add this line to reinitialize search after navigation
+			document.addEventListener('astro:page-load', () => this.initSearch())
+		}
+
+		initSearch() {
+			if (import.meta.env.DEV) return
+			const onIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 1))
+			onIdle(async () => {
+				const { PagefindUI } = await import('@pagefind/default-ui')
+				new (PagefindUI as any)({
+					element: '#pagefind__search',
+					baseUrl: import.meta.env.BASE_URL,
+					bundlePath: import.meta.env.BASE_URL.replace(/\/$/, '') + '/pagefind/',
+					showImages: false
+				})
+			})
+		}
 	}
-
 	customElements.define('site-search', SiteSearch)
 </script>
 
 <style is:global>
-	.dark {
-		--pagefind-ui-primary: #eeeeee;
-		--pagefind-ui-text: #eeeeee;
-		--pagefind-ui-background: #152028;
-		--pagefind-ui-border: #152028;
-		--pagefind-ui-tag: #152028;
-	}
+    .dark {
+        --pagefind-ui-primary: #eeeeee;
+        --pagefind-ui-text: #eeeeee;
+        --pagefind-ui-background: #152028;
+        --pagefind-ui-border: #152028;
+        --pagefind-ui-tag: #152028;
+    }
 </style>
