@@ -4,7 +4,6 @@ import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
 import { remarkReadingTime } from './src/utils/readTime.ts'
 
-// https://astro.build/config
 export default defineConfig({
 	site: 'https://dotnetevangelist.com',
 	trailingSlash: 'never',
