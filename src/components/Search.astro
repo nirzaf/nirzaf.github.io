@@ -104,13 +104,28 @@ import SearchIcon from '@/components/icons/SearchIcon'
 			this.initSearch()
 
 			// Add this line to reinitialize search after navigation
-			document.addEventListener('astro:page-load', () => this.initSearch())
+			document.addEventListener('astro:page-load', () => {
+				this.initSearch()
+				// Re-attach event listeners
+				const openBtn = this.querySelector<HTMLButtonElement>('button[data-open-modal]')
+				if (openBtn) {
+					openBtn.addEventListener('click', this.openModal.bind(this))
+					openBtn.disabled = false
+				}
+			})
+
+			this.openModal = openModal.bind(this)
 		}
 
 		initSearch() {
 			if (import.meta.env.DEV) return
 			const onIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 1))
 			onIdle(async () => {
+				const searchContainer = document.getElementById('pagefind__search')
+				if (searchContainer) {
+					// Clear existing content
+					searchContainer.innerHTML = ''
+				}
 				const { PagefindUI } = await import('@pagefind/default-ui')
 				new (PagefindUI as any)({
 					element: '#pagefind__search',
@@ -119,6 +134,10 @@ import SearchIcon from '@/components/icons/SearchIcon'
 					showImages: false
 				})
 			})
+		}
+
+		openModal() {
+			// Implement the modal opening logic here
 		}
 	}
 	customElements.define('site-search', SiteSearch)
@@ -133,3 +152,4 @@ import SearchIcon from '@/components/icons/SearchIcon'
         --pagefind-ui-tag: #152028;
     }
 </style>
+
