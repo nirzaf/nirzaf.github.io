@@ -22,10 +22,10 @@
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
-		"build": "astro build --vercel",
+		"build": "astro build",
 		"sync": "astro sync",
 		"preview": "astro preview",
-		"postbuild": "pagefind --site .vercel/output/static",
+		"postbuild": "pagefind --site dist",
 		"format:check": "prettier --plugin-search-dir=. --check .",
 		"format": "prettier --plugin-search-dir=. --write .",
 		"lint": "eslint .",
