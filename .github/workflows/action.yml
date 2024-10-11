@@ -22,20 +22,32 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Create backup branch
+        run: |
+          timestamp=$(date +"%Y%m%d%H%M%S")
+          git checkout -b master-backup-$timestamp
+          git push origin master-backup-$timestamp
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20.x"
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
+
       - name: Install dependencies
         run: npm install
+
       - name: Install dependencies (clean)
         run: npm ci
+
       - name: Build with Astro
         run: npm run build
         env:
           GITHUB_PAGES: true
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
