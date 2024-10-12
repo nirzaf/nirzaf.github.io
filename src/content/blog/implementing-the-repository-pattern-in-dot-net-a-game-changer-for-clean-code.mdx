@@ -9,27 +9,31 @@ tags: ['.NET', 'C#', 'Design Patterns', 'Clean Code']
 authors: ['author']
 ---
 
-In software development, particularly with .NET, the repository pattern can be a transformative tool for managing complex codebases. It simplifies data access logic, keeps the code clean, and ensures better organization in larger applications. Let’s dive into what a repository is, why it’s beneficial, and how to use it in your .NET applications.
+import { Image } from 'astro:assets';
 
-### What is a Repository?
+# Implementing the Repository Pattern in .NET: A Game-Changer for Clean Code
+
+In software development, particularly with .NET, the repository pattern can be a transformative tool for managing complex codebases. It simplifies data access logic, keeps the code clean, and ensures better organization in larger applications. Let's dive into what a repository is, why it's beneficial, and how to use it in your .NET applications.
+
+## What is a Repository?
 
 Think of a repository as a middleman between your application and the database. Instead of embedding database access code all over your application, you centralize it in a repository. This not only keeps your code more organized but also abstracts the details of data access, allowing you to focus on the business logic.
 
 In this article, we'll implement a repository pattern to manage **CRUD** (Create, Read, Update, Delete) operations for a game character in a .NET application using **Entity Framework**.
 
-### Setting Up the Project
+## Setting Up the Project
 
-We’re using **ASP.NET Core Web API** with **Entity Framework Core** for this project. The project already includes:
+We're using **ASP.NET Core Web API** with **Entity Framework Core** for this project. The project already includes:
 
 - A **GameCharacter** entity representing a game character.
 - A **GameContext** class for the Entity Framework Core database context.
 - A **connection string** and **code-first migration** setup.
 
-Now, let’s organize the data access code with a repository pattern.
+Now, let's organize the data access code with a repository pattern.
 
-### Step 1: Define the Repository Interface
+## Step 1: Define the Repository Interface
 
-We'll start by creating an interface that defines the repository’s capabilities. This interface will act as a contract for any class implementing the repository.
+We'll start by creating an interface that defines the repository's capabilities. This interface will act as a contract for any class implementing the repository.
 
 ```csharp
 public interface IGameCharacterRepository
@@ -47,6 +51,7 @@ public interface IGameCharacterRepository
 Next, we’ll create the `GameCharacterRepository` class that implements the `IGameCharacterRepository` interface. This class will handle data access via Entity Framework.
 
 ```csharp
+
 public class GameCharacterRepository : IGameCharacterRepository
 {
     private readonly GameContext _context;
@@ -95,6 +100,7 @@ public class GameCharacterRepository : IGameCharacterRepository
         _context.SaveChanges();
     }
 }
+
 ```
 
 ### Step 3: Use Dependency Injection
@@ -102,7 +108,9 @@ public class GameCharacterRepository : IGameCharacterRepository
 In **ASP.NET Core**, we can inject services like the `GameCharacterRepository` into the controllers through **Dependency Injection**. First, register the repository in `Program.cs`.
 
 ```csharp
+
 builder.Services.AddScoped<IGameCharacterRepository, GameCharacterRepository>();
+
 ```
 
 This tells the application to inject the `GameCharacterRepository` whenever `IGameCharacterRepository` is required.
@@ -112,6 +120,7 @@ This tells the application to inject the `GameCharacterRepository` whenever `IGa
 The final step is to use this repository in our controller. Let’s create an `APIController` to handle requests related to game characters.
 
 ```csharp
+
 [ApiController]
 [Route("api/[controller]")]
 public class GameCharactersController : ControllerBase
@@ -160,6 +169,7 @@ public class GameCharactersController : ControllerBase
         return NoContent();
     }
 }
+
 ```
 
 ### Benefits of the Repository Pattern
