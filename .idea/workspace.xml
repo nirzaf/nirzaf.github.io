@@ -89,34 +89,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.CodyAccountHistoryMigration": "true",
-    "RunOnceActivity.CodyAccountsIdsRefresh": "true",
-    "RunOnceActivity.CodyAssignOrphanedChatsToActiveAccount": "true",
-    "RunOnceActivity.CodyConvertUrlToCodebaseName": "true",
-    "RunOnceActivity.CodyHistoryLlmMigration": "true",
-    "RunOnceActivity.CodyMigrateChatHistory-v2": "true",
-    "RunOnceActivity.CodyProjectSettingsMigration": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.ToggleCodyToolWindowAfterMigration": "true",
-    "com.codeium.enabled": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.build.executor": "Run",
-    "npm.preview.executor": "Run",
-    "npm.start.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\THIS PC\\RiderProjects\\dotnetblogs\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "co.fitten.llmintellij.LlmSettingsConfigurable",
-    "ts.external.directory.path": "C:\\Users\\THIS PC\\RiderProjects\\dotnetblogs\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.CodyAccountHistoryMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyAccountsIdsRefresh&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyAssignOrphanedChatsToActiveAccount&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyConvertUrlToCodebaseName&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyHistoryLlmMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyMigrateChatHistory-v2&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyProjectSettingsMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ToggleCodyToolWindowAfterMigration&quot;: &quot;true&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.preview.executor&quot;: &quot;Run&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\THIS PC\\RiderProjects\\dotnetblogs\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;co.fitten.llmintellij.LlmSettingsConfigurable&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\THIS PC\\RiderProjects\\dotnetblogs\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="npm.build">
     <configuration name="build" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -183,22 +183,7 @@
       <workItem from="1728407889552" duration="5177000" />
       <workItem from="1728667601049" duration="137000" />
       <workItem from="1728667848920" duration="13893000" />
-    </task>
-    <task id="LOCAL-00017" summary="feat: Remove unused blog post about WPF">
-      <option name="closed" value="true" />
-      <created>1727812754578</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1727812754578</updated>
-    </task>
-    <task id="LOCAL-00018" summary="feat: Remove unused blog post about WPF">
-      <option name="closed" value="true" />
-      <created>1727812983510</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1727812983510</updated>
+      <workItem from="1728722791060" duration="2748000" />
     </task>
     <task id="LOCAL-00019" summary="fix(blog): Update publication date in profile">
       <option name="closed" value="true" />
@@ -576,7 +561,23 @@
       <option name="project" value="LOCAL" />
       <updated>1728688549231</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="feat: Add blog post about Repository Pattern in .NET&#10;&#10;This commit adds a new blog post explaining the &#10;Repository Pattern in .NET, including code &#10;examples and best practices.  The post covers &#10;defining interfaces, implementing repositories, &#10;and using dependency injection.">
+      <option name="closed" value="true" />
+      <created>1728724620978</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1728724620979</updated>
+    </task>
+    <task id="LOCAL-00067" summary="feat: Update 'implementing-the-repository-pattern-in-dot-net-a-game-changer-for-clean-code' blog with improved structure and added code snippets.">
+      <option name="closed" value="true" />
+      <created>1728725078544</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1728725078544</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -598,8 +599,6 @@
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="docs: Remove profile header in README" />
-    <MESSAGE value="feat(README.md): Add 'Buy Me A Coffee' link" />
     <MESSAGE value="feat: Add Buy Me A Coffee button to about page (#)&#10;&#10;Added a &quot;Buy Me A Coffee&quot; button to the about page to &#10;support the creation of more content and improve the blog." />
     <MESSAGE value="feat: Add default theme in updateTheme function" />
     <MESSAGE value="feat: Add blog post about MFA with Microsoft Authenticator (master)&#10;&#10;Added a new blog post explaining how to enable multi-factor &#10;authentication using the Microsoft Authenticator app for &#10;Office 365 accounts.  Also updated the categories data to &#10;include &quot;O365&quot; and added bootstrap and react-bootstrap &#10;packages." />
@@ -623,7 +622,9 @@
     <MESSAGE value="feat: Add Google AdSense script to BaseHead (master)&#10;&#10;Adds Google AdSense script to the `&lt;head&gt;` section for &#10;monetization purposes.  The script is added asynchronously &#10;to avoid blocking page rendering." />
     <MESSAGE value="feat: Add Google AdSense to header and index page&#10;&#10;Adds Google AdSense script to the header and index &#10;page for monetization.  The script is included &#10;asynchronously to avoid blocking page rendering." />
     <MESSAGE value="```&#10;feat: Update package-lock.json (master)&#10;&#10;Update various packages to their latest versions.  This &#10;includes updates to @babel packages, @rollup packages, &#10;@types/node, and several other dependencies.  No &#10;functional changes are expected.&#10;```" />
-    <option name="LAST_COMMIT_MESSAGE" value="```&#10;feat: Update package-lock.json (master)&#10;&#10;Update various packages to their latest versions.  This &#10;includes updates to @babel packages, @rollup packages, &#10;@types/node, and several other dependencies.  No &#10;functional changes are expected.&#10;```" />
+    <MESSAGE value="feat: Add blog post about Repository Pattern in .NET&#10;&#10;This commit adds a new blog post explaining the &#10;Repository Pattern in .NET, including code &#10;examples and best practices.  The post covers &#10;defining interfaces, implementing repositories, &#10;and using dependency injection." />
+    <MESSAGE value="feat: Update 'implementing-the-repository-pattern-in-dot-net-a-game-changer-for-clean-code' blog with improved structure and added code snippets." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Update 'implementing-the-repository-pattern-in-dot-net-a-game-changer-for-clean-code' blog with improved structure and added code snippets." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
