@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="fix: fix tag formatting in blog post (master)&#10;&#10;Improved formatting of tags in the blog post.  Removed &#10;unnecessary commas.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="bc0ef056-2531-4deb-a799-cb519baa3441" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,7 +67,12 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/THIS PC/RiderProjects/dotnetblogs/tsconfig.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/THIS PC/RiderProjects/dotnetblogs/package-lock.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/package-lock.json" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/THIS PC/RiderProjects/dotnetblogs/package-lock.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/THIS PC/RiderProjects/dotnetblogs/package.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/THIS PC/RiderProjects/dotnetblogs/package.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/THIS PC/RiderProjects/dotnetblogs/package.json" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -109,7 +112,7 @@
     "npm.preview.executor": "Run",
     "npm.start.executor": "Run",
     "prettierjs.PrettierConfiguration.Package": "C:\\Users\\THIS PC\\RiderProjects\\dotnetblogs\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "settings.codegpt.services.custom",
+    "settings.editor.selected.configurable": "co.fitten.llmintellij.LlmSettingsConfigurable",
     "ts.external.directory.path": "C:\\Users\\THIS PC\\RiderProjects\\dotnetblogs\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -179,118 +182,7 @@
       <workItem from="1728407638847" duration="199000" />
       <workItem from="1728407889552" duration="5177000" />
       <workItem from="1728667601049" duration="137000" />
-    </task>
-    <task id="LOCAL-00003" summary="feat(TokenController): implement registration and login methods for JWT authentication">
-      <option name="closed" value="true" />
-      <created>1727801604390</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1727801604390</updated>
-    </task>
-    <task id="LOCAL-00004" summary="feat(blog): update hero image for Blazor WebAssembly JWT post">
-      <option name="closed" value="true" />
-      <created>1727801792008</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1727801792008</updated>
-    </task>
-    <task id="LOCAL-00005" summary="feat(blog): update Angular, Bootstrap and Firebase versions (master)&#10;&#10;This commit updates the blog post about building an Angular project with Bootstrap and Firebase to reflect the latest versions of each technology:&#10;&#10;- Angular 17&#10;- Bootstrap 5&#10;- Firebase 9&#10;&#10;It also includes updates to the code examples, explanations, and screenshots to ensure accuracy and relevance.">
-      <option name="closed" value="true" />
-      <created>1727802579379</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1727802579379</updated>
-    </task>
-    <task id="LOCAL-00006" summary="feat(blog): update blog posts and hero images (master)&#10;&#10;This commit updates the following blog posts:&#10;&#10;- Building Windows App With Wpf: Updated the hero image.&#10;- Csharp Dictionaries: Updated the hero image and added a &#10;  section about Immutable Dictionaries.&#10;&#10;The updates aim to enhance the visual appeal and provide &#10;more comprehensive information to the readers.">
-      <option name="closed" value="true" />
-      <created>1727809101507</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1727809101507</updated>
-    </task>
-    <task id="LOCAL-00007" summary="feat(blog): update blog categories and post metadata (master)&#10;&#10;This commit introduces several updates to blog posts and categories:&#10;&#10;- Updates hero images for blog posts: &quot;Building Windows App With&#10;  Wpf&quot; and &quot;Csharp Dictionaries&quot;.&#10;- Adds a new section about Immutable Dictionaries to the &quot;Csharp&#10;  Dictionaries&quot; blog post.&#10;- Updates the blog categories to better reflect the content.&#10;- Updates the &quot;How to Use Redis Caching With ASP.NET Core and .NET&#10;  7&quot; blog post to improve readability.&#10;&#10;These updates aim to enhance the blog's organization, visual&#10;appeal, and provide more comprehensive information to readers.">
-      <option name="closed" value="true" />
-      <created>1727809623393</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1727809623393</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Updates blog post category for the Sidecar pattern.">
-      <option name="closed" value="true" />
-      <created>1727810017044</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1727810017044</updated>
-    </task>
-    <task id="LOCAL-00009" summary="feat(blog): Update Redis Caching article for .NET 8 (master)&#10;&#10;This commit updates the &quot;How to Use Redis Caching With ASP.NET&#10;Core and .NET 7&quot; blog post to reflect the latest changes in .NET 8.&#10;&#10;The updated article now:&#10;&#10;- Targets .NET 8 and updates code examples accordingly.&#10;- Uses the `Microsoft.Extensions.Caching.StackExchangeRedis`&#10;  package.&#10;- Configures Redis in `Program.cs` instead of `Startup.cs`.&#10;- Includes a new section on advanced Redis caching techniques&#10;  such as serialization, distributed locking, and cache&#10;  invalidation strategies.&#10;- Updates the screenshots and references.&#10;&#10;These updates provide a comprehensive guide for using Redis&#10;caching with ASP.NET Core and .NET 8.">
-      <option name="closed" value="true" />
-      <created>1727810317592</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1727810317592</updated>
-    </task>
-    <task id="LOCAL-00010" summary="feat(blog): Update Redis Caching article for .NET 8">
-      <option name="closed" value="true" />
-      <created>1727810690381</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1727810690382</updated>
-    </task>
-    <task id="LOCAL-00011" summary="feat: Update site metadata and author information (#)&#10;&#10;This commit updates the site metadata, including the author name,&#10;site title, and description. The changes provide accurate and&#10;informative details about the site and its content.">
-      <option name="closed" value="true" />
-      <created>1727811293246</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1727811293246</updated>
-    </task>
-    <task id="LOCAL-00012" summary="feat: Update pagination size to 9 posts per page">
-      <option name="closed" value="true" />
-      <created>1727811433767</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1727811433767</updated>
-    </task>
-    <task id="LOCAL-00013" summary="fix(blog): update heroImage path in building-windows-app-with-wpf.mdx">
-      <option name="closed" value="true" />
-      <created>1727812007342</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1727812007342</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Please provide the diff so I can write an appropriate commit message.">
-      <option name="closed" value="true" />
-      <created>1727812487807</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1727812487807</updated>
-    </task>
-    <task id="LOCAL-00015" summary="fix(blog): Update heroImage path in building-windows-app-with-wpf.mdx">
-      <option name="closed" value="true" />
-      <created>1727812633819</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1727812633819</updated>
-    </task>
-    <task id="LOCAL-00016" summary="refactor(blog): correct grammar in factory design pattern description">
-      <option name="closed" value="true" />
-      <created>1727812705095</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1727812705095</updated>
+      <workItem from="1728667848920" duration="13893000" />
     </task>
     <task id="LOCAL-00017" summary="feat: Remove unused blog post about WPF">
       <option name="closed" value="true" />
@@ -572,7 +464,119 @@
       <option name="project" value="LOCAL" />
       <updated>1728660324519</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="feat: updates blog site and moves blog-template.mdx to src/content/blog">
+      <option name="closed" value="true" />
+      <created>1728670369463</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1728670369464</updated>
+    </task>
+    <task id="LOCAL-00053" summary="```&#10;chore: update dependencies (master)&#10;&#10;Update Astro and related dependencies to their latest &#10;versions.  This includes updates to @astrojs/mdx, &#10;@astrojs/rss, @astrojs/sitemap, @astrojs/tailwind, &#10;and other packages.&#10;```">
+      <option name="closed" value="true" />
+      <created>1728674329656</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1728674329656</updated>
+    </task>
+    <task id="LOCAL-00054" summary="feat(backup): add automated backup branch creation">
+      <option name="closed" value="true" />
+      <created>1728675437849</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1728675437849</updated>
+    </task>
+    <task id="LOCAL-00055" summary="feat: Update config for AstroJS site">
+      <option name="closed" value="true" />
+      <created>1728675648304</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1728675648304</updated>
+    </task>
+    <task id="LOCAL-00056" summary="feat: remove unnecessary comment in astro.config.mjs (#123)&#10;&#10;This commit removes a now unnecessary comment from &#10;the `astro.config.mjs` file.  The comment was &#10;unnecessary and the configuration is clear without it.">
+      <option name="closed" value="true" />
+      <created>1728675666326</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1728675666326</updated>
+    </task>
+    <task id="LOCAL-00057" summary="feat(ops): Move backup branch creation to setup Node action">
+      <option name="closed" value="true" />
+      <created>1728675815710</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1728675815711</updated>
+    </task>
+    <task id="LOCAL-00058" summary="feat: refactor Search component structure">
+      <option name="closed" value="true" />
+      <created>1728677452237</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1728677452237</updated>
+    </task>
+    <task id="LOCAL-00059" summary="feat: Refactor Search component for better readability and maintainability">
+      <option name="closed" value="true" />
+      <created>1728679769615</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1728679769615</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Fix: Re-attach event listeners after navigation (master)&#10;&#10;Improved the `astro:page-load` event listener to &#10;re-attach event listeners after navigation, &#10;ensuring proper functionality.  Added error &#10;handling and cleared existing search content &#10;before initializing PagefindUI.  Added a placeholder&#10;for `openModal` function.">
+      <option name="closed" value="true" />
+      <created>1728680480628</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1728680480628</updated>
+    </task>
+    <task id="LOCAL-00061" summary="image updated">
+      <option name="closed" value="true" />
+      <created>1728681997726</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1728681997726</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Updates sitemap URL to dotnetevangelist.com.">
+      <option name="closed" value="true" />
+      <created>1728682416842</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1728682416842</updated>
+    </task>
+    <task id="LOCAL-00063" summary="feat: Add Google AdSense script to BaseHead (master)&#10;&#10;Adds Google AdSense script to the `&lt;head&gt;` section for &#10;monetization purposes.  The script is added asynchronously &#10;to avoid blocking page rendering.">
+      <option name="closed" value="true" />
+      <created>1728687655184</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1728687655184</updated>
+    </task>
+    <task id="LOCAL-00064" summary="feat: Add Google AdSense to header and index page&#10;&#10;Adds Google AdSense script to the header and index &#10;page for monetization.  The script is included &#10;asynchronously to avoid blocking page rendering.">
+      <option name="closed" value="true" />
+      <created>1728688016160</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1728688016160</updated>
+    </task>
+    <task id="LOCAL-00065" summary="```&#10;feat: Update package-lock.json (master)&#10;&#10;Update various packages to their latest versions.  This &#10;includes updates to @babel packages, @rollup packages, &#10;@types/node, and several other dependencies.  No &#10;functional changes are expected.&#10;```">
+      <option name="closed" value="true" />
+      <created>1728688549231</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1728688549231</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -594,20 +598,6 @@
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat: add about link to header" />
-    <MESSAGE value="refactor(icons): Remove unused xmlns:xlink from TwitterColorIcon" />
-    <MESSAGE value="feat: implement responsive resume page with detailed information" />
-    <MESSAGE value="feat: Update resume with formatted project details" />
-    <MESSAGE value="refactor(pages): remove unnecessary line breaks in HTML" />
-    <MESSAGE value="refactor(pages): update CSS inheritance" />
-    <MESSAGE value="feat(Footer): Refactor footer content layout" />
-    <MESSAGE value="fix: correct TitlePage title case" />
-    <MESSAGE value="fix(Title.astro): Adjusted font size of title" />
-    <MESSAGE value="Fix: Correct TitlePage title case and adjust title font size (master)&#10;&#10;This commit includes the following changes:&#10;&#10;- Corrects the title case in the TitlePage component.&#10;- Adjusts the font size of the title in Title.astro.&#10;- Adds a new  `jsLibraryMappings.xml` file to configure &#10;  Javascript libraries.&#10;- Updates the `Project_Default.xml` file to include &#10;  `object-contain` as a known CSS property.&#10;- Refactors the workspace settings in `.idea/workspace.xml`,&#10;  updating the default account ID and other settings." />
-    <MESSAGE value="feat(README): Update Spanish README with project details and remove Vercel and Netlify badges" />
-    <MESSAGE value="feat: Remove Demo section and contributor list from README" />
-    <MESSAGE value="feat: Remove obsolete roadmap items from README" />
-    <MESSAGE value="feat: Update README with new project details and remove unused content" />
     <MESSAGE value="docs: Remove profile header in README" />
     <MESSAGE value="feat(README.md): Add 'Buy Me A Coffee' link" />
     <MESSAGE value="feat: Add Buy Me A Coffee button to about page (#)&#10;&#10;Added a &quot;Buy Me A Coffee&quot; button to the about page to &#10;support the creation of more content and improve the blog." />
@@ -619,7 +609,21 @@
     <MESSAGE value="feat(about): add freelancer profile section" />
     <MESSAGE value="fix(about.astro): Remove unnecessary closing tag" />
     <MESSAGE value="fix: fix tag formatting in blog post (master)&#10;&#10;Improved formatting of tags in the blog post.  Removed &#10;unnecessary commas." />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: fix tag formatting in blog post (master)&#10;&#10;Improved formatting of tags in the blog post.  Removed &#10;unnecessary commas." />
+    <MESSAGE value="feat: updates blog site and moves blog-template.mdx to src/content/blog" />
+    <MESSAGE value="```&#10;chore: update dependencies (master)&#10;&#10;Update Astro and related dependencies to their latest &#10;versions.  This includes updates to @astrojs/mdx, &#10;@astrojs/rss, @astrojs/sitemap, @astrojs/tailwind, &#10;and other packages.&#10;```" />
+    <MESSAGE value="feat(backup): add automated backup branch creation" />
+    <MESSAGE value="feat: Update config for AstroJS site" />
+    <MESSAGE value="feat: remove unnecessary comment in astro.config.mjs (#123)&#10;&#10;This commit removes a now unnecessary comment from &#10;the `astro.config.mjs` file.  The comment was &#10;unnecessary and the configuration is clear without it." />
+    <MESSAGE value="feat(ops): Move backup branch creation to setup Node action" />
+    <MESSAGE value="feat: refactor Search component structure" />
+    <MESSAGE value="feat: Refactor Search component for better readability and maintainability" />
+    <MESSAGE value="Fix: Re-attach event listeners after navigation (master)&#10;&#10;Improved the `astro:page-load` event listener to &#10;re-attach event listeners after navigation, &#10;ensuring proper functionality.  Added error &#10;handling and cleared existing search content &#10;before initializing PagefindUI.  Added a placeholder&#10;for `openModal` function." />
+    <MESSAGE value="image updated" />
+    <MESSAGE value="Updates sitemap URL to dotnetevangelist.com." />
+    <MESSAGE value="feat: Add Google AdSense script to BaseHead (master)&#10;&#10;Adds Google AdSense script to the `&lt;head&gt;` section for &#10;monetization purposes.  The script is added asynchronously &#10;to avoid blocking page rendering." />
+    <MESSAGE value="feat: Add Google AdSense to header and index page&#10;&#10;Adds Google AdSense script to the header and index &#10;page for monetization.  The script is included &#10;asynchronously to avoid blocking page rendering." />
+    <MESSAGE value="```&#10;feat: Update package-lock.json (master)&#10;&#10;Update various packages to their latest versions.  This &#10;includes updates to @babel packages, @rollup packages, &#10;@types/node, and several other dependencies.  No &#10;functional changes are expected.&#10;```" />
+    <option name="LAST_COMMIT_MESSAGE" value="```&#10;feat: Update package-lock.json (master)&#10;&#10;Update various packages to their latest versions.  This &#10;includes updates to @babel packages, @rollup packages, &#10;@types/node, and several other dependencies.  No &#10;functional changes are expected.&#10;```" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
