@@ -1,0 +1,235 @@
+---
+title: "Angular 18 & .NET Core API - Authorization"
+description: "A comprehensive guide to implementing robust authorization in Angular 18 and ASP.NET Core Web API using roles, claims, and policies."
+pubDate: "Oct 13 2024"
+heroImage: '../../assets/images/Angular_18_and_NET_Core_API_Authorization.jpg'
+category: '.NET'
+tags: ['angular', 'dotnet', 'authorization', 'api', 'security']
+---
+
+## Angular 18 & .NET Core API - Authorization (Roles, Claims & Policies)
+
+This artilce provides an in-depth guide to building a robust and secure authorization system using Angular 18 and ASP.NET Core Web API. It covers essential topics such as securing Angular routes, consuming protected API endpoints, and implementing API-side authorization with roles, claims, and policies. Additionally, it discusses techniques for hiding UI elements based on user permissions and handling authorization errors efficiently.
+
+---
+
+### Chapter 1: Protecting Angular Routes
+
+Securing routes in Angular is one of the first steps in ensuring that only authenticated users have access to certain parts of your application. Angular provides several route guards, and the most commonly used guard for authorization is the `canActivate` guard, which determines whether a route can be activated.
+
+Here’s how you can implement a basic route guard:
+
+```typescript
+import { inject } from '@angular/core';
+import { CanActivateFn, Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
+
+export const AuthGuard: CanActivateFn = (route, state) => {
+  const authService = inject(AuthService);
+  const router = inject(Router);
+
+  if (authService.isLoggedIn()) {
+    return true;
+  } else {
+    router.navigateByUrl('/signin');
+    return false;
+  }
+};
+```
+
+This guard checks if the user is logged in by verifying the presence of a JWT (JSON Web Token) in local storage. If the user is not authenticated, it redirects them to the sign-in page.
+
+In your routing configuration (`app.routes.ts`), you apply the guard to routes that require protection:
+
+```typescript
+import { Routes } from '@angular/router';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AuthGuard } from './shared/auth.guard';
+
+const routes: Routes = [
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  // ... other routes
+];
+```
+
+This simple setup ensures that any attempt to access the dashboard without authentication will be blocked and redirected to the sign-in page.
+
+### Chapter 2: API Authorization & Best Practices
+
+On the API side, ensuring that protected endpoints can only be accessed by authorized users is crucial. Using JWT authentication, the [Authorize] attribute is applied to secure API endpoints. However, before diving into authorization, let’s first manage the storage and retrieval of the JWT token on the Angular side.
+
+#### Managing JWT Tokens in Angular
+
+You can store and manage JWT tokens using local storage. The following constants and methods will help in saving and deleting tokens from local storage:
+
+```typescript
+export const TOKEN_KEY = 'token';
+
+// shared/services/auth.service.ts
+saveToken(token: string): void {
+  localStorage.setItem(TOKEN_KEY, token);
+}
+
+deleteToken(): void {
+  localStorage.removeItem(TOKEN_KEY);
+}
+```
+
+#### Securing API Endpoints
+
+With the JWT in place, you can secure your ASP.NET Core Web API endpoints by using the `[Authorize]` attribute. For example:
+
+```csharp
+[HttpGet("user-profile")]
+[Authorize]
+private static string GetUserProfile() => "User Profile";
+```
+
+This attribute ensures that only users with a valid JWT can access the `GetUserProfile` endpoint. Additionally, you can configure the authorization middleware globally in your API:
+
+```csharp
+builder.Services.AddAuthorization(options =>
+{
+    options.FallbackPolicy = new AuthorizationPolicyBuilder()
+        .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+        .RequireAuthenticatedUser()
+        .Build();
+});
+```
+
+This sets up a fallback policy to require authenticated users across the application unless explicitly specified otherwise.
+
+### Chapter 3: Retrieving User Claims
+
+User claims provide a way to store user-specific data, such as roles, permissions, or other attributes. Claims can be used for fine-grained control over access to resources. Here’s an example of how you can retrieve user claims from an API endpoint:
+
+```csharp
+[HttpGet("user-profile")]
+[Authorize]
+private static async Task<IResult> GetUserProfile(ClaimsPrincipal user, UserManager<AppUser> userManager)
+{
+    var userId = user.Claims.First(c => c.Type == "userId").Value;
+    var userDetails = await userManager.FindByIdAsync(userId);
+
+    return Results.Ok(new { Email = userDetails?.Email, FullName = userDetails?.FullName });
+}
+```
+
+In this example, the user’s claims are accessed to retrieve their user ID, which is then used to fetch the user’s details from the database.
+
+### Chapter 4: Angular API Consumption and Interceptors
+
+When making API calls from Angular to protected endpoints, the JWT token must be included in the `Authorization` header of the HTTP requests. This can be done automatically by using an Angular HTTP interceptor:
+
+```typescript
+import { HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  const authService = inject(AuthService);
+
+  if (authService.isLoggedIn()) {
+    const clonedRequest = request.clone({
+      headers: request.headers.set('Authorization', `Bearer ${authService.getToken()}`)
+    });
+    return next.handle(clonedRequest);
+  }
+  return next.handle(request);
+}
+```
+
+This interceptor ensures that for every HTTP request made while the user is logged in, the JWT is automatically included in the request headers.
+
+### Chapter 5: Roles, Claims, and Policies
+
+ASP.NET Core provides flexibility when it comes to defining authorization policies. You can control access to resources using roles, claims, and custom policies.
+
+#### Defining Authorization Policies
+
+Here’s how to define some example policies in your API:
+
+```csharp
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("HasLibraryId", policy => policy.RequireClaim("libraryId"));
+    options.AddPolicy("FemalesOnly", policy => policy.RequireClaim("gender", "female"));
+    options.AddPolicy("Under10", policy => policy.RequireAssertion(context =>
+    {
+        var ageClaim = context.User.Claims.FirstOrDefault(c => c.Type == "age");
+        if (ageClaim != null && int.TryParse(ageClaim.Value, out var age))
+        {
+            return age < 10;
+        }
+        return false;
+    }));
+});
+```
+
+You can then apply these policies to specific API endpoints:
+
+```csharp
+[HttpGet("admin-only")]
+[Authorize(Roles = "Admin")]
+private static string AdminOnlyEndpoint() => "Admin Only";
+
+[HttpGet("library-members-only")]
+[Authorize(Policy = "HasLibraryId")]
+private static string LibraryMembersOnlyEndpoint() => "Library Members Only";
+
+[HttpGet("under-10-females")]
+[Authorize(Policy = "Under10")]
+[Authorize(Policy = "FemalesOnly")]
+private static string FemalesUnder10() => "Female Under 10";
+```
+
+By combining roles and claims with policies, you create a fine-grained authorization model tailored to the needs of your application.
+
+### Chapter 6: UI Element Hiding with Directives
+
+In Angular, you can hide UI elements based on claims or other authorization checks using custom directives. For instance, if a user does not have certain claims, you can hide specific UI elements from them:
+
+```typescript
+@Directive({
+  selector: '[appHideIfClaimsNotMet]'
+})
+export class HideIfClaimsNotMetDirective implements OnInit {
+  @Input() appHideIfClaimsNotMet?: (claims: any) => boolean;
+
+  constructor(private elementRef: ElementRef, private authService: AuthService) { }
+
+  ngOnInit(): void {
+    const claims = this.authService.getClaims();
+
+    if (this.appHideIfClaimsNotMet && !this.appHideIfClaimsNotMet(claims)) {
+      this.elementRef.nativeElement.style.display = 'none';
+    }
+  }
+}
+```
+
+This directive provides a flexible way to hide content dynamically based on user claims or other conditions.
+
+### Chapter 7: Handling Authorization Errors
+
+Handling authorization errors is crucial for a smooth user experience. Angular’s HTTP interceptor can also catch 401 (unauthorized) and 403 (forbidden) responses and handle them appropriately:
+
+```typescript
+intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  return next.handle(request).pipe(
+    tap({
+      error: err => {
+        if (err.status === 401) {
+          // Handle unauthorized error (e.g., redirect to login, delete token)
+        } else if (err.status === 403) {
+          // Handle forbidden error (e.g., show a toast message)
+        }
+      }
+    })
+  );
+}
+```
+
+By handling these errors in a centralized place, you can ensure consistent behavior across the application, such as automatically logging out users when their session expires.
+
+This comprehensive guide provides a solid foundation for implementing secure and flexible authorization in an Angular 18 application with ASP.NET Core Web API. 
+From protecting routes and securing API endpoints to working with roles, claims, and policies, you can confidently manage user access and provide a more secure user experience.
