@@ -5,7 +5,7 @@ import TitlePage from '@/components/TitlePage'
 import BaseLayout from '@/layouts/BaseLayout'
 import { getPosts } from '@/utils'
 
-const MAX_POSTS = 11 // max number of posts to show on the home page
+const MAX_POSTS = 9// max number of posts to show on the home page
 const posts = await getPosts(MAX_POSTS)
 ---
 
@@ -15,7 +15,7 @@ const posts = await getPosts(MAX_POSTS)
 
 	<div>
 		<h2 class='text-lg font-medium tracking-wide text-end'>Latest Posts</h2>
-		<ListPosts FirstBig={true} posts={posts} />
+		<ListPosts posts={posts} />
 	</div>
 </BaseLayout>
 

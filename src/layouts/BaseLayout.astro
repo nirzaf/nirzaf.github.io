@@ -13,6 +13,8 @@ const { title, description, image, articleDate } = Astro.props
 		<BaseHead title={title} description={description} ogImage={image} articleDate={articleDate} />
 		<ProviderTheme />
 		<ProviderAnimations />
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5415404685631285"
+						crossorigin="anonymous"></script>
 		<style>
 			@media (max-width: 768px) {
 				.image-container img {
@@ -21,6 +23,7 @@ const { title, description, image, articleDate } = Astro.props
 				}
 			}
 		</style>
+		<title>{title}</title>
 	</head>
 
 	<body class='bg-white text-stone-950 dark:bg-[#0a0910] dark:text-white'>
