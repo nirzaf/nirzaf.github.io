@@ -1,0 +1,133 @@
+---
+title: 'You’re Doing Validation Wrong in .NET'
+description: 'Explore common mistakes and improved practices for validation in .NET applications.'
+pubDate: 'Oct 18 2024'
+heroImage: '../../assets/images/you-are-doing-validation-wrong-in-net-code.jpg'
+category: 'Azure'
+draft: true
+tags: ['Azure', 'DevOps', 'Cloud']
+authors: ['author']
+---
+
+**Validation is a vital component in ensuring data integrity, but many developers follow inefficient or incorrect practices that can hurt performance and maintainability.**
+
+## Introduction
+
+In this article, we explore common mistakes developers make when implementing validation in .NET applications. Validation is a vital component in ensuring data integrity, but many developers follow inefficient or incorrect practices that can hurt performance and maintainability. Let's delve into both bad and improved validation practices, along with code examples.
+
+## Main Content
+
+### Common Bad Practices
+
+**1. Console Logging in Validation:**
+- **Example**: A validation method checks a user’s name, age, and email, logs an error to the console, and returns `false` if validation fails.
+- **Issue**: Logging to the console within a validation method mixes validation logic with output logic. This practice is inappropriate for non-console applications and reduces code clarity. Additionally, it can clutter the console output and make it harder to debug other parts of the application.
+
+**2. Returning Enumerable of Strings:**
+- **Example**: Returning an `IEnumerable<string>` with error messages when validation fails.
+- **Issue**: This method is inefficient as it creates a new list with each call and isn't intuitive for consumers to understand that an empty list means validation passed. It also makes it difficult to handle validation results consistently, as consumers need to check the list's contents rather than a simple boolean flag.
+
+### Sample Bad Validation Code
+
+```csharp
+public bool Validate(User user)
+{
+    if (string.IsNullOrEmpty(user.Name))
+    {
+        Console.WriteLine("Name cannot be empty");
+        return false;
+    }
+    if (user.Age < 18 || user.Age > 120)
+    {
+        Console.WriteLine("Age must be between 18 and 120");
+        return false;
+    }
+    if (string.IsNullOrEmpty(user.Email) || !user.Email.Contains("@"))
+    {
+        Console.WriteLine("Email is not valid");
+        return false;
+    }
+    return true;
+}
+```
+
+### Preferred Validation Approach
+
+**1. Fail Fast Approach:**
+This method allows the program to halt validation at the first encountered error, improving performance, especially when dealing with expensive operations like database queries. By stopping early, you avoid unnecessary checks and can provide immediate feedback to the user.
+
+**2. Using Tuples for Validation Results:**
+Returning a tuple of `bool IsValid` and `IEnumerable<string> Errors` ensures clearer feedback, making it easy to identify what went wrong during validation. This approach separates the validation logic from the error handling logic, making the code more modular and easier to maintain.
+
+**3. Static Methods for Pure Functions:**
+Validation methods that do not alter object states should be static to improve predictability and ease of testing. Static methods are easier to test because they do not depend on the state of an instance, and they can be reused across different parts of the application.
+
+### Improved Validation Code
+
+```csharp
+public (bool IsValid, IEnumerable<string> Errors) Validate(User user)
+{
+    var errors = new List<string>();
+
+    if (string.IsNullOrEmpty(user.Name))
+    {
+        errors.Add("Name cannot be empty");
+    }
+    if (user.Age < 18 || user.Age > 120)
+    {
+        errors.Add("Age must be between 18 and 120");
+    }
+    if (string.IsNullOrEmpty(user.Email) || !user.Email.Contains("@"))
+    {
+        errors.Add("Email is not valid");
+    }
+
+    return (errors.Count == 0, errors);
+}
+```
+
+### Advanced Functional Approach
+
+For developers familiar with functional programming, using discriminated unions like Either monads in validation ensures cleaner error handling and early exits. This method returns either an error or the validated object, structuring the validation logic for better API integration. Discriminated unions provide a way to represent a value that can be one of several different types, making it easier to handle different validation outcomes.
+
+**Example:**
+
+```csharp
+public Validation<User> Validate(User user)
+{
+    if (string.IsNullOrEmpty(user.Name))
+    {
+        return Validation<User>.Error("Name cannot be empty");
+    }
+    if (user.Age < 18 || user.Age > 120)
+    {
+        return Validation<User>.Error("Age must be between 18 and 120");
+    }
+    if (string.IsNullOrEmpty(user.Email) || !user.Email.Contains("@"))
+    {
+        return Validation<User>.Error("Email is not valid");
+    }
+    return Validation<User>.Success(user);
+}
+
+// Usage
+var result = Validate(user);
+result.Match(
+    success => Console.WriteLine("Validation passed"),
+    error => Console.WriteLine($"Validation failed: {error}")
+);
+```
+
+## Conclusion
+
+Effective validation in .NET requires a clean, efficient approach. Avoid bad practices such as mixing validation with output logic or relying on exception-driven control flow. By adopting better techniques like the Fail Fast approach, tuples for validation results, and functional programming principles, you can enhance the performance, maintainability, and clarity of your code.
+
+**Additional Tips:**
+- **Use Data Annotations:** For simple validation scenarios, consider using data annotations. They provide a declarative way to specify validation rules directly on your model properties.
+- **Custom Validation Attributes:** If built-in data annotations are not sufficient, create custom validation attributes to encapsulate complex validation logic.
+- **Fluent Validation Libraries:** Libraries like FluentValidation offer a fluent interface for building validation rules, making the code more readable and maintainable.
+
+By following these best practices, you can ensure that your .NET applications are robust, maintainable, and provide a better user experience.
+```
+
+Feel free to adjust the frontmatter and content as needed!
