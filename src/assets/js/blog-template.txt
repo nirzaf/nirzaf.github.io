@@ -6,7 +6,6 @@ heroImage: '../../assets/images/my_profile_pic.jpg'
 category: 'Azure'
 draft: true
 tags: ['Azure', 'DevOps', 'Cloud']
-authors: ['author']
 ---
 
 # {frontmatter.title}
@@ -38,3 +37,7 @@ If your blog post includes code, you can use code blocks like this:
 const exampleFunction = () => {
   console.log("Hello, Astro!");
 };
+```
+
+## Conclusion
+Summarize your blog post in a concise way. Use this section to provide a clear and engaging conclusion to your readers.
