@@ -10,7 +10,10 @@ const posts = await getPosts(MAX_POSTS)
 ---
 
 <BaseLayout title='Home'>
-	<TitlePage title='.Net Blogs' />
+	<div class="flex items-center gap-2 title">
+		<img src="/favicon.svg" alt="Site Logo" class="h-10 w-10" />
+		<TitlePage title='.Net Evangelist' />
+	</div>
 	<ListCategories />
 
 	<div>
