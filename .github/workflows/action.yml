@@ -47,7 +47,9 @@ jobs:
         run: |
           timestamp=$(date +"%Y%m%d%H%M%S")
           git checkout -b master-backup-$timestamp
-          git push origin master-backup-$timestamp
+          git push https://$GITHUB_TOKEN@github.com/${{ github.repository }}.git master-backup-$timestamp
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
