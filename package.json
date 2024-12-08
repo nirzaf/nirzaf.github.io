@@ -57,6 +57,7 @@
 		"@tailwindcss/typography": "0.5.10",
 		"@types/jquery": "3.5.31",
 		"@typescript-eslint/parser": "6.21.0",
+		"astro-compress": "^2.3.5",
 		"clsx": "2.1.1",
 		"eslint": "8.57.1",
 		"eslint-plugin-astro": "0.31.4",
