@@ -15,7 +15,7 @@ export const CATEGORIES = [
 	{ name: 'Design Patterns', image: designPatterns },
 	{ name: 'ASP.NET Core', image: aspnetcore },
 	{ name: '.NET', image: dotnetImage },
-	{ name: 'Blazor', image: blazor },
+	{ name: 'Programming', image: blazor },
 	{ name: 'Csharp', image: csharp },
 	{ name: 'UI', image: ui },
 	{ name: 'Azure', image: azure },
