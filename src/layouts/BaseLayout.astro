@@ -13,14 +13,33 @@ const { title, description, image, articleDate } = Astro.props
 		<BaseHead title={title} description={description} ogImage={image} articleDate={articleDate} />
 		<ProviderTheme />
 		<ProviderAnimations />
-		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5415404685631285"
+		<link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5415404685631285"
 						crossorigin="anonymous"></script>
-		<style>
+		<style is:inline>
+			/* Critical CSS */
 			@media (max-width: 768px) {
 				.image-container img {
 					width: 100%;
 					height: auto;
 				}
+			}
+			body {
+				margin-left: calc(100vw - 100%);
+				opacity: 0;
+				animation: fadeIn 0.5s ease-in forwards;
+			}
+			@keyframes fadeIn {
+				to { opacity: 1; }
+			}
+			.lazy-image {
+				opacity: 0;
+				transition: opacity 0.3s ease-in-out;
+			}
+			.lazy-image.loaded {
+				opacity: 1;
 			}
 		</style>
 		<title>{title}</title>
@@ -34,11 +53,32 @@ const { title, description, image, articleDate } = Astro.props
 			<slot />
 			<Footer />
 		</main>
-		<TwSizeIndicator />
-		<style>
-			body {
-				margin-left: calc(100vw - 100%); /* prevent layout shift */
-			}
-		</style>
+		{import.meta.env.DEV && <TwSizeIndicator />}
 	</body>
 </html>
+
+<script>
+	// Lazy load images
+	document.addEventListener('DOMContentLoaded', function() {
+		const images = document.querySelectorAll('img[loading="lazy"]');
+		images.forEach(img => {
+			img.classList.add('lazy-image');
+			img.addEventListener('load', () => img.classList.add('loaded'));
+		});
+	});
+
+	// Preload critical resources
+	if ('connection' in navigator && (navigator.connection as any).effectiveType === '4g') {
+		const preloadLinks = [
+			'/fonts/your-main-font.woff2',
+			'/critical.css'
+		];
+		preloadLinks.forEach(link => {
+			const preload = document.createElement('link');
+			preload.rel = 'preload';
+			preload.as = link.endsWith('.woff2') ? 'font' : 'style';
+			preload.href = link;
+			document.head.appendChild(preload);
+		});
+	}
+</script>
