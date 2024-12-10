@@ -13,6 +13,14 @@ const { title, description, image, articleDate } = Astro.props
  <BaseHead title={title} description={description} ogImage={image} articleDate={articleDate} />
  <ProviderTheme />
  <ProviderAnimations />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TT23HWE3LH"></script>
+  <script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'G-TT23HWE3LH');
+  </script>
  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5415404685631285"
      crossorigin="anonymous"></script>
  <style>
