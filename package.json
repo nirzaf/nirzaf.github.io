@@ -42,7 +42,7 @@
 	"dependencies": {
 		"@astrojs/rss": "4.0.10",
 		"@astrojs/vercel": "8.0.0",
-		"astro": "5.0.3",
+		"astro": "5.0.8",
 		"astro-font": "0.0.72",
 		"bootstrap": "5.3.3",
 		"jquery": "3.7.1",
