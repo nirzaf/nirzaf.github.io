@@ -1,0 +1,1404 @@
+---
+title: "LINQ in C# 14 with .NET 10: From Beginner to Expert"
+description: "A comprehensive guide to mastering Language-Integrated Query (LINQ) in C# 14 and .NET 10, covering fundamentals, advanced techniques, EF Core integration, performance optimization, and real-world examples."
+pubDate: "APR 11 2025"
+heroImage: "../../assets/images/graphs_in_csharp.jpg"
+category: "Csharp"
+tags: ['linq', 'csharp', 'dotnet', 'efcore', 'performance']
+---
+
+# LINQ in C# 14 with .NET 10: From Beginner to Expert
+
+Language-Integrated Query (LINQ) is a powerful set of features integrated into C# and .NET that provides a consistent, unified way to query and manipulate data, regardless of the data source (e.g., in-memory collections, databases, XML). This guide covers LINQ from fundamental concepts to advanced techniques using C# 14 and .NET 10 features.
+
+## Supporting Example Classes & Records
+
+The following classes and records are used in various examples throughout this article.
+
+```csharp
+// Used in various examples
+public class Person { public string Name { get; set; } = ""; public int Age { get; set; } }
+public class Product { public int Id { get; set; } public string Name { get; set; } = ""; public decimal Price { get; set; } public string Category { get; set; } = ""; public bool InStock { get; set; } = true; public bool IsActive { get; set; } = true; public bool IsDiscontinued { get; set; } = false; }
+public class Category { public int Id { get; set; } public string Name { get; set; } = ""; }
+public class Employee { public int Id { get; set; } public string Name { get; set; } = ""; public string Department { get; set; } = ""; public decimal Salary { get; set; } public int Age { get; set; } public int YearsOfService { get; set; } public bool IsActive { get; set; } = true;}
+public class Sale { public int ProductId { get; set; } public string Category { get; set; } = ""; public string Region { get; set; } = ""; public decimal Amount { get; set; } }
+public class Customer { public int Id { get; set; } public string Name { get; set; } = ""; public string FullName { get { return Name; } } public string City { get; set; } = ""; public int Orders { get; set; } public decimal TotalPurchases { get; set; } public bool IsActive { get; set; } = true; public string Email { get; set; } = ""; public string Phone { get; set; } = ""; public DateTime JoinDate { get; set; } public List<Order> OrderList { get; set; } = new List<Order>(); }
+public class Order { public int Id { get; set; } public decimal Total { get; set; } public DateTime Date { get; set; } public List<OrderItem> Items { get; set; } = []; public string Status { get; set; } = ""; public DateTime OrderDate { get; set; } public decimal TotalAmount { get; set; } public int CustomerId { get; set; } public Customer? Customer { get; set; } }
+public class OrderItem { public int ProductId { get; set; } public string Name { get; set; } = ""; public decimal Price { get; set; } public int Quantity { get; set; } public decimal UnitPrice { get; set; } }
+public record ProductSummary(string Name, decimal Price, string Category);
+public record CustomerRecord(int Id, string Name, int OrderCount, decimal TotalSpent);
+public record CategorySummary(string Name, int Count, decimal TotalValue, decimal AveragePrice);
+public class Department { public string Name { get; set; } = ""; public string Location { get; set; } = ""; }
+public class Item { public string Name { get; set; } = ""; public decimal Price { get; set; } }
+public record StockPrice(DateTime Date, decimal Price);
+
+// For custom operators example
+public class Page<T> { public IReadOnlyList<T> Items { get; } public Page(IEnumerable<T> items) { Items = items.ToList(); } }
+public record ValidationResult(bool IsValid, IReadOnlyList<object> InvalidItems, string ErrorMessage);
+public class FileSystemItem { public string Name { get; set; } = ""; public bool IsDirectory { get; set; } public List<FileSystemItem> Children { get; set; } = []; }
+
+// For EF Core example
+public class ECommerceContext : Microsoft.EntityFrameworkCore.DbContext
+{
+    public Microsoft.EntityFrameworkCore.DbSet<Customer> Customers { get; set; } = null!;
+    public Microsoft.EntityFrameworkCore.DbSet<Order> Orders { get; set; } = null!;
+    public Microsoft.EntityFrameworkCore.DbSet<OrderItem> OrderItems { get; set; } = null!;
+    public Microsoft.EntityFrameworkCore.DbSet<Product> Products { get; set; } = null!;
+
+    protected override void OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder optionsBuilder)
+    {
+        // Use InMemory database for simple examples without real DB setup
+        optionsBuilder.UseInMemoryDatabase("ECommerceDbExample");
+        // Example: Enabling Basic EF Core Logging (in OnConfiguring)
+        optionsBuilder
+            .LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information) // Log SQL and other info
+            .EnableSensitiveDataLogging(); // Include parameter values (use only in development)
+    }
+     protected override void OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder modelBuilder)
+     {
+         // Configure relationships if needed
+         modelBuilder.Entity<Customer>().HasMany(c => c.OrderList).WithOne(o => o.Customer).HasForeignKey(o => o.CustomerId);
+         modelBuilder.Entity<Order>().HasMany(o => o.Items).WithOne().HasForeignKey("OrderId"); // Example foreign key
+     }
+}
+
+// Dummy methods/classes used in examples
+public static class ExampleData
+{
+    public static List<Order> GetLargeOrderList() => Enumerable.Range(1, 1000).Select(i => new Order { Id = i, Total = i * 10.5m, Date = DateTime.Now.AddDays(-i) }).ToList();
+    public static List<Item> GetLargeItemList() => Enumerable.Range(1, 1000).Select(i => new Item { Name = $"Item {i}", Price = i * 1.1m }).ToList();
+    public static List<Product> GetProducts() => [ new Product { Id = 1, Name = "Laptop", Price = 1200, Category = "Electronics", InStock = true }, new Product { Id = 2, Name = "Mouse", Price = 25, Category = "Electronics", InStock = true }, new Product { Id = 3, Name = "Desk", Price = 300, Category = "Furniture", InStock = false }, new Product { Id = 4, Name = "Chair", Price = 150, Category = "Furniture", InStock = true }, new Product { Id = 5, Name = "Keyboard", Price = 75.00m, Category = "Electronics", InStock = false }];
+    public static List<Customer> GetMillionsOfCustomers() => Enumerable.Range(1, 10000).Select(i => new Customer { Id = i, Name = $"Cust {i}", TotalPurchases = i % 100 * 150m }).ToList(); // Simulate large list
+    public static bool SometimesThrows(Customer c) { if (c.Id % 100 == 0) throw new Exception("Simulated error"); return c.TotalPurchases > 5000; }
+    public static void ProcessProduct(Product p) { /* process */ }
+    public static IEnumerable<ProductPrice> GetProductPrices() => Enumerable.Range(1, 5000).Select(i => new ProductPrice { ProductId = i, Amount = (i % 500) + 10m });
+    public static List<StockPrice> GetStockPrices() => Enumerable.Range(1, 100).Select(i => new StockPrice(DateTime.Today.AddDays(i - 100), 100 + (decimal)(Math.Sin(i / 10.0) * 10))).ToList();
+    public static IEnumerable<Product> GetFeaturedProducts() => GetProducts().Take(1);
+    public static IEnumerable<Product> GetDefaultProducts() => [new Product { Id = 99, Name = "Default", Price = 10, Category = "Misc", InStock = true }];
+    public static void ProcessProductBatch(IEnumerable<Product> batch) { /* process batch */ }
+    public static FileSystemItem GetFileSystemRoot() => new FileSystemItem { Name = "C:", IsDirectory = true, Children = [ new FileSystemItem { Name = "Docs", IsDirectory = true, Children = [ new FileSystemItem { Name = "report.docx", IsDirectory = false } ] }, new FileSystemItem { Name = "image.jpg", IsDirectory = false } ] };
+    public static bool ProcessOrder(Order o) { return o.Id % 10 != 0; /* Simulate processing, fail 1 in 10 */ }
+    public static List<Product> GetAllProducts() => GetProducts();
+    public static void DisplayProductPage(IEnumerable<Product> pageItems) { foreach(var p in pageItems) Console.WriteLine(p.Name); }
+    public static void ProcessLine(string line) { Console.WriteLine($"Processing: {line}"); }
+    public static void ProcessBatch(IEnumerable<object> batch) { Console.WriteLine($"Processing batch of {batch.Count()} items."); }
+    public record ProductPrice(int ProductId, decimal Amount);
+    public static List<Employee> employees = [
+        new() { Id = 1, Name = "Alice", Department = "HR", Salary = 60000, Age = 30, IsActive = true },
+        new() { Id = 2, Name = "Bob", Department = "IT", Salary = 75000, Age = 45, IsActive = true },
+        new() { Id = 3, Name = "Charlie", Department = "Finance", Salary = 65000, Age = 55, IsActive = false }, // Charlie is inactive
+        new() { Id = 4, Name = "David", Department = "IT", Salary = 80000, Age = 35, IsActive = true },
+        new() { Id = 5, Name = "Eve", Department = "HR", Salary = 55000, Age = 28, IsActive = true }
+    ];
+    public static List<Sale> sales = [
+        new() { ProductId = 1, Category = "Electronics", Region = "North", Amount = 1000 },
+        new() { ProductId = 2, Category = "Furniture", Region = "South", Amount = 750 },
+        new() { ProductId = 3, Category = "Electronics", Region = "North", Amount = 500 },
+        new() { ProductId = 4, Category = "Clothing", Region = "East", Amount = 250 },
+        new() { ProductId = 5, Category = "Electronics", Region = "South", Amount = 800 },
+        new() { ProductId = 6, Category = "Furniture", Region = "North", Amount = 1200 },
+        new() { ProductId = 7, Category = "Clothing", Region = "West", Amount = 300 }
+    ];
+    // Dummy helper method for Best Practices section
+    public static CategoryDetails GetCategoryDetails(string category) => new CategoryDetails { IsFeatured = (category == "Electronics") };
+    public class CategoryDetails { public bool IsFeatured { get; set; } }
+    // Dummy method for Best Practices
+    public static bool CalculateComplexMetric(Employee e) => (e.Salary / (e.Age + 1.0m)) > 1000;
+    // DTO for Best Practices
+    public record CustomerDto { public int Id; public string FullName = ""; public string ContactEmail = ""; }
+    // Helper to simulate data for Real-World Examples
+    public static List<Customer> GetSampleCustomersWithOrders() {
+        return [
+            new Customer { Id = 1, Name = "Alice", Email = "alice@example.com", City = "New York", IsActive = true, OrderList = [ new Order { Id=1, OrderDate=DateTime.Now.AddDays(-10), TotalAmount=60m}, new Order { Id=2, OrderDate=DateTime.Now.AddDays(-20), TotalAmount=75m}, new Order { Id=3, OrderDate=DateTime.Now.AddDays(-100), TotalAmount=100m} ]},
+            new Customer { Id = 2, Name = "Bob", Email = "bob@example.com", City = "Chicago", IsActive = true, OrderList = [ new Order { Id=4, OrderDate=DateTime.Now.AddDays(-5), TotalAmount=100m} ]}, // Only 1 recent order > 50
+            new Customer { Id = 3, Name = "Charlie", Email = "charlie@example.com", City = "New York", IsActive = false, OrderList = [ new Order { Id=5, OrderDate=DateTime.Now.AddDays(-15), TotalAmount=80m}, new Order { Id=6, OrderDate=DateTime.Now.AddDays(-25), TotalAmount=90m} ]}, // Inactive
+            new Customer { Id = 4, Name = "David", Email = "david@example.com", City = "Seattle", IsActive = true, OrderList = [ new Order { Id=7, OrderDate=DateTime.Now.AddDays(-12), TotalAmount=65m}, new Order { Id=8, OrderDate=DateTime.Now.AddDays(-22), TotalAmount=70m} ]}, // Wrong city
+            new Customer { Id = 5, Name = "Eve", Email = "eve@example.com", City = "Chicago", IsActive = true, OrderList = [ new Order { Id=9, OrderDate=DateTime.Now.AddDays(-18), TotalAmount=55m}, new Order { Id=10, OrderDate=DateTime.Now.AddDays(-28), TotalAmount=40m}, new Order { Id=11, OrderDate=DateTime.Now.AddDays(-38), TotalAmount=85m} ]} // One order too small, one meets criteria
+        ];
+    }
+}
+
+// Define record used in C# 14 section
+public record EmployeeInfo(int Id, string Name, string Department);
+
+// Define class used in C# 14 section
+public class SalaryInfo(decimal Amount)
+{
+    public decimal AnnualAmount { get; } = Amount;
+    public decimal MonthlyAmount => AnnualAmount / 12;
+}
+
+// Custom extensions for Custom Operators section
+public static class LinqExtensions
+{
+    private static Random _random = new Random();
+
+    // Custom Shuffle operator for IEnumerable<T>
+    public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
+    {
+        if (source == null) throw new ArgumentNullException(nameof(source));
+        var buffered = source.ToList();
+        int n = buffered.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = _random.Next(n + 1);
+            T value = buffered[k];
+            buffered[k] = buffered[n];
+            buffered[n] = value;
+        }
+        return buffered;
+    }
+
+    // Custom operator: WithIndex (adds index to each element) - Deferred Execution
+    public static IEnumerable<(T item, int index)> WithIndex<T>(this IEnumerable<T> source)
+    {
+        if (source == null) throw new ArgumentNullException(nameof(source));
+        return source.Select((item, index) => (item, index));
+    }
+
+    // Custom operator: Log (logs each item as it passes through - Deferred)
+    public static IEnumerable<T> Log<T>(this IEnumerable<T> source, string prefix = "LOG")
+    {
+        if (source == null) throw new ArgumentNullException(nameof(source));
+        return source.Select(item => {
+            Console.WriteLine($"[{prefix}]: {item}");
+            return item;
+        });
+    }
+}
+
+// Class for MoreLINQ examples
+public static class MoreLinqExamples
+{
+    public static void Run()
+    {
+        List<Product> products = ExampleData.GetProducts();
+        List<int> numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        // Batch: Process items in batches (similar to Chunk in .NET 6+)
+        Console.WriteLine("--- Batch ---");
+        foreach (var batch in MoreLinq.MoreEnumerable.Batch(numbers, 3)) // Specify MoreEnumerable explicitly if needed
+        {
+            Console.WriteLine($"Processing batch: {string.Join(", ", batch)}");
+        }
+
+        // Pipe: Perform an action on each element without altering the sequence (like our Log)
+        Console.WriteLine("\n--- Pipe ---");
+        var processed = MoreLinq.MoreEnumerable.Pipe(numbers, n => Console.WriteLine($"Piping: {n}")).ToList();
+
+        // DistinctBy: Get distinct elements based on a key selector (now built-in in .NET 6+)
+        Console.WriteLine("\n--- DistinctBy (Category) ---");
+        var distinctByCategory = MoreLinq.MoreEnumerable.DistinctBy(products, p => p.Category);
+        Console.WriteLine(string.Join(", ", distinctByCategory.Select(p => p.Name)));
+
+        // MaxBy / MinBy: Find element with max/min value based on a selector (now built-in in .NET 6+)
+        Console.WriteLine("\n--- MaxBy / MinBy (Price) ---");
+        var mostExpensive = MoreLinq.MoreEnumerable.MaxBy(products, p => p.Price).First(); // MaxBy returns IEnumerable
+        var leastExpensive = MoreLinq.MoreEnumerable.MinBy(products, p => p.Price).First(); // MinBy returns IEnumerable
+        Console.WriteLine($"Most Expensive: {mostExpensive.Name} (${mostExpensive.Price})");
+        Console.WriteLine($"Least Expensive: {leastExpensive.Name} (${leastExpensive.Price})");
+
+        // Prepend / Append: Add elements to the start/end of a sequence
+        Console.WriteLine("\n--- Prepend / Append ---");
+        var extendedNumbers = MoreLinq.MoreEnumerable.Prepend(numbers, 0).Append(11);
+        Console.WriteLine(string.Join(", ", extendedNumbers));
+
+        // Interleave: Combine two sequences by alternating elements
+        Console.WriteLine("\n--- Interleave ---");
+        var listA = ["A", "B", "C"];
+        var listB = ["X", "Y", "Z", "W"]; // Different length
+        var interleaved = MoreLinq.MoreEnumerable.Interleave(listA, listB);
+        Console.WriteLine(string.Join(", ", interleaved)); // A, X, B, Y, C, Z, W
+    }
+}
+
+// Class for EF Core query examples
+public static class EfCoreQueries
+{
+    public static async Task RunQueriesAsync() // Made async for async examples
+    {
+        using var context = new ECommerceContext();
+        if (!await context.Customers.AnyAsync()) // Use AnyAsync
+        {
+            context.Customers.AddRange(
+                new Customer { Id = 1, Name = "Alice", City = "New York", JoinDate = DateTime.Now.AddYears(-1), IsActive = true, Email="alice@example.com" },
+                new Customer { Id = 2, Name = "Bob", City = "Chicago", JoinDate = DateTime.Now.AddMonths(-6), IsActive = true, Email="bob@example.com" },
+                new Customer { Id = 3, Name = "Charlie", City = "New York", JoinDate = DateTime.Now.AddDays(-30), IsActive = false, Email="charlie@example.com" }
+            );
+            context.Orders.AddRange(
+                new Order { Id = 101, CustomerId = 1, OrderDate = DateTime.Now.AddDays(-10), TotalAmount = 150.75m },
+                new Order { Id = 102, CustomerId = 2, OrderDate = DateTime.Now.AddDays(-5), TotalAmount = 99.50m },
+                new Order { Id = 103, CustomerId = 1, OrderDate = DateTime.Now.AddDays(-2), TotalAmount = 210.00m }
+            );
+            await context.SaveChangesAsync(); // Use SaveChangesAsync
+        }
+
+        Console.WriteLine("--- Customers from New York ---");
+        var nyCustomers = context.Customers.Where(c => c.City == "New York");
+        foreach (var customer in await nyCustomers.ToListAsync()) // Use ToListAsync
+        { Console.WriteLine($"- {customer.Name} (ID: {customer.Id})"); }
+
+        Console.WriteLine("\n--- Active Customer Names and Join Dates ---");
+        var activeCustomerInfo = context.Customers.Where(c => c.IsActive).Select(c => new { c.Name, c.JoinDate });
+        foreach (var info in await activeCustomerInfo.ToListAsync()) // Use ToListAsync
+        { Console.WriteLine($"- {info.Name}, Joined: {info.JoinDate:yyyy-MM-dd}"); }
+
+        Console.WriteLine("\n--- Customers Ordered by Join Date (Oldest First) ---");
+        var customersByJoinDate = context.Customers.OrderBy(c => c.JoinDate);
+        foreach (var customer in await customersByJoinDate.ToListAsync()) // Use ToListAsync
+        { Console.WriteLine($"- {customer.Name}, Joined: {info.JoinDate:yyyy-MM-dd}"); }
+
+        Console.WriteLine("\n--- Aggregates ---");
+        int totalCustomerCount = await context.Customers.CountAsync(); // Use CountAsync
+        decimal totalOrderAmount = await context.Orders.SumAsync(o => o.TotalAmount); // Use SumAsync
+        bool anyInactive = await context.Customers.AnyAsync(c => !c.IsActive); // Use AnyAsync
+        Console.WriteLine($"Total Customers: {totalCustomerCount}");
+        Console.WriteLine($"Total Order Amount: ${totalOrderAmount:F2}");
+        Console.WriteLine($"Any Inactive Customers? {anyInactive}");
+
+        Console.WriteLine("\n--- Single Entity ---");
+        Customer? customer1 = await context.Customers.FindAsync(1); // FindAsync
+        Console.WriteLine($"Customer 1 (Find): {customer1?.Name ?? "Not Found"}");
+        Customer? firstChicagoCustomer = await context.Customers.FirstOrDefaultAsync(c => c.City == "Chicago"); // Use FirstOrDefaultAsync
+        Console.WriteLine($"First Chicago Customer: {firstChicagoCustomer?.Name ?? "Not Found"}");
+
+        // --- Eager Loading ---
+        Console.WriteLine("\n--- Eager Loading (Customers with Orders) ---");
+        var customersWithOrders = await context.Customers
+            .Include(c => c.OrderList)
+            .Where(c => c.City == "New York")
+            .ToListAsync(); // Use ToListAsync
+        foreach (var customer in customersWithOrders) { /* ... */ }
+
+        // --- Explicit Loading ---
+        Console.WriteLine("\n--- Explicit Loading ---");
+        var customerBob = await context.Customers.FirstOrDefaultAsync(c => c.Name == "Bob"); // Use FirstOrDefaultAsync
+        if (customerBob != null)
+        {
+            await context.Entry(customerBob).Collection(c => c.OrderList).LoadAsync(); // Use LoadAsync
+            foreach (var order in customerBob.OrderList) { /* ... */ }
+        }
+
+        // --- Query Translation Example ---
+        IQueryable<Customer> query = context.Customers
+            .Where(c => c.City == "New York" && c.Name.StartsWith("A"))
+            .OrderBy(c => c.JoinDate)
+            .Select(c => new { c.Id, c.Name });
+        string sql = query.ToQueryString();
+        Console.WriteLine("\n--- Generated SQL ---");
+        Console.WriteLine(sql);
+        var results = await query.ToListAsync(); // Use ToListAsync
+
+        // --- NoTracking / SplitQuery ---
+        var readOnlyCustomers = await context.Customers.AsNoTracking().Where(c => c.IsActive).ToListAsync();
+        var customersAndOrdersAndItems = await context.Customers
+            .Include(c => c.OrderList)
+            .Where(c => c.Id == 1)
+            .AsSplitQuery()
+            .FirstOrDefaultAsync(); // Use FirstOrDefaultAsync
+    }
+}
+
+// Class for Async Stream examples
+public static class FutureExamples
+{
+    // Simulate an async data source
+    static async IAsyncEnumerable<int> GetNumbersAsync()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            await Task.Delay(100); // Simulate async work
+            yield return i;
+        }
+    }
+
+    public static async Task ProcessAsyncStreams()
+    {
+        Console.WriteLine("\n--- Processing Async Stream ---");
+        // Note: Requires System.Linq.Async for WhereAwait/SelectAwait on IAsyncEnumerable directly
+        // Here we demonstrate the concept with await foreach and synchronous LINQ after materialization
+        // Or using EF Core's built-in async methods which is more common
+
+        // Using await foreach and standard LINQ (less efficient if filters/projections are async)
+        var asyncResults = new List<string>();
+        await foreach (var number in GetNumbersAsync())
+        {
+            if (number % 2 == 0) // Synchronous filter after getting number
+            {
+                 asyncResults.Add($"Number: {number}"); // Synchronous projection
+            }
+        }
+        foreach(var result in asyncResults) Console.WriteLine(result);
+
+        // --- EF Core Async (already shown in EfCoreQueries.RunQueriesAsync) ---
+        Console.WriteLine("\n--- EF Core Async Example (see EfCoreQueries.RunQueriesAsync output) ---");
+        // Placeholder to indicate this part is demonstrated elsewhere
+    }
+}
+```
+
+## Part 1: Foundations of C# and LINQ
+
+### Introduction to C# 14 and .NET 10
+
+C# 14 and .NET 10 represent the latest evolution in Microsoft's development platform, bringing new features and performance improvements.
+
+**Overview of C# 14 Features (Based on recent trends)**
+
+While specific C# 14 features are speculative until officially announced, anticipated trends include:
+
+*   **Further Collection Literal Enhancements:** Building on collection expressions `[...]` from C# 12.
+*   **Refined Primary Constructors:** Wider adoption and potential improvements.
+*   **Enhanced Pattern Matching:** More sophisticated patterns.
+*   **Improved Async/Await Support:** Simplifications or performance boosts.
+*   **Expanded Roles for Records and Structs:** More features for concise data modeling.
+
+**Example: Collection Expressions (from C# 12, expected to be key in C# 14+)**
+
+```csharp
+// Before C# 12
+List<int> numbersListOld = new List<int> { 1, 2, 3, 4, 5 };
+int[] numbersArrayOld = new int[] { 1, 2, 3, 4, 5 };
+Dictionary<string, int> agesDictOld = new Dictionary<string, int> { { "Alice", 30 }, { "Bob", 25 } };
+
+// With C# 12+ collection expressions
+List<int> numbersList = [1, 2, 3, 4, 5];
+int[] numbersArray = [1, 2, 3, 4, 5];
+Dictionary<string, int> agesDict = ["Alice": 30, "Bob": 25]; // Concise dictionary init
+
+// Type inference
+var numbers = [1, 2, 3, 4, 5]; // Inferred as int[]
+IEnumerable<int> numbersEnumerable = [1, 2, 3]; // Target-typed
+```
+
+**Overview of .NET 10 (Based on recent trends)**
+
+.NET continues its yearly release cadence, focusing on performance, unification, and developer productivity. Key themes for .NET 10 likely include:
+
+*   **Performance Improvements:** JIT, GC, core libraries.
+*   **Cloud-Native Enhancements:** Containers, serverless, microservices.
+*   **AI Integration:** Enhanced libraries for AI.
+*   **MAUI and Blazor Evolution:** Cross-platform UI and web.
+*   **Tooling Enhancements:** Visual Studio, VS Code, `dotnet` CLI.
+
+**Setting up the Development Environment**
+
+You need the .NET SDK (version 10 or later when available) and a code editor.
+
+1.  **Install .NET SDK:** Download from [dotnet.microsoft.com/download](https://dotnet.microsoft.com/download). Verify with `dotnet --version`.
+2.  **Choose Editor:**
+    *   Visual Studio 2022/2025 (Recommended)
+    *   Visual Studio Code with C# Dev Kit extension
+    *   JetBrains Rider
+
+> **Tip:** Create a new console project to test setup:
+> ```bash
+> dotnet new console -o MyLinqApp
+> cd MyLinqApp
+> dotnet run
+> ```
+
+### C# Basics for LINQ Beginners
+
+LINQ relies on C# features like collections, lambda expressions, generics, and extension methods.
+
+**Variables, Data Types, and Collections**
+
+```csharp
+// Basic Types and Variables
+int count = 10;
+string message = "Hello";
+decimal price = 99.95m;
+bool isActive = true;
+DateTime today = DateTime.Now;
+var score = 95; // Implicitly typed as int
+
+// Collections
+int[] numbersArray = [1, 2, 3, 4, 5]; // Array
+List<string> namesList = ["Alice", "Bob"]; // List
+Dictionary<string, int> scoresDict = ["Alice": 95, "Bob": 87]; // Dictionary
+HashSet<int> uniqueNumbers = [1, 2, 3]; // Set
+```
+
+**Lambda Expressions**
+
+Concise syntax for anonymous functions, heavily used in LINQ method syntax.
+
+```csharp
+// Syntax: (parameters) => expression or { statements; return value; }
+Func<int, int> square = x => x * x;
+Console.WriteLine($"Square of 5: {square(5)}"); // Output: 25
+
+Func<int, int, int> multiply = (x, y) => x * y;
+Console.WriteLine($"3 * 4: {multiply(3, 4)}"); // Output: 12
+
+Action printHello = () => Console.WriteLine("Hello!");
+printHello(); // Output: Hello!
+
+List<int> numbers = [1, 2, 3, 4, 5, 6];
+var evenNumbers = numbers.Where(n => n % 2 == 0); // Lambda used in Where
+Console.WriteLine($"Even numbers: {string.Join(", ", evenNumbers)}"); // Output: 2, 4, 6
+```
+
+**Delegates, Generics, and Extension Methods**
+
+*   **Delegates:** Type-safe function pointers. LINQ uses `Func<T, bool>` (predicate), `Func<TSource, TResult>` (projection), `Action<T>` (side effects).
+*   **Generics:** Define types/methods working with any type `T`. LINQ operators are generic extension methods on `IEnumerable<T>`.
+*   **Extension Methods:** Add methods to existing types. LINQ operators extend `IEnumerable<T>` and `IQueryable<T>`.
+
+```csharp
+// Delegate example
+delegate int MathOperation(int x, int y);
+static int Add(int a, int b) => a + b;
+MathOperation op = Add;
+Console.WriteLine($"10 + 5 = {op(10, 5)}"); // Output: 15
+
+// Generic class example
+public class DataStore<T> { /* ... implementation ... */ }
+var stringStore = new DataStore<string>();
+
+// Extension method example
+public static class StringExtensions {
+    public static string Truncate(this string str, int maxLength) { /* ... */ }
+}
+string name = "Alexander";
+string shortened = name.Truncate(5); // Calls extension method
+
+// LINQ uses extension methods
+using System.Linq; // Required namespace
+var queryResult = numbers.Where(n => n > 2).Select(n => n * n);
+```
+
+### Getting Started with LINQ
+
+LINQ provides a unified, type-safe, declarative way to query data.
+
+**What is LINQ?**
+
+*   **Unified Querying:** Same syntax for different sources.
+*   **Type Safety:** Compile-time checks.
+*   **IntelliSense:** Editor support.
+*   **Integration:** First-class C# construct.
+*   **Declarative:** Focus on *what*, not *how*.
+
+> **Note:** Add `using System.Linq;` to use LINQ operators.
+
+**Query Syntax vs. Method Syntax**
+
+Two ways to write LINQ queries, compiling to the same code.
+
+```csharp
+List<int> numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// Query Syntax (SQL-like)
+var evenSquaresQuery =
+    from num in numbers
+    where num % 2 == 0
+    orderby num descending
+    select num * num;
+
+// Method Syntax (Fluent)
+var evenSquaresMethod = numbers
+    .Where(num => num % 2 == 0)
+    .OrderByDescending(num => num)
+    .Select(num => num * num);
+
+Console.WriteLine($"Query Syntax: {string.Join(", ", evenSquaresQuery)}");
+Console.WriteLine($"Method Syntax: {string.Join(", ", evenSquaresMethod)}");
+// Both output: 100, 64, 36, 16, 4
+```
+
+| Feature             | Query Syntax                       | Method Syntax                        |
+| :------------------ | :--------------------------------- | :----------------------------------- |
+| Readability         | Often better for complex joins/groups | Concise for simple chains            |
+| Available Operators | Subset (from, where, select, ...)  | All operators (Take, Sum, Any, ...) |
+| Flexibility         | Less flexible                      | Highly flexible                      |
+| Lambda Usage        | Often implicit                     | Explicit                             |
+
+> **Tip:** Mix syntaxes! Start with query syntax, append method calls: `(from p in products ... select p).Take(5);`
+
+**Simple LINQ Queries: Filtering, Sorting, Projection**
+
+```csharp
+List<Person> people = [
+    new() { Name = "Alice", Age = 30 }, new() { Name = "Bob", Age = 25 },
+    new() { Name = "Charlie", Age = 35 }, new() { Name = "David", Age = 17 }
+];
+
+// Filtering (`Where`)
+var adults = people.Where(person => person.Age >= 18);
+
+// Sorting (`OrderBy` / `OrderByDescending`)
+var peopleByAge = people.OrderBy(person => person.Age);
+
+// Projection (`Select`)
+var names = people.Select(person => person.Name);
+var nameAgePairs = people.Select(p => new { Name = p.Name, YearsOld = p.Age }); // Anonymous type
+
+// Combining Operations
+var adultNamesSorted = people
+    .Where(p => p.Age >= 18)
+    .OrderBy(p => p.Name)
+    .Select(p => p.Name);
+
+Console.WriteLine("Sorted Adult Names: " + string.Join(", ", adultNamesSorted)); // Alice, Bob, Charlie
+```
+
+## Part 2: LINQ Fundamentals
+
+### Query Syntax Deep Dive
+
+Declarative, SQL-like syntax.
+
+**`from`, `where`, `select` Clauses**
+
+Foundation of query syntax. Starts with `from`, ends with `select` or `group`.
+
+```csharp
+List<Product> products = ExampleData.GetProducts();
+
+var electronicProductNames =
+    from product in products                // Source and range variable
+    where product.Category == "Electronics" // Filter
+    select product.Name;                    // Project
+```
+
+**Multiple `from` Clauses (SelectMany)**
+
+Query nested collections or perform cross joins.
+
+```csharp
+List<Customer> customers = [
+    new() { Name = "Alice", OrderList = [new Order { Id = 101, Total = 50 }, new Order { Id = 102, Total = 150 }] },
+    new() { Name = "Bob", OrderList = [new Order { Id = 201, Total = 200 }] }
+];
+
+var highValueOrders =
+    from customer in customers
+    from order in customer.OrderList // Flattens nested collection
+    where order.Total > 100
+    select new { customer.Name, order.Id, order.Total };
+```
+
+**Ordering with `orderby`**
+
+Sorts the sequence. Multiple keys, `ascending` (default), `descending`.
+
+```csharp
+var sortedProducts =
+    from product in products
+    orderby product.Category ascending, product.Price descending
+    select $"{product.Name} ({product.Category}, ${product.Price})";
+```
+
+**Joining Collections with `join`**
+
+Performs inner joins. Use `join...into` for group joins (simulating outer joins).
+
+```csharp
+List<Category> categories = [ /* ... */ ];
+List<Product> productsForJoin = [ /* ... */ ];
+
+// Inner Join
+var productDetails =
+    from product in productsForJoin
+    join category in categories on product.Category equals category.Name
+    select new { product.Name, CategoryName = category.Name };
+
+// Group Join (for Left Outer Join)
+var categoryProductGroups =
+    from category in categories
+    join product in productsForJoin on category.Name equals product.Category into productGroup
+    select new { CategoryName = category.Name, Products = productGroup };
+
+// Left Outer Join (using group join and DefaultIfEmpty)
+var leftOuterJoin =
+    from category in categories
+    join product in productsForJoin on category.Name equals product.Category into productGroup
+    from productOrNull in productGroup.DefaultIfEmpty() // Get product or null
+    select new { CategoryName = category.Name, ProductName = productOrNull?.Name ?? "(No Product)" };
+```
+
+**Grouping with `group by`**
+
+Groups elements based on a key. Result is `IEnumerable<IGrouping<TKey, TElement>>`.
+
+```csharp
+// Group products by category
+var productsByCategory =
+    from product in products
+    group product by product.Category;
+
+// Grouping and projecting aggregate data
+var categoryStats =
+    from product in products
+    group product by product.Category into categoryGroup
+    select new {
+        Category = categoryGroup.Key,
+        Count = categoryGroup.Count(),
+        AveragePrice = categoryGroup.Average(p => p.Price)
+    };
+```
+
+**Intermediate Variables with `let`**
+
+Introduce temporary variables within the query.
+
+```csharp
+var discountedProducts =
+    from product in products
+    let discount = product.Price > 500 ? 0.10m : 0.05m
+    let discountedPrice = product.Price * (1 - discount)
+    where discountedPrice > 100
+    select new { product.Name, DiscountedPrice = discountedPrice };
+```
+
+> **Warning:** Query syntax is syntactic sugar for method calls. Not all LINQ operators have query syntax keywords (e.g., `Take`, `Skip`, `Count`).
+
+### Method Syntax and Standard Query Operators
+
+Uses chained extension method calls. Accesses all Standard Query Operators (SQOs).
+
+**Core Operators: `Where`, `Select`, `OrderBy`, Aggregates**
+
+```csharp
+List<Employee> employees = ExampleData.employees;
+
+// Where (Filter)
+var itEmployees = employees.Where(emp => emp.Department == "IT");
+
+// Select (Project)
+var employeeNames = employees.Select(emp => emp.Name);
+var summaries = employees.Select(e => new { ID = e.Id, Name = e.Name });
+
+// OrderBy, OrderByDescending, ThenBy, ThenByDescending (Sort)
+var sorted = employees.OrderBy(e => e.Department).ThenByDescending(e => e.Salary);
+
+// Aggregates (Immediate Execution)
+int totalCount = employees.Count();
+int hrCount = employees.Count(e => e.Department == "HR");
+decimal totalSalary = employees.Sum(e => e.Salary);
+double avgSalary = employees.Average(e => (double)e.Salary);
+decimal minSalary = employees.Min(e => e.Salary);
+decimal maxSalary = employees.Max(e => e.Salary);
+string nameList = employees.Aggregate("", (list, emp) => list == "" ? emp.Name : list + ", " + emp.Name);
+```
+
+**Chaining Methods for Complex Queries**
+
+```csharp
+// Get names of top 2 highest-paid IT employees
+var topItEarnersInfo = employees
+    .Where(e => e.Department == "IT")
+    .OrderByDescending(e => e.Salary)
+    .Take(2)
+    .Select(e => new { e.Name, e.Salary })
+    .ToList(); // Materialize results
+```
+
+**Common Method Chains and Other Useful Operators**
+
+*   **Element Operators:** `First`, `FirstOrDefault`, `Last`, `LastOrDefault`, `Single`, `SingleOrDefault`, `ElementAt`, `ElementAtOrDefault`. (Most have `OrDefault` versions to avoid exceptions).
+*   **Quantifiers:** `Any` (at least one matches?), `All` (all match?), `Contains` (sequence contains element?). Return `bool`.
+*   **Set Operators:** `Distinct`, `Union`, `Intersect`, `Except`, `Concat`. Operate on sets/sequences.
+*   **Partitioning Operators:** `Take`, `Skip`, `TakeWhile`, `SkipWhile`, `Chunk` (.NET 6+). Select subsets.
+
+> **Tip:** Method syntax is often preferred for consistency, access to all operators, and composability. Choose syntax for readability.
+
+### Deferred Execution and Performance
+
+Most LINQ queries use **deferred execution** (lazy evaluation). They aren't executed when defined, only when enumerated.
+
+**Understanding Lazy Evaluation**
+
+Queries build a plan. Execution happens on iteration (`foreach`) or when calling immediate execution operators.
+
+```csharp
+List<int> numbers = [1, 2, 3, 4, 5];
+Console.WriteLine("Defining query...");
+var query = numbers.Where(n => { Console.WriteLine($"Filtering {n}"); return n % 2 == 0; });
+
+Console.WriteLine("Modifying source...");
+numbers.Add(6); // Source modified *after* query definition
+
+Console.WriteLine("Executing query (foreach)...");
+foreach (var number in query) { /* Lambda runs now, includes 6 */ }
+
+Console.WriteLine("\nExecuting query again...");
+foreach (var number in query) { /* Lambda runs again */ }
+```
+
+**Implications:**
+
+*   Always queries current data.
+*   Potentially efficient (e.g., `Take` might not process all).
+*   Composability without intermediate allocation.
+*   Risk of multiple executions if enumerated multiple times.
+
+**Immediate Execution: Forcing Query Evaluation**
+
+Operators that produce a single value or concrete collection force immediate execution.
+
+*   **Conversion:** `ToList()`, `ToArray()`, `ToDictionary()`, `ToHashSet()`, `ToLookup()`
+*   **Element:** `First()`, `Last()`, `Single()`, `ElementAt()` (and `OrDefault` versions)
+*   **Aggregates:** `Count()`, `Sum()`, `Average()`, `Min()`, `Max()`, `Aggregate()`
+
+```csharp
+var query = numbers.Where(n => n % 2 == 0);
+Console.WriteLine("Calling ToList()...");
+List<int> evenNumbersList = query.ToList(); // Executes query here
+Console.WriteLine("Calling Count()...");
+int count = query.Count(); // Executes query again on current source
+```
+
+**When to Materialize Results (`ToList()`, `ToArray()`)**
+
+*   To prevent multiple enumerations of expensive queries.
+*   To capture a snapshot of data at a point in time.
+*   To pass results to methods expecting `List<T>` or `T[]`.
+*   To avoid multiple database round trips (crucial for LINQ to Entities).
+
+```csharp
+// Inefficient: DB queried multiple times
+var expensiveQuery = GetExpensiveProductsFromDb(); // Returns IQueryable or IEnumerable
+int count1 = expensiveQuery.Count(); // DB Hit 1
+foreach (var p in expensiveQuery) { /* DB Hit 2 */ }
+
+// Efficient: Materialize once
+List<Product> expensiveList = GetExpensiveProductsFromDb().ToList(); // DB Hit 1
+int count2 = expensiveList.Count; // Uses in-memory list
+foreach (var p in expensiveList) { /* Uses in-memory list */ }
+```
+
+> **Performance Trap:** Repeatedly enumerating `IQueryable<T>` without materializing often leads to multiple database queries. Materialize with `ToList()`/`ToArray()` if results are needed multiple times.
+
+## Part 3: Intermediate LINQ Techniques
+
+### Advanced Query Operators
+
+Beyond basics: advanced grouping, joining, partitioning, set operations.
+
+**Grouping (`GroupBy`) Deep Dive**
+
+Powerful with overloads for key selection, element projection, and result projection.
+
+```csharp
+List<Sale> sales = ExampleData.sales;
+
+// Group by composite key (Category and Region)
+var salesByCategoryAndRegion = sales.GroupBy(sale => new { sale.Category, sale.Region });
+
+// Grouping with result projection (calculate stats per group)
+var regionStats = sales
+    .GroupBy(
+        sale => sale.Region, // Key selector
+        (regionKey, salesInRegion) => new // Result selector
+        {
+            Region = regionKey,
+            TotalSales = salesInRegion.Sum(s => s.Amount),
+            NumberOfSales = salesInRegion.Count()
+        }
+    );
+```
+
+**Joining (`Join`, `GroupJoin`)**
+
+Method syntax equivalents for joins.
+
+```csharp
+List<Employee> employees = ExampleData.employees;
+List<Department> departments = [ /* ... */ ];
+
+// Inner Join (Method Syntax)
+var employeeLocations = employees.Join(
+    departments,
+    emp => emp.Department, // Outer key
+    dept => dept.Name,     // Inner key
+    (employee, department) => new { EmployeeName = employee.Name, Location = department.Location } // Result
+);
+
+// Group Join (Method Syntax)
+var departmentEmployees = departments.GroupJoin(
+    employees,
+    dept => dept.Name,
+    emp => emp.Department,
+    (department, employeesInDept) => new { DepartmentName = department.Name, Employees = employeesInDept }
+);
+
+// Left Outer Join (using GroupJoin and SelectMany)
+var leftOuterJoinData = departments.GroupJoin( /* ... */ )
+    .SelectMany(
+        temp => temp.emps.DefaultIfEmpty(), // Flatten, provide null if no match
+        (temp, emp) => new { /* ... project result ... */ }
+    );
+```
+
+**Combining Sequences: `Zip`**
+
+Merges two (or more in recent .NET) sequences element by element using a result selector. Stops at the shorter sequence length.
+
+```csharp
+List<string> itemNames = ["A", "B", "C"];
+List<decimal> itemPrices = [10m, 20m];
+var pairs = itemNames.Zip(itemPrices, (name, price) => $"{name}: ${price}");
+// Result: ["A: $10", "B: $20"]
+```
+
+**Generation Operators**
+
+Create simple sequences.
+
+*   `Enumerable.Range(start, count)`
+*   `Enumerable.Repeat(element, count)`
+*   `Enumerable.Empty<T>()`
+
+**Conversion Operators**
+
+Convert sequence types or handle type mismatches.
+
+*   `OfType<T>()`: Filters elements of type `T`. Safe.
+*   `Cast<T>()`: Attempts to cast all elements to `T`. Throws if cast fails. Use carefully.
+*   `AsEnumerable()`: Casts `IQueryable` to `IEnumerable`, forcing subsequent operations into memory.
+
+### Working with Collections
+
+Understand collection characteristics for efficient LINQ usage.
+
+**Querying Arrays (`T[]`) and Lists (`List<T>`)**
+
+Both implement `IEnumerable<T>`. Lists offer more mutation methods.
+
+```csharp
+string[] fruitsArray = ["Apple", "Banana", "Cherry"];
+var queryArray = fruitsArray.Where(f => f.StartsWith("A"));
+
+List<int> scoresList = [95, 80, 72];
+var queryList = scoresList.Where(s => s >= 90);
+scoresList.Add(78); // List-specific method
+scoresList.Sort(); // In-place sort
+int[] topScores = scoresList.OrderByDescending(s => s).Take(1).ToArray(); // LINQ + conversion
+```
+
+**Querying Dictionaries (`Dictionary<TKey, TValue>`)**
+
+LINQ operates on `KeyValuePair<TKey, TValue>`.
+
+```csharp
+Dictionary<string, int> productStock = ["Laptop": 15, "Mouse": 120];
+
+var lowStock = productStock.Where(kvp => kvp.Value < 50); // Query KeyValuePairs
+var itemNames = productStock.Keys.OrderBy(name => name); // Query Keys
+int totalStock = productStock.Values.Sum(); // Query Values
+
+bool hasMouse = productStock.ContainsKey("Mouse"); // Efficient lookup O(1)
+```
+
+**Querying Sets (`HashSet<T>`)**
+
+Stores unique elements. Efficient `Add`, `Remove`, `Contains` (O(1)). Has optimized set methods (`UnionWith`, `IntersectWith`, etc.).
+
+```csharp
+HashSet<string> tags1 = ["csharp", "linq"];
+HashSet<string> tags2 = ["dotnet", "csharp"];
+
+var shortTags = tags1.Where(tag => tag.Length <= 4); // LINQ query
+
+tags1.UnionWith(tags2); // Efficient in-place set operation
+bool hasLinq = tags1.Contains("linq"); // Efficient O(1) check
+```
+
+**Handling Nulls and Exceptions in LINQ Queries**
+
+*   **Null Collections:** Use null-conditional `?.` and null-coalescing `??` operators.
+    ```csharp
+    List<string>? names = GetNamesMaybeNull();
+    var query = names?.Where(n => n.Length > 3) ?? Enumerable.Empty<string>();
+    ```
+*   **Null Elements:** Filter out nulls (`Where(x => x != null)`) or use `OfType<T>()`. Use null-conditional `?.` for safe property access.
+    ```csharp
+    List<Person?> people = [p1, null, p2];
+    var adultNames = people.Where(p => p?.Age >= 18).Select(p => p!.Name); // Use ! after null check
+    ```
+*   **Exceptions:** Exceptions in lambdas usually occur during enumeration. Prefer preventing exceptions (e.g., `TryParse` instead of `Parse`, null checks) over catching during iteration.
+    ```csharp
+    // Safe parsing
+    var numbers = inputs.Select(s => int.TryParse(s, out int res) ? (int?)res : null)
+                        .OfType<int>(); // Get only successfully parsed non-null integers
+
+    // Alternatively, filter first
+    var validNumbers = inputs.Where(s => int.TryParse(s, out _)).Select(int.Parse);
+    ```
+
+> **Best Practice:** Prevent exceptions within LINQ lambdas where possible. Filter problematic data early.
+
+### LINQ Best Practices
+
+Write readable, maintainable, performant queries.
+
+1.  **Avoid Multiple Enumerations:** Materialize (`ToList()`, `ToArray()`) expensive queries if results are needed more than once.
+2.  **Filter Early, Project Late:** Apply `Where` clauses before `Select` or complex operations to reduce workload. Crucial for databases.
+3.  **Understand `IEnumerable<T>` vs. `IQueryable<T>`:**
+    *   `IEnumerable`: In-memory processing (LINQ to Objects).
+    *   `IQueryable`: Builds expression trees, translated to external source query (e.g., SQL via EF Core).
+    *   Beware `AsEnumerable()` on `IQueryable` - switches to client-side evaluation. Filter *before* calling it if possible.
+4.  **Optimize Predicates and Projections:**
+    *   Order `Where` conditions (cheaper/more selective first).
+    *   Avoid overly complex lambda logic.
+    *   `Select` only necessary data (especially from databases).
+5.  **Leverage Specialized Collections:** Use `ToDictionary()`, `ToHashSet()` for efficient lookups/checks after initial querying.
+6.  **Consider Parallel LINQ (`AsParallel()`) Carefully:**
+    *   For CPU-bound work on large in-memory collections.
+    *   Adds overhead; not for small datasets or I/O-bound tasks.
+    *   Ensure thread-safety in lambdas. Use `AsOrdered()` if order matters.
+
+## Part 4: Advanced LINQ and C# 14 Integration
+
+### LINQ with C# 14 Features
+
+New language features enhance LINQ usage.
+
+**Collection Expressions (`[...]`, `..`) (C# 12+)**
+
+Concise creation, integrate naturally.
+
+```csharp
+var numbers = [1, 2, 3, 4, 5]; // Infers int[]
+var firstEvens = [1, 2, 3, 4].Where(n => n % 2 == 0); // Query expression directly
+var combined = [..numbers, ..firstEvens, 11]; // Spread operator
+```
+
+**Primary Constructors and Records**
+
+Simplify DTO definitions for `Select` projections. Records offer value equality, good for `GroupBy` keys.
+
+```csharp
+public record EmployeeInfo(int Id, string Name, string Department); // Record DTO
+var infos = employees.Select(e => new EmployeeInfo(e.Id, e.Name, e.Department));
+```
+
+**Enhanced Pattern Matching**
+
+Use property, list, type patterns in `Where` or `Select` (with switch expressions).
+
+```csharp
+// Property pattern in Where
+var seniorHighEarners = data.OfType<Employee>()
+                            .Where(e => e is { Salary: >= 70000, Age: >= 40 });
+
+// Switch expression in Select
+var descriptions = data.Select(item => item switch {
+    Employee { Department: "IT" } e => $"IT: {e.Name}",
+    string s => $"String: {s}",
+    _ => "Other"
+});
+
+// List pattern in Where
+var sequences = [ [1, 2, 3], [1, 99, 3] ];
+var startsWithOneTwo = sequences.Where(seq => seq is [1, 2, ..]);
+```
+
+### Querying Databases with LINQ to Entities (EF Core)
+
+Modern way to query databases using LINQ via an ORM (Entity Framework Core).
+
+**EF Core Setup Basics**
+
+1.  **Entity Classes:** POCOs mapping to tables.
+2.  **`DbContext`:** Represents database session, contains `DbSet<TEntity>` properties.
+3.  **Configure Connection:** In `DbContext.OnConfiguring` or via dependency injection.
+
+**Writing LINQ to Entities Queries**
+
+Query against `DbSet<TEntity>` properties; returns `IQueryable<TEntity>`.
+
+```csharp
+// Use using for DbContext lifetime management
+using var context = new ECommerceContext();
+
+// Query is translated to SQL, executed on enumeration/materialization
+var nyCustomers = context.Customers.Where(c => c.City == "New York"); // IQueryable
+List<Customer> results = nyCustomers.ToList(); // Executes SQL
+
+// Projection to anonymous type
+var activeInfo = context.Customers.Where(c => c.IsActive).Select(c => new { c.Name, c.JoinDate });
+var infoList = activeInfo.ToList(); // Executes SQL
+
+// Aggregates execute immediately
+int count = context.Customers.Count(); // Executes SQL COUNT
+decimal total = context.Orders.Sum(o => o.TotalAmount); // Executes SQL SUM
+
+// Find by primary key (optimized)
+Customer? customer1 = context.Customers.Find(1);
+
+// Find using FirstOrDefault
+Customer? firstMatch = context.Customers.FirstOrDefault(c => c.City == "Chicago"); // Executes SQL TOP(1)
+```
+
+**Query Translation and Execution**
+
+*   **Server-Side Evaluation:** Most LINQ translated to SQL, runs on DB server.
+*   **Client-Side Evaluation:** Untranslatable parts might run in memory after data fetch. Avoid implicitly; use deliberately (e.g., after `AsEnumerable()`).
+
+```csharp
+// Get generated SQL (EF Core 5+)
+string sql = context.Customers.Where(c => c.Price > 100).ToQueryString();
+Console.WriteLine(sql);
+
+// Potential client-side evaluation trap (avoid if possible)
+// var badQuery = context.Customers.Where(c => MyUntranslatableMethod(c.Name));
+
+// Better: Filter on server, then process in memory if needed
+var betterQuery = context.Customers
+    .Where(c => c.IsActive) // Runs on server
+    .AsEnumerable()         // Switch to client
+    .Where(c => MyUntranslatableMethod(c.Name)); // Runs in memory
+```
+
+**Loading Related Data**
+
+Explicitly load navigation properties.
+
+*   **Eager Loading (`Include`, `ThenInclude`):** Loads via JOINs. Good if data is always needed.
+    ```csharp
+    var customersWithOrders = context.Customers.Include(c => c.OrderList).ToList();
+    ```
+*   **Explicit Loading (`Load`):** Loads on demand for a fetched entity. Separate query.
+    ```csharp
+    var customer = context.Customers.Find(1);
+    context.Entry(customer).Collection(c => c.OrderList).Load();
+    ```
+*   **Lazy Loading (Requires setup):** Loads automatically on first access. Can cause N+1 problem.
+
+**Performance Considerations (`AsNoTracking`, `AsSplitQuery`)**
+
+*   **`AsNoTracking()`:** For read-only queries. Disables change tracking, improving performance.
+    ```csharp
+    var readOnly = context.Customers.AsNoTracking().Where(...).ToList();
+    ```
+*   **`AsSplitQuery()`:** Avoids Cartesian explosion when `Include`-ing multiple collections by generating separate queries.
+    ```csharp
+    var complex = context.Customers
+        .Include(c => c.Orders).ThenInclude(o => o.Items) // Multiple collections
+        .Include(c => c.Addresses)
+        .AsSplitQuery()
+        .ToList();
+    ```
+
+> **Warning:** Always profile database queries using tools like SQL Profiler, EF Core logging, or APM tools.
+
+### Custom LINQ Operators
+
+Extend LINQ with custom logic via extension methods.
+
+**Creating Reusable Extension Methods for `IEnumerable<T>`**
+
+Static methods in a static class extending `IEnumerable<T>`. Aim for deferred execution (`yield return` or compose existing operators).
+
+```csharp
+public static class LinqExtensions
+{
+    // Example: Shuffle operator (buffers source)
+    public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
+    {
+        if (source == null) throw new ArgumentNullException(nameof(source));
+        var buffered = source.ToList();
+        // ... Fisher-Yates shuffle logic ...
+        return buffered;
+    }
+
+    // Example: Log operator (deferred)
+    public static IEnumerable<T> Log<T>(this IEnumerable<T> source, string prefix = "LOG")
+    {
+        if (source == null) throw new ArgumentNullException(nameof(source));
+        return source.Select(item => { Console.WriteLine($"[{prefix}]: {item}"); return item; });
+    }
+}
+
+// Usage:
+var shuffled = myCollection.Shuffle();
+var processed = myCollection.Log("Start").Where(...).Log("End").ToList();
+```
+
+**Design Considerations:**
+
+*   Prefer deferred execution.
+*   Ensure immutability (don't modify source).
+*   Validate parameters.
+*   Keep operators focused.
+*   Follow naming conventions.
+
+**Integrating Third-Party LINQ Libraries (e.g., MoreLINQ)**
+
+Leverage existing libraries for common extensions.
+
+```csharp
+// Install-Package morelinq
+using MoreLinq;
+using MoreLinq.Extensions; // May be needed for some
+
+// Examples using MoreLINQ
+var batches = numbers.Batch(10);
+var distinctByCategory = products.DistinctBy(p => p.Category); // Built-in in .NET 6+
+var mostExpensive = products.MaxBy(p => p.Price).First(); // Built-in in .NET 6+
+var interleaved = listA.Interleave(listB);
+```
+
+## Part 5: Expert-Level Topics
+
+### Performance Optimization
+
+Combine LINQ knowledge with performance best practices.
+
+**Benchmarking (`BenchmarkDotNet`)**
+
+Measure performance of different LINQ approaches accurately for in-memory operations. (See earlier BenchmarkDotNet example setup).
+
+**`IQueryable` vs `IEnumerable` Deep Dive**
+
+Reiteration: `IQueryable` builds expression trees for providers (like EF Core) to translate. `IEnumerable` works on in-memory objects using delegates. Switching via `AsEnumerable()` stops translation and pulls data into memory.
+
+```csharp
+// Keep as IQueryable as long as possible for DB queries
+context.Products.Where(p => p.Category == "X").OrderBy(p => p.Price) // IQueryable
+
+// Use AsEnumerable() deliberately AFTER server-side filtering
+context.Products.Where(p => p.Category == "X") // Server filter
+                .AsEnumerable() // Switch to client
+                .Select(p => ComplexInMemoryCalculation(p)); // Client processing
+```
+
+**Leveraging `Span<T>` and `Memory<T>` (Advanced)**
+
+Use within LINQ lambdas (on materialized data or specific sources) for low-allocation processing, especially with strings or arrays. LINQ itself doesn't heavily operate *directly* on Spans, but they are useful in the functions called *by* LINQ operators.
+
+```csharp
+string dataLine = "Field1=Value1,Field2=Value2";
+ReadOnlySpan<char> lineSpan = dataLine.AsSpan();
+// Use span-based parsing inside a Select or Where lambda if applicable
+var parsed = collection.Select(line => ParseWithSpan(line.AsSpan()));
+```
+
+**Profiling LINQ Queries**
+
+Essential for finding bottlenecks.
+
+*   **Benchmarking Tools:** BenchmarkDotNet (micro-benchmarks).
+*   **Database Profiling:** SQL Server Profiler/Extended Events, EF Core Logging.
+*   **Application Performance Monitoring (APM):** Application Insights, Datadog, etc. (production monitoring).
+*   **Visual Studio Diagnostic Tools:** CPU Usage, Memory Allocation.
+
+> **Tip:** Focus profiling on: execution time, number of DB queries, data transferred, CPU usage, memory allocations.
+
+### LINQ in Real-World Applications
+
+Practical examples of LINQ usage.
+
+**Data Transformation and ETL**
+
+Read, clean, transform, validate data pipelines.
+
+```csharp
+// Example: Reading CSV, cleaning, transforming to DTO
+List<ProductImportDto> productsToImport = ReadCsvLines("file.csv")
+    .Skip(1) // Skip header
+    .Select(line => line.Split(','))
+    .Where(fields => fields.Length == 4 /* ... more validation ... */)
+    .Select(fields => /* ... parse fields safely ... */)
+    .Select(valid => new ProductImportDto(/* ... create DTO ... */))
+    .Where(dto => dto.Price > 0 /* ... business rules ... */)
+    .ToList(); // Materialize for import
+```
+
+**Implementing Business Logic**
+
+Express complex rules and filtering concisely.
+
+```csharp
+// Example: Find customers eligible for promotion based on multiple criteria
+var eligibleCustomers = allCustomers
+    .Where(c => c.IsActive && eligibleCities.Contains(c.City))
+    .Where(c => c.OrderList.Count(o => o.OrderDate >= threshold && o.TotalAmount > minAmount) >= minOrders)
+    .Select(c => new { c.Name, c.Email })
+    .ToList();
+```
+
+**API Data Shaping and Filtering**
+
+Server-side processing of client requests (filtering, sorting, field selection). Use libraries like OData or custom expression tree parsing for robust implementation.
+
+```csharp
+// Simplified conceptual example
+IQueryable<Product> query = context.Products;
+if (categoryFilter != null) query = query.Where(p => p.Category == categoryFilter);
+if (sortOrder == "price") query = query.OrderBy(p => p.Price);
+// ... Apply projection based on requested 'fields' (complex part) ...
+var results = query.ToList();
+```
+
+**Reporting and Aggregation**
+
+Generate summary reports using `GroupBy` and aggregate functions.
+
+```csharp
+// Example: Sales summary report by region/category
+var salesReport = salesData
+    .GroupBy(s => new { s.Region, s.Category })
+    .Select(g => new {
+        g.Key.Region, g.Key.Category,
+        TotalAmount = g.Sum(s => s.Amount),
+        NumberOfSales = g.Count(),
+        AverageSale = g.Average(s => s.Amount)
+    })
+    .OrderBy(r => r.Region).ThenBy(r => r.Category)
+    .ToList();
+```
+
+### Future of LINQ in C#
+
+LINQ remains vital, evolving with C# and .NET.
+
+**Integration with Async Streams (`IAsyncEnumerable<T>`)**
+
+Work with asynchronous data sequences. Use `await foreach`, `System.Linq.Async` package, or built-in EF Core async methods (`ToListAsync`, `FirstOrDefaultAsync`, etc.).
+
+```csharp
+// Consuming async stream
+await foreach (var item in GetItemsAsync().WhereAwait(async i => /* ... */))
+{
+    Console.WriteLine(item);
+}
+
+// EF Core async operations
+List<Product> products = await context.Products.Where(...).ToListAsync();
+int count = await context.Products.CountAsync(...);
+```
+
+**Potential Language Enhancements (Speculative)**
+
+*   More concise lambdas.
+*   Enhanced pattern matching in query syntax.
+*   Improved `IQueryable` extensibility.
+*   Compiler/runtime optimizations.
+
+**Role in Modern .NET**
+
+*   Essential for cloud apps (databases, data streams).
+*   Used in Data Science / ML.NET data prep.
+*   Core data handling in cross-platform apps (MAUI, Blazor).
+*   Foundation for libraries like OData.
+
+Mastering LINQ is a critical skill for .NET developers.
+
+## Appendix A: LINQ Quick Reference Guide
+
+Common Standard Query Operators (Method Syntax)
+
+| Category            | Operator                       | Description                                               | Query Syntax Equivalent       |
+| :------------------ | :----------------------------- | :-------------------------------------------------------- | :---------------------------- |
+| **Filtering**       | `Where`                        | Filters based on a predicate.                             | `where`                       |
+|                     | `OfType`                       | Filters based on type.                                    | N/A                           |
+| **Projection**      | `Select`                       | Projects each element to a new form.                      | `select`                      |
+|                     | `SelectMany`                   | Projects to sequences and flattens.                       | Multiple `from`               |
+| **Sorting**         | `OrderBy` / `OrderByDescending` | Sorts elements ascending/descending.                      | `orderby ... [descending]`    |
+|                     | `ThenBy` / `ThenByDescending`   | Performs subsequent sort ascending/descending.            | `orderby ..., ... [descending]` |
+| **Grouping**        | `GroupBy`                      | Groups elements based on a key.                           | `group ... by ...`            |
+| **Joining**         | `Join`                         | Inner join based on keys.                                 | `join ... on ... equals ...`  |
+|                     | `GroupJoin`                    | Group join (used for left joins).                         | `join ... into ...`           |
+| **Set Ops**         | `Distinct` / `DistinctBy`      | Returns distinct elements.                                | N/A                           |
+|                     | `Union` / `UnionBy`            | Set union.                                                | N/A                           |
+|                     | `Intersect` / `IntersectBy`    | Set intersection.                                         | N/A                           |
+|                     | `Except` / `ExceptBy`          | Set difference.                                           | N/A                           |
+|                     | `Concat`                       | Concatenates sequences (preserves duplicates).            | N/A                           |
+| **Partitioning**    | `Take` / `TakeLast`            | Takes N elements from start/end.                          | N/A                           |
+|                     | `Skip` / `SkipLast`            | Skips N elements from start/end.                          | N/A                           |
+|                     | `TakeWhile`                    | Takes elements while condition is true.                   | N/A                           |
+|                     | `SkipWhile`                    | Skips elements while condition is true.                   | N/A                           |
+|                     | `Chunk`                        | Splits into chunks of specified size.                     | N/A                           |
+| **Element Ops**     | `First` / `FirstOrDefault`     | Returns first element (optionally matching predicate).    | N/A                           |
+|                     | `Last` / `LastOrDefault`       | Returns last element (optionally matching predicate).     | N/A                           |
+|                     | `Single` / `SingleOrDefault`   | Returns only element (optionally matching); throws if != 1 | N/A                           |
+|                     | `ElementAt` / `ElementAtOrDefault` | Returns element at index.                               | N/A                           |
+| **Quantifiers**     | `Any`                          | Checks if any element exists or satisfies predicate.      | N/A                           |
+|                     | `All`                          | Checks if all elements satisfy predicate.                 | N/A                           |
+|                     | `Contains`                     | Checks if sequence contains specific element.             | N/A                           |
+| **Aggregation**     | `Count` / `LongCount`          | Counts elements (optionally matching predicate).          | N/A                           |
+|                     | `Sum`                          | Computes sum.                                             | N/A                           |
+|                     | `Average`                      | Computes average.                                         | N/A                           |
+|                     | `Min` / `MinBy`                | Finds min value or element by selector.                   | N/A                           |
+|                     | `Max` / `MaxBy`                | Finds max value or element by selector.                   | N/A                           |
+|                     | `Aggregate`                    | Custom aggregation.                                       | N/A                           |
+| **Conversion**      | `ToList`, `ToArray`            | Materializes into List/Array.                             | N/A                           |
+|                     | `ToDictionary`                 | Materializes into Dictionary.                             | N/A                           |
+|                     | `ToHashSet`                    | Materializes into HashSet.                                | N/A                           |
+|                     | `ToLookup`                     | Materializes into Lookup.                                 | N/A                           |
+|                     | `AsEnumerable`, `AsQueryable`  | Casts sequence type.                                      | N/A                           |
+
+## Appendix B: C# 14 Features Relevant to LINQ (Projected)
+
+Features from recent C# versions (like 12) already impact LINQ:
+
+*   **Collection Expressions (`[...]`, `..`):** Simplify creating source collections.
+*   **Primary Constructors:** Concise DTOs for `Select`.
+*   **Default Lambda Parameters:** Potentially useful in custom extensions.
+*   **Pattern Matching Enhancements:** More expressive `Where`/`Select`.
+*   **Compiler Optimizations:** Ongoing improvements.
+
+```csharp
+// C# 12 examples
+var source = [10, 20, 30]; // Collection expression
+public record PointInfo(int X, int Y); // Primary constructor
+var points = source.Chunk(2).Select(p => new PointInfo(p[0], p[1]));
+```
+
+## Appendix C: Case Studies
+
+### Case Study 1: Log File Analysis
+
+Find top 10 IP addresses accessing `/api/users`, excluding 5xx errors.
+
+```csharp
+// Simulate log lines
+IEnumerable<string> GetLogLines() { /* ... see full example ... */ }
+string targetPath = "/api/users";
+
+var topIPs = GetLogLines()
+    .Select(line => /* ... parse line safely ... */ new { IpAddress = ..., Request = ..., StatusCode = ... })
+    .Where(log => log.Request == targetPath && log.StatusCode < 500)
+    .GroupBy(log => log.IpAddress)
+    .Select(group => new { IpAddress = group.Key, Count = group.Count() })
+    .OrderByDescending(result => result.Count)
+    .Take(10)
+    .ToList();
+```
+
+### Case Study 2: Order Fulfillment Prioritization
+
+Prioritize orders: High Priority > Expedited Shipping > Oldest Date.
+
+```csharp
+public record OrderInfo(int Id, DateTime OrderDate, bool IsHighPriority, bool HasExpeditedShipping);
+List<OrderInfo> orders = [ /* ... */ ];
+
+var prioritizedOrders = orders
+    .OrderByDescending(o => o.IsHighPriority)
+    .ThenByDescending(o => o.HasExpeditedShipping)
+    .ThenBy(o => o.OrderDate)
+    .ToList();
+```
+
+### Case Study 3: Finding Common Interests
+
+Find interests common to at least N users.
+
+```csharp
+Dictionary<string, List<string>> userInterests = [ /* ... */ ];
+int minCommonUsers = 3;
+
+var commonInterests = userInterests
+    .SelectMany(kvp => kvp.Value) // Flatten all interests
+    .GroupBy(interest => interest) // Group by interest
+    .Where(group => group.Count() >= minCommonUsers) // Filter by count
+    .Select(group => group.Key) // Select interest name
+    .ToList();
+```
