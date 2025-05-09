@@ -82,7 +82,7 @@ This is a personal blog and portfolio site for M.F.M Fazrin, a software developm
    - Framework preset: `astro`
 
 2. **Pre-deployment Checklist**:
-   - Run `pnpm build` locally to ensure no build errors
+   - Run `pnpm run build` locally to ensure no build errors
    - Check for broken links
    - Verify that new content renders correctly
    - Test site performance using Lighthouse
@@ -119,7 +119,7 @@ This is a personal blog and portfolio site for M.F.M Fazrin, a software developm
 1. Create a new MDX file in `/src/content/blog/`
 2. Include all required frontmatter fields
 3. Write content using Markdown with optional JSX components
-4. Preview locally using `pnpm dev`
+4. Preview locally using `pnpm run dev`
 5. Commit and push to trigger deployment
 
 ## Troubleshooting Common Issues
