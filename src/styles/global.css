@@ -33,3 +33,22 @@
 .shadow {
 	box-shadow: -5px 3px 8px 1px rgba(0, 0, 0, 0.12);
 }
+
+/* Page Loader Animations */
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+	0%, 100% { opacity: 0.6; transform: scale(0.85); }
+	50% { opacity: 1; transform: scale(1); }
+}
+
+.animate-spin {
+	animation: spin 1.2s linear infinite;
+}
+
+.animate-pulse {
+	animation: pulse 1.5s ease-in-out infinite;
+}

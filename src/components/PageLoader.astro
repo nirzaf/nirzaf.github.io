@@ -1,0 +1,51 @@
+---
+// PageLoader.astro - A cool animated page loader component
+---
+
+<div id="page-loader" class="fixed inset-0 z-50 flex items-center justify-center bg-white dark:bg-[#0a0910] transition-opacity duration-500">
+  <div class="relative">
+    <!-- Animated spinner with gradient -->
+    <div class="w-16 h-16 border-4 border-t-transparent border-blue-500 dark:border-purple-500 rounded-full animate-spin"></div>
+    
+    <!-- Inner pulsing circle -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-gradient-to-br from-blue-400 to-purple-600 dark:from-purple-500 dark:to-blue-500 rounded-full animate-pulse"></div>
+    
+    <!-- Loading text -->
+    <p class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-sm font-medium text-stone-600 dark:text-stone-300">
+      Loading<span class="animate-ellipsis">...</span>
+    </p>
+  </div>
+</div>
+
+<style>
+  @keyframes ellipsis {
+    0% { content: '.'; }
+    33% { content: '..'; }
+    66% { content: '...'; }
+    100% { content: ''; }
+  }
+  
+  .animate-ellipsis::after {
+    content: '';
+    animation: ellipsis 1.5s infinite steps(1);
+  }
+</style>
+
+<script>
+  // Hide the loader after the page has fully loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    const loader = document.getElementById('page-loader');
+    
+    // Add a small delay to make the loader visible for at least a moment
+    setTimeout(() => {
+      if (loader) {
+        loader.classList.add('opacity-0');
+        
+        // Remove from DOM after fade out animation completes
+        setTimeout(() => {
+          loader.style.display = 'none';
+        }, 500);
+      }
+    }, 800);
+  });
+</script>
