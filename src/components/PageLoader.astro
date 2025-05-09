@@ -31,21 +31,33 @@
   }
 </style>
 
-<script>
-  // Hide the loader after the page has fully loaded
-  document.addEventListener('DOMContentLoaded', () => {
+<script is:inline>
+  // This script runs immediately when it's encountered
+  // Function to hide the loader
+  function hideLoader() {
     const loader = document.getElementById('page-loader');
-    
-    // Add a small delay to make the loader visible for at least a moment
-    setTimeout(() => {
-      if (loader) {
-        loader.classList.add('opacity-0');
-        
-        // Remove from DOM after fade out animation completes
-        setTimeout(() => {
-          loader.style.display = 'none';
-        }, 500);
-      }
-    }, 800);
+    if (loader) {
+      loader.classList.add('opacity-0');
+      // Remove from DOM after fade out animation completes
+      setTimeout(() => {
+        loader.style.display = 'none';
+      }, 500);
+    }
+  }
+
+  // Try multiple approaches to ensure the loader hides
+  // 1. On window load (most reliable for complete page load)
+  window.addEventListener('load', () => {
+    hideLoader();
   });
+
+  // 2. DOMContentLoaded as backup
+  document.addEventListener('DOMContentLoaded', () => {
+    hideLoader();
+  });
+
+  // 3. Fallback timeout in case the events don't fire
+  setTimeout(() => {
+    hideLoader();
+  }, 2000); // Force hide after 2 seconds regardless of page load status
 </script>
