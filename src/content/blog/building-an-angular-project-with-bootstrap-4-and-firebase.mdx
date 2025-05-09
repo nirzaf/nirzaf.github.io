@@ -7,6 +7,8 @@ category: 'UI'
 tags: ["Angular", "Bootstrap", "Firebase"]
 ---
 
+import { Image } from 'astro:assets';
+
 # Building an Angular Project With Bootstrap 5 and Firebase
 
 **In this tutorial, I'll show you how to start your Angular 17 Project from scratch and add Bootstrap 5 and the Firebase library to your application. This is the perfect application skeleton for your web application project.**
@@ -43,7 +45,7 @@ $ ng serve
 
 The server is started and the application can be accessed on http://localhost:4200 as you can see in the following screenshot:
 
-![Angular Initial Project](https://res.cloudinary.com/dw0ygv1p9/image/upload/v1571643329/0_4M8XkLRUw5w5pFno_skifc2.png)
+<Image src="https://res.cloudinary.com/dw0ygv1p9/image/upload/v1571643329/0_4M8XkLRUw5w5pFno_skifc2.png" alt="Screenshot of Angular initial project" width={600} height={350} />
 
 ### Setting up Firebase
 
@@ -55,11 +57,11 @@ Next step is to include Firebase in our project. Two steps are needed here:
 
 To create a new Firebase project go to the Firebase website https://firebase.google.com and create a new account / sign in with your Google credentials. After you're being logged in successfully you can click on the link Go To Console to access the Firebase back-end:
 
-![firebase console](https://res.cloudinary.com/dw0ygv1p9/image/upload/v1571643484/0_zm1HADJJQ0WSeU1v_rgsxdg.png)
+<Image src="https://res.cloudinary.com/dw0ygv1p9/image/upload/v1571643484/0_zm1HADJJQ0WSeF6_gvqinv.png" alt="Firebase console screenshot" width={600} height={350} />
 
 Here you can click on Add project to add a new Firebase project or select one of the existing projects. You're taken to the project console next:
 
-![firebase](https://res.cloudinary.com/dw0ygv1p9/image/upload/v1571643554/0_ygF0hbDRLFfeixF6_gvqinv.png)
+<Image src="https://res.cloudinary.com/dw0ygv1p9/image/upload/v1571643554/0_ygF0hbDRLFfeixF6_gvqinv.png" alt="Firebase project dashboard screenshot" width={600} height={350} />
 
 Click on the link Add Firebase to your web app to access the following dialog:
 
@@ -166,7 +168,7 @@ To add a Bootstrap user interface to our sample application we'll make use of th
 
 To setup a basic user interface with Bootstrap elements we're going to use code from the Bootstrap Starter Template which can be found on the Examples page:
 
-![Bootstrap](https://res.cloudinary.com/dw0ygv1p9/image/upload/v1571647826/0_fDsOoV69vcWN6JOy_n9kdjr.png)
+<Image src="https://res.cloudinary.com/dw0ygv1p9/image/upload/v1571647826/0_fDsOoV69vcWN6JOy_n9kdjr.png" alt="Bootstrap starter template screenshot" width={600} height={350} />
 
 Clicking on the link Starter template opens up the starter template website in a new browser window. To access the HTML markup code of the starter template just open the browser's source code view.
 From the source code view we can copy and paste the needed code parts into our application. First let's copy the following code from the `<body>` -section to the template code in `app.component.html`:
@@ -250,7 +252,7 @@ body {
 
 The result of the application in the browser should now comply with the Bootstrap starter template's output:
 
-![Bootstrap](https://res.cloudinary.com/dw0ygv1p9/image/upload/v1571649342/0_QHZ_41PTSrSgZlTt_wcn6z0.png)
+<Image src="https://res.cloudinary.com/dw0ygv1p9/image/upload/v1571649342/0_QHZ_41PTSrSgZlTt_wcn6z0.png" alt="Bootstrap UI screenshot" width={600} height={350} />
 
 ### Adding ng-bootstrap
 
@@ -297,7 +299,7 @@ Now we can make use of the Bootstrap directives in our template code. For implem
 
 The result should now look like the following when you click on the menu Category:
 
-![nav](https://res.cloudinary.com/dw0ygv1p9/image/upload/v1571650087/0_D53e-Cn_NuSLBO7S_aw55bi.png)
+<Image src="https://res.cloudinary.com/dw0ygv1p9/image/upload/v1571650087/0_D53e-Cn_NuSLBO7S_aw55bi.png" alt="Navigation menu screenshot" width={600} height={350} />
 
 ### Retrieving Data From Firebase
 
@@ -404,7 +406,7 @@ Finally, you need to include the `<app-courses-list>` element in the template co
 
 Now the result in the browser should look like the following:
 
-![live angular](https://res.cloudinary.com/dw0ygv1p9/image/upload/v1571650760/0_e3plE8RB6MGUEdPu_zliak6.png)
+<Image src="https://res.cloudinary.com/dw0ygv1p9/image/upload/v1571650760/0_e3plE8RB6MGUEdPu_zliak6.png" alt="Live Angular app screenshot" width={600} height={350} />
 
 ### Conclusion And Outlook
 
@@ -414,5 +416,5 @@ In the following parts of this series the application will be enhanced step-by-s
 
 This post has been published first on [CodingTheSmartWay.com](https://codingthesmartway.com/) and has been updated to reflect the latest versions of Angular, Bootstrap, and Firebase as of October 2024.
 
-![thank-you](https://i.ibb.co/tBPKn2m/thank-you.jpg)
+<Image src="https://i.ibb.co/tBPKn2m/thank-you.jpg" alt="Thank you illustration" width={600} height={350} />
 ---

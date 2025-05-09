@@ -32,6 +32,24 @@ import { AstroFont } from 'astro-font'
 <!-- Canonical URL -->
 <link rel='canonical' href={canonicalURL} />
 
+<!-- JSON-LD Structured Data for Articles -->
+{articleDate && title && description && ogImage && (
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": title,
+      "description": description,
+      "image": ogImage,
+      "author": { "@type": "Person", "name": siteConfig.author },
+      "datePublished": articleDate,
+      "publisher": { "@type": "Organization", "name": siteConfig.title }
+    })}
+  </script>
+)
+}
+
+
 <!-- Primary Meta Tags -->
 <title>{siteTitle}</title>
 

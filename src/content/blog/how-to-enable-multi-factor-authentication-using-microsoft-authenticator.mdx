@@ -7,6 +7,8 @@ category: "O365"
 tags: ["o365", "mfa", "2fa", "authenticator", "security", "microsoft"]
 ---
 
+import { Image } from 'astro:assets';
+
 ## How to Enable Multi-Factor Authentication using Microsoft Authenticator
 
 ### What is Multi-Factor Authentication?
@@ -45,11 +47,11 @@ This prevents unauthorized access even if your password is compromised. Microsof
 
 <div className="flex flex-col md:flex-row gap-4 justify-center my-6">
   <div className="flex flex-col items-center">
-    <img src="https://ik.imagekit.io/quadrate/assets/img/dotnetevangelist/authenticator-ios-app.png?updatedAt=1746745493078" alt="Microsoft Authenticator on iOS" className="max-w-xs rounded-lg shadow-md" />
+    <Image src="https://ik.imagekit.io/quadrate/assets/img/dotnetevangelist/authenticator-ios-app.png?updatedAt=1746745493078" alt="Microsoft Authenticator app on iOS screenshot" width={300} height={600} className="max-w-xs rounded-lg shadow-md" />
     <p className="text-center mt-2 text-sm">Microsoft Authenticator on iOS</p>
   </div>
   <div className="flex flex-col items-center">
-    <img src="https://ik.imagekit.io/quadrate/assets/img/dotnetevangelist/authenticator-android-app.jpg?updatedAt=1746745493024" alt="Microsoft Authenticator on Android" className="max-w-xs rounded-lg shadow-md" />
+    <Image src="https://ik.imagekit.io/quadrate/assets/img/dotnetevangelist/authenticator-android-app.jpg?updatedAt=1746745493024" alt="Microsoft Authenticator app on Android screenshot" width={300} height={600} className="max-w-xs rounded-lg shadow-md" />
     <p className="text-center mt-2 text-sm">Microsoft Authenticator on Android</p>
   </div>
 </div>
@@ -156,6 +158,7 @@ For a visual demonstration of the setup process, check out this helpful video gu
     frameBorder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     allowFullScreen
+    loading="lazy"
     className="w-full h-full rounded-lg shadow-lg"
-  ></iframe>
+  />
 </div>
