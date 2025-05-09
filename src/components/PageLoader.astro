@@ -1,5 +1,5 @@
 ---
-// PageLoader.astro - A cool animated page loader component
+// PageLoader.astro - A cool animated page loader component that disappears after 1.5 seconds
 ---
 
 <div id="page-loader" class="fixed inset-0 z-50 flex items-center justify-center bg-white dark:bg-[#0a0910] transition-opacity duration-500">
@@ -32,8 +32,8 @@
 </style>
 
 <script is:inline>
-  // This script runs immediately when it's encountered
-  // Function to hide the loader
+  // Simple solution: Always hide the loader after 1.5 seconds
+  // This will work consistently for both initial and subsequent page loads
   function hideLoader() {
     const loader = document.getElementById('page-loader');
     if (loader) {
@@ -45,19 +45,6 @@
     }
   }
 
-  // Try multiple approaches to ensure the loader hides
-  // 1. On window load (most reliable for complete page load)
-  window.addEventListener('load', () => {
-    hideLoader();
-  });
-
-  // 2. DOMContentLoaded as backup
-  document.addEventListener('DOMContentLoaded', () => {
-    hideLoader();
-  });
-
-  // 3. Fallback timeout in case the events don't fire
-  setTimeout(() => {
-    hideLoader();
-  }, 2000); // Force hide after 2 seconds regardless of page load status
+  // Set a fixed timeout to hide the loader after 1.5 seconds
+  setTimeout(hideLoader, 1500);
 </script>
