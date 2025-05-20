@@ -7,7 +7,8 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "generate-search-index": "node scripts/generate-search-index.mjs",
+    "build": "next build && npm run generate-search-index",
     "start": "next start",
     "lint": "next lint",
     "cypress:open": "cypress open",

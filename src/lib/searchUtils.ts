@@ -1,4 +1,4 @@
-import { getAllPosts, getPostBySlug } from './mdxUtils';
+import type { SearchIndexEntry } from './searchIndex';
 
 export interface SearchResult {
   slug: string;
@@ -10,14 +10,30 @@ export interface SearchResult {
   contentSnippet?: string;
 }
 
+// Function to fetch the search index from the static JSON file
+async function fetchSearchIndex(): Promise<SearchIndexEntry[]> {
+  try {
+    // Use the basePath from Next.js config if available
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+    const response = await fetch(`${basePath}/search-index.json`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch search index: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching search index:', error);
+    return [];
+  }
+}
+
 export async function searchPosts(query: string): Promise<SearchResult[]> {
   if (!query.trim()) return [];
   
   const queryLower = query.toLowerCase();
-  const posts = await getAllPosts();
+  const searchIndex = await fetchSearchIndex();
   const results: SearchResult[] = [];
 
-  for (const post of posts) {
+  for (const post of searchIndex) {
     // Check title, description, and tags first (fast checks)
     const titleMatch = post.title.toLowerCase().includes(queryLower);
     const descriptionMatch = post.description.toLowerCase().includes(queryLower);
@@ -35,18 +51,17 @@ export async function searchPosts(query: string): Promise<SearchResult[]> {
       continue;
     }
 
-    // If no match in metadata, check the full content
-    const fullPost = await getPostBySlug(post.slug);
-    if (fullPost && fullPost.content.toLowerCase().includes(queryLower)) {
+    // If no match in metadata, check the content
+    if (post.content && post.content.toLowerCase().includes(queryLower)) {
       // Extract a snippet of the content around the match
-      const contentLower = fullPost.content.toLowerCase();
+      const contentLower = post.content.toLowerCase();
       const matchIndex = contentLower.indexOf(queryLower);
       let contentSnippet = '';
       
       if (matchIndex >= 0) {
         const start = Math.max(0, matchIndex - 50);
         const end = Math.min(contentLower.length, matchIndex + queryLower.length + 100);
-        contentSnippet = '...' + fullPost.content.slice(start, end).replace(/\n/g, ' ').trim() + '...';
+        contentSnippet = '...' + post.content.slice(start, end).replace(/\n/g, ' ').trim() + '...';
       }
 
       results.push({
