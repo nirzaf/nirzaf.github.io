@@ -3,8 +3,35 @@ const isProd = process.env.NODE_ENV === 'production';
 const basePath = isProd ? '/nirzaf.github.io' : '';
 
 const nextConfig = {
-  // Enable static exports for GitHub Pages
+  // Enable static exports for GitHub Pages but exclude API routes
   output: 'export',
+  
+  // Skip API routes during static export
+  exportPathMap: async function() {
+    const paths = {
+      '/': { page: '/' },
+      '/about': { page: '/about' },
+      '/blog': { page: '/blog' },
+      '/search': { page: '/search' },
+      '/tags': { page: '/tags' },
+    };
+    
+    // Add blog post pages
+    const { getAllPosts } = await import('./src/lib/mdxUtils');
+    const posts = await getAllPosts();
+    
+    posts.forEach((post) => {
+      paths[`/blog/${post.slug}`] = { page: '/blog/[slug]' };
+    });
+    
+    // Add tag pages
+    const tags = [...new Set(posts.flatMap(post => post.tags || []))];
+    tags.forEach(tag => {
+      paths[`/tags/${tag}`] = { page: '/tags/[tag]' };
+    });
+    
+    return paths;
+  },
   
   // Configure remote image patterns
   images: {

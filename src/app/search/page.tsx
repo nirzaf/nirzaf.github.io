@@ -4,15 +4,7 @@ import { useState, useEffect, Suspense, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { SearchBar } from '@/components/SearchBar';
-
-interface SearchResult {
-  slug: string;
-  title: string;
-  description: string;
-  tags?: string[];
-  pubDate: string;
-  matchType?: 'title' | 'description' | 'tag' | 'content';
-}
+import { SearchResult, searchPosts } from '@/lib/searchUtils';
 
 function SearchContent() {
   const searchParams = useSearchParams();
@@ -38,7 +30,7 @@ function SearchContent() {
   };
 
   useEffect(() => {
-    async function fetchResults() {
+    async function performSearch() {
       if (!query) {
         setResults([]);
         return;
@@ -46,21 +38,22 @@ function SearchContent() {
 
       setIsLoading(true);
       try {
-        const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch search results');
-        }
-        const data = await response.json();
-        setResults(data);
+        const searchResults = await searchPosts(query);
+        setResults(searchResults);
       } catch (error) {
-        console.error('Error fetching search results:', error);
-        setResults([]);
+        console.error('Search error:', error);
+        // Handle error appropriately
       } finally {
         setIsLoading(false);
       }
     }
 
-    fetchResults();
+    // Add a small debounce to avoid too many searches while typing
+    const timer = setTimeout(() => {
+      performSearch();
+    }, 300);
+
+    return () => clearTimeout(timer);
   }, [query]);
 
   return (
