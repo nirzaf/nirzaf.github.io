@@ -36,13 +36,13 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build with Next.js
-        run: pnpm run build
+        run: |
+          pnpm run build
         env:
           NEXT_TELEMETRY_DISABLED: 1
-          NEXT_PUBLIC_BASE_PATH: ''
-
-      - name: Static HTML export with Next.js
-        run: pnpm run export
+          NODE_ENV: production
+          # For GitHub Pages, we need to set the base path
+          NEXT_PUBLIC_BASE_PATH: /nirzaf.github.io
 
       - name: Create backup branch
         if: success()

@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Enable static exports for GitHub Pages
+  output: 'export',
+  
   // Configure remote image patterns
   images: {
+    unoptimized: true, // Required for static exports
     remotePatterns: [
       {
         protocol: 'https',
@@ -35,12 +39,15 @@ const nextConfig = {
       },
     ],
   },
+  
   // Add other configuration options
   reactStrictMode: true,
-  // Increase the timeout for builds on Vercel
-  experimental: {
-    // Empty for now
-  },
+  
+  // Base path for GitHub Pages
+  basePath: process.env.NODE_ENV === 'production' ? '/nirzaf.github.io' : '',
+  
+  // Asset prefix for GitHub Pages
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/nirzaf.github.io/' : '',
 };
 
 module.exports = nextConfig;
