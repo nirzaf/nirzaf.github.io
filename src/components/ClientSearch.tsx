@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { SearchResult, searchPosts } from '@/lib/searchUtils';
+import { SearchResult, searchPosts, loadSearchIndex } from '@/lib/flexSearchUtils';
 
 export function ClientSearch() {
   const [query, setQuery] = useState('');
@@ -11,28 +11,27 @@ export function ClientSearch() {
   const [error, setError] = useState<string | null>(null);
   const [searchIndexStatus, setSearchIndexStatus] = useState<'loading' | 'success' | 'error'>('loading');
 
-  // Check if search index is available on mount
+  // Load search index on mount
   useEffect(() => {
-    async function checkSearchIndex() {
+    async function initializeSearchIndex() {
       try {
-        // Try to fetch the search index
-        const response = await fetch('/search-index.json');
-        if (response.ok) {
-          console.log('Search index found!');
+        const success = await loadSearchIndex();
+        if (success) {
+          console.log('Search index loaded successfully!');
           setSearchIndexStatus('success');
         } else {
-          console.error('Search index not found:', response.status);
+          console.error('Failed to load search index');
           setSearchIndexStatus('error');
-          setError(`Search index not found (status: ${response.status})`);
+          setError('Failed to load search index');
         }
       } catch (err) {
-        console.error('Error checking search index:', err);
+        console.error('Error loading search index:', err);
         setSearchIndexStatus('error');
-        setError(`Error checking search index: ${err instanceof Error ? err.message : String(err)}`);
+        setError(`Error loading search index: ${err instanceof Error ? err.message : String(err)}`);
       }
     }
 
-    checkSearchIndex();
+    initializeSearchIndex();
   }, []);
 
   // Function to highlight search terms in text

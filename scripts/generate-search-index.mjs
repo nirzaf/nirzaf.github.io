@@ -9,19 +9,29 @@ const __dirname = path.dirname(__filename);
 const postsDirectory = path.join(__dirname, '../data/posts');
 const outputPath = path.join(__dirname, '../public/search-index.json');
 
+// Make sure the public directory exists
+const publicDir = path.dirname(outputPath);
+if (!fs.existsSync(publicDir)) {
+  fs.mkdirSync(publicDir, { recursive: true });
+  console.log(`Created directory: ${publicDir}`);
+}
+
 /**
  * Generate a search index from all MDX files
  */
 async function generateSearchIndex() {
   console.log('Generating search index...');
+  console.log(`Posts directory: ${postsDirectory}`);
+  console.log(`Output path: ${outputPath}`);
   
-  // Create the directory if it doesn't exist
+  // Create the posts directory if it doesn't exist
   if (!fs.existsSync(postsDirectory)) {
     console.log('Posts directory not found, creating...');
     fs.mkdirSync(postsDirectory, { recursive: true });
     console.log('No posts to index');
     // Write an empty array as the search index
     fs.writeFileSync(outputPath, JSON.stringify([]));
+    console.log('Created empty search index');
     return;
   }
 
@@ -30,6 +40,11 @@ async function generateSearchIndex() {
   const mdxFiles = fileNames.filter(fileName => fileName.endsWith('.mdx'));
   
   console.log(`Found ${mdxFiles.length} MDX files`);
+  if (mdxFiles.length === 0) {
+    console.log('No MDX files found, creating empty search index');
+    fs.writeFileSync(outputPath, JSON.stringify([]));
+    return;
+  }
   
   // Process each file
   const searchIndex = mdxFiles.map(fileName => {
