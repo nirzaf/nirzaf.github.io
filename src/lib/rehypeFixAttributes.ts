@@ -1,13 +1,12 @@
 import { visit } from 'unist-util-visit';
 import type { Plugin } from 'unified';
-import type { Element } from 'hast';
 
 /**
  * A rehype plugin that fixes HTML attributes to be compatible with React's camelCase properties
  */
-export const rehypeFixAttributes: Plugin = () => {
-  return (tree) => {
-    visit(tree, 'element', (node: Element) => {
+export const rehypeFixAttributes = () => {
+  return (tree: any) => {
+    visit(tree, 'element', (node: any) => {
       // Fix iframe attributes
       if (node.tagName === 'iframe') {
         // Convert frameborder to frameBorder

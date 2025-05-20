@@ -236,11 +236,12 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
       mdxOptions: {
         development: process.env.NODE_ENV === 'development',
         rehypePlugins: [
+          // @ts-ignore - Type definitions are causing issues
           rehypeFixAttributes,
+          // @ts-ignore - Type definitions are causing issues
           rehypeMermaid,
-          // Use rehype-mermaid plugin to process Mermaid diagrams
-          // @ts-ignore - Type definitions for rehype-mermaid are incomplete
-          () => (tree) => {
+          // @ts-ignore - Type definitions are causing issues
+          () => (tree: any) => {
             // Custom handler that will be replaced by rehype-mermaid
             // This is a workaround for TypeScript type issues
             return tree;
