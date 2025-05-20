@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
+const basePath = isProd ? '/nirzaf.github.io' : '';
+
 const nextConfig = {
   // Enable static exports for GitHub Pages
   output: 'export',
@@ -44,10 +47,29 @@ const nextConfig = {
   reactStrictMode: true,
   
   // Base path for GitHub Pages
-  basePath: process.env.NODE_ENV === 'production' ? '/nirzaf.github.io' : '',
+  basePath,
   
   // Asset prefix for GitHub Pages
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/nirzaf.github.io/' : '',
+  assetPrefix: isProd ? `${basePath}/` : '',
+  
+  // Optional: Add trailing slash for GitHub Pages
+  trailingSlash: true,
+  
+  // Optional: Disable source maps in production
+  productionBrowserSourceMaps: false,
+  
+  // Optional: Configure webpack
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      // Fixes npm packages that depend on `fs` module
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        path: false,
+      };
+    }
+    return config;
+  },
 };
 
 module.exports = nextConfig;
