@@ -67,6 +67,12 @@ async function generateSearchIndex() {
   // Write the search index to a JSON file
   fs.writeFileSync(outputPath, JSON.stringify(searchIndex));
   console.log(`Search index with ${searchIndex.length} entries written to ${outputPath}`);
+  
+  // Log the first few entries for debugging
+  if (searchIndex.length > 0) {
+    console.log('First search index entry sample:');
+    console.log(JSON.stringify(searchIndex[0], null, 2).substring(0, 300) + '...');
+  }
 }
 
 // Run the function

@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import { getAllPosts } from '@/lib/mdxUtils';
 import { PostCard } from '@/components/PostCard';
-import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Blog',

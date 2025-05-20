@@ -13,12 +13,35 @@ export interface SearchResult {
 // Function to fetch the search index from the static JSON file
 async function fetchSearchIndex(): Promise<SearchIndexEntry[]> {
   try {
-    // Use the basePath from Next.js config if available
-    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
-    const response = await fetch(`${basePath}/search-index.json`);
-    if (!response.ok) {
-      throw new Error(`Failed to fetch search index: ${response.status}`);
+    // Try multiple paths to handle both GitHub Pages and custom domain deployments
+    const possiblePaths = [
+      '/search-index.json', // For custom domain
+      `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/search-index.json`, // For GitHub Pages
+      '/nirzaf.github.io/search-index.json' // Hardcoded GitHub Pages path as fallback
+    ];
+    
+    let response: Response | null = null;
+    let error: Error | null = null;
+    
+    // Try each path until one works
+    for (const path of possiblePaths) {
+      try {
+        console.log(`Trying to fetch search index from: ${path}`);
+        response = await fetch(path);
+        if (response.ok) {
+          console.log(`Successfully fetched search index from: ${path}`);
+          break;
+        }
+      } catch (e) {
+        error = e as Error;
+        console.warn(`Failed to fetch search index from: ${path}`, e);
+      }
     }
+    
+    if (!response || !response.ok) {
+      throw error || new Error('Failed to fetch search index from all possible paths');
+    }
+    
     return await response.json();
   } catch (error) {
     console.error('Error fetching search index:', error);
