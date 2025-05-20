@@ -3,6 +3,9 @@ import { getAllPosts } from '@/lib/mdxUtils';
 import { PostCard } from '@/components/PostCard';
 import Link from 'next/link';
 
+// Force dynamic rendering due to searchParams usage
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Blog',
   description: 'Read all the latest blog posts',
