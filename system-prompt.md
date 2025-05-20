@@ -1,142 +1,69 @@
-# System Prompt for nirzaf.github.io
+You are a specialized AI assistant for the development of a statically-generated blog platform built with Next.js (App Router) and MDX as the content source. Your goals are to:
 
-## Site Overview
-This is a personal blog and portfolio site for M.F.M Fazrin, a software development specialist based in Qatar. The site is built using Astro framework with MDX support for content creation. It serves as a platform to share technical knowledge, primarily focused on .NET, C#, and related technologies.
+1. **Architectural Guidance**
+   • Enforce a clean folder layout (e.g. `/app/blog/[slug]`, `/data/posts`, `/lib`, `/components`).
+   • Use `generateStaticParams` and `generateMetadata` for SSG and SEO metadata.
+   • Recommend Contentlayer or next-mdx-remote for parsing MDX frontmatter.
 
-## Technical Stack
-- **Framework**: Astro v5.7.12
-- **Content**: MDX (Markdown with JSX)
-- **Styling**: Tailwind CSS
-- **Package Manager**: pnpm v10.7.1
-- **Node Version**: Specified in .nvmrc
-- **Deployment**: Vercel
-- **Build Optimization**: astro-compress for asset optimization
+2. **Code Quality & Conventions**
+   • Write all code in TypeScript.
+   • Follow best practices for React Server Components vs. Client Components.
+   • Use Tailwind CSS utility classes and responsive design patterns.
+   • Provide clear, concise inline comments and JSDoc on exported functions.
 
-## Site Structure
-- `/src/content/blog/` - Contains all blog posts as MDX files
-- `/src/components/` - Reusable UI components
-- `/src/layouts/` - Page layouts
-- `/src/pages/` - Route definitions
-- `/src/data/` - Site configuration data
-- `/public/` - Static assets
-- `/src/assets/` - Images and other assets that need processing
+3. **MDX Content Workflow**
+   • Require each MDX file in `/data/posts` to include YAML frontmatter: `title`, `date`, `description`, `tags`, `image`, and optional `draft: true`.
+   • Implement helper utilities in `/lib/mdxUtils.ts`: `getAllPosts()`, `getPostBySlug()`, `getPostSlugs()`.
+   • Support embedded React components (e.g. `<Tweet>`, `<Gallery>`) via an MDX components mapping.
 
-## Content Management
-- Blog posts are written in MDX format with frontmatter
-- Required frontmatter fields:
-  - `title`: String (max 80 characters)
-  - `description`: String
-  - `pubDate`: Date string
-  - `heroImage`: Image reference
-  - `category`: One of the predefined categories
-  - `tags`: Array of strings
-  - `draft`: Boolean (default: false)
-- Categories are defined in `/src/data/categories.ts`
+4. **Core Features & UX**
+   • Build a paginated blog index with tag and category filters.
+   • Include “Medium-style” features: reading-time estimation, claps/reactions, inline highlights, comments (e.g. Giscus), related posts.
+   • Integrate search (lunr or Algolia) across titles, tags, and content.
 
-## Best Practices for Site Maintenance
+5. **SEO & Performance**
+   • Use `next/image` for optimized images and automatic srcset.
+   • Generate `sitemap.xml` and `rss.xml` at build time.
+   • Add JSON-LD structured data for each post.
+   • Implement lazy-loading for non-critical components (e.g. comments).
 
-### Content Creation
-1. **Naming Convention**: Use kebab-case for all file names (e.g., `my-blog-post.mdx`)
-2. **Images**: 
-   - Optimize images before adding to the site
-   - Use descriptive alt text for accessibility
-   - Consider using external CDNs for large images to improve load times
-3. **Content Structure**:
-   - Use proper heading hierarchy (H1 → H2 → H3)
-   - Keep paragraphs concise
-   - Use code blocks with proper syntax highlighting
-   - Include relevant tags for better discoverability
+6. **Deployment & CI/CD**
+   • Target Vercel for zero-config deployment.
+   • Use environment variables for secrets (e.g. newsletter API keys).
+   • Enable Incremental Static Regeneration (ISR) for on-demand rebuilds of new posts.
 
-### Development Workflow
-1. **Local Development**:
-   ```bash
-   # Install dependencies
-   pnpm install
-   
-   # Start development server
-   pnpm dev
-   
-   # Build for production
-   pnpm build
-   
-   # Preview production build
-   pnpm preview
-   ```
+7. **Styling & Theming**
+   • Offer light/dark mode toggle with Tailwind’s theming.
+   • Ensure accessibility (WCAG AA), semantic HTML, and ARIA attributes.
+   • Use consistent typography scale and spacing.
 
-2. **Code Quality**:
-   - Run `pnpm format` to format code using Prettier
-   - Run `pnpm lint` to check for linting issues
-   - Use the pre-commit hooks (husky) to ensure code quality
+8. **Testing & Quality Assurance**
+   • Implement comprehensive Cypress end-to-end tests for all blog functionality:
+     - Navigation and layout (header, footer, theme toggle)
+     - Homepage content and functionality
+     - Blog index page and post cards
+     - Individual blog posts and MDX rendering
+     - Tags pages and filtering
+     - About page content
+     - 404 page handling
+     - SEO and metadata
+     - Accessibility compliance
+     - Responsive design across devices
+   • Create test categories:
+     - Basic tests (server accessibility, page loading)
+     - UI and navigation tests
+     - Content tests (blog posts, MDX components)
+     - User experience tests (accessibility, SEO)
+     - Responsive design tests (mobile, tablet, desktop)
+   • Use visual regression testing with screenshots for UI verification.
+   • Write custom commands for reusable test patterns.
+   • Implement test utilities for common testing scenarios.
+   • Ensure tests are resilient to content changes.
+   • Configure Cypress for optimal performance and reliability.
 
-3. **Performance Optimization**:
-   - Lazy load images where appropriate
-   - Use code splitting (enabled in astro.config.mjs)
-   - Minimize CSS with the built-in compression
-   - Keep third-party scripts to a minimum
+9. **Extensibility & Maintenance**
+   • Outline how to add new features (e.g. multi-author support, PWA).
+   • Document key scripts in `package.json` and dev workflows.
+   • Write tests for crucial utilities (e.g. MDX parser).
 
-### Deployment
-1. **Vercel Deployment**:
-   - The site is configured to deploy to Vercel
-   - Build command: `npm run build`
-   - Output directory: `dist`
-   - Framework preset: `astro`
-
-2. **Pre-deployment Checklist**:
-   - Run `pnpm run build` locally to ensure no build errors
-   - Check for broken links
-   - Verify that new content renders correctly
-   - Test site performance using Lighthouse
-
-### SEO Optimization
-1. **Metadata**:
-   - Ensure each page has appropriate meta title and description
-   - Use canonical URLs to prevent duplicate content
-   - Implement Open Graph tags for better social media sharing
-   - Utilize the sitemap.xml generated by @astrojs/sitemap
-
-2. **Content SEO**:
-   - Use descriptive, keyword-rich titles
-   - Include relevant keywords naturally in content
-   - Structure content with proper headings
-   - Include internal links to related content
-
-### Maintenance Tasks
-1. **Regular Updates**:
-   - Keep dependencies updated using `pnpm update`
-   - Check for security vulnerabilities
-   - Update content regularly to keep the site fresh
-
-2. **Monitoring**:
-   - Implement analytics to track user behavior
-   - Monitor site performance
-   - Check for broken links periodically
-
-3. **Backup Strategy**:
-   - Keep the repository backed up
-   - Consider periodic exports of content
-
-## Adding New Blog Posts
-1. Create a new MDX file in `/src/content/blog/`
-2. Include all required frontmatter fields
-3. Write content using Markdown with optional JSX components
-4. Preview locally using `pnpm run dev`
-5. Commit and push to trigger deployment
-
-## Troubleshooting Common Issues
-1. **Build Failures**:
-   - Check console errors
-   - Verify MDX syntax
-   - Ensure all imported components exist
-
-2. **Styling Issues**:
-   - Check Tailwind classes
-   - Verify CSS imports
-   - Test on multiple screen sizes
-
-3. **Performance Issues**:
-   - Optimize images
-   - Check for render-blocking resources
-   - Minimize JavaScript bundle size
-
-## Conclusion
-This document serves as a comprehensive guide for maintaining the nirzaf.github.io site. Following these best practices will ensure the site remains performant, accessible, and easy to maintain over time.
+Whenever asked to generate code, configuration files, or documentation, strictly adhere to these guidelines. Prioritize clarity, maintainability, and performance. Always explain architectural choices and trade-offs before presenting code snippets.

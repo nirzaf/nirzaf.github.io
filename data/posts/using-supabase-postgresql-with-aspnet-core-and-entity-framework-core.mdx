@@ -1,0 +1,277 @@
+---
+title: Using Supabase PostgreSQL with ASP.NET Core and Entity Framework Core
+description: >-
+  Learn how to integrate Supabase PostgreSQL with ASP.NET Core and Entity
+  Framework Core for a robust and scalable web application.
+pubDate: '2024-10-26'
+image: >-
+  https://ik.imagekit.io/quadrate/assets/img/dotnetevangelist/Connecting-Python-Apps-with-Supabase-Complete-Guide.jpg?updatedAt=1746813307378
+category: ASP.NET Core
+tags: ['Supabase', 'Postgresql', 'Aspnetcore', 'Efcore', 'Database']
+---
+
+**Supabase provides a powerful PostgreSQL database as a service that can be easily integrated with ASP.NET Core applications. This guide will walk you through setting up a complete integration between Supabase's PostgreSQL database and an ASP.NET Core web application using Entity Framework Core.**
+
+## Prerequisites
+
+To follow along with this guide, you should have the following:
+
+- .NET SDK 8.0 or later
+- A Supabase account and project
+- Basic understanding of ASP.NET Core and Entity Framework
+- Visual Studio 2022 or VS Code
+
+## Step 1: Project Setup
+
+First, create a new ASP.NET Core Web API project using either Visual Studio or the .NET CLI:
+
+```bash
+dotnet new webapi -n SupabaseAspNetDemo
+cd SupabaseAspNetDemo
+```
+
+### Install Required NuGet Packages
+
+Add the following NuGet packages to your project:
+
+```xml
+<ItemGroup>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0" />
+</ItemGroup>
+```
+
+You can install these packages using the Package Manager Console or .NET CLI:
+
+```bash
+dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
+dotnet add package Microsoft.EntityFrameworkCore.Design
+```
+
+## Step 2: Database Context Setup
+
+Create a new folder called `Data` and add a new class `ApplicationDbContext.cs`:
+
+```csharp
+public class ApplicationDbContext : DbContext
+{
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        : base(options)
+    { }
+
+    public DbSet<Todo> Todos { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.HasDefaultSchema("public");
+
+        modelBuilder.Entity<Todo>(entity =>
+        {
+            entity.ToTable("todos");
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Title).IsRequired();
+        });
+    }
+}
+```
+
+## Step 3: Create Model Classes
+
+Add a new folder called `Models` and create your entity classes:
+
+```csharp
+public class Todo
+{
+    public int Id { get; set; }
+    public string Title { get; set; }
+    public bool IsComplete { get; set; }
+    public DateTime CreatedAt { get; set; }
+}
+```
+
+## Step 4: Configure Database Connection
+
+### Update appsettings.json
+
+Add your Supabase database connection string to `appsettings.json`:
+
+```json
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Host=db.your-project-ref.supabase.co;Database=postgres;Username=postgres;Password=your-password;Port=5432;SSL Mode=Require;Trust Server Certificate=true"
+  }
+}
+```
+
+### Configure Services
+
+Update your `Program.cs` to register the DbContext:
+
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+// Add other necessary services
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+```
+
+## Step 5: Create API Controllers
+
+Add a new controller to handle CRUD operations:
+
+```csharp
+[ApiController]
+[Route("api/[controller]")]
+public class TodosController : ControllerBase
+{
+    private readonly ApplicationDbContext _context;
+
+    public TodosController(ApplicationDbContext context)
+    {
+        _context = context;
+    }
+
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<Todo>>> GetTodos()
+    {
+        return await _context.Todos.ToListAsync();
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Todo>> GetTodo(int id)
+    {
+        var todo = await _context.Todos.FindAsync(id);
+        if (todo == null)
+        {
+            return NotFound();
+        }
+        return todo;
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<Todo>> CreateTodo(Todo todo)
+    {
+        _context.Todos.Add(todo);
+        await _context.SaveChangesAsync();
+        return CreatedAtAction(nameof(GetTodo), new { id = todo.Id }, todo);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateTodo(int id, Todo todo)
+    {
+        if (id != todo.Id)
+        {
+            return BadRequest();
+        }
+
+        _context.Entry(todo).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteTodo(int id)
+    {
+        var todo = await _context.Todos.FindAsync(id);
+        if (todo == null)
+        {
+            return NotFound();
+        }
+
+        _context.Todos.Remove(todo);
+        await _context.SaveChangesAsync();
+        return NoContent();
+    }
+}
+```
+
+## Step 6: Database Migrations
+
+Create and apply your initial migration:
+
+```bash
+# Using .NET CLI
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+
+# Or using Package Manager Console in Visual Studio
+Add-Migration InitialCreate
+Update-Database
+```
+
+## Security Considerations
+
+### Protecting Connection Strings
+
+In development, use User Secrets to store your connection string:
+
+```bash
+dotnet user-secrets set "ConnectionStrings:DefaultConnection" "your-connection-string"
+```
+
+For production, use environment variables or a secure configuration management system.
+
+### SSL Configuration
+
+Ensure SSL is enabled for database connections by including `SSL Mode=Require` in your connection string. Supabase requires SSL for all connections.
+
+## Testing the Application
+
+1. Start your application:
+```bash
+dotnet run
+```
+
+2. Test the API endpoints using Swagger UI (available at `/swagger`) or using curl:
+
+```bash
+# Get all todos
+curl -X GET https://localhost:5001/api/todos
+
+# Create a new todo
+curl -X POST https://localhost:5001/api/todos \
+  -H "Content-Type: application/json" \
+  -d '{"title":"Test Todo","isComplete":false}'
+```
+
+## Common Issues and Solutions
+
+1. **SSL Certificate Errors**
+   - Add `Trust Server Certificate=true` to your connection string in development
+   - In production, properly configure SSL certificates
+
+2. **Connection Issues**
+   - Verify your Supabase project is active
+   - Check if the database password is correct
+   - Ensure your IP is allowlisted in Supabase
+
+3. **Migration Errors**
+   - Ensure you have the correct database permissions
+   - Check if the schema name matches your configuration
+
+## Conclusion
+
+You now have a fully functional ASP.NET Core application integrated with Supabase PostgreSQL. This setup provides a solid foundation for building scalable web applications with features like:
+
+- Full CRUD operations
+- Entity Framework Core integration
+- Secure database connections
+- API endpoint documentation with Swagger
+
+Remember to regularly update your packages and follow security best practices when deploying to production.
+
+## Additional Resources
+
+- [Supabase Documentation](https://supabase.com/docs)
+- [Entity Framework Core Documentation](https://docs.microsoft.com/en-us/ef/core/)
+- [ASP.NET Core Documentation](https://docs.microsoft.com/en-us/aspnet/core)

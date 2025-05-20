@@ -1,0 +1,360 @@
+---
+title: Microsoft Blazor WebAssembly with JWT Authentication in .NET 8
+description: >-
+  A guide on how to implement a JWT Authentication system into a .NET 8 Web API
+  project that uses Microsoft's Blazor WebAssembly.
+pubDate: '2024-10-01'
+image: >-
+  https://ik.imagekit.io/quadrate/assets/img/dotnetevangelist/blazor_web_assembly_jwt.jpg?updatedAt=1746813307225
+category: Programming
+tags: ['Blazor', 'Jwt', 'Dotnet8']
+---
+
+# Microsoft Blazor WebAssembly with JWT Authentication in .NET 8
+
+**I would like to share a guide on how to implement a JWT Authentication system into a .NET 8 Web API project that uses Microsoft's Blazor WebAssembly, but this same guide can be used for regular ASP.NET Core Web API's.**
+
+If you have not heard of Blazor, I encourage you to take a look at it. In a nutshell, it allows you to write client-side and server-side code using just C#, take a minute to let that sink in… This means no JavaScript needed to write UI, well… there are ways to still use JavaScript using the JavaScript interop if there are no other libraries available in C#.
+
+I hope you find this guide useful and I will post the source code onto [GitHub](https://github.com/nirzaf/DotnetCoreJwtAuthentication.git).
+
+## Assumptions
+
+- You have Visual Studio 2022 (any edition) v17.8 or later. If you are using anything else then at least have knowledge of the dotnet command line.
+- You know how to use the NuGet package manager
+- You know C# and how to build a basic web project.
+- You know what JWT tokens are and why you have chosen to use them
+
+## Let's begin
+
+First off, ensure you have the latest .NET 8 SDK installed. You can download it from the [official .NET website](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+Create a new Blazor WebAssembly project with ASP.NET Core hosted option. At the time of writing this guide, you can choose "Individual Accounts" for authentication when creating the project.
+
+Next step is to install a few NuGet packages into our Server project:
+
+- Microsoft.AspNetCore.Authentication.JwtBearer
+
+Your Server.csproj file should look similar to this:
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Client\Client.csproj" />
+    <ProjectReference Include="..\Shared\Shared.csproj" />
+  </ItemGroup>
+
+</Project>
+```
+
+Next, we need to setup our Program.cs file in the Server project. In .NET 8, we use the new minimal hosting model, so our setup will look a bit different:
+
+```csharp
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+        };
+    });
+
+builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseWebAssemblyDebugging();
+}
+else
+{
+    app.UseExceptionHandler("/Error");
+    app.UseHsts();
+}
+
+app.UseHttpsRedirection();
+app.UseBlazorFrameworkFiles();
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapRazorPages();
+app.MapControllers();
+app.MapFallbackToFile("index.html");
+
+app.Run();
+```
+
+Now create an "appsettings.json" file in the root of your Server project and open it. Add in the "Jwt" json to setup the token:
+
+```json
+{
+  "Jwt": {
+    "Key": "ThisismySecretKey",
+    "Issuer": "Test.com",
+    "Audience": "Test.com"
+  },
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=aspnet-BlazorApp-53D9B3A5-4C2A-4A5A-8A5A-4C2A4A5A8A5A;Trusted_Connection=True;MultipleActiveResultSets=true"
+  }
+}
+```
+
+Next, we'll create a JwtTokenService. First, let's create an interface:
+
+```csharp
+public interface IJwtTokenService
+{
+    string BuildToken(string email);
+}
+```
+
+Then create the implementation:
+
+```csharp
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+
+public class JwtTokenService : IJwtTokenService
+{
+    private readonly IConfiguration _configuration;
+
+    public JwtTokenService(IConfiguration configuration)
+    {
+        _configuration = configuration;
+    }
+
+    public string BuildToken(string email)
+    {
+        var claims = new[]
+        {
+            new Claim(JwtRegisteredClaimNames.Sub, email),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+        };
+
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+        var token = new JwtSecurityToken(
+            issuer: _configuration["Jwt:Issuer"],
+            audience: _configuration["Jwt:Audience"],
+            claims: claims,
+            expires: DateTime.Now.AddMinutes(30),
+            signingCredentials: creds);
+
+        return new JwtSecurityTokenHandler().WriteToken(token);
+    }
+}
+```
+
+Don't forget to register this service in your Program.cs:
+
+```csharp
+builder.Services.AddSingleton<IJwtTokenService, JwtTokenService>();
+```
+
+Now, let's create a TokenViewModel in the Shared project:
+
+```csharp
+public class TokenViewModel
+{
+    public string Email { get; set; }
+    public string Password { get; set; }
+}
+```
+
+Next, we'll create a TokenController:
+
+```csharp
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Shared;
+
+[Route("api/[controller]")]
+[ApiController]
+public class TokenController : ControllerBase
+{
+    private readonly IJwtTokenService _tokenService;
+    private readonly UserManager<IdentityUser> _userManager;
+
+    public TokenController(IJwtTokenService tokenService, UserManager<IdentityUser> userManager)
+    {
+        _tokenService = tokenService;
+        _userManager = userManager;
+    }
+
+    [HttpPost("register")]
+    public async Task<IActionResult> Register([FromBody] TokenViewModel model)
+    {
+        if (model == null)
+        {
+            return BadRequest("Invalid client request");
+        }
+
+        var user = new IdentityUser { UserName = model.Email, Email = model.Email };
+        var result = await _userManager.CreateAsync(user, model.Password);
+
+        if (!result.Succeeded)
+        {
+            return BadRequest(result.Errors);
+        }
+
+        return Ok("User created successfully");
+    }
+
+    [HttpPost("login")]
+    public async Task<IActionResult> Login([FromBody] TokenViewModel model)
+    {
+        if (model == null)
+        {
+            return BadRequest("Invalid client request");
+        }
+
+        var user = await _userManager.FindByEmailAsync(model.Email);
+        if (user == null || !await _userManager.CheckPasswordAsync(user, model.Password))
+        {
+            return Unauthorized();
+        }
+
+        var tokenString = _tokenService.BuildToken(model.Email);
+        return Ok(new { Token = tokenString });
+    }
+}
+```
+
+Now, let's update the Client project. Create a Registration.razor page:
+
+```razor
+@page "/registration"
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+<h3>Registration</h3>
+
+<EditForm Model="@model" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <InputText id="email" class="form-control" @bind-Value="model.Email" />
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <InputText id="password" type="password" class="form-control" @bind-Value="model.Password" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</EditForm>
+
+@code {
+    private TokenViewModel model = new();
+
+    private async Task HandleValidSubmit()
+    {
+        var response = await Http.PostAsJsonAsync("api/Token/register", model);
+        if (response.IsSuccessStatusCode)
+        {
+            NavigationManager.NavigateTo("/login");
+        }
+        else
+        {
+            Console.WriteLine("Registration failed");
+        }
+    }
+}
+```
+
+And update the Login.razor page:
+
+```razor
+@page "/login"
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+<h3>Login</h3>
+
+<EditForm Model="@model" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <InputText id="email" class="form-control" @bind-Value="model.Email" />
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <InputText id="password" type="password" class="form-control" @bind-Value="model.Password" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</EditForm>
+
+@code {
+    private TokenViewModel model = new();
+    private string Token { get; set; }
+
+    private async Task HandleValidSubmit()
+    {
+        var response = await Http.PostAsJsonAsync("api/Token/login", model);
+        if (response.IsSuccessStatusCode)
+        {
+            var result = await response.Content.ReadFromJsonAsync<TokenResult>();
+            Token = result.Token;
+            Console.WriteLine($"Token: {Token}");
+            // Here you would typically store the token and redirect to a protected page
+        }
+        else
+        {
+            Console.WriteLine("Login failed");
+        }
+    }
+
+    private class TokenResult
+    {
+        public string Token { get; set; }
+    }
+}
+```
+
+That's it! You now have a basic JWT authentication system set up with Blazor WebAssembly and .NET 8. Remember to handle token storage and include the token in subsequent API requests for authenticated endpoints.
+
+As always, when using JWT authentication, it's highly recommended to use HTTPS. In .NET 8, HTTPS is enabled by default for production environments.
+
+I hope this updated guide helps you create your own JWT authentication apps with Blazor WebAssembly and .NET 8. JWT is a powerful tool, and I encourage you to explore its capabilities further for securing different areas of your application.
+
+And remember to keep supporting Blazor as it continues to evolve and improve the web development experience for C# developers!

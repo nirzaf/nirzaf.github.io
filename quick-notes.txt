@@ -1,0 +1,22 @@
+1. Build the project after every change:
+   Command:
+     npm run build
+
+2. If the build completes without errors, terminate any running Node.js processes (to avoid conflicts):
+   Command:
+     killall node
+
+3. Start the development server:
+   Command:
+     npm run dev
+
+4. Test the project:
+   Command:
+     npm test
+
+5. If all tests pass and the project is working as expected, push your changes:
+   Command:
+     git push
+
+Tip: Always follow this sequence to ensure a clean and reliable workflow.
+if all good then push, keep this as global memory

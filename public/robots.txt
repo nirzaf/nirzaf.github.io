@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://dotnetevangelist.com/sitemap-index.xml

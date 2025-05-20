@@ -1,0 +1,100 @@
+---
+title: Getting Started with Next.js
+pubDate: '2023-05-15'
+description: >-
+  Learn how to build modern web applications with Next.js, the React framework
+  for production.
+image: >-
+  https://ik.imagekit.io/quadrate/assets/img/dotnetevangelist/react-19-features.jpeg?updatedAt=1746813294574
+tags: ['Nextjs', 'React', 'Tutorial']
+draft: true
+---
+
+Next.js is a powerful React framework that enables you to build fast, SEO-friendly web applications with server-side rendering, static site generation, and more.
+
+## What is Next.js?
+
+Next.js is a React framework developed by Vercel that provides a set of features for building modern web applications:
+
+- **Server-Side Rendering (SSR)**: Renders pages on the server for better SEO and initial load performance
+- **Static Site Generation (SSG)**: Pre-renders pages at build time for even faster performance
+- **API Routes**: Create API endpoints as part of your Next.js application
+- **File-based Routing**: Create routes based on the file structure in your pages directory
+- **Built-in CSS Support**: Import CSS files directly in your components
+- **Image Optimization**: Automatically optimize images for better performance
+
+## Setting Up a Next.js Project
+
+Getting started with Next.js is straightforward. Here's how you can create a new project:
+
+```bash
+npx create-next-app@latest my-next-app
+cd my-next-app
+npm run dev
+```
+
+This will create a new Next.js project and start the development server at `http://localhost:3000`.
+
+## File Structure
+
+A typical Next.js project has the following structure:
+
+```
+my-next-app/
+  ├── node_modules/
+  ├── public/
+  ├── src/
+  │   ├── app/
+  │   │   ├── page.tsx
+  │   │   └── layout.tsx
+  │   ├── components/
+  │   └── styles/
+  ├── .gitignore
+  ├── next.config.js
+  ├── package.json
+  └── tsconfig.json
+```
+
+## Creating Pages
+
+With the App Router in Next.js, you create pages by adding files to the `app` directory. For example, to create a page at `/about`, you would create a file at `app/about/page.tsx`:
+
+```jsx
+export default function AboutPage() {
+  return (
+    <div>
+      <h1>About Us</h1>
+      <p>This is the about page of our website.</p>
+    </div>
+  );
+}
+```
+
+## Data Fetching
+
+Next.js provides several ways to fetch data for your pages:
+
+### Server Components (Default in App Router)
+
+```jsx
+// This component will be rendered on the server
+export default async function Page() {
+  const data = await fetch('https://api.example.com/data');
+  const jsonData = await data.json();
+
+  return (
+    <div>
+      <h1>{jsonData.title}</h1>
+      <p>{jsonData.description}</p>
+    </div>
+  );
+}
+```
+
+## Conclusion
+
+Next.js is a powerful framework that makes building React applications easier and more efficient. With its built-in features for server-side rendering, static site generation, and more, it's an excellent choice for building modern web applications.
+
+In future posts, we'll explore more advanced features of Next.js, such as dynamic routes, API routes, and deployment strategies.
+
+Happy coding!

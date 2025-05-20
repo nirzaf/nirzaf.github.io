@@ -1,0 +1,291 @@
+---
+title: Angular 18 and .NET Core API Authorization
+date: '2023-07-20'
+description: >-
+  Learn how to implement secure authorization between an Angular 18 frontend and
+  a .NET Core API backend using JWT tokens and role-based access control.
+image: >-
+  https://ik.imagekit.io/quadrate/assets/img/dotnetevangelist/Angular_18_and_NET_Core_API_Authorization.jpg?updatedAt=1746813313487
+tags: ['Angular', 'Dotnet', 'Api', 'Authorization', 'Security']
+---
+
+# Angular 18 and .NET Core API Authorization
+
+Building secure web applications requires proper authorization between frontend and backend systems. In this post, we'll explore how to implement robust authorization between an Angular 18 frontend and a .NET Core API backend.
+
+## Setting Up the .NET Core API
+
+First, let's set up our .NET Core API with JWT authentication:
+
+```csharp
+// Startup.cs
+public void ConfigureServices(IServiceCollection services)
+{
+    // Add JWT Authentication
+    services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = Configuration["Jwt:Issuer"],
+                ValidAudience = Configuration["Jwt:Audience"],
+                IssuerSigningKey = new SymmetricSecurityKey(
+                    Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+            };
+        });
+
+    // Add Authorization
+    services.AddAuthorization(options =>
+    {
+        options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+        options.AddPolicy("UserAccess", policy => policy.RequireRole("User", "Admin"));
+    });
+
+    services.AddControllers();
+}
+
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    // Other middleware...
+    
+    app.UseAuthentication();
+    app.UseAuthorization();
+    
+    // Other middleware...
+}
+```
+
+## Creating a JWT Token Service
+
+Next, let's create a service to generate JWT tokens:
+
+```csharp
+public class TokenService : ITokenService
+{
+    private readonly IConfiguration _configuration;
+    
+    public TokenService(IConfiguration configuration)
+    {
+        _configuration = configuration;
+    }
+    
+    public string GenerateJwtToken(User user)
+    {
+        var claims = new List<Claim>
+        {
+            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+            new Claim(ClaimTypes.Name, user.Username),
+            new Claim(ClaimTypes.Email, user.Email)
+        };
+        
+        // Add roles as claims
+        foreach (var role in user.Roles)
+        {
+            claims.Add(new Claim(ClaimTypes.Role, role));
+        }
+        
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+        
+        var token = new JwtSecurityToken(
+            issuer: _configuration["Jwt:Issuer"],
+            audience: _configuration["Jwt:Audience"],
+            claims: claims,
+            expires: DateTime.Now.AddDays(1),
+            signingCredentials: creds
+        );
+        
+        return new JwtSecurityTokenHandler().WriteToken(token);
+    }
+}
+```
+
+## Implementing Protected API Endpoints
+
+Now, let's create some protected API endpoints:
+
+```csharp
+[ApiController]
+[Route("api/[controller]")]
+public class ResourcesController : ControllerBase
+{
+    [HttpGet("public")]
+    public IActionResult GetPublicData()
+    {
+        return Ok(new { message = "This is public data" });
+    }
+    
+    [HttpGet("user")]
+    [Authorize(Policy = "UserAccess")]
+    public IActionResult GetUserData()
+    {
+        return Ok(new { message = "This is protected user data" });
+    }
+    
+    [HttpGet("admin")]
+    [Authorize(Policy = "AdminOnly")]
+    public IActionResult GetAdminData()
+    {
+        return Ok(new { message = "This is protected admin data" });
+    }
+}
+```
+
+## Setting Up Angular 18 Authentication
+
+On the Angular side, we need to set up authentication and handle JWT tokens:
+
+```typescript
+// auth.service.ts
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService {
+  private currentUserSubject = new BehaviorSubject<User | null>(null);
+  public currentUser$ = this.currentUserSubject.asObservable();
+  
+  constructor(private http: HttpClient) {
+    // Check if we have a token in local storage
+    const token = localStorage.getItem('token');
+    if (token) {
+      const user = this.getUserFromToken(token);
+      this.currentUserSubject.next(user);
+    }
+  }
+  
+  login(username: string, password: string): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/auth/login`, { username, password })
+      .pipe(
+        tap(response => {
+          // Save token to local storage
+          localStorage.setItem('token', response.token);
+          
+          // Update current user
+          const user = this.getUserFromToken(response.token);
+          this.currentUserSubject.next(user);
+        })
+      );
+  }
+  
+  logout(): void {
+    localStorage.removeItem('token');
+    this.currentUserSubject.next(null);
+  }
+  
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
+  
+  isLoggedIn(): boolean {
+    return !!this.getToken();
+  }
+  
+  hasRole(role: string): boolean {
+    const user = this.currentUserSubject.value;
+    return user?.roles.includes(role) ?? false;
+  }
+  
+  private getUserFromToken(token: string): User | null {
+    try {
+      // Decode the JWT token
+      const decodedToken = jwt_decode(token);
+      
+      return {
+        id: decodedToken.nameid,
+        username: decodedToken.unique_name,
+        email: decodedToken.email,
+        roles: Array.isArray(decodedToken.role) ? decodedToken.role : [decodedToken.role]
+      };
+    } catch (error) {
+      console.error('Error decoding token', error);
+      return null;
+    }
+  }
+}
+```
+
+## Adding HTTP Interceptor for JWT
+
+We'll add an HTTP interceptor to automatically add the JWT token to outgoing requests:
+
+```typescript
+// auth.interceptor.ts
+@Injectable()
+export class AuthInterceptor implements HttpInterceptor {
+  constructor(private authService: AuthService) {}
+  
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const token = this.authService.getToken();
+    
+    if (token) {
+      const cloned = req.clone({
+        headers: req.headers.set('Authorization', `Bearer ${token}`)
+      });
+      
+      return next.handle(cloned);
+    }
+    
+    return next.handle(req);
+  }
+}
+```
+
+## Implementing Route Guards
+
+Finally, let's implement route guards to protect Angular routes:
+
+```typescript
+// auth.guard.ts
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthGuard implements CanActivate {
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
+  
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): boolean | UrlTree {
+    if (this.authService.isLoggedIn()) {
+      // Check if route has data.roles and user has required role
+      const requiredRoles = route.data['roles'] as string[];
+      
+      if (!requiredRoles || requiredRoles.length === 0) {
+        return true;
+      }
+      
+      // Check if user has any of the required roles
+      const hasRequiredRole = requiredRoles.some(role => 
+        this.authService.hasRole(role)
+      );
+      
+      if (hasRequiredRole) {
+        return true;
+      }
+      
+      // User doesn't have required role, redirect to unauthorized page
+      return this.router.parseUrl('/unauthorized');
+    }
+    
+    // Not logged in, redirect to login page with return url
+    return this.router.parseUrl(
+      `/login?returnUrl=${encodeURIComponent(state.url)}`
+    );
+  }
+}
+```
+
+## Conclusion
+
+By implementing proper authorization between your Angular 18 frontend and .NET Core API backend, you can ensure that your application's resources are protected and only accessible to authorized users. This approach uses industry-standard JWT tokens and role-based access control to provide a secure and scalable authorization system.
+
+In future posts, we'll explore more advanced security features like refresh tokens, multi-factor authentication, and API rate limiting.
+
+Happy coding!
