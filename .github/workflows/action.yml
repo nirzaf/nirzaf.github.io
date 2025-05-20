@@ -38,14 +38,11 @@ jobs:
       - name: Build with Next.js
         run: |
           pnpm run build
-          pnpm run export
         env:
           NEXT_TELEMETRY_DISABLED: 1
           NODE_ENV: production
           # For GitHub Pages, we need to set the base path
           NEXT_PUBLIC_BASE_PATH: /nirzaf.github.io
-          # Set output directory for static export
-          OUT_DIR: out
 
       - name: Create backup branch
         if: success()
