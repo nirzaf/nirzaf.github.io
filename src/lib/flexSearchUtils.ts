@@ -12,26 +12,49 @@ export interface SearchResult {
 }
 
 // Create a document search instance with multiple indices
-const searchIndex = new Document({
-  document: {
-    id: 'slug',
-    index: [
-      { field: 'title', tokenize: 'forward', resolution: 9 },
-      { field: 'description', tokenize: 'forward', resolution: 5 },
-      { field: 'tags', tokenize: 'forward', resolution: 7 },
-      { field: 'content', tokenize: 'forward', resolution: 3 }
-    ],
-    store: ['slug', 'title', 'description', 'tags', 'pubDate', 'content']
+let searchIndex: Document<any, any> | null = null;
+
+// Initialize the search index
+function initSearchIndex() {
+  if (searchIndex) return; // Already initialized
+  
+  try {
+    searchIndex = new Document({
+      document: {
+        id: 'slug',
+        index: [
+          { field: 'title', tokenize: 'forward', resolution: 9 },
+          { field: 'description', tokenize: 'forward', resolution: 5 },
+          { field: 'tags', tokenize: 'forward', resolution: 7 },
+          { field: 'content', tokenize: 'forward', resolution: 3 }
+        ],
+        store: ['slug', 'title', 'description', 'tags', 'pubDate', 'content']
+      }
+    });
+    console.log('FlexSearch index initialized successfully');
+  } catch (error) {
+    console.error('Error initializing FlexSearch index:', error);
+    throw new Error(`Failed to initialize search index: ${error instanceof Error ? error.message : String(error)}`);
   }
-});
+}
 
 let isIndexLoaded = false;
 
 // Function to fetch the search index from the static JSON file
 export async function loadSearchIndex(): Promise<boolean> {
-  if (isIndexLoaded) return true;
+  if (isIndexLoaded) {
+    console.log('Search index already loaded, skipping');
+    return true;
+  }
   
   try {
+    // Initialize the search index first
+    initSearchIndex();
+    
+    if (!searchIndex) {
+      throw new Error('Search index initialization failed');
+    }
+    
     // Try multiple paths to handle both GitHub Pages and custom domain deployments
     const possiblePaths = [
       '/search-index.json', // For custom domain
@@ -40,44 +63,75 @@ export async function loadSearchIndex(): Promise<boolean> {
     ];
     
     let response: Response | null = null;
-    let error: Error | null = null;
+    let lastError: Error | null = null;
+    let successPath = '';
     
     // Try each path until one works
     for (const path of possiblePaths) {
       try {
         console.log(`Trying to fetch search index from: ${path}`);
-        response = await fetch(path);
+        response = await fetch(path, { 
+          method: 'GET',
+          headers: { 'Accept': 'application/json' },
+          cache: 'no-cache' // Avoid caching issues
+        });
+        
         if (response.ok) {
           console.log(`Successfully fetched search index from: ${path}`);
+          successPath = path;
           break;
+        } else {
+          console.warn(`Failed to fetch search index from: ${path}, status: ${response.status}`);
+          lastError = new Error(`HTTP error ${response.status}`);
         }
       } catch (e) {
-        error = e as Error;
-        console.warn(`Failed to fetch search index from: ${path}`, e);
+        lastError = e as Error;
+        console.warn(`Error fetching search index from: ${path}`, e);
       }
     }
     
     if (!response || !response.ok) {
-      throw error || new Error('Failed to fetch search index from all possible paths');
+      throw lastError || new Error('Failed to fetch search index from all possible paths');
     }
     
-    const entries = await response.json() as SearchIndexEntry[];
+    // Parse the JSON response
+    let entries: SearchIndexEntry[];
+    try {
+      const text = await response.text();
+      console.log(`Received ${text.length} bytes from ${successPath}`);
+      entries = JSON.parse(text) as SearchIndexEntry[];
+      console.log(`Parsed ${entries.length} entries from search index`);
+    } catch (e) {
+      console.error('Error parsing search index JSON:', e);
+      throw new Error(`Failed to parse search index JSON: ${e instanceof Error ? e.message : String(e)}`);
+    }
     
     // Add each entry to the search index
-    entries.forEach(entry => {
-      searchIndex.add({
-        slug: entry.slug,
-        title: entry.title,
-        description: entry.description,
-        tags: entry.tags?.join(' ') || '',
-        pubDate: entry.pubDate,
-        content: entry.content
+    try {
+      console.log(`Adding ${entries.length} entries to search index`);
+      entries.forEach((entry, index) => {
+        if (!entry.slug) {
+          console.warn(`Entry at index ${index} has no slug, skipping`);
+          return;
+        }
+        
+        searchIndex!.add({
+          slug: entry.slug,
+          title: entry.title || '',
+          description: entry.description || '',
+          tags: entry.tags?.join(' ') || '',
+          pubDate: entry.pubDate || '',
+          content: entry.content || ''
+        });
       });
-    });
-    
-    isIndexLoaded = true;
-    console.log(`Search index loaded with ${entries.length} entries`);
-    return true;
+      
+      isIndexLoaded = true;
+      console.log(`Search index loaded with ${entries.length} entries`);
+      return true;
+    } catch (e) {
+      console.error('Error adding entries to search index:', e);
+      throw new Error(`Failed to add entries to search index: ${e instanceof Error ? e.message : String(e)}`);
+    }
   } catch (error) {
     console.error('Error loading search index:', error);
     return false;
@@ -113,47 +167,64 @@ function determineMatchType(result: any, query: string): 'title' | 'description'
 export async function searchPosts(query: string): Promise<SearchResult[]> {
   if (!query.trim()) return [];
   
-  // Ensure search index is loaded
-  const indexLoaded = await loadSearchIndex();
-  if (!indexLoaded) {
-    console.error('Search index not loaded, cannot perform search');
-    return [];
-  }
-  
-  // Perform search across all fields
-  const results = await searchIndex.search(query);
-  
-  // Flatten and deduplicate results
-  const slugSet = new Set<string>();
-  const searchResults: SearchResult[] = [];
-  
-  // Process results from all fields
-  results.forEach(fieldResults => {
-    fieldResults.result.forEach((slug) => {
-      const slugStr = String(slug); // Convert to string to handle both string and number IDs
-      if (!slugSet.has(slugStr)) {
-        slugSet.add(slugStr);
-        
-        // Get the full document from the store
-        const doc = searchIndex.get(slugStr) as any;
-        
-        if (doc) {
-          const matchType = determineMatchType(doc, query);
-          const contentSnippet = matchType === 'content' ? extractSnippet(doc.content, query) : undefined;
+  try {
+    // Ensure search index is loaded
+    const indexLoaded = await loadSearchIndex();
+    if (!indexLoaded || !searchIndex) {
+      console.error('Search index not loaded, cannot perform search');
+      return [];
+    }
+    
+    console.log(`Searching for: "${query}"`);
+    
+    // Perform search across all fields
+    const results = await searchIndex.search(query);
+    console.log(`Search returned ${results.length} field result sets`);
+    
+    // Flatten and deduplicate results
+    const slugSet = new Set<string>();
+    const searchResults: SearchResult[] = [];
+    
+    // Process results from all fields
+    results.forEach((fieldResults, index) => {
+      console.log(`Field ${index} returned ${fieldResults.result.length} results`);
+      
+      fieldResults.result.forEach((slug) => {
+        const slugStr = String(slug); // Convert to string to handle both string and number IDs
+        if (!slugSet.has(slugStr)) {
+          slugSet.add(slugStr);
           
-          searchResults.push({
-            slug: doc.slug,
-            title: doc.title,
-            description: doc.description,
-            tags: doc.tags ? doc.tags.split(' ').filter(Boolean) : [],
-            pubDate: doc.pubDate,
-            matchType,
-            contentSnippet
-          });
+          try {
+            // Get the full document from the store
+            const doc = searchIndex!.get(slugStr) as any;
+            
+            if (doc) {
+              const matchType = determineMatchType(doc, query);
+              const contentSnippet = matchType === 'content' ? extractSnippet(doc.content, query) : undefined;
+              
+              searchResults.push({
+                slug: doc.slug,
+                title: doc.title || '',
+                description: doc.description || '',
+                tags: doc.tags ? doc.tags.split(' ').filter(Boolean) : [],
+                pubDate: doc.pubDate || '',
+                matchType,
+                contentSnippet
+              });
+            } else {
+              console.warn(`Document with slug ${slugStr} not found in store`);
+            }
+          } catch (e) {
+            console.error(`Error processing search result for slug ${slugStr}:`, e);
+          }
         }
-      }
+      });
     });
-  });
-  
-  return searchResults;
+    
+    console.log(`Returning ${searchResults.length} deduplicated search results`);
+    return searchResults;
+  } catch (error) {
+    console.error('Error searching posts:', error);
+    throw error; // Rethrow to allow proper error handling in the UI
+  }
 }

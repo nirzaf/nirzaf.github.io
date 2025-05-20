@@ -54,7 +54,7 @@ export function ClientSearch() {
   // Handle search
   useEffect(() => {
     async function performSearch() {
-      if (!query.trim()) {
+      if (!query) {
         setResults([]);
         return;
       }
@@ -63,12 +63,27 @@ export function ClientSearch() {
       setError(null);
       
       try {
+        console.log(`Initiating search for query: "${query}"`);
         const searchResults = await searchPosts(query);
+        console.log(`Search complete, found ${searchResults.length} results`);
         setResults(searchResults);
       } catch (err) {
         console.error('Search error:', err);
-        setError(`Search failed: ${err instanceof Error ? err.message : String(err)}`);
+        setError(`Search failed: ${err instanceof Error ? err.message : 'Unknown error'}`);
         setResults([]);
+        
+        // If search index status was success but search failed, reset it to try loading again
+        if (searchIndexStatus === 'success') {
+          console.log('Resetting search index status to retry loading');
+          setSearchIndexStatus('loading');
+          // Try to reload the search index
+          loadSearchIndex().then(success => {
+            setSearchIndexStatus(success ? 'success' : 'error');
+            if (!success) {
+              setError('Failed to reload search index. Please refresh the page and try again.');
+            }
+          });
+        }
       } finally {
         setIsLoading(false);
       }
