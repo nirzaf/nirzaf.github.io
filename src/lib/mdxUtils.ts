@@ -7,7 +7,6 @@ import { fixHtmlAttributes } from './fixHtmlAttributes';
 import { rehypeFixAttributes } from './rehypeFixAttributes';
 import { rehypeMermaid } from './rehypeMermaid';
 // @ts-ignore - Type definitions for rehype-mermaid are incomplete
-import rehypeMermaidPlugin from 'rehype-mermaid';
 
 const postsDirectory = path.join(process.cwd(), 'data/posts');
 
