@@ -35,46 +35,56 @@ async function generateSearchIndex() {
     return;
   }
 
-  // Read all MDX files
-  const fileNames = fs.readdirSync(postsDirectory);
-  const mdxFiles = fileNames.filter(fileName => fileName.endsWith('.mdx'));
-  
+  // Get all MDX files from the posts directory
+  const mdxFiles = fs.readdirSync(postsDirectory).filter(file => file.endsWith('.mdx'));
   console.log(`Found ${mdxFiles.length} MDX files`);
-  if (mdxFiles.length === 0) {
-    console.log('No MDX files found, creating empty search index');
-    fs.writeFileSync(outputPath, JSON.stringify([]));
-    return;
+
+  // Map each file to a search index entry
+  const searchIndex = [];
+  
+  for (const fileName of mdxFiles) {
+    try {
+      const slug = fileName.replace(/\.mdx$/, '');
+      const fullPath = path.join(postsDirectory, fileName);
+      const fileContents = fs.readFileSync(fullPath, 'utf8');
+      const { data, content } = matter(fileContents);
+      
+      // Skip files without required frontmatter
+      if (!data.title) {
+        console.log(`Skipping ${fileName}: Missing title in frontmatter`);
+        continue;
+      }
+      
+      // Debug log
+      console.log(`Processing: ${fileName} - "${data.title}"`);
+      
+      const entry = {
+        slug,
+        title: data.title || '',
+        description: data.description || '',
+        tags: data.tags || [],
+        pubDate: data.pubDate || '',
+        content: content
+          .replace(/import.*?from.*?;/g, '') // Remove import statements
+          .replace(/export.*?;/g, '') // Remove export statements
+          .replace(/<[^>]*>/g, '') // Remove HTML tags
+          .replace(/\n/g, ' ') // Replace newlines with spaces
+          .slice(0, 5000) // Limit content size for performance
+      };
+      
+      searchIndex.push(entry);
+    } catch (error) {
+      console.error(`Error processing ${fileName}:`, error);
+    }
   }
+
+  console.log(`\nPreparing to write ${searchIndex.length} entries to search index`);
   
-  // Process each file
-  const searchIndex = mdxFiles.map(fileName => {
-    const slug = fileName.replace(/\.mdx$/, '');
-    const fullPath = path.join(postsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const { data, content } = matter(fileContents);
-    
-    // Extract a content preview for search
-    const cleanContent = content
-      .replace(/---[\s\S]*?---/, '') // Remove frontmatter
-      .replace(/import.*?;/g, '') // Remove import statements
-      .replace(/<div.*?>[\s\S]*?<\/div>/g, '') // Remove div blocks
-      .replace(/<Image.*?\/>|<img.*?\/?>/g, '') // Remove image tags
-      .replace(/```[\s\S]*?```/g, '') // Remove code blocks
-      .replace(/\n/g, ' ') // Replace newlines with spaces
-      .slice(0, 5000); // Limit content size for performance
-    
-    return {
-      slug,
-      title: data.title || '',
-      description: data.description || '',
-      tags: data.tags || [],
-      pubDate: data.pubDate || '',
-      content: cleanContent
-    };
+  // Debug: List all posts being indexed
+  searchIndex.forEach((post, index) => {
+    console.log(`${index + 1}. ${post.slug} - "${post.title}"`);
   });
-  
-  // Ensure the public directory exists
-  const publicDir = path.dirname(outputPath);
+
   if (!fs.existsSync(publicDir)) {
     fs.mkdirSync(publicDir, { recursive: true });
   }

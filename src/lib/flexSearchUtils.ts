@@ -59,7 +59,10 @@ export async function loadSearchIndex(): Promise<boolean> {
     const possiblePaths = [
       '/search-index.json', // For custom domain
       `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/search-index.json`, // For GitHub Pages
-      '/nirzaf.github.io/search-index.json' // Hardcoded GitHub Pages path as fallback
+      '/nirzaf.github.io/search-index.json', // Hardcoded GitHub Pages path as fallback
+      'search-index.json', // Relative path (often works in development)
+      '../search-index.json', // Another relative path option
+      '../../public/search-index.json' // Direct access to public folder (development)
     ];
     
     let response: Response | null = null;
@@ -99,11 +102,29 @@ export async function loadSearchIndex(): Promise<boolean> {
     try {
       const text = await response.text();
       console.log(`Received ${text.length} bytes from ${successPath}`);
-      entries = JSON.parse(text) as SearchIndexEntry[];
+      
+      if (text.trim() === '') {
+        throw new Error('Search index is empty');
+      }
+      
+      // Log a sample of the received data for debugging
+      console.log(`First 100 characters of search index: ${text.substring(0, 100)}...`);
+      
+      entries = JSON.parse(text);
+      
+      if (!Array.isArray(entries)) {
+        throw new Error('Search index is not an array');
+      }
+      
       console.log(`Parsed ${entries.length} entries from search index`);
+      
+      // Log some sample entries to verify content
+      if (entries.length > 0) {
+        console.log(`First entry title: "${entries[0].title}", slug: ${entries[0].slug}`);
+      }
     } catch (e) {
-      console.error('Error parsing search index JSON:', e);
-      throw new Error(`Failed to parse search index JSON: ${e instanceof Error ? e.message : String(e)}`);
+      console.error('Error parsing search index:', e);
+      throw new Error(`Failed to parse search index: ${e instanceof Error ? e.message : String(e)}`);
     }
     
     // Add each entry to the search index
