@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://dotnetevangelist.net/sitemap.xml
+
+# Disallow search-related paths that don't need indexing
+Disallow: /api/
+Disallow: /search/
+Disallow: /_next/

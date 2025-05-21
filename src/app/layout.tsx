@@ -20,10 +20,35 @@ const robotoMono = Roboto_Mono({
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | .NET Evangelist',
-    default: '.NET Evangelist',
+    template: '%s | .NET Evangelist Tech Blogs',
+    default: '.NET Evangelist Tech Blogs',
   },
   description: "Exploring modern software development with .NET, web technologies, and cloud solutions",
+  keywords: ['.NET', 'C#', 'ASP.NET Core', 'Web Development', 'Software Engineering', 'Cloud Computing', 'Azure', 'Programming', 'Tutorials'],
+  authors: [{ name: '.NET Evangelist' }],
+  creator: '.NET Evangelist',
+  publisher: '.NET Evangelist',
+  metadataBase: new URL('https://dotnetevangelist.net'),
+  openGraph: {
+    title: '.NET Evangelist Tech Blogs',
+    description: 'Exploring modern software development with .NET, web technologies, and cloud solutions',
+    url: 'https://dotnetevangelist.net',
+    siteName: '.NET Evangelist Tech Blogs',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '.NET Evangelist Tech Blogs',
+    description: 'Exploring modern software development with .NET, web technologies, and cloud solutions',
+  },
+  alternates: {
+    canonical: 'https://dotnetevangelist.net',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

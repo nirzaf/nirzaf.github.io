@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { getAllPosts, getAllTags } from '@/lib/mdxUtils';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://myblog.com'; // Replace with your actual domain
+  const baseUrl = 'https://dotnetevangelist.net'; // Primary domain
   
   // Get all posts
   const posts = await getAllPosts();

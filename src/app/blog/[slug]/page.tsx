@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { getPostBySlug, getAllPosts } from '@/lib/mdxUtils';
 import { BlogContent } from '@/components/BlogContent';
 import { PostCard } from '@/components/PostCard';
+import { JsonLd } from '@/components/JsonLd';
 
 // Simple shuffle utility for randomizing arrays
 function shuffle<T>(array: T[]): T[] {
@@ -22,19 +23,42 @@ export async function generateMetadata({ params }) {
   if (!post) {
     return {
       title: 'Post Not Found',
+      description: 'The requested blog post could not be found.',
     };
   }
+
+  // Create a URL-friendly version of tags for keywords
+  const keywords = post.tags ? [...post.tags, '.NET', 'Programming', 'Software Development'] : ['.NET', 'Programming', 'Software Development'];
+  
+  // Format the publication date properly if it exists
+  const pubDate = post.pubDate ? new Date(post.pubDate).toISOString() : undefined;
+  
+  // Determine the image URL - use the post's image or a default
+  const imageUrl = post.image 
+    ? `https://dotnetevangelist.net${post.image}` 
+    : 'https://dotnetevangelist.net/images/default-post-image.jpg';
 
   return {
     title: post.title,
     description: post.description,
+    keywords: keywords,
     openGraph: {
       title: post.title,
       description: post.description,
       type: 'article',
-      publishedTime: post.pubDate,
-      authors: ['Your Name'],
-      images: post.image ? [{ url: post.image }] : [],
+      publishedTime: pubDate,
+      authors: ['.NET Evangelist'],
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: post.title }],
+      url: `https://dotnetevangelist.net/blog/${slug}`,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.description,
+      images: [imageUrl],
+    },
+    alternates: {
+      canonical: `https://dotnetevangelist.net/blog/${slug}`,
     },
   };
 }
@@ -77,8 +101,38 @@ export default async function BlogPostPage({ params }) {
     relatedPosts = [...relatedPosts, ...shuffle(others).slice(0, 2 - relatedPosts.length)];
   }
 
+  // Create structured data for search engines
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.description,
+    author: {
+      '@type': 'Person',
+      name: '.NET Evangelist',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: '.NET Evangelist Tech Blogs',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://dotnetevangelist.net/images/logo.png',
+      },
+    },
+    datePublished: post.pubDate || new Date().toISOString(),
+    dateModified: post.pubDate || new Date().toISOString(),
+    image: post.image ? `https://dotnetevangelist.net${post.image}` : 'https://dotnetevangelist.net/images/default-post-image.jpg',
+    url: `https://dotnetevangelist.net/blog/${slug}`,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://dotnetevangelist.net/blog/${slug}`,
+    },
+    keywords: post.tags?.join(', ') || '',
+  };
+
   return (
     <article className="container mx-auto px-4 py-8 max-w-4xl">
+      <JsonLd data={structuredData} />
       <div className="mb-8">
         <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-4">
           <span>{post.pubDate}</span>
