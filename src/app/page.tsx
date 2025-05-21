@@ -4,6 +4,7 @@ import { getAllPosts } from '@/lib/mdxUtils';
 import { PostCard } from '@/components/PostCard';
 import { MarkdownPreview } from '@/components/MarkdownPreview';
 import { HeaderSearch } from '@/components/HeaderSearch';
+import { FeaturedImage } from '@/components/FeaturedImage';
 
 export const metadata: Metadata = {
   title: '.NET Evangelist',
@@ -35,15 +36,7 @@ export default async function Home() {
           <h2 className="text-2xl font-bold mb-6">Featured Post</h2>
           <div className="bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg">
             <div className="md:flex">
-              {featuredPost.image && (
-                <div className="md:w-2/5 h-64 md:h-auto relative">
-                  <img
-                    src={featuredPost.image}
-                    alt={featuredPost.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              )}
+              <FeaturedImage src={featuredPost.image} alt={featuredPost.title} />
               <div className="p-6 md:w-3/5 md:max-h-[500px] overflow-y-auto">
                 <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
                   <span>{featuredPost.pubDate}</span>

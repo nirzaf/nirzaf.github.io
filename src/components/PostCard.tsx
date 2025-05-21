@@ -1,5 +1,8 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState } from 'react';
 import { Post } from '@/lib/mdxUtils';
 
 // Format date for consistent display
@@ -25,20 +28,25 @@ interface PostCardProps {
 }
 
 export function PostCard({ post, highlightTag }: PostCardProps) {
+  const [imageSrc, setImageSrc] = useState<string>(post.image || 'https://ik.imagekit.io/quadrate/dotnetevangelist.jpeg?updatedAt=1747847469394');
+  
+  const handleImageError = () => {
+    setImageSrc('https://ik.imagekit.io/quadrate/dotnetevangelist.jpeg?updatedAt=1747847469394');
+  };
+
   return (
     <div className="border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-      {post.image && (
-        <div className="aspect-video relative overflow-hidden">
-          <Image
-            src={post.image}
-            alt={post.title}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover"
-            priority={false}
-          />
-        </div>
-      )}
+      <div className="aspect-video relative overflow-hidden">
+        <Image
+          src={imageSrc}
+          alt={post.title}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover"
+          priority={false}
+          onError={handleImageError}
+        />
+      </div>
       <div className="p-4">
         <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
           <span>{formatDate(post.pubDate)}</span>

@@ -35,8 +35,8 @@ export async function generateMetadata({ params }) {
   
   // Determine the image URL - use the post's image or a default
   const imageUrl = post.image 
-    ? `https://dotnetevangelist.net${post.image}` 
-    : 'https://dotnetevangelist.net/images/default-post-image.jpg';
+    ? post.image.startsWith('http') ? post.image : `https://dotnetevangelist.net${post.image}` 
+    : 'https://ik.imagekit.io/quadrate/dotnetevangelist.jpeg?updatedAt=1747847469394';
 
   return {
     title: post.title,
@@ -121,7 +121,7 @@ export default async function BlogPostPage({ params }) {
     },
     datePublished: post.pubDate || new Date().toISOString(),
     dateModified: post.pubDate || new Date().toISOString(),
-    image: post.image ? `https://dotnetevangelist.net${post.image}` : 'https://dotnetevangelist.net/images/default-post-image.jpg',
+    image: post.image ? (post.image.startsWith('http') ? post.image : `https://dotnetevangelist.net${post.image}`) : 'https://ik.imagekit.io/quadrate/dotnetevangelist.jpeg?updatedAt=1747847469394',
     url: `https://dotnetevangelist.net/blog/${slug}`,
     mainEntityOfPage: {
       '@type': 'WebPage',
