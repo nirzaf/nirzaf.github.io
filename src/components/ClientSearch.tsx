@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { SearchResult, searchPosts, loadSearchIndex } from '@/lib/flexSearchUtils';
+import { SearchResult, searchPosts, isSearchAvailable } from '@/lib/simpleSearch';
 
 export function ClientSearch() {
   const [query, setQuery] = useState('');
@@ -11,27 +11,27 @@ export function ClientSearch() {
   const [error, setError] = useState<string | null>(null);
   const [searchIndexStatus, setSearchIndexStatus] = useState<'loading' | 'success' | 'error'>('loading');
 
-  // Load search index on mount
+  // Check if search is available on mount
   useEffect(() => {
-    async function initializeSearchIndex() {
+    async function checkSearchAvailability() {
       try {
-        const success = await loadSearchIndex();
-        if (success) {
-          console.log('Search index loaded successfully!');
+        const available = await isSearchAvailable();
+        if (available) {
+          console.log('Search index is available!');
           setSearchIndexStatus('success');
         } else {
-          console.error('Failed to load search index');
+          console.error('Search index is not available');
           setSearchIndexStatus('error');
-          setError('Failed to load search index');
+          setError('Search index is not available');
         }
       } catch (err) {
-        console.error('Error loading search index:', err);
+        console.error('Error checking search availability:', err);
         setSearchIndexStatus('error');
-        setError(`Error loading search index: ${err instanceof Error ? err.message : String(err)}`);
+        setError(`Error checking search availability: ${err instanceof Error ? err.message : String(err)}`);
       }
     }
 
-    initializeSearchIndex();
+    checkSearchAvailability();
   }, []);
 
   // Function to highlight search terms in text
@@ -72,15 +72,15 @@ export function ClientSearch() {
         setError(`Search failed: ${err instanceof Error ? err.message : 'Unknown error'}`);
         setResults([]);
         
-        // If search index status was success but search failed, reset it to try loading again
+        // If search index status was success but search failed, reset it to try checking again
         if (searchIndexStatus === 'success') {
-          console.log('Resetting search index status to retry loading');
+          console.log('Resetting search index status to retry checking');
           setSearchIndexStatus('loading');
-          // Try to reload the search index
-          loadSearchIndex().then(success => {
-            setSearchIndexStatus(success ? 'success' : 'error');
-            if (!success) {
-              setError('Failed to reload search index. Please refresh the page and try again.');
+          // Try to check search availability again
+          isSearchAvailable().then(available => {
+            setSearchIndexStatus(available ? 'success' : 'error');
+            if (!available) {
+              setError('Search index is not available. Please refresh the page and try again.');
             }
           });
         }
