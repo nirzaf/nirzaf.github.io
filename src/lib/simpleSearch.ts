@@ -23,13 +23,14 @@ export async function fetchSearchIndex(): Promise<SearchIndexEntry[]> {
   try {
     // For GitHub Pages, we need to try multiple paths
     const paths = [
-      '/search-index.json',
-      '/nirzaf.github.io/search-index.json',
-      'search-index.json'
+      // Use absolute URLs with origin to avoid URL parsing issues
+      new URL('/search-index.json', window.location.origin).toString(),
+      new URL('/nirzaf.github.io/search-index.json', window.location.origin).toString(),
+      new URL('search-index.json', window.location.origin).toString()
     ];
-    
+
     let response = null;
-    
+
     // Try each path until one works
     for (const path of paths) {
       console.log(`Trying to fetch search index from: ${path}`);
@@ -43,17 +44,17 @@ export async function fetchSearchIndex(): Promise<SearchIndexEntry[]> {
         console.warn(`Error fetching from ${path}:`, e);
       }
     }
-    
+
     if (!response || !response.ok) {
       throw new Error('Failed to fetch search index');
     }
-    
+
     const data = await response.json();
-    
+
     if (!Array.isArray(data)) {
       throw new Error('Search index is not an array');
     }
-    
+
     console.log(`Loaded ${data.length} entries from search index`);
     searchIndexCache = data;
     return data;
@@ -80,22 +81,22 @@ export async function isSearchAvailable(): Promise<boolean> {
  */
 function extractSnippet(content: string, query: string): string | undefined {
   if (!content || !query) return undefined;
-  
+
   const lowerContent = content.toLowerCase();
   const lowerQuery = query.toLowerCase();
-  
+
   const index = lowerContent.indexOf(lowerQuery);
   if (index === -1) return undefined;
-  
+
   const start = Math.max(0, index - 50);
   const end = Math.min(content.length, index + query.length + 50);
-  
+
   let snippet = content.substring(start, end);
-  
+
   // Add ellipsis if we're not at the beginning or end
   if (start > 0) snippet = '...' + snippet;
   if (end < content.length) snippet = snippet + '...';
-  
+
   return snippet;
 }
 
@@ -104,28 +105,28 @@ function extractSnippet(content: string, query: string): string | undefined {
  */
 export async function searchPosts(query: string): Promise<SearchResult[]> {
   if (!query.trim()) return [];
-  
+
   try {
     const searchIndex = await fetchSearchIndex();
     const results: SearchResult[] = [];
     const queryTerms = query.toLowerCase().split(/\s+/).filter(Boolean);
-    
+
     for (const post of searchIndex) {
       // Skip posts without a title
       if (!post.title) continue;
-      
+
       const searchableContent = [
         post.title?.toLowerCase() || '',
         post.description?.toLowerCase() || '',
         post.tags?.map(t => t.toLowerCase()).join(' ') || '',
         post.content?.toLowerCase() || ''
       ].join(' ');
-      
+
       // Check if all query terms are found in the post
-      const allTermsFound = queryTerms.every(term => 
+      const allTermsFound = queryTerms.every(term =>
         searchableContent.includes(term)
       );
-      
+
       if (allTermsFound) {
         // Find which field matched for better snippet extraction
         let matchField = 'content';
@@ -136,7 +137,7 @@ export async function searchPosts(query: string): Promise<SearchResult[]> {
         } else if (post.tags?.some(tag => tag.toLowerCase().includes(query.toLowerCase()))) {
           matchField = 'tag';
         }
-        
+
         // Create a result with a content snippet if available
         results.push({
           slug: post.slug,
@@ -148,7 +149,7 @@ export async function searchPosts(query: string): Promise<SearchResult[]> {
         });
       }
     }
-    
+
     return results;
   } catch (error) {
     console.error('Error searching posts:', error);
