@@ -29,16 +29,13 @@ jobs:
           node-version: "20.x"
 
       
-      - name: Install pnpm
-        run: npm install -g pnpm
-
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm ci
 
       - name: Build with Next.js
         run: |
-          pnpm run build
-          pnpm run generate-search-index
+          npm run build
+          npm run generate-search-index
         env:
           NEXT_TELEMETRY_DISABLED: 1
           NODE_ENV: production
