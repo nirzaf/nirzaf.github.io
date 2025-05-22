@@ -48,7 +48,7 @@
         </item>
       
         <item>
-          <title>Crafting Cross-Platform .NET MAUI Experiences with Blazor Hybrid & AI</title>
+          <title>Crafting Cross-Platform .NET MAUI Experiences with Blazor Hybrid &amp; AI</title>
           <link>https://dotnetevangelist.net/blog/crafting-cross-platform-dotnet-maui-experiences-with-blazor-hybrid-and-ai</link>
           <guid>https://dotnetevangelist.net/blog/crafting-cross-platform-dotnet-maui-experiences-with-blazor-hybrid-and-ai</guid>
           <pubDate>Sat, 10 May 2025 00:00:00 GMT</pubDate>
@@ -60,7 +60,7 @@
           <link>https://dotnetevangelist.net/blog/llama-4-maverick-the-evolution-in-open-weight-models</link>
           <guid>https://dotnetevangelist.net/blog/llama-4-maverick-the-evolution-in-open-weight-models</guid>
           <pubDate>Mon, 07 Apr 2025 00:00:00 GMT</pubDate>
-          <description><![CDATA[Explore the capabilities, advantages, and limitations of Llama 4 Maverick, Meta's latest multimodal AI model, and its comparison with other state-of-the-art models.]]></description>
+          <description><![CDATA[Explore the capabilities, advantages, and limitations of Llama 4 Maverick, Meta&apos;s latest multimodal AI model, and its comparison with other state-of-the-art models.]]></description>
         </item>
       
         <item>
@@ -88,11 +88,11 @@
         </item>
       
         <item>
-          <title>Google's 9-Hour AI Prompt Engineering Course in 10 Minutes</title>
+          <title>Google&apos;s 9-Hour AI Prompt Engineering Course in 10 Minutes</title>
           <link>https://dotnetevangelist.net/blog/google-9-hour-ai-prompt-engineering-course-in-10-minutes</link>
           <guid>https://dotnetevangelist.net/blog/google-9-hour-ai-prompt-engineering-course-in-10-minutes</guid>
           <pubDate>Tue, 10 Dec 2024 00:00:00 GMT</pubDate>
-          <description><![CDATA[A concise summary of Google's comprehensive AI Prompt Engineering Course, distilled into a 10-minute read.]]></description>
+          <description><![CDATA[A concise summary of Google&apos;s comprehensive AI Prompt Engineering Course, distilled into a 10-minute read.]]></description>
         </item>
       
         <item>
@@ -128,7 +128,7 @@
         </item>
       
         <item>
-          <title>Modern Web UIs with Blazor in 2025: State Management & Component Libraries</title>
+          <title>Modern Web UIs with Blazor in 2025: State Management &amp; Component Libraries</title>
           <link>https://dotnetevangelist.net/blog/building-modern-web-ui-with-blazor-in-2025</link>
           <guid>https://dotnetevangelist.net/blog/building-modern-web-ui-with-blazor-in-2025</guid>
           <pubDate>Sun, 06 Apr 2025 00:00:00 GMT</pubDate>
@@ -212,7 +212,7 @@
           <link>https://dotnetevangelist.net/blog/blazor-web-api-with-jwt-auth</link>
           <guid>https://dotnetevangelist.net/blog/blazor-web-api-with-jwt-auth</guid>
           <pubDate>Tue, 01 Oct 2024 00:00:00 GMT</pubDate>
-          <description><![CDATA[A guide on how to implement a JWT Authentication system into a .NET 8 Web API project that uses Microsoft's Blazor WebAssembly.]]></description>
+          <description><![CDATA[A guide on how to implement a JWT Authentication system into a .NET 8 Web API project that uses Microsoft&apos;s Blazor WebAssembly.]]></description>
         </item>
       
         <item>
@@ -244,7 +244,7 @@
           <link>https://dotnetevangelist.net/blog/new-era-of-onedrive-with-redesigned-interface</link>
           <guid>https://dotnetevangelist.net/blog/new-era-of-onedrive-with-redesigned-interface</guid>
           <pubDate>Wed, 28 Aug 2024 00:00:00 GMT</pubDate>
-          <description><![CDATA[Explore OneDrive's latest AI-powered features, including Copilot Agents, enhanced productivity tools, and a revamped mobile experience for both work and personal use.]]></description>
+          <description><![CDATA[Explore OneDrive&apos;s latest AI-powered features, including Copilot Agents, enhanced productivity tools, and a revamped mobile experience for both work and personal use.]]></description>
         </item>
       
         <item>
@@ -296,7 +296,7 @@
         </item>
       
         <item>
-          <title>Performance Optimization Tricks and Tips With EF Core & .NET 8</title>
+          <title>Performance Optimization Tricks and Tips With EF Core &amp; .NET 8</title>
           <link>https://dotnetevangelist.net/blog/performance-optimization-tricks</link>
           <guid>https://dotnetevangelist.net/blog/performance-optimization-tricks</guid>
           <pubDate>Tue, 23 May 2023 00:00:00 GMT</pubDate>
@@ -304,7 +304,7 @@
         </item>
       
         <item>
-          <title>Pros and Cons of Entity Framework's Compiled Query</title>
+          <title>Pros and Cons of Entity Framework&apos;s Compiled Query</title>
           <link>https://dotnetevangelist.net/blog/entity-framework-with-compiled-query</link>
           <guid>https://dotnetevangelist.net/blog/entity-framework-with-compiled-query</guid>
           <pubDate>Wed, 17 May 2023 00:00:00 GMT</pubDate>
