@@ -4,6 +4,8 @@ import { getPostBySlug, getAllPosts } from '@/lib/mdxUtils';
 import { BlogContent } from '@/components/BlogContent';
 import { PostCard } from '@/components/PostCard';
 import { JsonLd } from '@/components/JsonLd';
+import GiscusComments from '@/components/GiscusComments';
+import SocialShareButtons from '@/components/SocialShareButtons';
 
 // Simple shuffle utility for randomizing arrays
 function shuffle<T>(array: T[]): T[] {
@@ -173,34 +175,13 @@ export default async function BlogPostPage({ params }) {
 
       <BlogContent content={post.content} />
 
+      {/* Share Buttons Section */}
       <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
         <h2 className="text-2xl font-bold mb-4">Share this post</h2>
-        <div className="flex space-x-4">
-          <a 
-            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`${process.env.NEXT_PUBLIC_SITE_URL || 'https://dotnetevangelist.com'}/blog/${post.slug}`)}`} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded flex items-center"
-          >
-            Twitter
-          </a>
-          <a 
-            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${process.env.NEXT_PUBLIC_SITE_URL || 'https://dotnetevangelist.com'}/blog/${post.slug}`)}`} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="bg-blue-800 hover:bg-blue-900 text-white px-4 py-2 rounded flex items-center"
-          >
-            Facebook
-          </a>
-          <a 
-            href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`${process.env.NEXT_PUBLIC_SITE_URL || 'https://dotnetevangelist.com'}/blog/${post.slug}`)}`} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded flex items-center"
-          >
-            LinkedIn
-          </a>
-        </div>
+        <SocialShareButtons
+          url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://dotnetevangelist.com'}/blog/${post.slug}`}
+          title={post.title}
+        />
       </div>
 
       {/* Related Articles Section */}
@@ -211,6 +192,12 @@ export default async function BlogPostPage({ params }) {
             <PostCard key={related.slug} post={related} />
           ))}
         </div>
+      </div>
+
+      {/* Comments Section */}
+      <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">
+        <h2 className="text-2xl font-bold mb-4">Comments</h2>
+        <GiscusComments />
       </div>
     </article>
   );
