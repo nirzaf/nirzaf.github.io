@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "next dev",
     "generate-search-index": "node scripts/generate-search-index.mjs",
-    "build": "next build && npm run generate-search-index",
+    "generate-rss-feed": "node scripts/generate-rss.mjs",
+    "build": "next build && npm run generate-search-index && npm run generate-rss-feed",
     "start": "next start",
     "lint": "next lint",
     "cypress:open": "cypress open",

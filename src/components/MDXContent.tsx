@@ -1,8 +1,22 @@
 'use client';
 import { MDXRemote } from 'next-mdx-remote';
 import Prism from 'prismjs';
+// Import language grammars
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-typescript';
+import 'prismjs/components/prism-jsx';
+import 'prismjs/components/prism-tsx';
+import 'prismjs/components/prism-csharp';
+import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-json';
+import 'prismjs/components/prism-yaml';
+import 'prismjs/components/prism-bash';
+import 'prismjs/components/prism-markdown';
+import 'prismjs/components/prism-markup-templating'; // For HTML, XML, SVG, MathML
+// Note: CSS, JavaScript, and Markup (HTML, XML, etc.) are often included by default or as dependencies.
+// Adding them explicitly ensures they are available.
+
 import Image from 'next/image';
-import '../styles/prism.css';
 import React, { useEffect } from 'react';
 import { CustomHTML } from './CustomHTML';
 import { MermaidDiagram } from './MermaidDiagram';
@@ -96,12 +110,35 @@ const components = {
     }
 
     if (language) {
+      const handleCopy = () => {
+        if (typeof children === 'string') {
+          navigator.clipboard.writeText(children);
+          // Add visual feedback (e.g., change button text)
+          const button = document.getElementById(`copy-button-${language}-${children.substring(0,10)}`);
+          if (button) {
+            button.textContent = 'Copied!';
+            setTimeout(() => {
+              button.textContent = 'Copy';
+            }, 2000);
+          }
+        }
+      };
+
       return (
-        <pre className={`language-${language} rounded-lg overflow-auto p-4 my-6 bg-gray-100 dark:bg-gray-800`}>
-          <code className={`language-${language}`} {...rest}>
-            {children}
-          </code>
-        </pre>
+        <div className="relative group">
+          <pre className={`language-${language} rounded-lg overflow-auto p-4 my-6 bg-gray-100 dark:bg-gray-800`}>
+            <code className={`language-${language}`} {...rest}>
+              {children}
+            </code>
+          </pre>
+          <button
+            id={`copy-button-${language}-${children?.toString().substring(0,10)}`}
+            onClick={handleCopy}
+            className="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white text-xs font-semibold py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity"
+          >
+            Copy
+          </button>
+        </div>
       );
     }
 
@@ -112,7 +149,10 @@ const components = {
     );
   },
   pre: (props: React.HTMLAttributes<HTMLPreElement>) => (
-    <pre className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 overflow-x-auto mb-6 font-mono text-sm" {...props} />
+    // If pre is used directly, ensure it has relative positioning for copy button if we decide to support that
+    <div className="relative group">
+       <pre className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 overflow-x-auto mb-6 font-mono text-sm" {...props} />
+    </div>
   ),
   table: (props: React.HTMLAttributes<HTMLElement>) => (
     <div className="overflow-x-auto mb-6">
