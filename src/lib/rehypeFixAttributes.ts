@@ -1,5 +1,4 @@
 import { visit } from 'unist-util-visit';
-import type { Plugin } from 'unified';
 
 /**
  * A rehype plugin that fixes HTML attributes to be compatible with React's camelCase properties

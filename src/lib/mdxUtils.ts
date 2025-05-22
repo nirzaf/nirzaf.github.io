@@ -3,10 +3,8 @@ import path from 'path';
 import matter from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
 import readingTime from 'reading-time';
-import { fixHtmlAttributes } from './fixHtmlAttributes';
 import { rehypeFixAttributes } from './rehypeFixAttributes';
 import { rehypeMermaid } from './rehypeMermaid';
-// @ts-ignore - Type definitions for rehype-mermaid are incomplete
 
 const postsDirectory = path.join(process.cwd(), 'data/posts');
 
@@ -198,8 +196,6 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
 
   const fullPath = path.join(postsDirectory, `${slug}.mdx`);
 
-  const exists = fs.existsSync(fullPath);
-
   try {
     const fullPath = path.join(postsDirectory, `${slug}.mdx`);
 
@@ -225,11 +221,8 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
       .join('\n\n') // Join back with paragraph breaks
       .slice(0, 600); // Limit to 600 characters
 
-    // Fix HTML attributes in the content
-    const fixedContent = fixHtmlAttributes(content);
-
     // Serialize the MDX content for client-side rendering
-    const mdxSource = await serialize(fixedContent, {
+    const mdxSource = await serialize(content, {
       // Add MDX options for better HTML handling
       parseFrontmatter: true,
       mdxOptions: {
