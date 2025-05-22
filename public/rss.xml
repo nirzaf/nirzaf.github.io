@@ -1,0 +1,363 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+      <channel>
+        <title>.NET Evangelist</title>
+        <link>https://dotnetevangelist.net</link>
+        <description>A blog about .NET, programming, and software development.</description>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 19 May 2025 00:00:00 GMT</lastBuildDate>
+        <atom:link href="https://dotnetevangelist.net/rss.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+          <title>Master Vibe Coding: 21 AI-Powered Tips for Effortless Software Development</title>
+          <link>https://dotnetevangelist.net/blog/master-vibe-coding-ai-powered-tips-software-development</link>
+          <guid>https://dotnetevangelist.net/blog/master-vibe-coding-ai-powered-tips-software-development</guid>
+          <pubDate>Mon, 19 May 2025 00:00:00 GMT</pubDate>
+          <description><![CDATA[Discover 21 expert tips to supercharge your AI-assisted development workflow, from foundational strategies to advanced techniques for seamless software creation.]]></description>
+        </item>
+      
+        <item>
+          <title>WebAssembly (Wasm) Takes Serverless by Storm: Boosting Performance and Expanding Use Cases</title>
+          <link>https://dotnetevangelist.net/blog/webassembly-takes-serverless-by-storm-boosting-performance-expanding-use-cases</link>
+          <guid>https://dotnetevangelist.net/blog/webassembly-takes-serverless-by-storm-boosting-performance-expanding-use-cases</guid>
+          <pubDate>Tue, 13 May 2025 00:00:00 GMT</pubDate>
+          <description><![CDATA[Discover how WebAssembly is revolutionizing serverless computing, delivering near-native performance, unlocking new languages, and expanding the possibilities for cloud-native applications.]]></description>
+        </item>
+      
+        <item>
+          <title>Docker: Introduction, Concepts, and Best Practices</title>
+          <link>https://dotnetevangelist.net/blog/docker-introduction-and-best-practices</link>
+          <guid>https://dotnetevangelist.net/blog/docker-introduction-and-best-practices</guid>
+          <pubDate>Mon, 12 May 2025 00:00:00 GMT</pubDate>
+          <description><![CDATA[A practical guide to Docker, covering its core concepts, use cases, and best practices for developers.]]></description>
+        </item>
+      
+        <item>
+          <title>Mastering Kubernetes on Google Cloud: A Comprehensive Guide</title>
+          <link>https://dotnetevangelist.net/blog/mastering-kubernetes-google-cloud</link>
+          <guid>https://dotnetevangelist.net/blog/mastering-kubernetes-google-cloud</guid>
+          <pubDate>Mon, 12 May 2025 00:00:00 GMT</pubDate>
+          <description><![CDATA[Dive deep into deploying, managing, and scaling containerized applications using Kubernetes on Google Cloud Platform (GCP). This comprehensive guide covers GKE architecture, detailed setup, operational best practices, advanced deployment strategies, and real-world examples visualized with diagrams.]]></description>
+        </item>
+      
+        <item>
+          <title>Mastering Common Table Expressions (CTEs) in PostgreSQL: Recursive Queries and Performance Tips</title>
+          <link>https://dotnetevangelist.net/blog/mastering-common-table-expressions-ctes-in-postgresql-recursive-queries-performance-tips</link>
+          <guid>https://dotnetevangelist.net/blog/mastering-common-table-expressions-ctes-in-postgresql-recursive-queries-performance-tips</guid>
+          <pubDate>Sun, 11 May 2025 00:00:00 GMT</pubDate>
+          <description><![CDATA[A comprehensive guide to Common Table Expressions (CTEs) in PostgreSQL, including recursive queries, practical use cases, and performance optimization tips for writing efficient, maintainable SQL.]]></description>
+        </item>
+      
+        <item>
+          <title>Crafting Cross-Platform .NET MAUI Experiences with Blazor Hybrid & AI</title>
+          <link>https://dotnetevangelist.net/blog/crafting-cross-platform-dotnet-maui-experiences-with-blazor-hybrid-and-ai</link>
+          <guid>https://dotnetevangelist.net/blog/crafting-cross-platform-dotnet-maui-experiences-with-blazor-hybrid-and-ai</guid>
+          <pubDate>Sat, 10 May 2025 00:00:00 GMT</pubDate>
+          <description><![CDATA[Learn how to build sophisticated cross-platform UIs with .NET MAUI and Blazor Hybrid, then integrate AI capabilities to create intelligent user experiences using a shared C# codebase.]]></description>
+        </item>
+      
+        <item>
+          <title>Llama 4 Maverick: The Next Evolution in Open-Weight AI Models</title>
+          <link>https://dotnetevangelist.net/blog/llama-4-maverick-the-evolution-in-open-weight-models</link>
+          <guid>https://dotnetevangelist.net/blog/llama-4-maverick-the-evolution-in-open-weight-models</guid>
+          <pubDate>Mon, 07 Apr 2025 00:00:00 GMT</pubDate>
+          <description><![CDATA[Explore the capabilities, advantages, and limitations of Llama 4 Maverick, Meta's latest multimodal AI model, and its comparison with other state-of-the-art models.]]></description>
+        </item>
+      
+        <item>
+          <title>Advantages of Using Windsurf IDE for Coding</title>
+          <link>https://dotnetevangelist.net/blog/advantages-of-using-windsurf-ide-for-coding</link>
+          <guid>https://dotnetevangelist.net/blog/advantages-of-using-windsurf-ide-for-coding</guid>
+          <pubDate>Sun, 06 Apr 2025 00:00:00 GMT</pubDate>
+          <description><![CDATA[Revolutionizing development workflows with AI-powered assistance]]></description>
+        </item>
+      
+        <item>
+          <title>Beyond the Basics: Mastering Advanced Features in .NET</title>
+          <link>https://dotnetevangelist.net/blog/beyond-the-basics-mastering-advanced-features-in-dotnet</link>
+          <guid>https://dotnetevangelist.net/blog/beyond-the-basics-mastering-advanced-features-in-dotnet</guid>
+          <pubDate>Sat, 11 Jan 2025 00:00:00 GMT</pubDate>
+          <description><![CDATA[Explore advanced .NET features such as reflection, dependency injection, asynchronous programming, and performance optimization to elevate your development skills.]]></description>
+        </item>
+      
+        <item>
+          <title>The State of the Developer Ecosystem 2024: A Comprehensive Analysis</title>
+          <link>https://dotnetevangelist.net/blog/the-state-of-the-developer-ecosystem-2024</link>
+          <guid>https://dotnetevangelist.net/blog/the-state-of-the-developer-ecosystem-2024</guid>
+          <pubDate>Thu, 12 Dec 2024 00:00:00 GMT</pubDate>
+          <description><![CDATA[An in-depth analysis of the programming world, examining the tools, languages, and technologies developers use today.]]></description>
+        </item>
+      
+        <item>
+          <title>Google's 9-Hour AI Prompt Engineering Course in 10 Minutes</title>
+          <link>https://dotnetevangelist.net/blog/google-9-hour-ai-prompt-engineering-course-in-10-minutes</link>
+          <guid>https://dotnetevangelist.net/blog/google-9-hour-ai-prompt-engineering-course-in-10-minutes</guid>
+          <pubDate>Tue, 10 Dec 2024 00:00:00 GMT</pubDate>
+          <description><![CDATA[A concise summary of Google's comprehensive AI Prompt Engineering Course, distilled into a 10-minute read.]]></description>
+        </item>
+      
+        <item>
+          <title>Advantages of Using MongoDB in Modern Applications</title>
+          <link>https://dotnetevangelist.net/blog/advantages-of-using-mongodb-in-modern-applications</link>
+          <guid>https://dotnetevangelist.net/blog/advantages-of-using-mongodb-in-modern-applications</guid>
+          <pubDate>Tue, 19 Nov 2024 00:00:00 GMT</pubDate>
+          <description><![CDATA[Exploring the benefits of MongoDB and how it enhances application development]]></description>
+        </item>
+      
+        <item>
+          <title>Implementing the Repository Pattern in .NET: A Game-Changer for Clean Code</title>
+          <link>https://dotnetevangelist.net/blog/implementing-the-repository-pattern-in-dot-net-a-game-changer-for-clean-code</link>
+          <guid>https://dotnetevangelist.net/blog/implementing-the-repository-pattern-in-dot-net-a-game-changer-for-clean-code</guid>
+          <pubDate>Sat, 12 Oct 2024 00:00:00 GMT</pubDate>
+          <description><![CDATA[Learn how to implement the repository pattern in .NET applications to simplify data access logic, improve code organization, and enhance maintainability.]]></description>
+        </item>
+      
+        <item>
+          <title>A Deep Dive into Delegates, Events, Generics, Async/Await, and LINQ</title>
+          <link>https://dotnetevangelist.net/blog/advanced-csharp-programming-delegates-events-generics-async-await-and-linq</link>
+          <guid>https://dotnetevangelist.net/blog/advanced-csharp-programming-delegates-events-generics-async-await-and-linq</guid>
+          <pubDate>Sun, 06 Oct 2024 00:00:00 GMT</pubDate>
+          <description><![CDATA[Learn about advanced C# concepts like delegates, events, generics, async/await tasks, and LINQ.]]></description>
+        </item>
+      
+        <item>
+          <title>Angular 18 and .NET Core API Authorization</title>
+          <link>https://dotnetevangelist.net/blog/angular-with-dotnet-core-api</link>
+          <guid>https://dotnetevangelist.net/blog/angular-with-dotnet-core-api</guid>
+          <pubDate>Invalid Date</pubDate>
+          <description><![CDATA[Learn how to implement secure authorization between an Angular 18 frontend and a .NET Core API backend using JWT tokens and role-based access control.]]></description>
+        </item>
+      
+        <item>
+          <title>Modern Web UIs with Blazor in 2025: State Management & Component Libraries</title>
+          <link>https://dotnetevangelist.net/blog/building-modern-web-ui-with-blazor-in-2025</link>
+          <guid>https://dotnetevangelist.net/blog/building-modern-web-ui-with-blazor-in-2025</guid>
+          <pubDate>Sun, 06 Apr 2025 00:00:00 GMT</pubDate>
+          <description><![CDATA[Explore the latest advancements in Blazor development for 2025, focusing on state management, popular component libraries like MudBlazor and Radzen, and key performance optimization techniques.]]></description>
+        </item>
+      
+        <item>
+          <title>Difference Between Parallel.ForEach and Parallel.ForEachAsync in C#</title>
+          <link>https://dotnetevangelist.net/blog/difference-between-parallel-foreach-and-parallel-foreachasync-in-csharp</link>
+          <guid>https://dotnetevangelist.net/blog/difference-between-parallel-foreach-and-parallel-foreachasync-in-csharp</guid>
+          <pubDate>Sun, 08 Dec 2024 00:00:00 GMT</pubDate>
+          <description><![CDATA[An in-depth comparison of Parallel.ForEach and Parallel.ForEachAsync in C# for efficient parallel processing.]]></description>
+        </item>
+      
+        <item>
+          <title>Everything You Need to Know on Latest Features of React 19</title>
+          <link>https://dotnetevangelist.net/blog/everything-you-need-to-know-on-latest-features-of-react-19</link>
+          <guid>https://dotnetevangelist.net/blog/everything-you-need-to-know-on-latest-features-of-react-19</guid>
+          <pubDate>Sun, 10 Nov 2024 00:00:00 GMT</pubDate>
+          <description><![CDATA[Explore the latest features introduced in React 19 and how they enhance the development experience.]]></description>
+        </item>
+      
+        <item>
+          <title>Implementing Long-Running Background Tasks in ASP.NET Core</title>
+          <link>https://dotnetevangelist.net/blog/implementing-long-running-background-tasks-in-aspnet-core</link>
+          <guid>https://dotnetevangelist.net/blog/implementing-long-running-background-tasks-in-aspnet-core</guid>
+          <pubDate>Sat, 26 Oct 2024 00:00:00 GMT</pubDate>
+          <description><![CDATA[Learn how to implement long-running background tasks in ASP.NET Core using hosted services and background workers.]]></description>
+        </item>
+      
+        <item>
+          <title>Using Supabase PostgreSQL with ASP.NET Core and Entity Framework Core</title>
+          <link>https://dotnetevangelist.net/blog/using-supabase-postgresql-with-aspnet-core-and-entity-framework-core</link>
+          <guid>https://dotnetevangelist.net/blog/using-supabase-postgresql-with-aspnet-core-and-entity-framework-core</guid>
+          <pubDate>Sat, 26 Oct 2024 00:00:00 GMT</pubDate>
+          <description><![CDATA[Learn how to integrate Supabase PostgreSQL with ASP.NET Core and Entity Framework Core for a robust and scalable web application.]]></description>
+        </item>
+      
+        <item>
+          <title>You’re Doing Validation Wrong in .NET</title>
+          <link>https://dotnetevangelist.net/blog/you-are-doing-validation-wrong-in-net-code</link>
+          <guid>https://dotnetevangelist.net/blog/you-are-doing-validation-wrong-in-net-code</guid>
+          <pubDate>Fri, 18 Oct 2024 00:00:00 GMT</pubDate>
+          <description><![CDATA[Explore common mistakes and improved practices for validation in .NET applications.]]></description>
+        </item>
+      
+        <item>
+          <title>Performance Optimization Techniques in Python</title>
+          <link>https://dotnetevangelist.net/blog/performance-optimization-techniques-in-python</link>
+          <guid>https://dotnetevangelist.net/blog/performance-optimization-techniques-in-python</guid>
+          <pubDate>Tue, 15 Oct 2024 00:00:00 GMT</pubDate>
+          <description><![CDATA[A comprehensive guide to performance optimization techniques in Python for beginners and advanced users.]]></description>
+        </item>
+      
+        <item>
+          <title>Mastering SQL: The Power of SUM() with CASE WHEN</title>
+          <link>https://dotnetevangelist.net/blog/mastering-sql-the-power-of-sum-with-case-when</link>
+          <guid>https://dotnetevangelist.net/blog/mastering-sql-the-power-of-sum-with-case-when</guid>
+          <pubDate>Fri, 11 Oct 2024 00:00:00 GMT</pubDate>
+          <description><![CDATA[Unlock the potential of conditional aggregation in SQL using SUM() with CASE WHEN. Learn how to extract meaningful insights from your data with ease.]]></description>
+        </item>
+      
+        <item>
+          <title>How to Enable Multi-Factor Authentication using Microsoft Authenticator</title>
+          <link>https://dotnetevangelist.net/blog/how-to-enable-multi-factor-authentication-using-microsoft-authenticator</link>
+          <guid>https://dotnetevangelist.net/blog/how-to-enable-multi-factor-authentication-using-microsoft-authenticator</guid>
+          <pubDate>Sun, 06 Oct 2024 00:00:00 GMT</pubDate>
+          <description><![CDATA[Learn how to enable multi-factor authentication using Microsoft Authenticator for your Office 365 account.]]></description>
+        </item>
+      
+        <item>
+          <title>Implementing Soft Delete in .NET with Entity Framework Core</title>
+          <link>https://dotnetevangelist.net/blog/how-to-implement-soft-delete-with-entity-framwork-core</link>
+          <guid>https://dotnetevangelist.net/blog/how-to-implement-soft-delete-with-entity-framwork-core</guid>
+          <pubDate>Wed, 02 Oct 2024 00:00:00 GMT</pubDate>
+          <description><![CDATA[Learn how to implement soft delete functionality in your .NET applications using Entity Framework Core, improving data management and recoverability.]]></description>
+        </item>
+      
+        <item>
+          <title>Microsoft Blazor WebAssembly with JWT Authentication in .NET 8</title>
+          <link>https://dotnetevangelist.net/blog/blazor-web-api-with-jwt-auth</link>
+          <guid>https://dotnetevangelist.net/blog/blazor-web-api-with-jwt-auth</guid>
+          <pubDate>Tue, 01 Oct 2024 00:00:00 GMT</pubDate>
+          <description><![CDATA[A guide on how to implement a JWT Authentication system into a .NET 8 Web API project that uses Microsoft's Blazor WebAssembly.]]></description>
+        </item>
+      
+        <item>
+          <title>Building an Angular Project With Bootstrap 5 and Firebase</title>
+          <link>https://dotnetevangelist.net/blog/building-an-angular-project-with-bootstrap-4-and-firebase</link>
+          <guid>https://dotnetevangelist.net/blog/building-an-angular-project-with-bootstrap-4-and-firebase</guid>
+          <pubDate>Tue, 01 Oct 2024 00:00:00 GMT</pubDate>
+          <description><![CDATA[Learn how to start your Angular 17 Project from scratch and add Bootstrap 5 and the Firebase library to your application.]]></description>
+        </item>
+      
+        <item>
+          <title>How to Use Redis Caching With ASP.NET Core and .NET 8</title>
+          <link>https://dotnetevangelist.net/blog/how-to-use-redis-caching-with-aspnet-core-and-net-8</link>
+          <guid>https://dotnetevangelist.net/blog/how-to-use-redis-caching-with-aspnet-core-and-net-8</guid>
+          <pubDate>Tue, 01 Oct 2024 00:00:00 GMT</pubDate>
+          <description><![CDATA[Learn how to use Redis caching with ASP.NET Core and .NET 8 to improve application performance and scalability.]]></description>
+        </item>
+      
+        <item>
+          <title>The New Extensions Everything Feature of C# 13</title>
+          <link>https://dotnetevangelist.net/blog/the-new-extensions-everything-feature-of-csharp-13</link>
+          <guid>https://dotnetevangelist.net/blog/the-new-extensions-everything-feature-of-csharp-13</guid>
+          <pubDate>Sat, 28 Sep 2024 00:00:00 GMT</pubDate>
+          <description><![CDATA[A detailed look at the new Extensions Everything feature in C# 13]]></description>
+        </item>
+      
+        <item>
+          <title>New Era of OneDrive with Redesigned Interface</title>
+          <link>https://dotnetevangelist.net/blog/new-era-of-onedrive-with-redesigned-interface</link>
+          <guid>https://dotnetevangelist.net/blog/new-era-of-onedrive-with-redesigned-interface</guid>
+          <pubDate>Wed, 28 Aug 2024 00:00:00 GMT</pubDate>
+          <description><![CDATA[Explore OneDrive's latest AI-powered features, including Copilot Agents, enhanced productivity tools, and a revamped mobile experience for both work and personal use.]]></description>
+        </item>
+      
+        <item>
+          <title>Integrating ElasticSearch with .NET Web API</title>
+          <link>https://dotnetevangelist.net/blog/integrating_elastic_search_with_dotnet_web_api</link>
+          <guid>https://dotnetevangelist.net/blog/integrating_elastic_search_with_dotnet_web_api</guid>
+          <pubDate>Sun, 25 Aug 2024 00:00:00 GMT</pubDate>
+          <description><![CDATA[This guide will walk you through setting up ElasticSearch locally using Docker Compose, connecting to ElasticSearch from your .NET Web API, and creating simple CRUD operations.]]></description>
+        </item>
+      
+        <item>
+          <title>Sidecar Pattern With Examples in Asp.NET Core</title>
+          <link>https://dotnetevangelist.net/blog/sidecar-pattern-with-examples-in-asp.net-core</link>
+          <guid>https://dotnetevangelist.net/blog/sidecar-pattern-with-examples-in-asp.net-core</guid>
+          <pubDate>Thu, 29 Feb 2024 00:00:00 GMT</pubDate>
+          <description><![CDATA[Exploring the Sidecar Pattern with practical examples in ASP.NET Core]]></description>
+        </item>
+      
+        <item>
+          <title>Sending Emails From Azure Logic Apps Service Bus</title>
+          <link>https://dotnetevangelist.net/blog/sending-automated-emails-from-azure-logic-apps</link>
+          <guid>https://dotnetevangelist.net/blog/sending-automated-emails-from-azure-logic-apps</guid>
+          <pubDate>Wed, 28 Feb 2024 00:00:00 GMT</pubDate>
+          <description><![CDATA[Learn how to send emails from Azure Logic Apps triggered by Azure Service Bus messages.]]></description>
+        </item>
+      
+        <item>
+          <title>Graphs in C#</title>
+          <link>https://dotnetevangelist.net/blog/graph-in-csharp</link>
+          <guid>https://dotnetevangelist.net/blog/graph-in-csharp</guid>
+          <pubDate>Sun, 10 Dec 2023 00:00:00 GMT</pubDate>
+          <description><![CDATA[An introduction to implementing graphs in C# with a simple example]]></description>
+        </item>
+      
+        <item>
+          <title>Connecting Python Apps with Supabase - Complete Guide</title>
+          <link>https://dotnetevangelist.net/blog/connecting-python-with-supabase</link>
+          <guid>https://dotnetevangelist.net/blog/connecting-python-with-supabase</guid>
+          <pubDate>Tue, 12 Sep 2023 00:00:00 GMT</pubDate>
+          <description><![CDATA[Learn how to integrate Supabase with Python applications for authentication, database operations, storage, and real-time features.]]></description>
+        </item>
+      
+        <item>
+          <title>Implementing the Repository Pattern in .NET - A Game Changer for Clean Code</title>
+          <link>https://dotnetevangelist.net/blog/implementing-repository-pattern</link>
+          <guid>https://dotnetevangelist.net/blog/implementing-repository-pattern</guid>
+          <pubDate>Sat, 05 Aug 2023 00:00:00 GMT</pubDate>
+          <description><![CDATA[Learn how to implement the Repository Pattern in .NET applications to achieve better separation of concerns, testability, and maintainability in your codebase.]]></description>
+        </item>
+      
+        <item>
+          <title>Performance Optimization Tricks and Tips With EF Core & .NET 8</title>
+          <link>https://dotnetevangelist.net/blog/performance-optimization-tricks</link>
+          <guid>https://dotnetevangelist.net/blog/performance-optimization-tricks</guid>
+          <pubDate>Tue, 23 May 2023 00:00:00 GMT</pubDate>
+          <description><![CDATA[Learn performance optimization techniques for Entity Framework Core with .NET 7 using real-time examples.]]></description>
+        </item>
+      
+        <item>
+          <title>Pros and Cons of Entity Framework's Compiled Query</title>
+          <link>https://dotnetevangelist.net/blog/entity-framework-with-compiled-query</link>
+          <guid>https://dotnetevangelist.net/blog/entity-framework-with-compiled-query</guid>
+          <pubDate>Wed, 17 May 2023 00:00:00 GMT</pubDate>
+          <description><![CDATA[Explore the advantages and disadvantages of using compiled queries in Entity Framework with practical examples in C# and .NET 7.]]></description>
+        </item>
+      
+        <item>
+          <title>Getting Started with Next.js</title>
+          <link>https://dotnetevangelist.net/blog/getting-started-with-nextjs</link>
+          <guid>https://dotnetevangelist.net/blog/getting-started-with-nextjs</guid>
+          <pubDate>Mon, 15 May 2023 00:00:00 GMT</pubDate>
+          <description><![CDATA[Learn how to build modern web applications with Next.js, the React framework for production.]]></description>
+        </item>
+      
+        <item>
+          <title>Engineering AI Co-Pilots for Executive Decision Support</title>
+          <link>https://dotnetevangelist.net/blog/symbiotic-workflows-engineering-ai-co-pilots</link>
+          <guid>https://dotnetevangelist.net/blog/symbiotic-workflows-engineering-ai-co-pilots</guid>
+          <pubDate>Tue, 09 May 2023 00:00:00 GMT</pubDate>
+          <description><![CDATA[Learn how to design and integrate bespoke AI agents that adapt to executive communication styles, decision patterns, and information priorities for enhanced strategic decision-making.]]></description>
+        </item>
+      
+        <item>
+          <title>Asynchronous Programming With Async Await Task in C#</title>
+          <link>https://dotnetevangelist.net/blog/asynchronous-programming-with-async-await-task-in-csharp</link>
+          <guid>https://dotnetevangelist.net/blog/asynchronous-programming-with-async-await-task-in-csharp</guid>
+          <pubDate>Wed, 03 May 2023 00:00:00 GMT</pubDate>
+          <description><![CDATA[Learn about asynchronous programming in C# using async, await, and Task.]]></description>
+        </item>
+      
+        <item>
+          <title>Dictionaries in CSharp</title>
+          <link>https://dotnetevangelist.net/blog/csharp-dictionaries</link>
+          <guid>https://dotnetevangelist.net/blog/csharp-dictionaries</guid>
+          <pubDate>Mon, 01 May 2023 00:00:00 GMT</pubDate>
+          <description><![CDATA[Learn about dictionaries in C# and how to use them effectively.]]></description>
+        </item>
+      
+        <item>
+          <title>Factory Design Pattern With C#</title>
+          <link>https://dotnetevangelist.net/blog/factory-design-pattern-with-csharp</link>
+          <guid>https://dotnetevangelist.net/blog/factory-design-pattern-with-csharp</guid>
+          <pubDate>Sat, 29 Apr 2023 00:00:00 GMT</pubDate>
+          <description><![CDATA[Learn about the Factory Design Pattern in C# with examples.]]></description>
+        </item>
+      
+        <item>
+          <title>My Profile</title>
+          <link>https://dotnetevangelist.net/blog/profile</link>
+          <guid>https://dotnetevangelist.net/blog/profile</guid>
+          <pubDate>Sat, 30 Apr 2022 00:00:00 GMT</pubDate>
+          <description><![CDATA[Professional profile of M. F.M Fazrin, a Software Development Specialist with extensive experience in .NET, Azure, and full-stack development.]]></description>
+        </item>
+      
+      </channel>
+    </rss>
