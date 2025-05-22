@@ -3,9 +3,20 @@ import path from 'path';
 import matter from 'gray-matter';
 import { marked } from 'marked';
 
-const siteUrl = 'https://dotnetevangelist.net'; // Replace with your actual site URL
-const siteTitle = '.NET Evangelist'; // Replace with your site title
-const siteDescription = 'A blog about .NET, programming, and software development.'; // Replace with your site description
+// Function to escape XML special characters
+function escapeXml(unsafe) {
+  if (!unsafe) return '';
+  return unsafe.toString()
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+const siteUrl = 'https://dotnetevangelist.net';
+const siteTitle = '.NET Evangelist';
+const siteDescription = 'A blog about .NET, programming, and software development.';
 
 async function generateRssFeed() {
   const postsDirectory = path.join(process.cwd(), 'data/posts');
@@ -31,11 +42,11 @@ async function generateRssFeed() {
       const htmlContent = marked(post.content);
       return `
         <item>
-          <title>${post.frontmatter.title}</title>
-          <link>${postUrl}</link>
-          <guid>${postUrl}</guid>
+          <title>${escapeXml(post.frontmatter.title)}</title>
+          <link>${escapeXml(postUrl)}</link>
+          <guid>${escapeXml(postUrl)}</guid>
           <pubDate>${new Date(post.frontmatter.pubDate).toUTCString()}</pubDate>
-          <description><![CDATA[${post.frontmatter.description || htmlContent}]]></description>
+          <description><![CDATA[${escapeXml(post.frontmatter.description || post.content)}]]></description>
         </item>
       `;
     })
@@ -44,9 +55,9 @@ async function generateRssFeed() {
   const rssFeed = `
     <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
       <channel>
-        <title>${siteTitle}</title>
-        <link>${siteUrl}</link>
-        <description>${siteDescription}</description>
+        <title>${escapeXml(siteTitle)}</title>
+        <link>${escapeXml(siteUrl)}</link>
+        <description>${escapeXml(siteDescription)}</description>
         <language>en-us</language>
         <lastBuildDate>${new Date(posts[0].frontmatter.pubDate).toUTCString()}</lastBuildDate>
         <atom:link href="${siteUrl}/rss.xml" rel="self" type="application/rss+xml" />
