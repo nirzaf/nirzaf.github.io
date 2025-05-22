@@ -14,10 +14,10 @@ const GiscusComments: React.FC = () => {
     scriptElem.crossOrigin = 'anonymous';
 
     scriptElem.setAttribute('data-repo', 'nirzaf/nirzaf.github.io');
-    scriptElem.setAttribute('data-repo-id', '[ENTER REPO ID HERE]'); // Replace with actual repo ID
-    scriptElem.setAttribute('data-category', 'Announcements');
-    scriptElem.setAttribute('data-category-id', '[ENTER CATEGORY ID HERE]'); // Replace with actual category ID
-    scriptElem.setAttribute('data-mapping', 'pathname');
+    scriptElem.setAttribute('data-repo-id', 'MDEwOlJlcG9zaXRvcnkxNzA0OTgwODg=');
+    scriptElem.setAttribute('data-category', 'General');
+    scriptElem.setAttribute('data-category-id', 'DIC_kwDOCimYKM4Cqecv');
+    scriptElem.setAttribute('data-mapping', 'title');
     scriptElem.setAttribute('data-strict', '0');
     scriptElem.setAttribute('data-reactions-enabled', '1');
     scriptElem.setAttribute('data-emit-metadata', '0');
