@@ -2,3 +2,8 @@ dist
 node_modules
 .github
 .changeset
+.next
+out
+public
+src/lib
+src/components

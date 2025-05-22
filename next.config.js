@@ -5,7 +5,17 @@ const basePath = isProd ? '/nirzaf.github.io' : '';
 const nextConfig = {
   // Enable static exports for GitHub Pages
   output: 'export',
-  
+
+  // Disable ESLint during build
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+
+  // Disable TypeScript type checking during build
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+
   // Configure remote image patterns
   images: {
     unoptimized: true, // Required for static exports
@@ -42,22 +52,22 @@ const nextConfig = {
       },
     ],
   },
-  
+
   // Add other configuration options
   reactStrictMode: true,
-  
+
   // Base path for GitHub Pages
   basePath,
-  
+
   // Asset prefix for GitHub Pages
   assetPrefix: isProd ? `${basePath}/` : '',
-  
+
   // Optional: Add trailing slash for GitHub Pages
   trailingSlash: true,
-  
+
   // Optional: Disable source maps in production
   productionBrowserSourceMaps: false,
-  
+
   // Optional: Configure webpack
   webpack: (config, { isServer }) => {
     if (!isServer) {

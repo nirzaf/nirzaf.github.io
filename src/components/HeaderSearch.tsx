@@ -25,9 +25,12 @@ export function HeaderSearch() {
       if (query.trim()) {
         setIsLoading(true);
         try {
-          const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
-          const data = await response.json();
-          setResults(data.slice(0, 5)); // Limit to 5 results for the dropdown
+          // Use client-side search instead of API for static exports
+          const results = await import('@/lib/simpleSearch').then(module => {
+            return module.searchPosts(query);
+          });
+
+          setResults(results.slice(0, 5)); // Limit to 5 results for the dropdown
         } catch (error) {
           console.error('Error searching posts:', error);
           setResults([]);
