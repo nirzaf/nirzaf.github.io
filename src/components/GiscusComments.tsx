@@ -17,7 +17,7 @@ const GiscusComments: React.FC = () => {
     scriptElem.setAttribute('data-repo-id', 'MDEwOlJlcG9zaXRvcnkxNzA0OTgwODg=');
     scriptElem.setAttribute('data-category', 'General');
     scriptElem.setAttribute('data-category-id', 'DIC_kwDOCimYKM4Cqecv');
-    scriptElem.setAttribute('data-mapping', 'title');
+    scriptElem.setAttribute('data-mapping', 'pathname');
     scriptElem.setAttribute('data-strict', '0');
     scriptElem.setAttribute('data-reactions-enabled', '1');
     scriptElem.setAttribute('data-emit-metadata', '0');
