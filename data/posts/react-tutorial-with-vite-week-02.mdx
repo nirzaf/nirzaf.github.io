@@ -1,0 +1,225 @@
+---
+title: "How To Install React 19 With Vite"
+description: "A fast, beginner-friendly tutorial for setting up React 19 with Vite, including tips, troubleshooting, and best practices."
+pubDate: "May 24 2025"
+heroImage: "https://ik.imagekit.io/quadrate/assets/img/dotnetevangelist/react-tutorial.png?updatedAt=1748087869316"
+---
+
+React 19 is the latest stable version of the popular JavaScript library for building user interfaces. Vite is a modern build tool that offers blazing-fast development and optimized production builds. In this tutorial, you'll learn how to set up React 19 with Vite to create a fast, modern web application environment.
+
+### Why Use Vite & React 19?
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+  <div className="feature-card">
+    <h3 className="text-lg font-semibold mb-2 flex items-center">⚡ Why Use Vite?</h3>
+    <ul className="list-disc ml-5 space-y-1">
+      <li>Lightning-fast hot module replacement</li>
+      <li>No bundling during development</li>
+      <li>Optimized builds with Rollup</li>
+      <li>Out-of-the-box TypeScript support</li>
+    </ul>
+  </div>
+  <div className="feature-card">
+    <h3 className="text-lg font-semibold mb-2 flex items-center">⚛️ React 19 Features</h3>
+    <ul className="list-disc ml-5 space-y-1">
+      <li>React Compiler for improved performance</li>
+      <li>New server-side rendering architecture</li>
+      <li>Enhanced concurrent features</li>
+      <li>Improved developer experience</li>
+    </ul>
+  </div>
+</div>
+
+### Prerequisites
+
+Before getting started, make sure you have:
+
+- **Node.js** (v18.0.0 or higher, v20+ recommended)
+- **npm** or **yarn**
+- A code editor (VS Code recommended)
+
+> **Tip:** To check your Node.js version, run:
+>
+> ```bash
+> node -v
+> ```
+
+### Step-by-Step Installation
+
+#### 1. Create a New Vite Project
+
+Open your terminal and run:
+
+```bash
+npm create vite@latest my-react-app -- --template react
+```
+
+Replace `my-react-app` with your desired project name.
+
+#### 2. Navigate to Your Project Directory
+
+```bash
+cd my-react-app
+```
+
+#### 3. Upgrade to React 19
+
+By default, Vite may create a project with React 18. Upgrade to React 19:
+
+```bash
+npm install react@^19.0.0 react-dom@^19.0.0
+```
+
+> **Note:** In the future, Vite's React template might include React 19 by default.
+
+#### 4. Install React Compiler (Optional)
+
+To leverage the new React Compiler features in React 19, install the Babel plugin:
+
+```bash
+npm install -D @babel/plugin-react-compiler
+```
+
+#### 5. Configure Vite to Use React Compiler
+
+Open your `vite.config.js` and add the plugin:
+
+```js
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [
+    react({
+      babel: {
+        plugins: ['@babel/plugin-react-compiler']
+      }
+    })
+  ],
+});
+```
+
+#### 6. Change Default Port (Optional)
+
+To use port 3000 instead of 5173, modify `vite.config.js`:
+
+```js
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [
+    react({
+      babel: {
+        plugins: ['@babel/plugin-react-compiler']
+      }
+    })
+  ],
+  server: {
+    port: 3000
+  },
+});
+```
+
+#### 7. Install Dependencies and Start the Dev Server
+
+```bash
+npm install
+npm run dev
+```
+
+Your React 19 app should now be running on `http://localhost:3000` (or port 5173 if unchanged).
+
+### Verifying React 19 Installation
+
+To confirm your project uses React 19, display the React version in your app:
+
+```jsx
+// In App.jsx
+import React, { version } from 'react';
+
+function App() {
+  return (
+    <div className="App">
+      <h1>React 19 with Vite</h1>
+      <h2>Current React Version: {version}</h2>
+    </div>
+  );
+}
+
+export default App;
+```
+
+This will show the current React version in your app, confirming React 19 is installed.
+
+### Troubleshooting
+
+#### Package Version Conflicts
+
+If you encounter version conflicts, clear your npm cache and reinstall:
+
+```bash
+npm cache clean --force
+npm install
+```
+
+#### Compiler Plugin Issues
+
+If the React Compiler plugin causes issues, you can remove it and still use React 19 without compiler features:
+
+1. Remove the plugin from `vite.config.js`
+2. Uninstall the package:
+   ```bash
+   npm uninstall @babel/plugin-react-compiler
+   ```
+
+### Next Steps
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div className="feature-card">
+    <h3 className="text-lg font-semibold mb-2">Add Dependencies</h3>
+    <p>Consider adding these popular libraries:</p>
+    <ul className="list-disc ml-5 mt-2 space-y-1">
+      <li>React Router for navigation</li>
+      <li>Tailwind CSS for styling</li>
+      <li>Axios for API requests</li>
+    </ul>
+  </div>
+  <div className="feature-card">
+    <h3 className="text-lg font-semibold mb-2">Project Structure</h3>
+    <p>Organize your project with these folders:</p>
+    <ul className="list-disc ml-5 mt-2 space-y-1">
+      <li><code>src/components/</code> - Reusable components</li>
+      <li><code>src/pages/</code> - Page components</li>
+      <li><code>src/hooks/</code> - Custom React hooks</li>
+      <li><code>src/context/</code> - Context providers</li>
+    </ul>
+  </div>
+</div>
+
+> **Pro Tip:** Explore React 19's new features like React Compiler, improved Suspense, and server components to make the most of your new setup!
+
+### Resources
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div className="feature-card">
+    <h3 className="text-lg font-semibold mb-2">Official Documentation</h3>
+    <ul className="list-disc ml-5 space-y-2">
+      <li><a href="https://react.dev" className="text-blue-600 hover:underline" target="_blank">React Documentation</a></li>
+      <li><a href="https://vitejs.dev" className="text-blue-600 hover:underline" target="_blank">Vite Documentation</a></li>
+    </ul>
+  </div>
+  <div className="feature-card">
+    <h3 className="text-lg font-semibold mb-2">Additional Learning</h3>
+    <ul className="list-disc ml-5 space-y-2">
+      <li><a href="https://youtube.com/@webstylepress" className="text-blue-600 hover:underline" target="_blank">WebStylePress YouTube Channel</a></li>
+      <li><a href="https://youtube.com/@ShirazDev" className="text-blue-600 hover:underline" target="_blank">Shiraz Dev YouTube Channel</a></li>
+    </ul>
+  </div>
+</div>
+
+---
+
+© 2024 React 19 with Vite Tutorial
+
+Created with ❤️ for React developers

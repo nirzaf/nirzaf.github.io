@@ -4,9 +4,17 @@
         <link>https://dotnetevangelist.net</link>
         <description>A blog about .NET, programming, and software development.</description>
         <language>en-us</language>
-        <lastBuildDate>Mon, 19 May 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 23 May 2025 21:00:00 GMT</lastBuildDate>
         <atom:link href="https://dotnetevangelist.net/rss.xml" rel="self" type="application/rss+xml" />
         
+        <item>
+          <title>How To Install React 19 With Vite</title>
+          <link>https://dotnetevangelist.net/blog/react-tutorial-with-vite-week-02</link>
+          <guid>https://dotnetevangelist.net/blog/react-tutorial-with-vite-week-02</guid>
+          <pubDate>Fri, 23 May 2025 21:00:00 GMT</pubDate>
+          <description><![CDATA[A fast, beginner-friendly tutorial for setting up React 19 with Vite, including tips, troubleshooting, and best practices.]]></description>
+        </item>
+      
         <item>
           <title>Master Vibe Coding: 21 AI-Powered Tips for Effortless Software Development</title>
           <link>https://dotnetevangelist.net/blog/master-vibe-coding-ai-powered-tips-software-development</link>
