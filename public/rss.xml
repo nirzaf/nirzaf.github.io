@@ -264,6 +264,14 @@
         </item>
       
         <item>
+          <title>The Ultimate Guide to Authentication in Next.js 15</title>
+          <link>https://dotnetevangelist.net/blog/the-ultimate-guide-to-authentication-in-nextjs-15</link>
+          <guid>https://dotnetevangelist.net/blog/the-ultimate-guide-to-authentication-in-nextjs-15</guid>
+          <pubDate>Sat, 27 Jul 2024 00:00:00 GMT</pubDate>
+          <description><![CDATA[A comprehensive guide to implementing authentication in Next.js 15 applications, covering popular libraries like Auth.js (NextAuth.js), Clerk, Supabase Auth, and custom solutions.]]></description>
+        </item>
+      
+        <item>
           <title>Sidecar Pattern With Examples in Asp.NET Core</title>
           <link>https://dotnetevangelist.net/blog/sidecar-pattern-with-examples-in-asp.net-core</link>
           <guid>https://dotnetevangelist.net/blog/sidecar-pattern-with-examples-in-asp.net-core</guid>
