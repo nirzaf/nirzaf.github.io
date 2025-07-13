@@ -1,0 +1,262 @@
+
+title: Implementing the Repository Pattern in .NET - A Game Changer for Clean Code
+pubDate: '2023-08-05'
+description: &gt;-
+  Learn how to implement the Repository Pattern in .NET applications to achieve
+  better separation of concerns, testability, and maintainability in your
+  codebase.
+image: &gt;-
+  https://ik.imagekit.io/quadrate/assets/img/dotnetevangelist/Implementing-the-Repository-Pattern-in-NET-A-Game-Changer-for-Clean-Code.jpg?updatedAt=1746813308058
+tags: ['Dotnet', 'Design-patterns', 'Clean-code', 'Architecture']
+
+The Repository Pattern is one of the most valuable design patterns for creating maintainable and testable .NET applications. It provides a clean separation between your data access logic and business logic, making your code more modular and easier to maintain.
+What is the Repository Pattern?
+The Repository Pattern is an abstraction that isolates the data layer from the rest of the application. It mediates between the domain and data mapping layers, acting like an in-memory collection of domain objects.
+Key benefits include:
+
+Separation of concerns: Business logic is separated from data access logic
+Improved testability: Easier to unit test business logic by mocking repositories
+Centralized data access logic: Reduces duplication of query logic
+Flexibility: Easier to switch between different data sources or ORMs
+
+Basic Implementation
+Let's start with a basic implementation of the Repository Pattern in a .NET application:
+1. Define the Entity
+csharp
+public class Customer
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Email { get; set; }
+    public DateTime CreatedAt { get; set; }
+}
+2. Create the Repository Interface
+csharp
+public interface IRepository&lt;T&gt; where T : class
+{
+    IEnumerable&lt;T&gt; GetAll();
+    T GetById(int id);
+    void Add(T entity);
+    void Update(T entity);
+    void Delete(T entity);
+    void SaveChanges();
+}
+3. Implement the Generic Repository
+```csharp
+public class Repository : IRepository where T : class
+{
+    protected readonly DbContext _context;
+    protected readonly DbSet _dbSet;
+public Repository(DbContext context)
+{
+    _context = context;
+    _dbSet = context.Set&lt;T&gt;();
+}
+
+public virtual IEnumerable&lt;T&gt; GetAll()
+{
+    return _dbSet.ToList();
+}
+
+public virtual T GetById(int id)
+{
+    return _dbSet.Find(id);
+}
+
+public virtual void Add(T entity)
+{
+    _dbSet.Add(entity);
+}
+
+public virtual void Update(T entity)
+{
+    _dbSet.Attach(entity);
+    _context.Entry(entity).State = EntityState.Modified;
+}
+
+public virtual void Delete(T entity)
+{
+    if (_context.Entry(entity).State == EntityState.Detached)
+    {
+        _dbSet.Attach(entity);
+    }
+    _dbSet.Remove(entity);
+}
+
+public void SaveChanges()
+{
+    _context.SaveChanges();
+}
+
+}
+```
+4. Create Specific Repository (Optional)
+For specific entities, you might want to extend the generic repository with custom methods:
+```csharp
+public interface ICustomerRepository : IRepository
+{
+    IEnumerable GetPremiumCustomers();
+    Customer GetByEmail(string email);
+}
+public class CustomerRepository : Repository, ICustomerRepository
+{
+    public CustomerRepository(DbContext context) : base(context)
+    {
+    }
+public IEnumerable&lt;Customer&gt; GetPremiumCustomers()
+{
+    return _dbSet.Where(c =&gt; c.IsPremium).ToList();
+}
+
+public Customer GetByEmail(string email)
+{
+    return _dbSet.FirstOrDefault(c =&gt; c.Email == email);
+}
+
+}
+```
+Using the Repository in Services
+Now, let's see how to use the repository in a service class:
+```csharp
+public class CustomerService
+{
+    private readonly ICustomerRepository _customerRepository;
+public CustomerService(ICustomerRepository customerRepository)
+{
+    _customerRepository = customerRepository;
+}
+
+public void RegisterCustomer(string name, string email)
+{
+    // Check if customer already exists
+    var existingCustomer = _customerRepository.GetByEmail(email);
+    if (existingCustomer != null)
+    {
+        throw new InvalidOperationException("Customer with this email already exists");
+    }
+
+    // Create new customer
+    var customer = new Customer
+    {
+        Name = name,
+        Email = email,
+        CreatedAt = DateTime.UtcNow
+    };
+
+    // Add to repository
+    _customerRepository.Add(customer);
+    _customerRepository.SaveChanges();
+}
+
+public IEnumerable&lt;Customer&gt; GetAllCustomers()
+{
+    return _customerRepository.GetAll();
+}
+
+}
+```
+Dependency Injection Setup
+In ASP.NET Core, you can register your repositories in the Startup.cs file:
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    // Register DbContext
+    services.AddDbContext(options =&gt;
+        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+// Register repositories
+services.AddScoped(typeof(IRepository&lt;&gt;), typeof(Repository&lt;&gt;));
+services.AddScoped&lt;ICustomerRepository, CustomerRepository&gt;();
+
+// Register services
+services.AddScoped&lt;CustomerService&gt;();
+
+// Other service registrations...
+
+}
+```
+Unit Testing with Mocked Repositories
+One of the biggest advantages of the Repository Pattern is improved testability. Here's an example of how to unit test the CustomerService using a mocked repository:
+```csharp
+[Fact]
+public void RegisterCustomer_WithNewEmail_ShouldAddCustomer()
+{
+    // Arrange
+    var mockRepo = new Mock();
+    mockRepo.Setup(repo =&gt; repo.GetByEmail(It.IsAny()))
+        .Returns((Customer)null);
+var service = new CustomerService(mockRepo.Object);
+
+// Act
+service.RegisterCustomer("John Doe", "john@example.com");
+
+// Assert
+mockRepo.Verify(repo =&gt; repo.Add(It.Is&lt;Customer&gt;(c =&gt; 
+    c.Name == "John Doe" &amp;&amp; 
+    c.Email == "john@example.com")), Times.Once);
+mockRepo.Verify(repo =&gt; repo.SaveChanges(), Times.Once);
+
+}
+[Fact]
+public void RegisterCustomer_WithExistingEmail_ShouldThrowException()
+{
+    // Arrange
+    var existingCustomer = new Customer
+    {
+        Id = 1,
+        Name = "Existing User",
+        Email = "existing@example.com"
+    };
+var mockRepo = new Mock&lt;ICustomerRepository&gt;();
+mockRepo.Setup(repo =&gt; repo.GetByEmail("existing@example.com"))
+    .Returns(existingCustomer);
+
+var service = new CustomerService(mockRepo.Object);
+
+// Act &amp; Assert
+Assert.Throws&lt;InvalidOperationException&gt;(() =&gt; 
+    service.RegisterCustomer("New User", "existing@example.com"));
+
+mockRepo.Verify(repo =&gt; repo.Add(It.IsAny&lt;Customer&gt;()), Times.Never);
+
+}
+```
+Advanced Patterns
+For more complex applications, consider these advanced patterns:
+Unit of Work Pattern
+The Unit of Work pattern can be combined with the Repository Pattern to manage transactions across multiple repositories:
+```csharp
+public interface IUnitOfWork : IDisposable
+{
+    ICustomerRepository Customers { get; }
+    IOrderRepository Orders { get; }
+    int Complete();
+}
+public class UnitOfWork : IUnitOfWork
+{
+    private readonly ApplicationDbContext _context;
+public ICustomerRepository Customers { get; private set; }
+public IOrderRepository Orders { get; private set; }
+
+public UnitOfWork(ApplicationDbContext context)
+{
+    _context = context;
+    Customers = new CustomerRepository(_context);
+    Orders = new OrderRepository(_context);
+}
+
+public int Complete()
+{
+    return _context.SaveChanges();
+}
+
+public void Dispose()
+{
+    _context.Dispose();
+}
+
+}
+```
+Conclusion
+The Repository Pattern is a powerful tool for creating clean, maintainable, and testable .NET applications. By abstracting data access logic, it allows you to focus on business logic without worrying about the underlying data storage mechanisms.
+While it does add some complexity to your codebase, the benefits in terms of separation of concerns, testability, and maintainability make it well worth considering for medium to large-scale applications.
+Happy coding!

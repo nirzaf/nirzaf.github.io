@@ -1,0 +1,1125 @@
+
+title: 'Modern Web UIs with Blazor in 2025: State Management &amp; Component Libraries'
+description: &gt;-
+  Explore the latest advancements in Blazor development for 2025, focusing on
+  state management, popular component libraries like MudBlazor and Radzen, and
+  key performance optimization techniques.
+pubDate: '2025-04-06'
+image: &gt;-
+  https://ik.imagekit.io/quadrate/assets/img/dotnetevangelist/blazor-modern-ui-2025.png?updatedAt=1746813295064
+category: .NET
+tags: ['Blazor', '.Net', 'Web Development', 'Ui', 'State Management', 'Mudblazor', 'Radzen', 'Performance', 'Asp.net Core']
+
+Building Modern Web UIs with Blazor in 2025: State Management, Component Libraries, and Performance Optimization
+As we move through 2025, Microsoft's Blazor framework has evolved into a mature and powerful platform for building modern web applications. This article explores the latest advancements in Blazor development, focusing on three critical aspects: state management strategies, component libraries (with special attention to MudBlazor and Radzen), and performance optimization techniques that help Blazor applications run smoothly in production environments.
+The State of Blazor in 2025
+Blazor has come a long way since its introduction, and in 2025, it stands as a compelling alternative to JavaScript frameworks for building web applications. With the release of .NET 10, Blazor has gained several key enhancements:
+
+Improved Rendering Engine: The rendering engine has been optimized to handle more complex UI updates with less overhead.
+Enhanced Reconnection UI: The Blazor Web App template now includes a built-in ReconnectModal component for improved handling of dropped connections.
+Better Navigation: Smoother navigation that avoids full-page flickers when moving between pages.
+Reduced Memory Footprint: Significant improvements in memory management for better performance in resource-constrained environments.
+Expanded Component Ecosystem: A rich ecosystem of both first-party and third-party component libraries.
+
+These improvements have positioned Blazor as a robust framework for developing modern web applications using C# and .NET instead of JavaScript.
+Blazor Rendering Models
+Before diving into state management and component libraries, it's essential to understand the different rendering models available in Blazor as of 2025, as they significantly impact how you approach state management:
+Server Rendering
+Blazor Server executes your components on the server and maintains a real-time connection with the client using SignalR. Updates are sent to the browser over this connection.
+csharp
+// In Program.cs
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddRazorComponents()
+    .AddInteractiveServerComponents();
+WebAssembly Rendering
+Blazor WebAssembly runs your components directly in the browser using WebAssembly, offering a true client-side single-page application (SPA) experience.
+csharp
+// In Program.cs
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddRazorComponents()
+    .AddInteractiveWebAssemblyComponents();
+Auto Render Mode
+Introduced in .NET 8 and enhanced in .NET 10, the Auto render mode combines both approaches, initially using server-side rendering for fast startup and then transitioning to WebAssembly once the WASM runtime is downloaded.
+```razor
+// In App.razor
+
+    
+        
+        
+    
+
+// In MainLayout.razor
+@inherits LayoutComponentBase
+@rendermode InteractiveAuto
+```
+This hybrid model provides the best of both worlds: fast initial rendering with server-side execution, followed by client-side execution after the WebAssembly runtime is loaded.
+State Management Strategies
+State management is a crucial aspect of building complex web applications. In 2025, Blazor offers several approaches to state management, from simple to sophisticated:
+1. Component State
+The simplest form of state management in Blazor is component-local state. Each component maintains its own state, which is lost when the component is unmounted.
+```razor
+@page "/counter"
+Counter
+
+Current count: @currentCount
+
+Click me
+@code {
+    private int currentCount = 0;
+private void IncrementCount()
+{
+    currentCount++;
+}
+
+}
+```
+2. Cascading Parameters
+For parent-child component communication, Blazor provides cascading parameters, which allow parent components to pass data down to all nested components.
+```razor
+// In parent component
+
+    
+
+@code {
+    private ThemeState themeState = new ThemeState { IsDarkMode = true };
+}
+// In child component
+@code {
+    [CascadingParameter]
+    private ThemeState ThemeState { get; set; }
+}
+public class ThemeState
+{
+    public bool IsDarkMode { get; set; }
+}
+```
+3. Service-Based State Management
+For more complex applications, a dependency injection-based approach using services is a popular choice:
+```csharp
+// Create a state service
+public class CounterState
+{
+    private int _count = 0;
+    public int Count =&gt; _count;
+public event Action? OnStateChanged;
+
+public void IncrementCount()
+{
+    _count++;
+    NotifyStateChanged();
+}
+
+private void NotifyStateChanged() =&gt; OnStateChanged?.Invoke();
+
+}
+```
+csharp
+// Register it as a singleton in Program.cs
+builder.Services.AddSingleton&lt;CounterState&gt;();
+```razor
+// Use it in a component
+@page "/counter"
+@inject CounterState State
+@implements IDisposable
+Counter
+
+Current count: @State.Count
+
+Click me
+@code {
+    protected override void OnInitialized()
+    {
+        State.OnStateChanged += StateHasChanged;
+    }
+private void IncrementCount()
+{
+    State.IncrementCount();
+}
+
+public void Dispose()
+{
+    State.OnStateChanged -= StateHasChanged;
+}
+
+}
+```
+4. Fluxor for Unidirectional Data Flow
+For larger applications, Fluxor has become a popular state management library that implements the Redux pattern for Blazor. It provides a unidirectional data flow that makes state changes predictable and easier to debug.
+First, install the Fluxor NuGet package:
+bash
+dotnet add package Fluxor
+dotnet add package Fluxor.Blazor.Web
+dotnet add package Fluxor.Blazor.Web.ReduxDevTools
+Here's a basic implementation:
+```csharp
+// 1. Define your state
+public record CounterState
+{
+    public int CurrentCount { get; init; }
+}
+// 2. Define features with initial state
+public class CounterFeature : Feature
+{
+    public override string GetName() =&gt; "Counter";
+protected override CounterState GetInitialState() =&gt;
+    new CounterState { CurrentCount = 0 };
+
+}
+// 3. Define actions
+public record IncrementCounterAction();
+public record DecrementCounterAction();
+// 4. Define reducers
+public static class CounterReducers
+{
+    [ReducerMethod]
+    public static CounterState ReduceIncrementCounterAction(CounterState state, IncrementCounterAction action) =&gt;
+        state with { CurrentCount = state.CurrentCount + 1 };
+[ReducerMethod]
+public static CounterState ReduceDecrementCounterAction(CounterState state, DecrementCounterAction action) =&gt;
+    state with { CurrentCount = state.CurrentCount - 1 };
+
+}
+```
+```razor
+// 5. Use in your components
+@page "/counter"
+@inherits FluxorComponent
+@inject IState CounterState
+@inject IDispatcher Dispatcher
+Counter
+
+Current count: @CounterState.Value.CurrentCount
+
+Increment
+Decrement
+@code {
+    private void IncrementCount() =&gt; Dispatcher.Dispatch(new IncrementCounterAction());
+    private void DecrementCount() =&gt; Dispatcher.Dispatch(new DecrementCounterAction());
+}
+```
+csharp
+// 6. Setup in Program.cs
+builder.Services.AddFluxor(options =&gt; options
+    .ScanAssemblies(typeof(Program).Assembly)
+    .UseReduxDevTools());
+The key advantage of Fluxor is its integration with Redux DevTools, which allows you to inspect state changes and travel through time to understand how your application state evolves.
+5. Local Storage State Persistence
+To persist state across browser sessions, you can combine any of the above approaches with browser storage. The Blazored.LocalStorage library provides a convenient way to access the browser's localStorage API:
+```bash
+Install packages
+dotnet add package Blazored.LocalStorage
+```
+csharp
+// Register in Program.cs
+builder.Services.AddBlazoredLocalStorage();
+```razor
+// Use in a component or service
+@inject ILocalStorageService LocalStorage
+// Save state
+await LocalStorage.SetItemAsync("theme", "dark");
+// Load state
+var theme = await LocalStorage.GetItemAsync("theme");
+```
+Component Libraries
+As of 2025, there are several mature component libraries for Blazor, each with its own strengths. We'll focus on two of the most popular: MudBlazor and Radzen.
+MudBlazor
+MudBlazor is a Material Design-based component library that has become one of the most popular choices for Blazor developers due to its comprehensive set of components, ease of use, and minimal JavaScript dependencies.
+Setting Up MudBlazor
+bash
+dotnet add package MudBlazor
+In Program.cs:
+```csharp
+using MudBlazor.Services;
+// ...
+builder.Services.AddMudServices();
+```
+In App.razor:
+razor
+&lt;MudThemeProvider /&gt;
+&lt;MudDialogProvider /&gt;
+&lt;MudSnackbarProvider /&gt;
+MudBlazor Component Examples
+Data Grid with Built-in Filtering and Sorting
+```razor
+
+    
+        Employees
+    
+    
+        
+            
+                 e.Id" Title="ID" Sortable="true" /&gt;
+                 e.FirstName" Title="First Name" Sortable="true" /&gt;
+                 e.LastName" Title="Last Name" Sortable="true" /&gt;
+                 e.Department" Title="Department" Sortable="true" /&gt;
+                 e.Salary" Title="Salary" Sortable="true" Format="C" /&gt;
+                
+                    
+                         ViewDetails(context.Item)"&gt;
+                            View
+                        
+                         DeleteEmployee(context.Item)"&gt;
+                            Delete
+                        
+                    
+                
+            
+        
+    
+
+@code {
+    private List employees = new();
+protected override void OnInitialized()
+{
+    // Populate employees list
+    employees = GetEmployees();
+}
+
+private List&lt;Employee&gt; GetEmployees() =&gt; new()
+{
+    new Employee { Id = 1, FirstName = "John", LastName = "Doe", Department = "Engineering", Salary = 90000 },
+    new Employee { Id = 2, FirstName = "Jane", LastName = "Smith", Department = "Marketing", Salary = 85000 },
+    // More employees...
+};
+
+private void ViewDetails(Employee employee)
+{
+    // Handle view details
+}
+
+private void DeleteEmployee(Employee employee)
+{
+    // Handle delete
+}
+
+public class Employee
+{
+    public int Id { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string Department { get; set; }
+    public decimal Salary { get; set; }
+}
+
+}
+```
+Form with Validation
+```razor
+
+    
+        
+            
+            
+            
+                Engineering
+                Marketing
+                Sales
+                HR
+            
+            
+        
+        
+            Submit
+            Reset
+        
+    
+
+@code {
+    private MudForm form;
+    private bool success;
+    private string[] errors = { };
+    private Employee employee = new();
+private void SubmitForm()
+{
+    // Handle form submission
+}
+
+private void ResetForm()
+{
+    employee = new();
+    form.Reset();
+}
+
+public class Employee
+{
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string Department { get; set; }
+    public decimal Salary { get; set; } = 50000;
+}
+
+}
+```
+Radzen Blazor
+Radzen Blazor is another popular component library offering over 90 UI controls for building rich web applications. It's known for its comprehensive set of controls and excellent documentation.
+Setting Up Radzen Blazor
+bash
+dotnet add package Radzen.Blazor
+In Program.cs:
+csharp
+// Add default Radzen services
+builder.Services.AddScoped&lt;DialogService&gt;();
+builder.Services.AddScoped&lt;NotificationService&gt;();
+builder.Services.AddScoped&lt;TooltipService&gt;();
+builder.Services.AddScoped&lt;ContextMenuService&gt;();
+In _Layout.cshtml or App.razor:
+```html
+
+
+```
+Radzen Component Examples
+Data Grid with CRUD Operations
+```razor
+@page "/employees"
+@using System.Linq.Dynamic.Core
+@inject DialogService DialogService
+@inject NotificationService NotificationService
+Employees
+
+
+
+    
+        
+        
+        
+        
+        
+        
+            
+                 EditEmployee(employee))" /&gt;
+                 DeleteEmployee(employee))" /&gt;
+            
+        
+    
+
+@code {
+    RadzenDataGrid grid;
+    IEnumerable employees;
+protected override void OnInitialized()
+{
+    employees = GetEmployees();
+}
+
+private List&lt;Employee&gt; GetEmployees() =&gt; new()
+{
+    new Employee { Id = 1, FirstName = "John", LastName = "Doe", Department = "Engineering", Salary = 90000 },
+    new Employee { Id = 2, FirstName = "Jane", LastName = "Smith", Department = "Marketing", Salary = 85000 },
+    // More employees...
+};
+
+async Task AddNewEmployee()
+{
+    var result = await DialogService.OpenAsync&lt;EmployeeEditor&gt;("Add Employee",
+        new Dictionary&lt;string, object&gt;() { { "Employee", new Employee() } });
+
+    if (result != null)
+    {
+        var newEmployee = (Employee)result;
+        var employeeList = employees.ToList();
+
+        newEmployee.Id = employeeList.Count &gt; 0 ? employeeList.Max(e =&gt; e.Id) + 1 : 1;
+        employeeList.Add(newEmployee);
+        employees = employeeList;
+
+        NotificationService.Notify(NotificationSeverity.Success, "Success", "Employee added successfully");
+        await grid.Reload();
+    }
+}
+
+async Task EditEmployee(Employee employee)
+{
+    var result = await DialogService.OpenAsync&lt;EmployeeEditor&gt;("Edit Employee",
+        new Dictionary&lt;string, object&gt;() { { "Employee", new Employee
+        {
+            Id = employee.Id,
+            FirstName = employee.FirstName,
+            LastName = employee.LastName,
+            Department = employee.Department,
+            Salary = employee.Salary
+        } } });
+
+    if (result != null)
+    {
+        var updatedEmployee = (Employee)result;
+        var employeeList = employees.ToList();
+        var index = employeeList.FindIndex(e =&gt; e.Id == employee.Id);
+
+        if (index != -1)
+        {
+            employeeList[index] = updatedEmployee;
+            employees = employeeList;
+
+            NotificationService.Notify(NotificationSeverity.Success, "Success", "Employee updated successfully");
+            await grid.Reload();
+        }
+    }
+}
+
+async Task DeleteEmployee(Employee employee)
+{
+    var confirm = await DialogService.Confirm("Are you sure you want to delete this employee?",
+        "Delete Employee", new ConfirmOptions() { OkButtonText = "Yes", CancelButtonText = "No" });
+
+    if (confirm.HasValue &amp;&amp; confirm.Value)
+    {
+        var employeeList = employees.ToList();
+        var index = employeeList.FindIndex(e =&gt; e.Id == employee.Id);
+
+        if (index != -1)
+        {
+            employeeList.RemoveAt(index);
+            employees = employeeList;
+
+            NotificationService.Notify(NotificationSeverity.Success, "Success", "Employee deleted successfully");
+            await grid.Reload();
+        }
+    }
+}
+
+public class Employee
+{
+    public int Id { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string Department { get; set; }
+    public decimal Salary { get; set; }
+}
+
+}
+```
+Employee Editor Dialog Component
+```razor
+@inject DialogService DialogService
+
+    
+        
+            
+                
+                
+            
+        
+        
+            
+                
+                
+            
+        
+    
+    
+        
+            
+                
+                
+            
+        
+        
+            
+                
+                
+                
+            
+        
+    
+    
+        
+            
+            
+        
+    
+
+@code {
+    [Parameter]
+    public Employee Employee { get; set; }
+private List&lt;Department&gt; departments = new()
+{
+    new Department { Id = "Engineering", Name = "Engineering" },
+    new Department { Id = "Marketing", Name = "Marketing" },
+    new Department { Id = "Sales", Name = "Sales" },
+    new Department { Id = "HR", Name = "HR" }
+};
+
+private void OnSubmit()
+{
+    DialogService.Close(Employee);
+}
+
+private void Cancel()
+{
+    DialogService.Close();
+}
+
+public class Department
+{
+    public string Id { get; set; }
+    public string Name { get; set; }
+}
+
+}
+```
+MudBlazor vs. Radzen: Which to Choose?
+Here's a comparison table to help you decide between MudBlazor and Radzen in 2025:
+| Feature                 | MudBlazor                               | Radzen Blazor                               |
+| :---------------------- | :-------------------------------------- | :------------------------------------------ |
+| Design System           | Material Design                         | Multiple themes (Material, Fluent UI, etc.) |
+| Component Count         | 70+                                     | 90+                                         |
+| JavaScript Dependencies | Minimal                                 | Moderate                                    |
+| Theming                 | Excellent, built-in theme designer      | Good, predefined themes                     |
+| Performance             | Very good                               | Good                                        |
+| Learning Curve          | Low to moderate                         | Moderate                                    |
+| Documentation           | Excellent                               | Excellent                                   |
+| Community Support       | Very active                             | Active                                      |
+| License                 | MIT                                     | Free for commercial use                     |
+When to choose MudBlazor:
+
+You prefer Material Design aesthetics
+You want minimal JavaScript dependencies
+You need extensive theming capabilities
+Your project benefits from MudBlazor's more compact bundle size
+
+When to choose Radzen:
+
+You need the widest range of components
+You want multiple theme options
+You prefer Radzen's specific components (like the powerful DataGrid)
+You're already using Radzen tools in your development workflow
+
+Performance Optimization Techniques
+Blazor applications can face performance challenges, especially in WebAssembly mode. Here are the most effective techniques for optimizing Blazor performance in 2025:
+1. Ahead-of-Time (AOT) Compilation
+AOT compilation significantly improves WebAssembly performance by pre-compiling your .NET code to WebAssembly, rather than interpreting it at runtime:
+```xml
+
+
+  true
+  
+true
+
+```
+2. Code Splitting and Lazy Loading
+Reduce the initial load time by lazy loading assemblies that aren't immediately needed:
+```xml
+
+
+  
+  
+
+```
+Then, use the LazyAssemblyLoader service to load the assemblies when needed:
+```razor
+@page "/charts"
+@using System.Reflection
+@inject LazyAssemblyLoader LazyLoader
+@if (chartsLoaded)
+{
+    
+}
+else
+{
+    
+}
+@code {
+    private bool chartsLoaded;
+    private Type chartComponentType;
+    private Dictionary parameters = new();
+protected override async Task OnInitializedAsync()
+{
+    var assemblies = await LazyLoader.LoadAssembliesAsync(new[] { "ChartComponents.dll" });
+    var assembly = assemblies.FirstOrDefault();
+
+    if (assembly != null)
+    {
+        chartComponentType = assembly.GetType("ChartComponents.BarChart");
+        parameters["Data"] = GetChartData();
+        chartsLoaded = true;
+    }
+}
+
+private List&lt;DataPoint&gt; GetChartData() =&gt; new()
+{
+    new DataPoint { Label = "Jan", Value = 42 },
+    new DataPoint { Label = "Feb", Value = 57 },
+    // More data...
+};
+
+public class DataPoint
+{
+    public string Label { get; set; }
+    public double Value { get; set; }
+}
+
+}
+```
+3. Virtualization for Long Lists
+Use Blazor's built-in virtualization to efficiently render long lists by only rendering the items currently in view:
+```razor
+
+    
+        
+            @item.Title
+            @item.Description
+        
+    
+
+
+@code {
+    private List largeDataSet = Enumerable.Range(1, 10000)
+        .Select(i =&gt; new DataItem
+        {
+            Id = i,
+            Title = $"Item {i}",
+            Description = $"Description for item {i}"
+        })
+        .ToList();
+public class DataItem
+{
+    public int Id { get; set; }
+    public string Title { get; set; }
+    public string Description { get; set; }
+}
+
+}
+```
+For even more control, specify the item size:
+razor
+&lt;Virtualize Items="@largeDataSet" Context="item" ItemSize="50"&gt;
+    &lt;div style="height: 50px;"&gt;@item.Title&lt;/div&gt;
+&lt;/Virtualize&gt;
+4. Optimize Rendering
+Implement ShouldRender() to avoid unnecessary renders:
+```razor
+@inherits ComponentBase
+@code {
+    private string previousValue;
+[Parameter]
+public string Value { get; set; }
+
+protected override bool ShouldRender()
+{
+    if (Value != previousValue)
+    {
+        previousValue = Value;
+        return true;
+    }
+
+    return false;
+}
+
+}
+```
+5. Memory Management
+Proper memory management is crucial, especially in Blazor Server apps:
+```razor
+@implements IDisposable
+@code {
+    private System.Threading.Timer timer;
+protected override void OnInitialized()
+{
+    timer = new System.Threading.Timer(
+        _ =&gt; InvokeAsync(() =&gt; {
+            // Update UI
+            StateHasChanged();
+        }),
+        null,
+        TimeSpan.Zero,
+        TimeSpan.FromSeconds(1)
+    );
+}
+
+public void Dispose()
+{
+    timer?.Dispose();
+}
+
+}
+```
+6. Bundle Size Optimization
+Reduce the size of your Blazor WebAssembly bundle:
+Enable IL trimming:
+xml
+&lt;PropertyGroup&gt;
+  &lt;PublishTrimmed&gt;true&lt;/PublishTrimmed&gt;
+  &lt;TrimMode&gt;link&lt;/TrimMode&gt;
+&lt;/PropertyGroup&gt;
+Use compression:
+```csharp
+// In Program.cs of your ASP.NET Core host
+app.UseResponseCompression();
+// Register compression services
+builder.Services.AddResponseCompression(options =&gt;
+{
+    options.EnableForHttps = true;
+    options.Providers.Add();
+    options.Providers.Add();
+});
+builder.Services.Configure(options =&gt;
+{
+    options.Level = System.IO.Compression.CompressionLevel.Optimal;
+});
+```
+7. Use CSS Isolation
+Blazor's CSS isolation helps keep styles scoped to specific components, improving both maintainability and performance:
+```css
+/ In Counter.razor.css /
+.counter-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+}
+.counter-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #007bff;
+}
+.counter-button {
+    margin-top: 10px;
+}
+```
+```razor
+
+
+    Counter
+    @currentCount
+    Increment
+
+
+@code {
+    private int currentCount = 0;
+private void IncrementCount()
+{
+    currentCount++;
+}
+
+}
+```
+Real-World Application Example
+Let's tie everything together with a real-world application example that demonstrates state management, component libraries, and performance optimization techniques. This example is for a task management application:
+Project Structure (Conceptual)
+TaskManager/
+├── Models/
+│   ├── TaskItem.cs
+│   └── Project.cs
+├── Services/
+│   ├── TaskState.cs
+│   ├── ProjectService.cs
+│   └── AuthService.cs
+├── Features/
+│   ├── Counter/
+│   │   ├── CounterState.cs
+│   │   ├── Actions.cs
+│   │   └── Reducers.cs
+│   └── Tasks/
+│       ├── TasksState.cs
+│       ├── Actions.cs
+│       └── Reducers.cs
+├── Components/
+│   ├── TaskList.razor
+│   ├── TaskItem.razor
+│   ├── TaskForm.razor
+│   └── ProjectSelector.razor
+├── Pages/
+│   ├── Dashboard.razor
+│   ├── Projects.razor
+│   ├── TaskDetails.razor
+│   └── Settings.razor
+└── Shared/
+    ├── MainLayout.razor
+    └── NavMenu.razor
+Task State Management with Fluxor
+```csharp
+// TasksState.cs
+public record TasksState
+{
+    public bool IsLoading { get; init; }
+    public List Tasks { get; init; } = new();
+    public string ErrorMessage { get; init; }
+}
+// Actions.cs
+public record FetchTasksAction();
+public record FetchTasksSuccessAction(List Tasks);
+public record FetchTasksFailureAction(string ErrorMessage);
+public record AddTaskAction(TaskItem Task);
+public record UpdateTaskAction(TaskItem Task);
+public record DeleteTaskAction(int TaskId);
+// Reducers.cs
+public static class TasksReducers
+{
+    [ReducerMethod]
+    public static TasksState ReduceFetchTasksAction(TasksState state, FetchTasksAction action) =&gt;
+        state with { IsLoading = true, ErrorMessage = null };
+[ReducerMethod]
+public static TasksState ReduceFetchTasksSuccessAction(TasksState state, FetchTasksSuccessAction action) =&gt;
+    state with { IsLoading = false, Tasks = action.Tasks.ToList(), ErrorMessage = null };
+
+[ReducerMethod]
+public static TasksState ReduceFetchTasksFailureAction(TasksState state, FetchTasksFailureAction action) =&gt;
+    state with { IsLoading = false, ErrorMessage = action.ErrorMessage };
+
+[ReducerMethod]
+public static TasksState ReduceAddTaskAction(TasksState state, AddTaskAction action)
+{
+    var tasks = state.Tasks.ToList();
+    tasks.Add(action.Task);
+    return state with { Tasks = tasks };
+}
+
+[ReducerMethod]
+public static TasksState ReduceUpdateTaskAction(TasksState state, UpdateTaskAction action)
+{
+    var tasks = state.Tasks.ToList();
+    var index = tasks.FindIndex(t =&gt; t.Id == action.Task.Id);
+
+    if (index &gt;= 0)
+    {
+        tasks[index] = action.Task;
+    }
+
+    return state with { Tasks = tasks };
+}
+
+[ReducerMethod]
+public static TasksState ReduceDeleteTaskAction(TasksState state, DeleteTaskAction action)
+{
+    var tasks = state.Tasks.Where(t =&gt; t.Id != action.TaskId).ToList();
+    return state with { Tasks = tasks };
+}
+
+}
+```
+Task List Component with MudBlazor and Virtualization
+```razor
+@page "/tasks"
+@inherits FluxorComponent
+@inject IState TasksState
+@inject IDispatcher Dispatcher
+
+    Tasks
+&lt;MudPaper Class="pa-4 mb-4"&gt;
+    &lt;TaskForm OnSubmit="AddTask" /&gt;
+&lt;/MudPaper&gt;
+
+@if (TasksState.Value.IsLoading)
+{
+    &lt;MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-4" /&gt;
+}
+else if (!string.IsNullOrEmpty(TasksState.Value.ErrorMessage))
+{
+    &lt;MudAlert Severity="Severity.Error" Class="mb-4"&gt;@TasksState.Value.ErrorMessage&lt;/MudAlert&gt;
+}
+else
+{
+    &lt;MudPaper Class="pa-0" Style="height: 500px; overflow-y: auto;"&gt;
+        &lt;Virtualize Items="@TasksState.Value.Tasks" Context="task" OverscanCount="5"&gt;
+            &lt;TaskItem Task="@task"
+                     OnStatusChanged="UpdateTaskStatus"
+                     OnDelete="DeleteTask" /&gt;
+        &lt;/Virtualize&gt;
+    &lt;/MudPaper&gt;
+}
+
+
+@code {
+    // Assume TaskItem model exists
+    // Assume TaskForm component exists
+protected override void OnInitialized()
+{
+    Dispatcher.Dispatch(new FetchTasksAction()); // Assuming effects handle the API call
+    base.OnInitialized();
+}
+
+private void AddTask(TaskItem task)
+{
+    Dispatcher.Dispatch(new AddTaskAction(task)); // Assuming effects handle the API call
+}
+
+private void UpdateTaskStatus(TaskItem task)
+{
+    Dispatcher.Dispatch(new UpdateTaskAction(task)); // Assuming effects handle the API call
+}
+
+private void DeleteTask(int taskId)
+{
+    Dispatcher.Dispatch(new DeleteTaskAction(taskId)); // Assuming effects handle the API call
+}
+
+}
+```
+Task Item Component with CSS Isolation
+```razor
+
+
+    
+        
+             OnStatusChange(value))" /&gt;
+        
+        
+            
+                @Task.Title
+            
+            
+                @Task.Description
+            
+            
+                @Task.Project
+            
+            
+                @Task.Priority
+            
+        
+        
+            
+                Due: @Task.DueDate.ToShortDateString()
+            
+        
+        
+             OnDeleteClicked())" /&gt;
+        
+    
+
+@code {
+    [Parameter]
+    public TaskItem Task { get; set; } // Assume TaskItem model exists
+[Parameter]
+public EventCallback&lt;TaskItem&gt; OnStatusChanged { get; set; }
+
+[Parameter]
+public EventCallback&lt;int&gt; OnDelete { get; set; }
+
+private async Task OnStatusChange(bool value)
+{
+    Task.IsCompleted = value;
+    await OnStatusChanged.InvokeAsync(Task);
+}
+
+private async Task OnDeleteClicked()
+{
+    await OnDelete.InvokeAsync(Task.Id);
+}
+
+private string GetStatusClass() =&gt; Task.IsCompleted ? "completed" : "";
+
+private Color GetPriorityColor() =&gt; Task.Priority switch
+{
+    "High" =&gt; Color.Error,
+    "Medium" =&gt; Color.Warning,
+    "Low" =&gt; Color.Success,
+    _ =&gt; Color.Default
+};
+
+}
+```
+```css
+/ TaskItem.razor.css /
+.task-item {
+    transition: background-color 0.3s ease;
+}
+.task-item:hover {
+    background-color: #f5f5f5;
+}
+.task-item.completed {
+    background-color: #f0f8f0;
+}
+.completed-task {
+    text-decoration: line-through;
+    color: #888;
+}
+```
+Task Effects for API Calls
+```csharp
+public class TasksEffects
+{
+    private readonly ITaskService _taskService; // Assume ITaskService exists
+public TasksEffects(ITaskService taskService)
+{
+    _taskService = taskService;
+}
+
+[EffectMethod]
+public async Task HandleFetchTasksAction(FetchTasksAction action, IDispatcher dispatcher)
+{
+    try
+    {
+        var tasks = await _taskService.GetTasksAsync();
+        dispatcher.Dispatch(new FetchTasksSuccessAction(tasks));
+    }
+    catch (Exception ex)
+    {
+        dispatcher.Dispatch(new FetchTasksFailureAction(ex.Message));
+    }
+}
+
+[EffectMethod]
+public async Task HandleAddTaskAction(AddTaskAction action, IDispatcher dispatcher)
+{
+    try
+    {
+        await _taskService.AddTaskAsync(action.Task);
+        // Optionally dispatch a success action or refetch tasks
+    }
+    catch (Exception ex)
+    {
+        // Error handling, maybe dispatch a failure action
+        Console.WriteLine($"Error adding task: {ex.Message}");
+    }
+}
+
+// Similar effect methods for UpdateTaskAction and DeleteTaskAction
+
+}
+```
+Optimizing with Lazy Loading
+csharp
+// In Program.cs
+builder.Services.AddScoped&lt;LazyAssemblyLoader&gt;();
+xml
+// In .csproj
+&lt;ItemGroup&gt;
+  &lt;BlazorWebAssemblyLazyLoad Include="TaskReporting.dll" /&gt;
+&lt;/ItemGroup&gt;
+```razor
+// In ReportsPage.razor
+@page "/reports"
+@inject LazyAssemblyLoader LazyLoader
+@if (reportsComponentLoaded)
+{
+    
+}
+else
+{
+    
+}
+@code {
+    private bool reportsComponentLoaded;
+    private Type reportsComponentType;
+protected override async Task OnInitializedAsync()
+{
+    var assemblies = await LazyLoader.LoadAssembliesAsync(new[] { "TaskReporting.dll" });
+    var assembly = assemblies.FirstOrDefault();
+
+    if (assembly != null)
+    {
+        reportsComponentType = assembly.GetType("TaskManager.Reporting.ReportsDashboard"); // Adjust namespace/type
+        reportsComponentLoaded = true;
+    }
+}
+
+}
+```
+Conclusion and Future Outlook
+As of 2025, Blazor has matured into a powerful framework for building modern web UIs, with robust solutions for state management, comprehensive component libraries, and effective performance optimization techniques.
+Key Takeaways
+
+State Management: Choose the right approach based on your application's complexity: component state for simple scenarios, service-based state for moderate complexity, and Flux patterns (e.g., Fluxor) for complex, enterprise applications.
+Component Libraries: Both MudBlazor and Radzen offer excellent component sets. MudBlazor provides a cohesive Material Design experience with minimal JavaScript, while Radzen offers more components and flexibility with multiple theming options.
+Performance Optimization: Apply techniques like AOT compilation (for WASM), lazy loading, virtualization, ShouldRender() optimization, proper memory management, bundle size reduction, and CSS isolation to ensure responsive Blazor applications.
+
+Future Outlook
+Looking ahead, we can expect Blazor to continue evolving with:
+
+Further performance improvements in the WebAssembly runtime.
+Enhanced tooling for debugging and profiling.
+Better integration with other Microsoft technologies.
+More sophisticated component libraries.
+Expanded ecosystem of third-party packages and tools.
+
+By applying the techniques and practices outlined in this article, you can build modern, performant, and maintainable web UIs with Blazor in 2025 and beyond. Mastering state management, leveraging component libraries, and implementing performance optimizations are key to creating feature-rich web applications using C# and .NET.
+```

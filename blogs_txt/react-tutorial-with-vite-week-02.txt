@@ -1,0 +1,154 @@
+
+title: "How To Install React 19 With Vite"
+description: "A fast, beginner-friendly tutorial for setting up React 19 with Vite, including tips, troubleshooting, and best practices."
+pubDate: "May 24 2025"
+image: "https://ik.imagekit.io/quadrate/assets/img/dotnetevangelist/react-tutorial.png?updatedAt=1748087869316"
+
+React 19 is the latest stable version of the popular JavaScript library for building user interfaces. Vite is a modern build tool that offers blazing-fast development and optimized production builds. In this tutorial, you'll learn how to set up React 19 with Vite to create a fast, modern web application environment.
+Why Use Vite &amp; React 19?
+
+  
+    ⚡ Why Use Vite?
+    
+      Lightning-fast hot module replacement
+      No bundling during development
+      Optimized builds with Rollup
+      Out-of-the-box TypeScript support
+    
+  
+  
+    ⚛️ React 19 Features
+    
+      React Compiler for improved performance
+      New server-side rendering architecture
+      Enhanced concurrent features
+      Improved developer experience
+    
+  
+
+
+Prerequisites
+Before getting started, make sure you have:
+
+Node.js (v18.0.0 or higher, v20+ recommended)
+npm or yarn
+A code editor (VS Code recommended)
+
+
+Tip: To check your Node.js version, run:
+bash
+node -v
+
+Step-by-Step Installation
+1. Create a New Vite Project
+Open your terminal and run:
+bash
+npm create vite@latest my-react-app -- --template react
+Replace my-react-app with your desired project name.
+2. Navigate to Your Project Directory
+bash
+cd my-react-app
+3. Upgrade to React 19
+By default, Vite may create a project with React 18. Upgrade to React 19:
+bash
+npm install react@^19.0.0 react-dom@^19.0.0
+
+Note: In the future, Vite's React template might include React 19 by default.
+
+4. Install React Compiler (Optional)
+To leverage the new React Compiler features in React 19, install the Babel plugin:
+bash
+npm install -D @babel/plugin-react-compiler
+5. Configure Vite to Use React Compiler
+Open your vite.config.js and add the plugin:
+```js
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+export default defineConfig({
+  plugins: [
+    react({
+      babel: {
+        plugins: ['@babel/plugin-react-compiler']
+      }
+    })
+  ],
+});
+```
+6. Change Default Port (Optional)
+To use port 3000 instead of 5173, modify vite.config.js:
+```js
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+export default defineConfig({
+  plugins: [
+    react({
+      babel: {
+        plugins: ['@babel/plugin-react-compiler']
+      }
+    })
+  ],
+  server: {
+    port: 3000
+  },
+});
+```
+7. Install Dependencies and Start the Dev Server
+bash
+npm install
+npm run dev
+Your React 19 app should now be running on http://localhost:3000 (or port 5173 if unchanged).
+Verifying React 19 Installation
+To confirm your project uses React 19, display the React version in your app:
+```jsx
+// In App.jsx
+import React, { version } from 'react';
+function App() {
+  return (
+    
+      React 19 with Vite
+      Current React Version: {version}
+    
+  );
+}
+export default App;
+```
+This will show the current React version in your app, confirming React 19 is installed.
+Troubleshooting
+Package Version Conflicts
+If you encounter version conflicts, clear your npm cache and reinstall:
+bash
+npm cache clean --force
+npm install
+Compiler Plugin Issues
+If the React Compiler plugin causes issues, you can remove it and still use React 19 without compiler features:
+
+Remove the plugin from vite.config.js
+Uninstall the package:
+   bash
+   npm uninstall @babel/plugin-react-compiler
+
+Next Steps
+
+  
+    Add Dependencies
+    Consider adding these popular libraries:
+    
+      React Router for navigation
+      Tailwind CSS for styling
+      Axios for API requests
+    
+  
+  
+    Project Structure
+    Organize your project with these folders:
+    
+      src/components/ - Reusable components
+      src/pages/ - Page components
+      src/hooks/ - Custom React hooks
+      src/context/ - Context providers
+    
+  
+
+
+
+Pro Tip: Explore React 19's new features like React Compiler, improved Suspense, and server components to make the most of your new setup!

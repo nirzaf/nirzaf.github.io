@@ -1,0 +1,247 @@
+
+title: Connecting Python Apps with Supabase - Complete Guide
+pubDate: '2023-09-12'
+description: &gt;-
+  Learn how to integrate Supabase with Python applications for authentication,
+  database operations, storage, and real-time features.
+image: &gt;-
+  https://ik.imagekit.io/quadrate/assets/img/dotnetevangelist/Connecting-Python-Apps-with-Supabase-Complete-Guide.jpg?updatedAt=1746813307378
+tags: ['Python', 'Supabase', 'Database', 'Backend', 'Api']
+
+Supabase is an open-source Firebase alternative that provides a suite of tools for building modern applications. It offers authentication, database, storage, and real-time capabilities, all accessible through a simple API. In this guide, we'll explore how to integrate Supabase with Python applications.
+Getting Started with Supabase and Python
+Installation
+First, install the Supabase Python client:
+bash
+pip install supabase
+Initializing the Client
+```python
+from supabase import create_client
+Initialize the Supabase client
+url = "https://your-project-id.supabase.co"
+key = "your-supabase-api-key"
+supabase = create_client(url, key)
+```
+Authentication
+Supabase provides multiple authentication methods. Here's how to implement them in Python:
+Email and Password Authentication
+```python
+Sign up a new user
+def sign_up(email, password):
+    response = supabase.auth.sign_up({
+        "email": email,
+        "password": password
+    })
+    return response
+Sign in an existing user
+def sign_in(email, password):
+    response = supabase.auth.sign_in_with_password({
+        "email": email,
+        "password": password
+    })
+    return response
+Sign out
+def sign_out(jwt):
+    supabase.auth.sign_out(jwt)
+```
+Social Authentication
+For social authentication (like Google, GitHub, etc.), you'll need to handle the OAuth flow:
+```python
+Generate the OAuth URL
+def get_oauth_url(provider):
+    response = supabase.auth.sign_in_with_oauth({
+        "provider": provider  # e.g., "google", "github"
+    })
+    return response["url"]
+Handle the OAuth callback
+def handle_oauth_callback(code):
+    response = supabase.auth.exchange_code_for_session({
+        "code": code
+    })
+    return response
+```
+Database Operations
+Supabase is built on PostgreSQL, and the Python client provides a simple interface for database operations:
+Fetching Data
+```python
+Get all rows from a table
+def get_all_items(table_name):
+    response = supabase.table(table_name).select("*").execute()
+    return response.data
+Get a specific row by ID
+def get_item_by_id(table_name, item_id):
+    response = supabase.table(table_name).select("*").eq("id", item_id).execute()
+    return response.data[0] if response.data else None
+Query with filters
+def get_filtered_items(table_name, column, value):
+    response = supabase.table(table_name).select("*").eq(column, value).execute()
+    return response.data
+```
+Inserting Data
+```python
+Insert a new row
+def insert_item(table_name, data):
+    response = supabase.table(table_name).insert(data).execute()
+    return response.data
+```
+Updating Data
+```python
+Update a row
+def update_item(table_name, item_id, data):
+    response = supabase.table(table_name).update(data).eq("id", item_id).execute()
+    return response.data
+```
+Deleting Data
+```python
+Delete a row
+def delete_item(table_name, item_id):
+    response = supabase.table(table_name).delete().eq("id", item_id).execute()
+    return response.data
+```
+Advanced Queries
+```python
+Join tables
+def get_items_with_related_data(table_name, related_table):
+    response = supabase.table(table_name).select(f", {related_table}()").execute()
+    return response.data
+Pagination
+def get_paginated_items(table_name, page, page_size):
+    start = (page - 1) * page_size
+    end = page * page_size - 1
+    response = supabase.table(table_name).select("*").range(start, end).execute()
+    return response.data
+Full-text search
+def search_items(table_name, column, query):
+    response = supabase.table(table_name).select("*").textSearch(column, query).execute()
+    return response.data
+```
+Storage
+Supabase provides a storage solution for files. Here's how to use it:
+```python
+Upload a file
+def upload_file(bucket, file_path, file_name):
+    with open(file_path, "rb") as f:
+        response = supabase.storage.from_(bucket).upload(file_name, f)
+    return response
+Download a file
+def download_file(bucket, file_name, save_path):
+    response = supabase.storage.from_(bucket).download(file_name)
+    with open(save_path, "wb") as f:
+        f.write(response)
+    return save_path
+Get a public URL for a file
+def get_public_url(bucket, file_name):
+    return supabase.storage.from_(bucket).get_public_url(file_name)
+List files in a bucket
+def list_files(bucket, path=""):
+    response = supabase.storage.from_(bucket).list(path)
+    return response
+Delete a file
+def delete_file(bucket, file_name):
+    response = supabase.storage.from_(bucket).remove([file_name])
+    return response
+```
+Real-time Subscriptions
+Supabase allows you to subscribe to changes in your database:
+```python
+import asyncio
+from supabase import create_client
+async def subscribe_to_changes(table_name):
+    # Initialize the Supabase client
+    url = "https://your-project-id.supabase.co"
+    key = "your-supabase-api-key"
+    supabase = create_client(url, key)
+# Create a channel to listen for changes
+channel = supabase.channel("db-changes")
+
+# Subscribe to changes in the table
+channel.on(
+    "postgres_changes",
+    {
+        "event": "*",  # Listen for all events (INSERT, UPDATE, DELETE)
+        "schema": "public",
+        "table": table_name
+    },
+    lambda payload: print(f"Change received: {payload}")
+)
+
+# Subscribe to the channel
+await channel.subscribe()
+
+# Keep the connection alive
+while True:
+    await asyncio.sleep(1)
+
+Run the subscription
+asyncio.run(subscribe_to_changes("your_table_name"))
+```
+Practical Example: Todo App
+Let's put it all together with a simple Todo app:
+```python
+import tkinter as tk
+from tkinter import messagebox
+from supabase import create_client
+class TodoApp:
+    def init(self, root):
+        self.root = root
+        self.root.title("Supabase Todo App")
+    # Initialize Supabase client
+    self.url = "https://your-project-id.supabase.co"
+    self.key = "your-supabase-api-key"
+    self.supabase = create_client(self.url, self.key)
+
+    # UI elements
+    self.task_entry = tk.Entry(root, width=40)
+    self.task_entry.pack(pady=10)
+
+    self.add_button = tk.Button(root, text="Add Task", command=self.add_task)
+    self.add_button.pack(pady=5)
+
+    self.task_listbox = tk.Listbox(root, width=50, height=15)
+    self.task_listbox.pack(pady=10)
+
+    self.delete_button = tk.Button(root, text="Delete Task", command=self.delete_task)
+    self.delete_button.pack(pady=5)
+
+    # Load tasks
+    self.load_tasks()
+
+def load_tasks(self):
+    self.task_listbox.delete(0, tk.END)
+    response = self.supabase.table("todos").select("*").order("created_at").execute()
+    self.tasks = response.data
+
+    for task in self.tasks:
+        self.task_listbox.insert(tk.END, task["task"])
+
+def add_task(self):
+    task = self.task_entry.get()
+    if task:
+        response = self.supabase.table("todos").insert({"task": task}).execute()
+        if response.data:
+            self.task_entry.delete(0, tk.END)
+            self.load_tasks()
+        else:
+            messagebox.showerror("Error", "Failed to add task")
+
+def delete_task(self):
+    selected = self.task_listbox.curselection()
+    if selected:
+        index = selected[0]
+        task_id = self.tasks[index]["id"]
+        response = self.supabase.table("todos").delete().eq("id", task_id).execute()
+        if response.data:
+            self.load_tasks()
+        else:
+            messagebox.showerror("Error", "Failed to delete task")
+
+Run the app
+if name == "main":
+    root = tk.Tk()
+    app = TodoApp(root)
+    root.mainloop()
+```
+Conclusion
+Supabase provides a powerful and flexible backend for Python applications. With its comprehensive set of features, you can quickly build robust applications without having to manage complex infrastructure.
+In this guide, we've covered the basics of connecting Python apps with Supabase, including authentication, database operations, storage, and real-time features. With these tools, you can build anything from simple CRUD applications to complex, real-time collaborative platforms.
+Happy coding!
