@@ -23,19 +23,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
         with:
-          node-version: "20.x"
+          bun-version: "1.1.x"
 
-      
       - name: Install dependencies
-        run: npm ci
+        run: bun install
 
       - name: Build with Next.js
         run: |
-          npm run build
-          npm run generate-search-index
+          bun run build
         env:
           NEXT_TELEMETRY_DISABLED: 1
           NODE_ENV: production

@@ -3,21 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": ">=18.x"
+    "node": ">=18.x",
+    "bun": ">=1.0.0"
   },
+  "packageManager": "bun@^1.1.0",
   "scripts": {
     "dev": "next dev",
-    "generate-search-index": "node scripts/generate-search-index.mjs",
-    "generate-rss-feed": "node scripts/generate-rss.mjs",
-    "build": "next build && npm run generate-search-index && npm run generate-rss-feed",
+    "generate-search-index": "bun scripts/generate-search-index.mjs",
+    "generate-rss-feed": "bun scripts/generate-rss.mjs",
+    "build": "next build && bun run generate-search-index && bun run generate-rss-feed",
     "start": "next start",
     "lint": "next lint",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "test": "echo 'Running application verification tests' && npm run build && echo 'All tests passed successfully'",
-    "sync-deps": "./scripts/sync-package-lock.sh",
-    "preinstall": "npm install --package-lock-only --ignore-scripts",
-    "workflow": "./scripts/build-run-test-push.sh"
+    "test": "echo 'Running application verification tests' && bun run build && echo 'All tests passed successfully'"
   },
   "dependencies": {
     "@types/flexsearch": "^0.7.42",
