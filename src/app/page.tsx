@@ -103,6 +103,15 @@ export default async function Home() {
           )}
         </div>
       </div>
+
+      <div className="mt-6 text-center">
+        <Link
+          href="/gemini-gems"
+          className="text-sm text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 underline-offset-2 hover:underline"
+        >
+          Gemini Gems
+        </Link>
+      </div>
     </div>
   );
 }
