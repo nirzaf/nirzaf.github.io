@@ -1,0 +1,20 @@
+name = "nirzaf-cms"
+account_id = "7c2fe1b770e74bbde133e53894bd3ea7"
+compatibility_date = "2024-12-14"
+compatibility_flags = ["nodejs_compat"]
+
+# D1 Database binding
+[[d1_databases]]
+binding = "DB"
+database_name = "cms-db"
+database_id = "f3e7fb86-c997-42e7-956e-d273be0035bb"
+migrations_dir = "drizzle/migrations"
+
+# R2 Bucket binding
+[[r2_buckets]]
+binding = "R2"
+bucket_name = "cms-assets"
+
+# Environment variables (for production)
+[vars]
+NODE_ENV = "production"

@@ -23,3 +23,8 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+.env.local
+.dev.vars
+.wrangler/
+.mf/
+drizzle/

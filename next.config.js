@@ -1,10 +1,5 @@
 /** @type {import('next').NextConfig} */
-const isProd = process.env.NODE_ENV === 'production';
-const basePath = isProd ? '/nirzaf.github.io' : '';
-
 const nextConfig = {
-  // Enable static exports for GitHub Pages
-  output: 'export',
 
   // Disable ESLint during build
   eslint: {
@@ -18,7 +13,6 @@ const nextConfig = {
 
   // Configure remote image patterns
   images: {
-    unoptimized: true, // Required for static exports
     remotePatterns: [
       {
         protocol: 'https',
@@ -50,22 +44,18 @@ const nextConfig = {
         hostname: 'www.freelancer.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: '*.r2.dev',
+        pathname: '/**',
+      },
     ],
   },
 
   // Add other configuration options
   reactStrictMode: true,
 
-  // Base path for GitHub Pages
-  basePath,
-
-  // Asset prefix for GitHub Pages
-  assetPrefix: isProd ? `${basePath}/` : '',
-
-  // Optional: Add trailing slash for GitHub Pages
-  trailingSlash: true,
-
-  // Optional: Disable source maps in production
+  // Disable source maps in production
   productionBrowserSourceMaps: false,
 
   // Optional: Configure webpack

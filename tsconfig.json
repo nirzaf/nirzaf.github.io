@@ -1,18 +1,25 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node", /* Changed from "bundler" to "node" for better compatibility */
+    "moduleResolution": "bundler", /* Changed to bundler for Cloudflare compatibility */
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "types": [
+      "@cloudflare/workers-types"
+    ],
     "baseUrl": ".",
     "plugins": [
       {
@@ -20,9 +27,21 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "cypress/**/*.ts", "cypress.config.ts", "cypress/support/index.d.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "cypress/**/*.ts",
+    "cypress.config.ts",
+    "cypress/support/index.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
