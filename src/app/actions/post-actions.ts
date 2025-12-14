@@ -14,139 +14,152 @@ import { getRequestContext } from '@cloudflare/next-on-pages';
 /**
  * Create a new post
  */
+/**
+ * Create a new post
+ */
 export async function createPost(formData: FormData) {
-    const db = getD1Database();
+    try {
+        const db = getD1Database();
 
-    const slug = formData.get('slug') as string;
-    const title = formData.get('title') as string;
-    const description = formData.get('description') as string;
-    const content = formData.get('content') as string;
-    const coverImageUrl = formData.get('coverImageUrl') as string;
-    const published = formData.get('published') === 'true';
-    const pubDate = formData.get('pubDate') as string || new Date().toISOString().split('T')[0];
-    const tagsInput = formData.get('tags') as string;
+        const slug = formData.get('slug') as string;
+        const title = formData.get('title') as string;
+        const description = formData.get('description') as string;
+        const content = formData.get('content') as string;
+        const coverImageUrl = formData.get('coverImageUrl') as string;
+        const published = formData.get('published') === 'true';
+        const pubDate = formData.get('pubDate') as string || new Date().toISOString().split('T')[0];
+        const tagsInput = formData.get('tags') as string;
 
-    // Validate required fields
-    if (!slug || !title || !content) {
-        throw new Error('Slug, title, and content are required');
-    }
+        // Validate required fields
+        if (!slug || !title || !content) {
+            return { success: false, error: 'Slug, title, and content are required' };
+        }
 
-    // Insert post
-    const [newPost] = await db
-        .insert(posts)
-        .values({
-            slug,
-            title,
-            description: description || '',
-            content,
-            coverImageUrl: coverImageUrl || '',
-            published,
-            pubDate,
-            readingTime: Math.ceil(content.split(/\s+/).length / 200).toString(),
-        })
-        .returning();
+        // Insert post
+        const [newPost] = await db
+            .insert(posts)
+            .values({
+                slug,
+                title,
+                description: description || '',
+                content,
+                coverImageUrl: coverImageUrl || '',
+                published,
+                pubDate,
+                readingTime: Math.ceil(content.split(/\s+/).length / 200).toString(),
+            })
+            .returning();
 
-    // Handle tags
-    if (tagsInput) {
-        const tagNames = tagsInput.split(',').map(t => t.trim()).filter(Boolean);
+        // Handle tags
+        if (tagsInput) {
+            const tagNames = tagsInput.split(',').map(t => t.trim()).filter(Boolean);
 
-        for (const tagName of tagNames) {
-            // Insert or get existing tag
-            await db
-                .insert(tags)
-                .values({ name: tagName })
-                .onConflictDoNothing();
-
-            const [tag] = await db
-                .select()
-                .from(tags)
-                .where(eq(tags.name, tagName));
-
-            if (tag) {
+            for (const tagName of tagNames) {
+                // Insert or get existing tag
                 await db
-                    .insert(postsTags)
-                    .values({ postId: newPost.id, tagId: tag.id })
+                    .insert(tags)
+                    .values({ name: tagName })
                     .onConflictDoNothing();
+
+                const [tag] = await db
+                    .select()
+                    .from(tags)
+                    .where(eq(tags.name, tagName));
+
+                if (tag) {
+                    await db
+                        .insert(postsTags)
+                        .values({ postId: newPost.id, tagId: tag.id })
+                        .onConflictDoNothing();
+                }
             }
         }
+
+        revalidatePath('/blog');
+        revalidatePath('/admin/posts');
+
+        return { success: true, postId: newPost.id };
+    } catch (error) {
+        console.error('Failed to create post:', error);
+        return { success: false, error: 'Failed to create post' };
     }
-
-    revalidatePath('/blog');
-    revalidatePath('/admin/posts');
-
-    return { success: true, postId: newPost.id };
 }
 
 /**
  * Update an existing post
  */
 export async function updatePost(postId: number, formData: FormData) {
-    const db = getD1Database();
+    try {
+        const db = getD1Database();
 
-    const slug = formData.get('slug') as string;
-    const title = formData.get('title') as string;
-    const description = formData.get('description') as string;
-    const content = formData.get('content') as string;
-    const coverImageUrl = formData.get('coverImageUrl') as string;
-    const published = formData.get('published') === 'true';
-    const pubDate = formData.get('pubDate') as string;
-    const tagsInput = formData.get('tags') as string;
+        const slug = formData.get('slug') as string;
+        const title = formData.get('title') as string;
+        const description = formData.get('description') as string;
+        const content = formData.get('content') as string;
+        const coverImageUrl = formData.get('coverImageUrl') as string;
+        const published = formData.get('published') === 'true';
+        const pubDate = formData.get('pubDate') as string;
+        const tagsInput = formData.get('tags') as string;
 
-    // Validate required fields
-    if (!slug || !title || !content) {
-        throw new Error('Slug, title, and content are required');
-    }
+        // Validate required fields
+        if (!slug || !title || !content) {
+            return { success: false, error: 'Slug, title, and content are required' };
+        }
 
-    // Update post
-    await db
-        .update(posts)
-        .set({
-            slug,
-            title,
-            description: description || '',
-            content,
-            coverImageUrl: coverImageUrl || '',
-            published,
-            pubDate,
-            readingTime: Math.ceil(content.split(/\s+/).length / 200).toString(),
-            updatedAt: new Date(),
-        })
-        .where(eq(posts.id, postId));
+        // Update post
+        await db
+            .update(posts)
+            .set({
+                slug,
+                title,
+                description: description || '',
+                content,
+                coverImageUrl: coverImageUrl || '',
+                published,
+                pubDate,
+                readingTime: Math.ceil(content.split(/\s+/).length / 200).toString(),
+                updatedAt: new Date(),
+            })
+            .where(eq(posts.id, postId));
 
-    // Clear existing tags and add new ones
-    await db
-        .delete(postsTags)
-        .where(eq(postsTags.postId, postId));
+        // Clear existing tags and add new ones
+        await db
+            .delete(postsTags)
+            .where(eq(postsTags.postId, postId));
 
-    if (tagsInput) {
-        const tagNames = tagsInput.split(',').map(t => t.trim()).filter(Boolean);
+        if (tagsInput) {
+            const tagNames = tagsInput.split(',').map(t => t.trim()).filter(Boolean);
 
-        for (const tagName of tagNames) {
-            await db
-                .insert(tags)
-                .values({ name: tagName })
-                .onConflictDoNothing();
-
-            const [tag] = await db
-                .select()
-                .from(tags)
-                .where(eq(tags.name, tagName));
-
-            if (tag) {
+            for (const tagName of tagNames) {
                 await db
-                    .insert(postsTags)
-                    .values({ postId, tagId: tag.id })
+                    .insert(tags)
+                    .values({ name: tagName })
                     .onConflictDoNothing();
+
+                const [tag] = await db
+                    .select()
+                    .from(tags)
+                    .where(eq(tags.name, tagName));
+
+                if (tag) {
+                    await db
+                        .insert(postsTags)
+                        .values({ postId, tagId: tag.id })
+                        .onConflictDoNothing();
+                }
             }
         }
+
+        revalidatePath('/blog');
+        revalidatePath(`/blog/${slug}`);
+        revalidatePath('/admin/posts');
+        revalidatePath(`/admin/posts/${postId}/edit`);
+
+        return { success: true };
+    } catch (error) {
+        console.error('Failed to update post:', error);
+        return { success: false, error: error instanceof Error ? error.message : 'Failed to update post' };
     }
-
-    revalidatePath('/blog');
-    revalidatePath(`/blog/${slug}`);
-    revalidatePath('/admin/posts');
-    revalidatePath(`/admin/posts/${postId}/edit`);
-
-    return { success: true };
 }
 
 /**
