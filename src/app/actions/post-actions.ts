@@ -6,11 +6,10 @@
  */
 
 import { revalidatePath } from 'next/cache';
-import { getD1Database } from '@/lib/cloudflare';
+import { getD1Database, CloudflareEnv } from '@/lib/cloudflare';
 import { posts, tags, postsTags } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 import { getRequestContext } from '@cloudflare/next-on-pages';
-import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 
 /**
  * Create a new post
@@ -186,42 +185,29 @@ export async function uploadImage(formData: FormData) {
         throw new Error('No file provided');
     }
 
-    const { env } = getRequestContext();
-    const accountId = process.env.CLOUDFLARE_ACCOUNT_ID;
-    const r2AccessKeyId = process.env.R2_ACCESS_KEY_ID;
-    const r2SecretAccessKey = process.env.R2_SECRET_ACCESS_KEY;
-    const bucketName = process.env.R2_BUCKET_NAME || 'cms-assets';
-    const r2PublicUrl = process.env.R2_PUBLIC_URL;
+    const { env } = getRequestContext() as unknown as { env: CloudflareEnv };
 
-    if (!accountId || !r2AccessKeyId || !r2SecretAccessKey || !r2PublicUrl) {
-        throw new Error('R2 configuration is missing');
+    // Check if R2 binding exists
+    if (!env.R2) {
+        throw new Error('R2 binding not found in environment');
     }
-
-    // Create S3 client for R2
-    const s3Client = new S3Client({
-        region: 'auto',
-        endpoint: `https://${accountId}.r2.cloudflarestorage.com`,
-        credentials: {
-            accessKeyId: r2AccessKeyId,
-            secretAccessKey: r2SecretAccessKey,
-        },
-    });
 
     // Generate unique filename
     const timestamp = Date.now();
-    const ext = file.name.split('.').pop();
     const fileName = `uploads/${timestamp}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
 
-    // Upload to R2
+    // Upload to R2 using native binding
     const arrayBuffer = await file.arrayBuffer();
-    await s3Client.send(new PutObjectCommand({
-        Bucket: bucketName,
-        Key: fileName,
-        Body: Buffer.from(arrayBuffer),
-        ContentType: file.type,
-    }));
+    await env.R2.put(fileName, arrayBuffer, {
+        httpMetadata: {
+            contentType: file.type,
+        },
+    });
 
-    const publicUrl = `${r2PublicUrl}/${fileName}`;
+    // Construct public URL
+    // Use configured R2_PUBLIC_URL or fallback to a relative path if serving from same domain (though usually R2 needs a domain)
+    const publicUrlBase = process.env.R2_PUBLIC_URL || 'https://pub-r2.dotnetevangelist.net'; // Fallback or env var
+    const publicUrl = `${publicUrlBase}/${fileName}`;
 
     return { success: true, url: publicUrl };
 }
