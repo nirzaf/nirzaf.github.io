@@ -28,3 +28,8 @@ pnpm-debug.log*
 .wrangler/
 .mf/
 drizzle/
+
+# Secrets
+.generated-secret.txt
+*.secret
+
