@@ -2,6 +2,7 @@ name = "nirzaf-cms"
 account_id = "7c2fe1b770e74bbde133e53894bd3ea7"
 compatibility_date = "2024-12-14"
 compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".vercel/output/static"
 
 # D1 Database binding
 [[d1_databases]]
