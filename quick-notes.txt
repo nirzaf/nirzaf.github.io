@@ -1,6 +1,6 @@
 1. Build the project after every change:
    Command:
-     npm run build
+     bun run build
 
 2. If the build completes without errors, terminate any running Node.js processes (to avoid conflicts):
    Command:
@@ -8,11 +8,11 @@
 
 3. Start the development server:
    Command:
-     npm run dev
+     bun dev
 
 4. Test the project:
    Command:
-     npm test
+     bun test
 
 5. If all tests pass and the project is working as expected, push your changes:
    Command:
