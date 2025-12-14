@@ -6,7 +6,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-export const runtime = 'edge';
+export const runtime = 'experimental-edge';
 
 export function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
@@ -14,7 +14,8 @@ export function middleware(request: NextRequest) {
     // Only protect /admin routes (except /admin/login)
     if (pathname.startsWith('/admin') && !pathname.startsWith('/admin/login')) {
         // Check for auth session cookie
-        const sessionCookie = request.cookies.get('better-auth.session_token');
+        const sessionCookie = request.cookies.get('better-auth.session_token') ||
+            request.cookies.get('__Secure-better-auth.session_token');
 
         if (!sessionCookie) {
             // Redirect to login

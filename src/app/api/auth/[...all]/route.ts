@@ -8,10 +8,20 @@ import { toNextJsHandler } from 'better-auth/next-js';
 
 export const runtime = 'edge';
 
-const handler = async (request: Request) => {
-    const auth = getAuth();
-    const nextHandler = toNextJsHandler(auth);
-    return nextHandler(request);
+const apiHandler = async (request: Request) => {
+    try {
+        const auth = getAuth();
+        const handlers = toNextJsHandler(auth);
+
+        // Use GET handler for GET requests, POST for POST requests
+        if (request.method === 'POST') {
+            return await handlers.POST(request);
+        }
+        return await handlers.GET(request);
+    } catch (error) {
+        console.error('Auth API Error:', error);
+        return new Response('Internal Server Error: ' + (error instanceof Error ? error.message : String(error)), { status: 500 });
+    }
 };
 
-export { handler as GET, handler as POST };
+export { apiHandler as GET, apiHandler as POST };

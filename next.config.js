@@ -58,6 +58,8 @@ const nextConfig = {
   // Disable source maps in production
   productionBrowserSourceMaps: false,
 
+  turbopack: {},
+
   // Optional: Configure webpack
   webpack: (config, { isServer }) => {
     if (!isServer) {

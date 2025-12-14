@@ -11,7 +11,8 @@
     "dev": "next dev",
     "generate-search-index": "bun scripts/generate-search-index.mjs",
     "generate-rss-feed": "bun scripts/generate-rss.mjs",
-    "build": "bunx @cloudflare/next-on-pages",
+    "pages:build": "bunx @cloudflare/next-on-pages",
+    "build": "next build",
     "build:static": "next build && bun run generate-search-index && bun run generate-rss-feed",
     "start": "next start",
     "lint": "next lint",
@@ -25,7 +26,7 @@
     "db:migrate:remote": "bunx wrangler d1 migrations apply cms-db --remote",
     "migrate:content": "bun run scripts/migrate-to-cloud.ts",
     "seed:admin": "bun run scripts/seed-admin.ts",
-    "deploy": "bun run build && bunx wrangler pages deploy .vercel/output/static",
+    "deploy": "bun run pages:build && bunx wrangler pages deploy .vercel/output/static",
     "dev:worker": "bunx wrangler pages dev .vercel/output/static"
   },
   "dependencies": {
