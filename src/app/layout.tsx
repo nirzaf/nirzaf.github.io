@@ -120,7 +120,12 @@ export default function RootLayout({
                   </ul>
                 </nav>
 
-                {/* Mobile menu */}
+                <Link
+                  href="/gemini-gems"
+                  className="px-3 py-2 rounded-md font-semibold bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow hover:from-blue-700 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  Gemini Gems
+                </Link>
                 <MobileMenu />
 
                 <ThemeToggle />
